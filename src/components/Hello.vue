@@ -5,7 +5,7 @@
         <h2>
           ardeche
         </h2>
-        <img src="static/ardeche/Ardeche-14.jpg" alt="">
+        <img src="static/ardeche/ardeche-14.jpg" alt="">
       </router-link>
     </article>
     <article>
