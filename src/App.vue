@@ -62,7 +62,7 @@ export default {
     h1 {
       font-weight:400;
       margin:auto auto auto 0;
-      border: 4px solid black;
+      border: 3px solid black;
       padding:15px 20px;
 
       a {
