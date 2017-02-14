@@ -1,27 +1,11 @@
 <template>
   <div class="hello">
-    <article>
-      <router-link :to="{ name: 'Album', params: { albumName: 'ardeche' }}">
+    <article v-for="item in menu">
+      <router-link :to="{ name: 'Album', params: { albumName: item.albumName }}">
         <h2>
-          ardeche
+          {{ item.name }}
         </h2>
-        <img src="static/ardeche/ardeche-14.jpg" alt="">
-      </router-link>
-    </article>
-    <article>
-      <router-link :to="{ name: 'Album', params: { albumName: 'islande' }}">
-        <h2>
-          islande
-        </h2>
-        <img src="static/islande/islande-53.jpg" alt="">
-      </router-link>
-    </article>
-    <article>
-      <router-link :to="{ name: 'Album', params: { albumName: 'interlac' }}">
-        <h2>
-          interlac
-        </h2>
-        <img src="static/interlac/interlac-25.jpg" alt="">
+        <div v-lazy:background-image="item.cover" class="img"></div>
       </router-link>
     </article>
   </div>
@@ -29,7 +13,28 @@
 
 <script>
 export default {
-  name: 'hello'
+  name: 'hello',
+  data () {
+    return {
+      menu: [
+        {
+          name: 'ardèche',
+          cover: require('../../static/ardeche/ardeche-14.jpg'),
+          albumName: 'ardeche'
+        },
+        {
+          name: ' Ísland',
+          cover: require('../../static/islande/islande-53.jpg'),
+          albumName: 'islande'
+        },
+        {
+          name: ' interlac',
+          cover: require('../../static/interlac/interlac-25.jpg'),
+          albumName: 'interlac'
+        }
+      ]
+    }
+  }
 }
 </script>
 
@@ -40,31 +45,38 @@ export default {
   display:flex;
   flex-wrap: wrap;
   justify-content: center;
+
   article {
     position:relative;
-    width: calc(50% - 2px);
-    height:60vh;
+    width: 50%;
+    height:55vh;
     overflow:hidden;
     border-bottom: 2px solid white;
     cursor:pointer;
-    // background-color: #9e0000;
+    background-color: #9e0000;
+
+    &:nth-child(even) {
+      border-left: 1px solid white;
+    }
+
+    &:nth-child(odd) {
+      border-right: 1px solid white;
+    }
+
+    a {
+      display:block;
+      width:100%;
+      height:100%;
+    }
 
     &:hover {
       h2 {
         opacity:1;
       }
 
-      img {
+      .img[lazy=loaded] {
         opacity:0.75;
       }
-    }
-
-    &:nth-child(even) {
-      border-left: 2px solid white;
-    }
-
-    &:nth-child(even) {
-      border-right: 2px solid white;
     }
 
     h2 {
@@ -79,28 +91,33 @@ export default {
       color:white;
       background:black;
       font-size: 42px;
-      line-height: 1.25em;
-      letter-spacing: .02em;
       line-height: 1.1em;
       text-transform: uppercase;
       letter-spacing: .12em;
       font-weight: 700;
-      font-style: normal;
       padding:4px 8px;
       display: inline-block;
       max-width: 70%;
     }
 
-    img {
+    .img {
+      position:absolute;
+      top:0;
+      left:0;
+      bottom:0;
+      right:0;
       z-index:0;
-      opacity:1;
+      opacity:0;
       transition:opacity 400ms cubic-bezier(.33,0,.2,1);
       will-change:opacity;
-      position:absolute;
-      width:100%;
-      top:50%;
-      left:50%;
-      transform:translate(-50%, -50%);
+
+      background-repeat:no-repeat;
+      background-position:center;
+      background-size: cover;
+    }
+
+    .img[lazy=loaded] {
+      opacity: 1;
     }
   }
 }

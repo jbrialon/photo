@@ -66,6 +66,17 @@ export default {
     height:70vh;
   }
 
+  img {
+    will-change: opacity;
+    opacity:0;
+    transition:opacity 1.5s cubic-bezier(.33,0,.2,1);
+    max-width:100%;
+  }
+
+  img[lazy=loaded] {
+    opacity:1;
+  }
+
   p {
     margin:auto;
     max-width:620px;
@@ -77,15 +88,6 @@ export default {
     font-style: normal;
     padding-bottom:150px;
   }
-  img {
-    will-change: opacity;
-    opacity:0;
-    transition:opacity 1.5s ease;
-    max-width:100%;
-  }
 
-  img[lazy=loaded] {
-    opacity:1;
-  }
 }
 </style>

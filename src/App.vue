@@ -21,6 +21,13 @@ export default {
 </script>
 
 <style lang="scss">
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 #app {
   overflow:hidden;
   width:100%;
@@ -37,6 +44,8 @@ export default {
     h1 {
       font-weight:400;
       margin:auto;
+      border: 4px solid black;
+      padding:10px 15px;
 
       a {
         color:black;
@@ -53,7 +62,7 @@ export default {
   }
 
   .page-enter-active, .page-leave-active {
-    transition: transform 750ms ease, opacity 750ms ease;
+    transition: transform 750ms cubic-bezier(.33,0,.2,1), opacity 750ms cubic-bezier(.33,0,.2,1);
   }
   .page-enter, .page-leave-to {
     opacity:0;

@@ -7,7 +7,7 @@ import VueLazyload from 'vue-lazyload'
 import 'normalize.css'
 
 Vue.use(VueLazyload, {
-  preLoad: 1,
+  preLoad: 1.3,
   attempt: 1
 })
 

@@ -1,7 +1,7 @@
 {
   "name": "photo",
   "version": "1.0.0",
-  "description": "A Vue.js project",
+  "description": "tentative to make a dynamic portfolio, tumblr theme looking, powered with Vue JS",
   "author": "Jérém <jeremzor@gmail.com>",
   "private": true,
   "scripts": {
