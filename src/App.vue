@@ -7,7 +7,7 @@
         </router-link>
       </h1>
     </header>
-    <transition name="fade" mode="out-in">
+    <transition name="page" mode="out-in">
       <router-view class="page"></router-view>
     </transition>
     <footer></footer>
@@ -45,17 +45,17 @@ export default {
     }
   }
   .page {
-    will-change:transform, opacity,
+    will-change:transform, opacity;
   }
 
   footer {
     height:15vh;
   }
 
-  .fade-enter-active, .fade-leave-active {
+  .page-enter-active, .page-leave-active {
     transition: transform 750ms ease, opacity 750ms ease;
   }
-  .fade-enter, .fade-leave-to {
+  .page-enter, .page-leave-to {
     opacity:0;
     transform:translateY(-25px);
   }

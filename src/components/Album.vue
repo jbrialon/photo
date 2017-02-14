@@ -8,7 +8,9 @@
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sollicitudin nunc vitae egestas luctus. Duis vel lectus eget sem egestas rhoncus. Sed nec sodales neque, vitae facilisis massa. Mauris eget ex vitae turpis volutpat varius. Mauris consectetur massa vel lacinia tempor. Nam egestas sem in dui suscipit malesuada. Aliquam non sapien feugiat, tincidunt dui eu, fringilla magna. Suspendisse ultrices at urna sit amet cursus.
       </p>
     </article>
-    <img v-lazy="photo" alt="" v-for="photo in photos">
+    <div class="album__photo" v-for="photo in photos">
+      <img v-lazy="photo" :style="photoStyle(photo)">
+    </div>
   </div>
 </template>
 
@@ -19,6 +21,14 @@ export default {
   data () {
     return {
       name: this.$route.params.albumName
+    }
+  },
+  methods: {
+    photoStyle (photo) {
+      return {
+        width: `${photo.width}px`,
+        height: `${photo.height}px`
+      }
     }
   },
   computed: {
@@ -44,6 +54,11 @@ export default {
   flex-direction: column;
   align-items: center;
 
+  &__photo {
+    background: #e5e5e5;
+    margin-bottom:5vw;
+  }
+
   article {
     display:flex;
     justify-content: center;
@@ -65,10 +80,8 @@ export default {
   img {
     will-change: opacity;
     opacity:0;
-    transition:opacity 1s ease;
+    transition:opacity 1.5s ease;
     max-width:100%;
-    height: 95vh;
-    margin-bottom:5vw;
   }
 
   img[lazy=loaded] {
