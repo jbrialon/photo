@@ -29,7 +29,7 @@
         </li>
       </ul>
     </header>
-    <transition name="page" mode="out-in">
+    <transition name="page" mode="out-in" @before-enter="beforeEnter">
       <router-view class="page"></router-view>
     </transition>
     <footer></footer>
@@ -38,7 +38,19 @@
 
 <script>
 export default {
-  name: 'app'
+  name: 'app',
+  metaInfo: {
+    title: 'Complétement à l\'est //',
+    meta: [
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' }
+    ]
+  },
+  methods: {
+    beforeEnter () {
+      window.scrollTo(0, 0)
+    }
+  }
 }
 </script>
 

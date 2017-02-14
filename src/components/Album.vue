@@ -19,6 +19,9 @@ import shuffle from 'lodash/shuffle'
 export default {
   name: 'album',
   props: ['name'],
+  metaInfo: {
+    title: this.name
+  },
   methods: {
     photoStyle (photo) {
       return {
