@@ -25,12 +25,24 @@ export default {
         width: `${photo.width}px`,
         height: `${photo.height}px`
       }
+    },
+    exif (photo) {
+      const id = photo.src.match(/\d+/)[0]
+      const exif = require(`exif-loader!../assets/photos/${this.name}/${this.name}-${id}.jpg`)
+      return {
+        'camera': `${exif.exif.image.Make} ${exif.exif.image.Model}`,
+        'aperture': exif.exif.exif.FNumber,
+        'ISO': exif.exif.exif.ISO,
+        'ExposureTime': exif.exif.exif.ExposureTime,
+        'Focal': exif.exif.exif.FocalLength,
+        'FocalLengthIn35mmFormat': exif.exif.exif.FocalLengthIn35mmFormat
+      }
     }
   },
   computed: {
     photos () {
       // create a new context to get all images in chellenge/slideshow
-      const req = require.context('../../static/', true, /\.jpg$/)
+      const req = require.context('../assets/photos', true, /\.jpg$/)
       return shuffle(req.keys()
       // filter them by folder name (simple check if path contains album name)
       .filter(item => item.includes(`/${this.name}/`))
@@ -41,7 +53,6 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 @import '../scss/vars';
 
@@ -54,39 +65,39 @@ export default {
 
   &__photo {
     background: $grey;
-    margin-bottom:5vw;
+    margin-bottom: 5vw;
   }
 
   article {
-    display:flex;
+    display: flex;
     justify-content: center;
     flex-direction: column;
-    height:70vh;
+    height: 70vh;
   }
 
   img {
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
     will-change: opacity;
-    opacity:0;
+    opacity: 0;
     transition:opacity 1.5s $easing;
-    max-width:100%;
+    max-width: 100%;
   }
 
   img[lazy=loaded] {
-    opacity:1;
+    opacity: 1;
   }
 
   p {
-    margin:auto;
-    max-width:620px;
+    margin: auto;
+    max-width: 620px;
     font-size: 14px;
     line-height: 2em;
     text-transform: uppercase;
-    letter-spacing: .15em;
+    letter-spacing: 0.15em;
     font-weight: 400;
     font-style: normal;
-    padding-bottom:150px;
+    padding-bottom: 150px;
   }
 
 }

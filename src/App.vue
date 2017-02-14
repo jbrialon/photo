@@ -81,7 +81,7 @@ export default {
         margin-right:15px;
         font-size: 11px;
         text-transform: uppercase;
-        letter-spacing: .16em;
+        letter-spacing: 0.16em;
         font-weight: 400;
         line-height: 1em;
 

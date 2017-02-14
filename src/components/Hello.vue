@@ -20,17 +20,17 @@ export default {
         {
           name: 'ardeche',
           displayName: 'ardèche',
-          cover: require('../../static/ardeche/ardeche-14.jpg')
+          cover: require('../assets/photos/ardeche/ardeche-14.jpg')
         },
         {
           name: 'islande',
           displayName: ' Ísland',
-          cover: require('../../static/islande/islande-53.jpg')
+          cover: require('../assets/photos/islande/islande-53.jpg')
         },
         {
           name: 'interlac',
           displayName: ' interlac',
-          cover: require('../../static/interlac/interlac-25.jpg')
+          cover: require('../assets/photos/interlac/interlac-25.jpg')
         }
       ]
     }
@@ -38,7 +38,6 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 @import '../scss/vars';
 
@@ -87,7 +86,7 @@ export default {
       z-index:1;
       transition:opacity 400ms $easing;
       will-change:opacity;
-      top:50%;
+      top:45%;
       left:50%;
       transform:translate(-50%, -50%);
       color:white;
