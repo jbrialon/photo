@@ -11,6 +11,7 @@
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
+    "image-size-loader": "^0.7.0",
     "lodash": "^4.17.4",
     "vue": "^2.1.10",
     "vue-lazyload": "^1.0.0-rc10",
