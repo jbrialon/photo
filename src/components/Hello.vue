@@ -1,9 +1,9 @@
 <template>
   <div class="hello">
     <article v-for="item in menu">
-      <router-link :to="{ name: 'Album', params: { albumName: item.albumName }}">
+      <router-link :to="{ name: 'Album', params: { name: item.name }}">
         <h2>
-          {{ item.name }}
+          {{ item.displayName }}
         </h2>
         <div v-lazy:background-image="item.cover" class="img"></div>
       </router-link>
@@ -18,19 +18,19 @@ export default {
     return {
       menu: [
         {
-          name: 'ardèche',
-          cover: require('../../static/ardeche/ardeche-14.jpg'),
-          albumName: 'ardeche'
+          name: 'ardeche',
+          displayName: 'ardèche',
+          cover: require('../../static/ardeche/ardeche-14.jpg')
         },
         {
-          name: ' Ísland',
-          cover: require('../../static/islande/islande-53.jpg'),
-          albumName: 'islande'
+          name: 'islande',
+          displayName: ' Ísland',
+          cover: require('../../static/islande/islande-53.jpg')
         },
         {
-          name: ' interlac',
-          cover: require('../../static/interlac/interlac-25.jpg'),
-          albumName: 'interlac'
+          name: 'interlac',
+          displayName: ' interlac',
+          cover: require('../../static/interlac/interlac-25.jpg')
         }
       ]
     }
@@ -40,6 +40,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+@import '../scss/vars';
+
 .hello {
   width:100%;
   display:flex;
@@ -53,7 +55,7 @@ export default {
     overflow:hidden;
     border-bottom: 2px solid white;
     cursor:pointer;
-    background-color: #9e0000;
+    background-color: $red;
 
     &:nth-child(even) {
       border-left: 1px solid white;
@@ -83,7 +85,7 @@ export default {
       position:absolute;
       opacity:0;
       z-index:1;
-      transition:opacity 400ms cubic-bezier(.33,0,.2,1);
+      transition:opacity 400ms $easing;
       will-change:opacity;
       top:50%;
       left:50%;
@@ -108,9 +110,8 @@ export default {
       right:0;
       z-index:0;
       opacity:0;
-      transition:opacity 400ms cubic-bezier(.33,0,.2,1);
+      transition:opacity 400ms $easing;
       will-change:opacity;
-
       background-repeat:no-repeat;
       background-position:center;
       background-size: cover;

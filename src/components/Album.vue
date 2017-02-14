@@ -8,7 +8,7 @@
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sollicitudin nunc vitae egestas luctus. Duis vel lectus eget sem egestas rhoncus. Sed nec sodales neque, vitae facilisis massa. Mauris eget ex vitae turpis volutpat varius. Mauris consectetur massa vel lacinia tempor. Nam egestas sem in dui suscipit malesuada. Aliquam non sapien feugiat, tincidunt dui eu, fringilla magna. Suspendisse ultrices at urna sit amet cursus.
       </p>
     </article>
-    <div class="album__photo" v-for="photo in photos">
+    <div class="album__photo" v-for="photo in photos" :style="photoStyle(photo)">
       <img v-lazy="photo" :style="photoStyle(photo)">
     </div>
   </div>
@@ -18,11 +18,7 @@
 import shuffle from 'lodash/shuffle'
 export default {
   name: 'album',
-  data () {
-    return {
-      name: this.$route.params.albumName
-    }
-  },
+  props: ['name'],
   methods: {
     photoStyle (photo) {
       return {
@@ -47,6 +43,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+@import '../scss/vars';
+
 .album {
   width:100%;
   display:flex;
@@ -55,7 +53,7 @@ export default {
   align-items: center;
 
   &__photo {
-    background: #e5e5e5;
+    background: $grey;
     margin-bottom:5vw;
   }
 
@@ -67,9 +65,11 @@ export default {
   }
 
   img {
+    margin:0;
+    padding:0;
     will-change: opacity;
     opacity:0;
-    transition:opacity 1.5s cubic-bezier(.33,0,.2,1);
+    transition:opacity 1.5s $easing;
     max-width:100%;
   }
 
