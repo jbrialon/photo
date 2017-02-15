@@ -1,1 +1,1 @@
-Help people interested in this repository understand your project by adding a README.
+Tentative to make a dynamic portfolio, tumblr theme looking, powered with Vue JS
