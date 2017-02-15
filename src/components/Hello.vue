@@ -14,9 +14,6 @@
 <script>
 export default {
   name: 'hello',
-  metaInfo: {
-    title: 'Complétement à l\'est //'
-  },
   data () {
     return {
       menu: [
