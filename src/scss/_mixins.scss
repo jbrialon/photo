@@ -1,0 +1,13 @@
+
+@mixin media-query($media-query) {
+  @if $media-query == small {
+    @media only screen and (max-width:$medium - 1) { @content; }
+  }
+
+  @if $media-query == ipad {
+    @media all and (device-width: 768px) and (device-height: 1024px) and (orientation:landscape) { @content; }
+  }
+}
+
+@mixin small-only { @include media-query(small) { @content }; }
+@mixin ipad { @include media-query(ipad) { @content }; }

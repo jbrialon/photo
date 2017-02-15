@@ -24,12 +24,12 @@ export default {
         },
         {
           name: 'islande',
-          displayName: ' Ísland',
+          displayName: 'Ísland',
           cover: require('../assets/photos/islande/islande-53.jpg')
         },
         {
           name: 'interlac',
-          displayName: ' interlac',
+          displayName: 'interlac',
           cover: require('../assets/photos/interlac/interlac-25.jpg')
         }
       ]
@@ -40,12 +40,17 @@ export default {
 
 <style scoped lang="scss">
 @import '../scss/vars';
+@import '../scss/mixins';
 
 .hello {
   width:100%;
   display:flex;
   flex-wrap: wrap;
   justify-content: center;
+
+  @include small-only {
+    padding-top:5vw;
+  }
 
   article {
     position:relative;
@@ -56,12 +61,23 @@ export default {
     cursor:pointer;
     background-color: $red;
 
+    @include small-only {
+      width: 100%;
+      height:250px;
+    }
+
     &:nth-child(even) {
       border-left: 1px solid white;
+      @include small-only {
+        border-left:none;
+      }
     }
 
     &:nth-child(odd) {
       border-right: 1px solid white;
+      @include small-only {
+        border-right:none;
+      }
     }
 
     a {
@@ -86,7 +102,7 @@ export default {
       z-index:1;
       transition:opacity 400ms $easing;
       will-change:opacity;
-      top:45%;
+      top:50%;
       left:50%;
       transform:translate(-50%, -50%);
       color:white;
@@ -96,9 +112,14 @@ export default {
       text-transform: uppercase;
       letter-spacing: .12em;
       font-weight: 700;
-      padding:4px 8px;
+      padding:6px 10px;
       display: inline-block;
+      margin:0;
       max-width: 70%;
+
+      @include small-only {
+        opacity:1;
+      }
     }
 
     .img {

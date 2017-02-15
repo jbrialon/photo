@@ -60,6 +60,7 @@ export default {
 
 <style scoped lang="scss">
 @import '../scss/vars';
+@import '../scss/mixins';
 
 .album {
   width:100%;
@@ -68,25 +69,43 @@ export default {
   flex-direction: column;
   align-items: center;
 
-  &__photo {
-    background: $grey;
-    margin-bottom: 5vw;
-  }
-
   article {
     display: flex;
     justify-content: center;
     flex-direction: column;
     height: 70vh;
+
+    @include small-only {
+      width:90%;
+      height:auto;
+      padding: 5vw 0 25vw 0;
+    }
+  }
+
+  &__photo {
+    background: $grey;
+    margin-bottom: 5vw;
+
+    @include small-only {
+      margin-bottom: 25vw;
+      width:85% !important;
+      height: auto !important;
+    }
   }
 
   img {
+    display:block;
     margin: 0;
     padding: 0;
     will-change: opacity;
     opacity: 0;
     transition:opacity 1.5s $easing;
     max-width: 100%;
+
+    @include small-only {
+      width:100% !important;
+      height: auto !important;
+    }
   }
 
   img[lazy=loaded] {
@@ -103,6 +122,10 @@ export default {
     font-weight: 400;
     font-style: normal;
     padding-bottom: 150px;
+
+    @include small-only {
+      padding-bottom:0;
+    }
   }
 
 }

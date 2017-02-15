@@ -78,6 +78,11 @@ export default {
       border: 3px solid black;
       padding:15px 20px;
 
+      @include small-only {
+        font-size:22px;
+        margin:auto;
+      }
+
       a {
         color:black;
         text-decoration: none;
@@ -88,6 +93,11 @@ export default {
       list-style:none;
       margin:auto 0 auto auto;
       font-size:17px;
+
+      @include small-only {
+        display:none;
+      }
+
 
       li {
         display:inline-block;
