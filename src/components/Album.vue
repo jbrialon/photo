@@ -87,8 +87,8 @@ export default {
     margin-bottom: 5vw;
 
     @include small-only {
-      margin-bottom: 25vw;
-      width:85% !important;
+      margin-bottom: 20vw;
+      width:90% !important;
       height: auto !important;
     }
   }

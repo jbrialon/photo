@@ -41,11 +41,7 @@ export default {
   name: 'app',
   metaInfo: {
     title: 'Complétement à l\'est //',
-    titleTemplate: '%s | Complétement à l\'est //',
-    meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' }
-    ]
+    titleTemplate: '%s | Complétement à l\'est //'
   },
   methods: {
     beforeEnter () {
