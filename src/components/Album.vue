@@ -8,7 +8,7 @@
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sollicitudin nunc vitae egestas luctus. Duis vel lectus eget sem egestas rhoncus. Sed nec sodales neque, vitae facilisis massa. Mauris eget ex vitae turpis volutpat varius. Mauris consectetur massa vel lacinia tempor. Nam egestas sem in dui suscipit malesuada. Aliquam non sapien feugiat, tincidunt dui eu, fringilla magna. Suspendisse ultrices at urna sit amet cursus.
       </p>
     </article>
-    <div class="album__photo" v-for="photo in photos" :style="photoStyle(photo)">
+    <div class="album__photo" v-for="photo in photos" :style="photoContainerStyle(photo)">
       <img v-lazy="photo" :style="photoStyle(photo)">
     </div>
   </div>
@@ -16,6 +16,9 @@
 
 <script>
 import shuffle from 'lodash/shuffle'
+import MobileDetect from 'mobile-detect'
+const md = new MobileDetect(window.navigator.userAgent)
+
 export default {
   name: 'album',
   props: ['name'],
@@ -24,11 +27,27 @@ export default {
       title: this.name
     }
   },
+  data () {
+    return {
+      isMobile: md.phone() !== null,
+      isTablet: md.tablet() !== null
+    }
+  },
   methods: {
-    photoStyle (photo) {
+    photoContainerStyle (photo) {
+      const width = !this.isMobile && !this.isTablet ? `${photo.width}px` : '90%'
+      const height = !this.isMobile && !this.isTablet ? `${photo.height}px` : 'auto'
       return {
-        width: `${photo.width}px`,
-        height: `${photo.height}px`
+        width: width,
+        height: height
+      }
+    },
+    photoStyle (photo) {
+      const width = !this.isMobile && !this.isTablet ? `${photo.width}px` : '100%'
+      const height = !this.isMobile && !this.isTablet ? `${photo.height}px` : 'auto'
+      return {
+        width: width,
+        height: height
       }
     },
     exif (photo) {
@@ -88,8 +107,14 @@ export default {
 
     @include small-only {
       margin-bottom: 20vw;
-      width:90% !important;
-      height: auto !important;
+    }
+
+    @include ipad {
+      margin-bottom: 10vw;
+    }
+
+    &:last-child {
+      margin-bottom:0;
     }
   }
 
@@ -101,11 +126,6 @@ export default {
     opacity: 0;
     transition:opacity 1.5s $easing;
     max-width: 100%;
-
-    @include small-only {
-      width:100% !important;
-      height: auto !important;
-    }
   }
 
   img[lazy=loaded] {

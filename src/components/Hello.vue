@@ -66,6 +66,10 @@ export default {
       height:250px;
     }
 
+    @include ipad {
+      height:340px;
+    }
+
     &:nth-child(even) {
       border-left: 1px solid white;
       @include small-only {
@@ -118,6 +122,10 @@ export default {
       max-width: 70%;
 
       @include small-only {
+        opacity:1;
+      }
+
+      @include ipad {
         opacity:1;
       }
     }

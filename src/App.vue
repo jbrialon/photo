@@ -134,7 +134,7 @@ export default {
   }
 
   footer {
-    height:15vh;
+    height:5vh;
   }
 
   .page-enter-active, .page-leave-active {
