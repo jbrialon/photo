@@ -5,7 +5,16 @@ import App from './App'
 import router from './router'
 import Meta from 'vue-meta'
 import VueLazyload from 'vue-lazyload'
+import VueAnalytics from 'vue-ua'
 import 'normalize.css'
+
+Vue.use(VueAnalytics, {
+  appName: 'completement-a-l-est',
+  appVersion: 'v1',
+  trackingId: 'UA-65088029-1',
+  debug: false,
+  vueRouter: router
+})
 
 Vue.use(Meta)
 Vue.use(VueLazyload, {
