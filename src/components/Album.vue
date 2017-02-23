@@ -2,10 +2,12 @@
   <div class="album">
     <article>
       <p>
-        {{ name }}
+        <span class="album__title">
+          {{ this.content.displayName }}
+        </span>
         <br>
         <br>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sollicitudin nunc vitae egestas luctus. Duis vel lectus eget sem egestas rhoncus. Sed nec sodales neque, vitae facilisis massa. Mauris eget ex vitae turpis volutpat varius. Mauris consectetur massa vel lacinia tempor. Nam egestas sem in dui suscipit malesuada. Aliquam non sapien feugiat, tincidunt dui eu, fringilla magna. Suspendisse ultrices at urna sit amet cursus.
+        {{ this.content.text }}
       </p>
     </article>
     <div class="album__photo" v-for="photo in photos" :style="photoContainerStyle(photo)">
@@ -18,19 +20,21 @@
 import shuffle from 'lodash/shuffle'
 import MobileDetect from 'mobile-detect'
 const md = new MobileDetect(window.navigator.userAgent)
+import content from '../data/content'
 
 export default {
   name: 'album',
   props: ['name'],
   metaInfo () {
     return {
-      title: this.name
+      title: this.content.displayName
     }
   },
   data () {
     return {
       isMobile: md.phone() !== null,
-      isTablet: md.tablet() !== null
+      isTablet: md.tablet() !== null,
+      content: content.albums[this.name]
     }
   },
   methods: {
@@ -99,6 +103,13 @@ export default {
       height:auto;
       padding: 5vw 0 25vw 0;
     }
+  }
+
+  &__title {
+    font-size:18px;
+    letter-spacing: 0.45em;
+    margin-right: -1.45em;
+    padding:5px 10px;
   }
 
   &__photo {

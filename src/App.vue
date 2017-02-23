@@ -7,25 +7,11 @@
         </router-link>
       </h1>
       <ul>
-        <li>
-          <a href="https://www.instagram.com/jbrialon_/" target="_blank">
-            instagram
+        <li v-for="item in menu">
+          <a :href="item.link" target="_blank">
+            {{ item.title }}
           </a>
         </li>
-        <li>
-          <a href="http://vsco.co/jbrialon/" target="_blank">
-            vsco
-          </a>
-        </li>
-        <li>
-          <a href="https://500px.com/jbrialon" target="_blank">
-            500px
-          </a>
-        </li>
-        <li>
-          <a href="https://vimeo.com/jbrialon" target="_blank">
-            vimeo
-          </a>
         </li>
       </ul>
     </header>
@@ -37,11 +23,18 @@
 </template>
 
 <script>
+import content from 'data/content'
+
 export default {
   name: 'app',
   metaInfo: {
-    title: 'Complétement à l\'est //',
-    titleTemplate: '%s | Complétement à l\'est //'
+    title: content.meta.title,
+    titleTemplate: `%s | ${content.meta.title}`
+  },
+  data () {
+    return {
+      menu: content.menu
+    }
   },
   methods: {
     beforeEnter () {

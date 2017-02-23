@@ -12,27 +12,17 @@
 </template>
 
 <script>
+import content from '../data/content'
+
 export default {
   name: 'hello',
+  metaInfo: {
+    title: content.meta.title,
+    titleTemplate: `%s`
+  },
   data () {
     return {
-      menu: [
-        {
-          name: 'ardeche',
-          displayName: 'ardèche',
-          cover: require('../assets/photos/ardeche/ardeche-14.jpg')
-        },
-        {
-          name: 'islande',
-          displayName: 'Ísland',
-          cover: require('../assets/photos/islande/islande-53.jpg')
-        },
-        {
-          name: 'interlac',
-          displayName: 'interlac',
-          cover: require('../assets/photos/interlac/interlac-25.jpg')
-        }
-      ]
+      menu: content.albums
     }
   }
 }
