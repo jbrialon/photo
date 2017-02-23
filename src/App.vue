@@ -3,7 +3,7 @@
     <header>
       <h1>
         <router-link to="/">
-          Complétement à l'est //
+          {{ title }}
         </router-link>
       </h1>
       <ul>
@@ -33,6 +33,7 @@ export default {
   },
   data () {
     return {
+      title: content.meta.title,
       menu: content.menu
     }
   },
