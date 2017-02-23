@@ -12,6 +12,7 @@
     </article>
     <div class="album__photo" v-for="photo in photos" :style="photoContainerStyle(photo)">
       <img v-lazy="photo" :style="photoStyle(photo)">
+      <loader class="album__loader"></loader>
     </div>
   </div>
 </template>
@@ -21,6 +22,7 @@ import shuffle from 'lodash/shuffle'
 import MobileDetect from 'mobile-detect'
 const md = new MobileDetect(window.navigator.userAgent)
 import content from '../data/content'
+import loader from '../components/loader'
 
 export default {
   name: 'album',
@@ -77,6 +79,9 @@ export default {
       // return an Array of require items
       .map(item => req(item)))
     }
+  },
+  components: {
+    loader
   }
 }
 </script>
@@ -113,6 +118,7 @@ export default {
   }
 
   &__photo {
+    position:relative;
     background: $grey;
     margin-bottom: 5vw;
 
@@ -129,7 +135,17 @@ export default {
     }
   }
 
+  &__loader {
+    position:absolute;
+    z-index:5;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+  }
+
   img {
+    position:relative;
+    z-index:10;
     display:block;
     margin: 0;
     padding: 0;

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Hello from 'components/Hello'
-import Album from 'components/Album'
+import Hello from 'pages/Hello'
+import Album from 'pages/Album'
 
 Vue.use(Router)
 

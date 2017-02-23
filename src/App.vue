@@ -6,6 +6,7 @@
           {{ title }}
         </router-link>
       </h1>
+      <loader></loader>
       <ul>
         <li v-for="item in menu">
           <a :href="item.link" target="_blank">
