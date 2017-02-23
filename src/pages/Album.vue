@@ -141,6 +141,7 @@ export default {
     top:50%;
     left:50%;
     transform: translate(-50%, -50%);
+    transition:opacity 600ms $easing;
   }
 
   img {
@@ -157,6 +158,10 @@ export default {
 
   img[lazy=loaded] {
     opacity: 1;
+  }
+
+  img[src*="http://"] + .loader {
+    opacity:0;
   }
 
   p {
