@@ -160,7 +160,7 @@ export default {
     opacity: 1;
   }
 
-  img[src*="http://"] + .loader {
+  img[src^="http"] + .loader {
     opacity:0;
   }
 
