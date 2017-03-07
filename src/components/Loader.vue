@@ -6,7 +6,7 @@
         <path ref="path" id="wave"
             fill="none"
             stroke="#c5c5c5"
-            stroke-width="4"
+            stroke-width="3"
             stroke-linecap="round">
         </path>
       </svg>
@@ -90,7 +90,7 @@ export default {
 
 .loader {
   align-items: center;
-  border: 4px solid #c5c5c5;
+  border: 3px solid #c5c5c5;
   display: flex;
   height: 110px;
   margin: 0 auto;

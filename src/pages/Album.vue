@@ -7,7 +7,7 @@
         </span>
         <br>
         <br>
-        {{ this.content.text }}
+        <span v-html="this.content.text"></span>
       </p>
     </article>
     <div class="album__photo" v-for="photo in photos" :style="photoContainerStyle(photo)">

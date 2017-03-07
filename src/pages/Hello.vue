@@ -113,6 +113,7 @@ export default {
 
       @include small-only {
         opacity:1;
+        font-size: 26px;
       }
 
       @include ipad {

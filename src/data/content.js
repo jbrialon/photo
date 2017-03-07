@@ -3,11 +3,11 @@ export default {
     title: 'Complétement à l\'est //'
   },
   'albums': {
-    'ardeche': {
-      name: 'ardeche',
-      displayName: 'Ardèche',
-      cover: require('../assets/photos/ardeche/ardeche-14.jpg'),
-      text: 'parce que l\'Ardèche c\'est chouette'
+    'kilimanjaro': {
+      name: 'kilimanjaro',
+      displayName: 'kilimanjaro "pole pole"',
+      cover: require('../assets/photos/kilimanjaro/Kilimanjaro-27.jpg'),
+      text: '6 jours / 4 nuits de trek en Tanzanie pour gravir le Kilimanjaro (5985m) par la voie Machame <br><br> (pole pole : doucement doucement en swahili)'
     },
     'islande': {
       name: 'islande',
@@ -20,6 +20,12 @@ export default {
       displayName: 'Interlac',
       cover: require('../assets/photos/interlac/interlac-25.jpg'),
       text: '3 jours / 2 nuits pour relier le lac d\'Annecy au lac d\'Aix les bains à pied'
+    },
+    'ardeche': {
+      name: 'ardeche',
+      displayName: 'Ardèche',
+      cover: require('../assets/photos/ardeche/ardeche-14.jpg'),
+      text: 'parce que l\'Ardèche c\'est chouette'
     }
   },
   'menu': [
