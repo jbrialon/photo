@@ -118,6 +118,7 @@ export default {
 
       @include ipad {
         opacity:1;
+        font-size: 32px;
       }
     }
 
