@@ -12,14 +12,14 @@ Vue.use(VueAnalytics, {
   appName: 'completementalest',
   appVersion: 'v1',
   trackingId: 'UA-93234452-1',
-  debug: false,
+  debug: true,
   vueRouter: router
 })
 
 Vue.use(Meta)
 Vue.use(VueLazyload, {
   preLoad: 1.3,
-  attempt: 1
+  attempt: 3
 })
 
 /* eslint-disable no-new */
