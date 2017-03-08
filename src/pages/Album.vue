@@ -41,11 +41,11 @@ export default {
   },
   methods: {
     photoContainerStyle (photo) {
-      const width = !this.isMobile && !this.isTablet ? `${photo.width}px` : '90%'
-      const height = !this.isMobile && !this.isTablet ? `${photo.height}px` : 'auto'
+      const width = !this.isMobile && !this.isTablet ? photo.width : Math.round(window.innerWidth * 0.9)
+      const height = !this.isMobile && !this.isTablet ? photo.height : Math.round((width * photo.height) / photo.width)
       return {
-        width: width,
-        height: height
+        width: `${width}px`,
+        height: `${height}px`
       }
     },
     photoStyle (photo) {
@@ -54,18 +54,6 @@ export default {
       return {
         width: width,
         height: height
-      }
-    },
-    exif (photo) {
-      const id = photo.src.match(/\d+/)[0]
-      const exif = require(`exif-loader!../assets/photos/${this.name}/${this.name}-${id}.jpg`)
-      return {
-        'camera': `${exif.exif.image.Make} ${exif.exif.image.Model}`,
-        'aperture': exif.exif.exif.FNumber,
-        'ISO': exif.exif.exif.ISO,
-        'ExposureTime': exif.exif.exif.ExposureTime,
-        'Focal': exif.exif.exif.FocalLength,
-        'FocalLengthIn35mmFormat': exif.exif.exif.FocalLengthIn35mmFormat
       }
     }
   },
