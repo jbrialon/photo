@@ -9,9 +9,9 @@ import VueAnalytics from 'vue-ua'
 import 'normalize.css'
 
 Vue.use(VueAnalytics, {
-  appName: 'completement-a-l-est',
+  appName: 'completementalest',
   appVersion: 'v1',
-  trackingId: 'UA-65088029-1',
+  trackingId: 'UA-93234452-1',
   debug: false,
   vueRouter: router
 })
