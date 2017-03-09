@@ -8,9 +8,7 @@
       </h1>
       <ul>
         <li v-for="item in menu">
-          <a :href="item.link" target="_blank">
-            {{ item.title }}
-          </a>
+          <a :href="item.link" target="_blank"> {{ item.title }} </a>
         </li>
         </li>
       </ul>
@@ -18,7 +16,9 @@
     <transition name="page" mode="out-in" @before-enter="beforeEnter">
       <router-view class="page"></router-view>
     </transition>
-    <footer></footer>
+    <footer>
+      netlify
+    </footer>
   </div>
 </template>
 
