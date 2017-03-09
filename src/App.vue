@@ -16,9 +16,7 @@
     <transition name="page" mode="out-in" @before-enter="beforeEnter">
       <router-view class="page"></router-view>
     </transition>
-    <footer>
-      netlify
-    </footer>
+    <footer></footer>
   </div>
 </template>
 
