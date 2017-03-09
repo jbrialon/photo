@@ -1,9 +1,10 @@
-var netlify = require("netlify");
-var config = require('../config/netlify')
+var ghpages = require('gh-pages')
+var path = require('path')
 var fs = require('fs');
 
 fs.createReadStream('config/_redirects').pipe(fs.createWriteStream('dist/_redirects'));
 
-netlify.deploy(config).then(function (deploy) {
+ghpages.publish(path.join(__dirname, '../dist'), function (err) {
+  if (err) console.error(err)
   console.log('New deploy is live')
 })
