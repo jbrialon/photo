@@ -5,16 +5,11 @@ import App from './App'
 import router from './router'
 import Meta from 'vue-meta'
 import VueLazyload from 'vue-lazyload'
-// import VueAnalytics from 'vue-ua'
 import 'normalize.css'
 
-// Vue.use(VueAnalytics, {
-//   appName: 'completementalest',
-//   appVersion: 'v1',
-//   trackingId: 'UA-93234452-1',
-//   debug: true,
-//   vueRouter: router
-// })
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/service-worker.js')
+}
 
 Vue.use(Meta)
 Vue.use(VueLazyload, {

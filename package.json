@@ -18,8 +18,7 @@
     "vue": "^2.1.10",
     "vue-lazyload": "^1.0.0-rc10",
     "vue-meta": "^0.5.3",
-    "vue-router": "^2.2.0",
-    "vue-ua": "^1.2.2"
+    "vue-router": "^2.2.0"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",
