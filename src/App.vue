@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" v-cloak>
     <header>
       <h1>
         <router-link to="/">
