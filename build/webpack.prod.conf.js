@@ -5,6 +5,7 @@ var config = require('../config')
 var merge = require('webpack-merge')
 var baseWebpackConfig = require('./webpack.base.conf')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
+var CopyWebpackPlugin = require('copy-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 var env = config.build.env
@@ -51,6 +52,7 @@ var webpackConfig = merge(baseWebpackConfig, {
         // more options:
         // https://github.com/kangax/html-minifier#options-quick-reference
       },
+      favicon: path.resolve(__dirname, '../static/favicon.ico'),
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
       chunksSortMode: 'dependency'
     }),
@@ -73,7 +75,21 @@ var webpackConfig = merge(baseWebpackConfig, {
     new webpack.optimize.CommonsChunkPlugin({
       name: 'manifest',
       chunks: ['vendor']
-    })
+    }),
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, '../static/mountains.png'),
+        to: config.build.assetsRoot
+      },
+      {
+        from: path.resolve(__dirname, '../manifest.json'),
+        to: config.build.assetsRoot
+      },
+      {
+        from: path.resolve(__dirname, '../config/_redirects'),
+        to: config.build.assetsRoot
+      }
+    ])
   ]
 })
 
