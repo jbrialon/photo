@@ -22,7 +22,7 @@ import shuffle from 'lodash/shuffle'
 import MobileDetect from 'mobile-detect'
 const md = new MobileDetect(window.navigator.userAgent)
 import content from '../data/content'
-import loader from '../components/loader'
+import loader from '../components/Loader'
 
 export default {
   name: 'album',
