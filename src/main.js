@@ -7,10 +7,6 @@ import Meta from 'vue-meta'
 import VueLazyload from 'vue-lazyload'
 import 'normalize.css'
 
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/service-worker.js')
-}
-
 Vue.use(Meta)
 Vue.use(VueLazyload, {
   preLoad: 2,

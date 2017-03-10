@@ -7,8 +7,6 @@ var baseWebpackConfig = require('./webpack.base.conf')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var CopyWebpackPlugin = require('copy-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
-var PrerenderSpaPlugin = require('prerender-spa-plugin')
-var SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin')
 
 var env = config.build.env
 
@@ -83,18 +81,11 @@ var webpackConfig = merge(baseWebpackConfig, {
         from: path.resolve(__dirname, '../manifest.json'),
         to: config.build.assetsRoot
       },
-      // {
-      //   from: path.resolve(__dirname, '../config/_redirects'),
-      //   to: config.build.assetsRoot
-      // }
-    ]),
-    new PrerenderSpaPlugin(
-      // Absolute path to compiled SPA
-      path.join(__dirname, '../dist'),
-      // List of routes to prerender
-      [ '/', '/Album/kilimanjaro', '/Album/islande', '/Album/interlac', '/Album/ardeche' ]
-    ),
-    new SWPrecacheWebpackPlugin()
+      {
+        from: path.resolve(__dirname, '../config/_redirects'),
+        to: config.build.assetsRoot
+      }
+    ])
   ]
 })
 
