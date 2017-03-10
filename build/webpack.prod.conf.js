@@ -83,10 +83,10 @@ var webpackConfig = merge(baseWebpackConfig, {
         from: path.resolve(__dirname, '../manifest.json'),
         to: config.build.assetsRoot
       },
-      {
-        from: path.resolve(__dirname, '../config/_redirects'),
-        to: config.build.assetsRoot
-      }
+      // {
+      //   from: path.resolve(__dirname, '../config/_redirects'),
+      //   to: config.build.assetsRoot
+      // }
     ]),
     new PrerenderSpaPlugin(
       // Absolute path to compiled SPA
