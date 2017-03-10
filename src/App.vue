@@ -8,7 +8,7 @@
       </h1>
       <ul>
         <li v-for="item in menu">
-          <a :href="item.link" target="_blank"> {{ item.title }} </a>
+          <a :href="item.link" target="_blank" rel="noopener"> {{ item.title }} </a>
         </li>
         </li>
       </ul>
