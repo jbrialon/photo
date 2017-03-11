@@ -23,6 +23,7 @@ import MobileDetect from 'mobile-detect'
 const md = new MobileDetect(window.navigator.userAgent)
 import content from '../data/content'
 import loader from '../components/Loader'
+import Preloader from '../services/Preloader'
 
 export default {
   name: 'album',
@@ -66,6 +67,7 @@ export default {
       .filter(item => item.includes(`/${this.name}/`))
       // return an Array of require items
       .map(item => req(item))
+      Preloader.load(photos)
       return this.content.shuffle ? shuffle(photos) : photos
     }
   },

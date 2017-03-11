@@ -11,7 +11,7 @@ import * as OfflinePluginRuntime from 'offline-plugin/runtime'
 OfflinePluginRuntime.install()
 Vue.use(Meta)
 Vue.use(VueLazyload, {
-  preLoad: 2,
+  preLoad: 1.3,
   attempt: 3
 })
 

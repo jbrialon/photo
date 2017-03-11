@@ -16,7 +16,9 @@
     <transition name="page" mode="out-in" @before-enter="beforeEnter">
       <router-view class="page"></router-view>
     </transition>
-    <footer></footer>
+    <footer>
+      <p>© 2017 //</p>
+    </footer>
   </div>
 </template>
 
@@ -126,7 +128,16 @@ export default {
   }
 
   footer {
+    display:flex;
+    text-transform:uppercase;
     height:5vh;
+    padding:15px;
+
+    p {
+      font-weight: 400;
+      font-size:12px;
+      margin:auto 0 auto auto;
+    }
   }
 
   .page-enter-active, .page-leave-active {
