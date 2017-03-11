@@ -7,6 +7,7 @@ var baseWebpackConfig = require('./webpack.base.conf')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var CopyWebpackPlugin = require('copy-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
+var OfflinePlugin = require('offline-plugin')
 
 var env = config.build.env
 
@@ -85,7 +86,8 @@ var webpackConfig = merge(baseWebpackConfig, {
         from: path.resolve(__dirname, '../config/_redirects'),
         to: config.build.assetsRoot
       }
-    ])
+    ]),
+    new OfflinePlugin()
   ]
 })
 
