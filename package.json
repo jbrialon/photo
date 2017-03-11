@@ -51,7 +51,6 @@
     "http-proxy-middleware": "^0.17.3",
     "image-size-loader": "^0.7.0",
     "node-sass": "^4.5.0",
-    "offline-plugin": "^4.6.1",
     "opn": "^4.0.2",
     "ora": "^1.1.0",
     "sass-loader": "^5.0.1",

@@ -6,9 +6,7 @@ import router from './router'
 import Meta from 'vue-meta'
 import VueLazyload from 'vue-lazyload'
 import 'normalize.css'
-import * as OfflinePluginRuntime from 'offline-plugin/runtime'
 
-OfflinePluginRuntime.install()
 Vue.use(Meta)
 Vue.use(VueLazyload, {
   preLoad: 1.3,
