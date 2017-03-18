@@ -42,16 +42,16 @@ export default {
   },
   methods: {
     photoContainerStyle (photo) {
-      const width = !this.isMobile && !this.isTablet ? photo.width : Math.round(window.innerWidth * 0.9)
-      const height = !this.isMobile && !this.isTablet ? photo.height : Math.round((width * photo.height) / photo.width)
+      const width = !this.isMobile && !this.isTablet ? photo.size.width : Math.round(window.innerWidth * 0.9)
+      const height = !this.isMobile && !this.isTablet ? photo.size.height : Math.round((width * photo.size.height) / photo.size.width)
       return {
         width: `${width}px`,
         height: `${height}px`
       }
     },
     photoStyle (photo) {
-      const width = !this.isMobile && !this.isTablet ? `${photo.width}px` : '100%'
-      const height = !this.isMobile && !this.isTablet ? `${photo.height}px` : 'auto'
+      const width = !this.isMobile && !this.isTablet ? `${photo.size.width}px` : '100%'
+      const height = !this.isMobile && !this.isTablet ? `${photo.size.height}px` : 'auto'
       return {
         width: width,
         height: height
@@ -111,7 +111,7 @@ export default {
   &__photo {
     position:relative;
     background: $grey;
-    margin-bottom: 5vw;
+    margin-bottom: 10vw;
 
     @include small-only {
       margin-bottom: 20vw;

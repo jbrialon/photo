@@ -6,7 +6,7 @@ export default {
     'kilimanjaro': {
       name: 'kilimanjaro',
       displayName: 'Kilimanjaro "pole pole"',
-      cover: require('../assets/photos/kilimanjaro/Kilimanjaro-25.jpg'),
+      cover: require('../assets/photos/kilimanjaro/kilimanjaro-25.jpg'),
       text: '6 jours / 4 nuits de trek en Tanzanie pour gravir le Kilimanjaro (5985m) par la voie Machame <br><br> (pole pole : doucement doucement en swahili)',
       shuffle: false
     },
