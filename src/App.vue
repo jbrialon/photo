@@ -17,7 +17,7 @@
       <router-view class="page"></router-view>
     </transition>
     <footer>
-      <p>© 2017 //</p>
+      <p>© {{new Date().getFullYear()}} //</p>
     </footer>
   </div>
 </template>
