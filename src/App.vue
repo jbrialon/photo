@@ -29,7 +29,7 @@ export default {
   name: 'app',
   metaInfo: {
     title: content.meta.title,
-    titleTemplate: `%s | ${content.meta.title}`
+    titleTemplate: `%s - ${content.meta.title}`
   },
   data () {
     return {
