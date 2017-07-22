@@ -3,11 +3,18 @@ export default {
     title: 'Complétement à l\'est //'
   },
   'albums': {
+    'malaisie': {
+      name: 'malaisie',
+      displayName: 'Malaysia',
+      cover: require('../assets/photos/malaisie/malaisie-12.jpg'),
+      text: '16 jours / 15 nuits, dont une dans une grotte, pour decouvrir la Malaisie',
+      shuffle: false
+    },
     'kilimanjaro': {
       name: 'kilimanjaro',
-      displayName: 'Kilimanjaro "pole pole"',
+      displayName: 'Kilimanjaro',
       cover: require('../assets/photos/kilimanjaro/kilimanjaro-25.jpg'),
-      text: '6 jours / 4 nuits de trek en Tanzanie pour gravir le Kilimanjaro (5985m) par la voie Machame <br><br> (pole pole : doucement doucement en swahili)',
+      text: '6 jours / 4 nuits de trek en Tanzanie pour gravir le Kilimanjaro (5985m) par la voie Machame',
       shuffle: false
     },
     'islande': {
