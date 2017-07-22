@@ -6,7 +6,7 @@ export default {
     'malaisie': {
       name: 'malaisie',
       displayName: 'Malaysia',
-      cover: require('../assets/photos/malaisie/malaisie-12.jpg'),
+      cover: require('../assets/photos/malaisie/malaisie-11.jpg'),
       text: '16 jours / 15 nuits, dont une dans une grotte, pour decouvrir la Malaisie',
       shuffle: false
     },
