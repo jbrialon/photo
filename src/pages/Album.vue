@@ -42,16 +42,35 @@ export default {
   },
   methods: {
     photoContainerStyle (photo) {
-      const width = !this.isMobile && !this.isTablet ? photo.size.width : Math.round(window.innerWidth * 0.9)
-      const height = !this.isMobile && !this.isTablet ? photo.size.height : Math.round((width * photo.size.height) / photo.size.width)
+      let width = photo.size.width
+      let height = photo.size.height
+
+      if (!this.isMobile && !this.isTablet && photo.size.height > photo.size.width) {
+        height = Math.round(window.innerHeight * 0.95)
+        width = Math.round((height * photo.size.width) / photo.size.height)
+      } else if (this.isMobile || this.isTablet) {
+        width = Math.round(window.innerWidth * 0.9)
+        height = Math.round((width * photo.size.height) / photo.size.width)
+      }
+
       return {
         width: `${width}px`,
         height: `${height}px`
       }
     },
     photoStyle (photo) {
-      const width = !this.isMobile && !this.isTablet ? `${photo.size.width}px` : '100%'
-      const height = !this.isMobile && !this.isTablet ? `${photo.size.height}px` : 'auto'
+      let width = `${photo.size.width}px`
+      let height = `${photo.size.height}px`
+
+      if (!this.isMobile && !this.isTablet && photo.size.height > photo.size.width) {
+        height = Math.round(window.innerHeight * 0.95)
+        width = `${Math.round((height * photo.size.width) / photo.size.height)}px`
+        height = `${height}px`
+      } else if (this.isMobile || this.isTablet) {
+        width = '100%'
+        height = 'auto'
+      }
+
       return {
         width: width,
         height: height
