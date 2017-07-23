@@ -17,7 +17,7 @@
       <router-view class="page"></router-view>
     </transition>
     <footer>
-      <p>Jérémy Brialon © {{new Date().getFullYear()}} //</p>
+      <p>{{ author }} © {{new Date().getFullYear()}} //</p>
     </footer>
   </div>
 </template>
@@ -34,7 +34,8 @@ export default {
   data () {
     return {
       title: content.meta.title,
-      menu: content.menu
+      menu: content.menu,
+      author: content.meta.author
     }
   },
   methods: {

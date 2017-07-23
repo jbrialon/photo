@@ -11,7 +11,7 @@
       </p>
     </article>
     <div class="album__photo" v-for="photo in photos" :style="photoContainerStyle(photo)">
-      <img v-lazy="photo" :style="photoStyle(photo)">
+      <img v-lazy="photo" :style="photoStyle(photo)" :alt="alt">
       <loader class="album__loader"></loader>
     </div>
   </div>
@@ -23,7 +23,6 @@ import MobileDetect from 'mobile-detect'
 const md = new MobileDetect(window.navigator.userAgent)
 import content from '../data/content'
 import loader from '../components/Loader'
-// import Preloader from '../services/Preloader'
 
 export default {
   name: 'album',
@@ -37,7 +36,8 @@ export default {
     return {
       isMobile: md.phone() !== null,
       isTablet: md.tablet() !== null,
-      content: content.albums[this.name]
+      content: content.albums[this.name],
+      alt: `${content.albums[this.name].displayName} - ${content.meta.author}`
     }
   },
   methods: {
@@ -86,7 +86,6 @@ export default {
       .filter(item => item.includes(`/${this.name}/`))
       // return an Array of require items
       .map(item => req(item))
-      // Preloader.load(photos.map(photo => photo.src))
       return this.content.shuffle ? shuffle(photos) : photos
     }
   },

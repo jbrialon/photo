@@ -1,6 +1,7 @@
 export default {
   meta: {
-    title: 'Complétement à l\'est //'
+    title: 'Complétement à l\'est //',
+    author: 'Jérémy Brialon'
   },
   'albums': {
     'malaisie': {
