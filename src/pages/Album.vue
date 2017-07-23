@@ -45,11 +45,11 @@ export default {
       let width = photo.size.width
       let height = photo.size.height
 
-      if (!this.isMobile && !this.isTablet && photo.size.height > photo.size.width || photo.size.width > window.innerWidth || photo.size.height > window.innerHeight) {
+      if ((!this.isMobile && photo.size.height > photo.size.width) || (!this.isMobile && photo.size.width > window.innerWidth) || (!this.isMobile && photo.size.height > window.innerHeight)) {
         height = Math.round(window.innerHeight * 0.95)
         width = Math.round((height * photo.size.width) / photo.size.height)
-      } else if (this.isMobile || this.isTablet) {
-        width = Math.round(window.innerWidth * 0.9)
+      } else if (this.isMobile) {
+        width = Math.round(window.innerWidth)
         height = Math.round((width * photo.size.height) / photo.size.width)
       }
 
@@ -62,11 +62,11 @@ export default {
       let width = `${photo.size.width}px`
       let height = `${photo.size.height}px`
 
-      if (!this.isMobile && !this.isTablet && photo.size.height > photo.size.width || photo.size.width > window.innerWidth || photo.size.height > window.innerHeight) {
+      if ((!this.isMobile && photo.size.height > photo.size.width) || (!this.isMobile && photo.size.width > window.innerWidth) || (!this.isMobile && photo.size.height > window.innerHeight)) {
         height = Math.round(window.innerHeight * 0.95)
         width = `${Math.round((height * photo.size.width) / photo.size.height)}px`
         height = `${height}px`
-      } else if (this.isMobile || this.isTablet) {
+      } else if (this.isMobile) {
         width = '100%'
         height = 'auto'
       }
@@ -131,14 +131,6 @@ export default {
     position:relative;
     background: $grey;
     margin-bottom:55px;
-
-    @include small-only {
-      margin-bottom: 20vw;
-    }
-
-    @include ipad {
-      margin-bottom: 10vw;
-    }
 
     &:last-child {
       margin-bottom:0;
