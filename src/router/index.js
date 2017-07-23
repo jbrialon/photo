@@ -14,7 +14,7 @@ export default new Router({
       component: Hello
     },
     {
-      path: '/Album/:name',
+      path: '/album/:name',
       name: 'Album',
       component: Album,
       props: true
