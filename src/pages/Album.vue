@@ -45,7 +45,7 @@ export default {
       let width = photo.size.width
       let height = photo.size.height
 
-      if (!this.isMobile && !this.isTablet && photo.size.height > photo.size.width) {
+      if (!this.isMobile && !this.isTablet && photo.size.height > photo.size.width || photo.size.width > window.innerWidth || photo.size.height > window.innerHeight) {
         height = Math.round(window.innerHeight * 0.95)
         width = Math.round((height * photo.size.width) / photo.size.height)
       } else if (this.isMobile || this.isTablet) {
@@ -62,7 +62,7 @@ export default {
       let width = `${photo.size.width}px`
       let height = `${photo.size.height}px`
 
-      if (!this.isMobile && !this.isTablet && photo.size.height > photo.size.width) {
+      if (!this.isMobile && !this.isTablet && photo.size.height > photo.size.width || photo.size.width > window.innerWidth || photo.size.height > window.innerHeight) {
         height = Math.round(window.innerHeight * 0.95)
         width = `${Math.round((height * photo.size.width) / photo.size.height)}px`
         height = `${height}px`
@@ -112,6 +112,7 @@ export default {
     justify-content: center;
     flex-direction: column;
     height: 70vh;
+    margin:auto;
 
     @include small-only {
       width:90%;
@@ -130,7 +131,7 @@ export default {
   &__photo {
     position:relative;
     background: $grey;
-    margin-bottom: 10vw;
+    margin-bottom:55px;
 
     @include small-only {
       margin-bottom: 20vw;

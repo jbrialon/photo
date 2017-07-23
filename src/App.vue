@@ -17,7 +17,7 @@
       <router-view class="page"></router-view>
     </transition>
     <footer>
-      <p>© {{new Date().getFullYear()}} //</p>
+      <p>Jérémy Brialon © {{new Date().getFullYear()}} //</p>
     </footer>
   </div>
 </template>
@@ -130,7 +130,7 @@ export default {
   footer {
     display:flex;
     text-transform:uppercase;
-    height:5vh;
+    height:15vh;
     padding:15px;
 
     p {
