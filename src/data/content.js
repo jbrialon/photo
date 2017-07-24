@@ -8,7 +8,7 @@ export default {
       name: 'malaisie',
       displayName: 'Malaysia',
       cover: require('../assets/photos/malaisie/malaisie-11.jpg'),
-      text: '16 jours / 15 nuits, dont une dans une grotte, pour decouvrir la Malaisie',
+      text: '18 jours / 17 nuits, pour decouvrir la Malaisie en sac à dos',
       shuffle: false
     },
     'kilimanjaro': {
