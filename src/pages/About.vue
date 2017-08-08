@@ -1,7 +1,8 @@
 <template>
   <div class="about">
     <article class="about__article">
-      <div v-lazy:background-image="content.cover" class="about__background">
+      <div class="about__top">
+        <div class="about__background" v-lazy:background-image="content.cover"></div>
         <div class="about__content">
           <h1 class="about__title">
             {{ this.content.displayName }}
@@ -57,7 +58,7 @@ export default {
   }
 
   &__article {
-    width:calc(100vw - 30px);
+    width:calc(100vw - 45px);
     height: 60vh;
 
     @include small-only {
@@ -67,14 +68,28 @@ export default {
     }
   }
 
-  &__background {
+  &__top {
     display:flex;
-    opacity:0;
+    position:relative;
     flex-direction: column;
     justify-content: center;
     width:100%;
+    background: $grey;
     padding:0 45px;
     height:45vh;
+  }
+  &__content {
+    position:relative;
+    z-index:1;
+  }
+  &__background {
+    position:absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    z-index:0;
+    opacity:0;
     background-size:cover;
     background-position:center;
     transition:opacity 400ms $easing;
@@ -88,11 +103,9 @@ export default {
     text-transform: uppercase;
     font-size:32px;
     letter-spacing: 0.45em;
-    // margin-right: -1.45em;
-    padding:5px 0px 5px 20px;
+    padding:5px 0px 5px 30px;
     color:white;
     background:black;
-    box-shadow: -10px 0 0 0 #000, 10px 0 0 0 #000;
     @include small-only {
       font-size:20px;
     }

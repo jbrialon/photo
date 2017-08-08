@@ -6,7 +6,7 @@ export default {
   'about': {
     cover: require('../assets/photos/cover.jpg'),
     displayName: 'about',
-    text: '↟ Hello my name is Jérémy ↟ <br> ↟ I like the mountains and to take picture ↟'
+    text: '↟ Hello my name is Jérémy ↟ <br> ↟ I like going places and take pictures ↟'
   },
   'albums': {
     'malaysia': {
