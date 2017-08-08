@@ -29,7 +29,7 @@ export default {
   props: ['name'],
   metaInfo () {
     return {
-      title: this.content.displayName
+      title: this.content.displayName.toUpperCase()
     }
   },
   data () {
@@ -79,7 +79,7 @@ export default {
   },
   computed: {
     photos () {
-      // create a new context to get all images in chellenge/slideshow
+      // create a new context to get all images in assets/photos
       const req = require.context('../assets/photos', true, /\.jpg$/)
       const photos = req.keys()
       // filter them by folder name (simple check if path contains album name)
@@ -110,7 +110,7 @@ export default {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    height: 70vh;
+    height: 60vh;
     margin:auto;
 
     @include small-only {
@@ -181,6 +181,5 @@ export default {
       padding-bottom:0;
     }
   }
-
 }
 </style>

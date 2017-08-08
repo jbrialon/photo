@@ -7,3 +7,25 @@ html {
 *, *:before, *:after {
   box-sizing: inherit;
 }
+
+a.link {
+  position:relative;
+  color:$red;
+  text-decoration:none;
+  display:inline-flex;
+  align-items: center;
+  z-index:1;
+  &:after {
+    display:block;
+    position:absolute;
+    content:'';
+    background:$red;
+    width:0;
+    bottom:4px;
+    height:2px;
+    transition:width 500ms ease-in-out;
+  }
+  &:hover:after {
+    width:100%;
+  }
+}

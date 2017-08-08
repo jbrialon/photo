@@ -3,33 +3,38 @@ export default {
     title: 'Complétement à l\'est //',
     author: 'Jérémy Brialon'
   },
+  'about': {
+    cover: require('../assets/photos/cover.jpg'),
+    displayName: 'about',
+    text: '↟ Hello my name is Jérémy ↟ <br> ↟ I like the mountains and to take picture ↟'
+  },
   'albums': {
     'malaysia': {
       name: 'malaysia',
       displayName: 'Malaysia',
       cover: require('../assets/photos/malaysia/malaisie-11.jpg'),
-      text: '18 jours / 17 nuits, pour decouvrir la Malaisie en sac à dos',
+      text: '18 days / 17 night, to backpack around Malaysia with <a class="link" href="http://www.voyatopia.com/" target="_blank">voyatopia</a>',
       shuffle: false
     },
     'kilimanjaro': {
       name: 'kilimanjaro',
       displayName: 'Kilimanjaro',
       cover: require('../assets/photos/kilimanjaro/kilimanjaro-25.jpg'),
-      text: '6 jours / 4 nuits de trek en Tanzanie pour gravir le Kilimanjaro (5985m) par la voie Machame',
+      text: '6 days / 4 night of trekking in Tanzania to climb mount Kilimanjaro (5985m) by the Machame road',
       shuffle: false
     },
     'islande': {
       name: 'islande',
       displayName: 'Ísland',
       cover: require('../assets/photos/islande/islande-53.jpg'),
-      text: '11 jours / 0 nuits pour faire le tour de l\'Islande en Clio 4x4',
+      text: '11 days / 0 night to go around Iceland in 4WD Clio ',
       shuffle: true
     },
     'interlac': {
       name: 'interlac',
       displayName: 'Interlac',
       cover: require('../assets/photos/interlac/interlac-25.jpg'),
-      text: '3 jours / 2 nuits pour relier le lac d\'Annecy au lac d\'Aix les bains à pied',
+      text: '3 days / 2 nights to connect Lake Annecy to Lake Aix les Bains',
       shuffle: true
     },
     'ardeche': {
@@ -40,14 +45,18 @@ export default {
       shuffle: true
     }
   },
-  'menu': [
+  'social': [
+    {
+      'title': 'mail',
+      'link': 'mailto:jeremzor@gmail.com'
+    },
+    {
+      'title': 'facebook',
+      'link': 'https://www.facebook.com/jbrialon'
+    },
     {
       'title': 'instagram',
       'link': 'https://www.instagram.com/jbrialon_/'
-    },
-    {
-      'title': 'vsco',
-      'link': 'http://vsco.co/jbrialon/'
     },
     {
       'title': 'vimeo',

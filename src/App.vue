@@ -7,9 +7,20 @@
         </router-link>
       </h1>
       <ul>
-        <li v-for="item in menu">
-          <a :href="item.link" target="_blank" rel="noopener"> {{ item.title }} </a>
+        <li>
+          <a href="https://www.instagram.com/jbrialon_/" target="_blank" rel="noopener">
+            instagram
+          </a>
         </li>
+        <li>
+          <router-link :to="{ name: 'Hello'}">
+            travels
+          </router-link>
+        </li>
+        <li>
+          <router-link :to="{ name: 'About'}">
+            about
+          </router-link>
         </li>
       </ul>
     </header>
@@ -29,12 +40,11 @@ export default {
   name: 'app',
   metaInfo: {
     title: content.meta.title,
-    titleTemplate: `%s - ${content.meta.title}`
+    titleTemplate: `%s // — ${content.meta.title}`
   },
   data () {
     return {
       title: content.meta.title,
-      menu: content.menu,
       author: content.meta.author
     }
   },
@@ -60,7 +70,6 @@ export default {
 
   header {
     display:flex;
-    height:15vh;
     padding:15px;
 
     h1 {
@@ -104,6 +113,7 @@ export default {
           color:black;
           transition:color 300ms $easing;
 
+          &.active,
           &:hover {
             color:$red;
           }
