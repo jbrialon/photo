@@ -18,7 +18,11 @@ export default {
   name: 'hello',
   metaInfo: {
     title: content.meta.title,
-    titleTemplate: `%s`
+    titleTemplate: `%s`,
+    meta: [
+      { name: 'og:image', content: content.meta.metaImage },
+      { name: 'twitter:image', content: content.meta.metaImage }
+    ]
   },
   data () {
     return {
