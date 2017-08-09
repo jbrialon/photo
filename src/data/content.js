@@ -67,19 +67,19 @@ export default {
         { name: 'og:image', content: `${url}${require('../assets/img/meta_share.gif')}` },
         { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share.gif')}` }
       ]
-    },
-    'ardeche': {
-      name: 'ardeche',
-      displayName: 'Ardèche',
-      metaImage: `${url}${require('../assets/img/meta_share.gif')}`,
-      text: 'parce que l\'Ardèche c\'est chouette',
-      shuffle: true,
-      meta: [
-        { name: 'og:url', content: `${url}/album/ardeche` }, // TODO: should be dynamic
-        { name: 'og:image', content: `${url}${require('../assets/img/meta_share.gif')}` },
-        { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share.gif')}` }
-      ]
     }
+    // 'ardeche': {
+    //   name: 'ardeche',
+    //   displayName: 'Ardèche',
+    //   metaImage: `${url}${require('../assets/img/meta_share.gif')}`,
+    //   text: 'parce que l\'Ardèche c\'est chouette',
+    //   shuffle: true,
+    //   meta: [
+    //     { name: 'og:url', content: `${url}/album/ardeche` }, // TODO: should be dynamic
+    //     { name: 'og:image', content: `${url}${require('../assets/img/meta_share.gif')}` },
+    //     { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share.gif')}` }
+    //   ]
+    // }
   },
   'social': [
     {
