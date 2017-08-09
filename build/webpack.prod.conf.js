@@ -91,7 +91,7 @@ var webpackConfig = merge(baseWebpackConfig, {
       // Absolute path to compiled SPA
       path.join(__dirname, '../dist'),
       // List of routes to prerender
-      [ '/', '/about', '/album/malaysia' ]
+      [ '/', '/album/malaysia', '/album/kilimanjaro', '/album/ardeche', '/album/interlac', '/album/islande', '/about' ]
     )
   ]
 })
