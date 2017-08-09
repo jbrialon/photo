@@ -3,60 +3,88 @@ export default {
   meta: {
     title: 'Complétement à l\'est //',
     author: 'Jérémy Brialon',
-    metaImage: `${url}${require('../assets/img/meta_share.gif')}`
+    meta: [
+      { name: 'og:url', content: url },
+      { name: 'og:image', content: `${url}${require('../assets/img/meta_share.gif')}` },
+      { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share.gif')}` }
+    ]
   },
   'about': {
     cover: require('../assets/photos/cover.jpg'),
     displayName: 'about',
     text: '↟ Hello my name is Jérémy ↟ <br> ↟ I like going places and take pictures ↟',
-    metaImage: `${url}${require('../assets/img/meta_share.gif')}`
+    meta: [
+      { name: 'og:url', content: `${url}/about` },
+      { name: 'og:image', content: `${url}${require('../assets/img/meta_share.gif')}` },
+      { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share.gif')}` }
+    ]
   },
   'albums': {
     'malaysia': {
       name: 'malaysia',
       displayName: 'Malaysia',
       cover: require('../assets/photos/malaysia/malaisie-11.jpg'),
-      metaImage: `${url}${require('../assets/img/meta_share_malaysia.gif')}`,
       text: '18 days / 17 night, to backpack around Malaysia with <a class="link" href="http://www.voyatopia.com/" target="_blank">voyatopia</a>',
-      shuffle: false
+      shuffle: false,
+      meta: [
+        { name: 'og:url', content: `${url}/album/malaysia` },
+        { name: 'og:image', content: `${url}${require('../assets/img/meta_share_malaysia.gif')}` },
+        { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share_malaysia.gif')}` }
+      ]
     },
     'kilimanjaro': {
       name: 'kilimanjaro',
       displayName: 'Kilimanjaro',
       cover: require('../assets/photos/kilimanjaro/kilimanjaro-25.jpg'),
-      metaImage: `${url}${require('../assets/img/meta_share_kilimanjaro.gif')}`,
       text: '6 days / 4 night of trekking in Tanzania to climb mount Kilimanjaro (5985m) by the Machame road',
-      shuffle: false
+      shuffle: false,
+      meta: [
+        { name: 'og:url', content: `${url}/album/kilimanjaro` },
+        { name: 'og:image', content: `${url}${require('../assets/img/meta_share_kilimanjaro.gif')}` },
+        { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share_kilimanjaro.gif')}` }
+      ]
     },
     'islande': {
       name: 'islande',
       displayName: 'Ísland',
       cover: require('../assets/photos/islande/islande-53.jpg'),
-      metaImage: `${url}${require('../assets/img/meta_share.gif')}`,
       text: '11 days / 0 night to go around Iceland in 4WD Clio ',
-      shuffle: true
+      shuffle: true,
+      meta: [
+        { name: 'og:url', content: `${url}/album/islande` },
+        { name: 'og:image', content: `${url}${require('../assets/img/meta_share.gif')}` },
+        { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share.gif')}` }
+      ]
     },
     'interlac': {
       name: 'interlac',
       displayName: 'Interlac',
       cover: require('../assets/photos/interlac/interlac-25.jpg'),
-      metaImage: `${url}${require('../assets/img/meta_share.gif')}`,
       text: '3 days / 2 nights to connect Lake Annecy to Lake Aix les Bains',
-      shuffle: true
+      shuffle: true,
+      meta: [
+        { name: 'og:url', content: `${url}/album/interlac` },
+        { name: 'og:image', content: `${url}${require('../assets/img/meta_share.gif')}` },
+        { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share.gif')}` }
+      ]
     },
     'ardeche': {
       name: 'ardeche',
       displayName: 'Ardèche',
       metaImage: `${url}${require('../assets/img/meta_share.gif')}`,
-      cover: require('../assets/photos/ardeche/ardeche-14.jpg'),
       text: 'parce que l\'Ardèche c\'est chouette',
-      shuffle: true
+      shuffle: true,
+      meta: [
+        { name: 'og:url', content: `${url}/album/ardeche` },
+        { name: 'og:image', content: `${url}${require('../assets/img/meta_share.gif')}` },
+        { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share.gif')}` }
+      ]
     }
   },
   'social': [
     {
       'title': 'mail',
-      'link': 'mailto:jeremzor@gmail.com'
+      'link': 'mailto:jeremzor@gmail.com' // this will backfire
     },
     {
       'title': 'facebook',

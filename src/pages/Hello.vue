@@ -19,10 +19,7 @@ export default {
   metaInfo: {
     title: content.meta.title,
     titleTemplate: `%s`,
-    meta: [
-      { name: 'og:image', content: content.meta.metaImage },
-      { name: 'twitter:image', content: content.meta.metaImage }
-    ]
+    meta: content.meta.meta
   },
   data () {
     return {

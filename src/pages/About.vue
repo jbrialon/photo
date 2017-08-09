@@ -32,10 +32,7 @@ export default {
   metaInfo: {
     title: content.about.displayName.toUpperCase(),
     titleTemplate: `%s //`,
-    meta: [
-      { name: 'og:image', content: content.about.metaImage },
-      { name: 'twitter:image', content: content.about.metaImage }
-    ]
+    meta: content.about.meta
   },
   data () {
     return {
