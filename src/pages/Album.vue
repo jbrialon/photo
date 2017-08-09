@@ -29,7 +29,8 @@ export default {
   props: ['name'],
   metaInfo () {
     return {
-      title: this.content.displayName.toUpperCase()
+      title: this.content.displayName.toUpperCase(),
+      meta: this.content.meta
     }
   },
   data () {

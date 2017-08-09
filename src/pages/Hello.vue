@@ -18,7 +18,8 @@ export default {
   name: 'hello',
   metaInfo: {
     title: content.meta.title,
-    titleTemplate: `%s`
+    titleTemplate: `%s`,
+    meta: content.meta.meta
   },
   data () {
     return {

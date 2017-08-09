@@ -31,7 +31,8 @@ export default {
   name: 'about',
   metaInfo: {
     title: content.about.displayName.toUpperCase(),
-    titleTemplate: `%s //`
+    titleTemplate: `%s //`,
+    meta: content.about.meta
   },
   data () {
     return {
