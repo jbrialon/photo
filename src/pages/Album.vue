@@ -29,7 +29,11 @@ export default {
   props: ['name'],
   metaInfo () {
     return {
-      title: this.content.displayName.toUpperCase()
+      title: this.content.displayName.toUpperCase(),
+      meta: [
+        { name: 'og:image', content: this.content.metaImage },
+        { name: 'twitter:image', content: this.content.metaImage }
+      ]
     }
   },
   data () {

@@ -31,7 +31,11 @@ export default {
   name: 'about',
   metaInfo: {
     title: content.about.displayName.toUpperCase(),
-    titleTemplate: `%s //`
+    titleTemplate: `%s //`,
+    meta: [
+      { name: 'og:image', content: content.about.metaImage },
+      { name: 'twitter:image', content: content.about.metaImage }
+    ]
   },
   data () {
     return {
