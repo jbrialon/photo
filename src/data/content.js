@@ -14,7 +14,7 @@ export default {
     displayName: 'about',
     text: '↟ Hello my name is Jérémy ↟ <br> ↟ I like going places and take pictures ↟',
     meta: [
-      { name: 'og:url', content: `${url}/about` }, //TODO: should be dynamic
+      { name: 'og:url', content: `${url}/about` }, // TODO: should be dynamic
       { name: 'og:image', content: `${url}${require('../assets/img/meta_share.gif')}` },
       { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share.gif')}` }
     ]
@@ -27,7 +27,7 @@ export default {
       text: '18 days / 17 night, to backpack around Malaysia with <a class="link" href="http://www.voyatopia.com/" target="_blank">voyatopia</a>',
       shuffle: false,
       meta: [
-        { name: 'og:url', content: `${url}/album/malaysia` }, //TODO: should be dynamic
+        { name: 'og:url', content: `${url}/album/malaysia` }, // TODO: should be dynamic
         { name: 'og:image', content: `${url}${require('../assets/img/meta_share_malaysia.gif')}` },
         { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share_malaysia.gif')}` }
       ]
@@ -39,7 +39,7 @@ export default {
       text: '6 days / 4 night of trekking in Tanzania to climb mount Kilimanjaro (5985m) by the Machame road',
       shuffle: false,
       meta: [
-        { name: 'og:url', content: `${url}/album/kilimanjaro` }, //TODO: should be dynamic
+        { name: 'og:url', content: `${url}/album/kilimanjaro` }, // TODO: should be dynamic
         { name: 'og:image', content: `${url}${require('../assets/img/meta_share_kilimanjaro.gif')}` },
         { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share_kilimanjaro.gif')}` }
       ]
@@ -51,7 +51,7 @@ export default {
       text: '11 days / 0 night to go around Iceland in 4WD Clio ',
       shuffle: true,
       meta: [
-        { name: 'og:url', content: `${url}/album/islande` }, //TODO: should be dynamic
+        { name: 'og:url', content: `${url}/album/islande` }, // TODO: should be dynamic
         { name: 'og:image', content: `${url}${require('../assets/img/meta_share.gif')}` },
         { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share.gif')}` }
       ]
@@ -63,7 +63,7 @@ export default {
       text: '3 days / 2 nights to connect Lake Annecy to Lake Aix les Bains',
       shuffle: true,
       meta: [
-        { name: 'og:url', content: `${url}/album/interlac` }, //TODO: should be dynamic
+        { name: 'og:url', content: `${url}/album/interlac` }, // TODO: should be dynamic
         { name: 'og:image', content: `${url}${require('../assets/img/meta_share.gif')}` },
         { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share.gif')}` }
       ]
@@ -75,7 +75,7 @@ export default {
       text: 'parce que l\'Ardèche c\'est chouette',
       shuffle: true,
       meta: [
-        { name: 'og:url', content: `${url}/album/ardeche` }, //TODO: should be dynamic
+        { name: 'og:url', content: `${url}/album/ardeche` }, // TODO: should be dynamic
         { name: 'og:image', content: `${url}${require('../assets/img/meta_share.gif')}` },
         { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share.gif')}` }
       ]
