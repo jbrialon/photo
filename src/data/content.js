@@ -1,6 +1,6 @@
 const url = 'https://www.completementalest.fr'
 export default {
-  meta: {
+  'meta': {
     title: 'Complétement à l\'est //',
     author: 'Jérémy Brialon',
     meta: [
@@ -36,7 +36,7 @@ export default {
       name: 'kilimanjaro',
       displayName: 'Kilimanjaro',
       cover: require('../assets/photos/kilimanjaro/kilimanjaro-25.jpg'),
-      text: '6 days / 4 night of trekking in Tanzania to climb mount Kilimanjaro (5985m) by the Machame road',
+      text: '6 days / 4 night of trekking in Tanzania to climb mount Kilimanjaro (5985m) by the Machame route',
       shuffle: false,
       meta: [
         { name: 'og:url', content: `${url}/album/kilimanjaro` }, // TODO: should be dynamic
