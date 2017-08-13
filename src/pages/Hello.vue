@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <article v-for="item in menu">
+    <article v-for="item in menu" v-if="!item.hidden">
       <router-link :to="{ name: 'Album', params: { name: item.name }}">
         <h2>
           {{ item.displayName }}

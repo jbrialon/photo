@@ -26,8 +26,22 @@ export default {
       cover: require('../assets/photos/malaysia/malaisie-11.jpg'),
       text: '18 days / 17 night, to backpack around Malaysia with <a class="link" href="http://www.voyatopia.com/" target="_blank">voyatopia</a>',
       shuffle: false,
+      hidden: false,
       meta: [
         { name: 'og:url', content: `${url}/album/malaysia` }, // TODO: should be dynamic
+        { name: 'og:image', content: `${url}${require('../assets/img/meta_share_malaysia.gif')}` },
+        { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share_malaysia.gif')}` }
+      ]
+    },
+    'malaysia-2': {
+      name: 'malaysia-2',
+      displayName: 'Malaysia Provia',
+      cover: require('../assets/photos/malaysia/malaisie-11.jpg'),
+      text: 'test provia',
+      shuffle: false,
+      hidden: true,
+      meta: [
+        { name: 'og:url', content: `${url}/album/malaysia-2` }, // TODO: should be dynamic
         { name: 'og:image', content: `${url}${require('../assets/img/meta_share_malaysia.gif')}` },
         { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share_malaysia.gif')}` }
       ]
@@ -38,6 +52,7 @@ export default {
       cover: require('../assets/photos/kilimanjaro/kilimanjaro-25.jpg'),
       text: '6 days / 4 night of trekking in Tanzania to climb mount Kilimanjaro (5985m) by the Machame route',
       shuffle: false,
+      hidden: false,
       meta: [
         { name: 'og:url', content: `${url}/album/kilimanjaro` }, // TODO: should be dynamic
         { name: 'og:image', content: `${url}${require('../assets/img/meta_share_kilimanjaro.gif')}` },
@@ -50,6 +65,7 @@ export default {
       cover: require('../assets/photos/islande/islande-53.jpg'),
       text: '11 days / 0 night to go around Iceland in 4WD Clio ',
       shuffle: true,
+      hidden: false,
       meta: [
         { name: 'og:url', content: `${url}/album/islande` }, // TODO: should be dynamic
         { name: 'og:image', content: `${url}${require('../assets/img/meta_share.gif')}` },
@@ -62,24 +78,26 @@ export default {
       cover: require('../assets/photos/interlac/interlac-25.jpg'),
       text: '3 days / 2 nights to connect Lake Annecy to Lake Aix les Bains',
       shuffle: true,
+      hidden: false,
       meta: [
         { name: 'og:url', content: `${url}/album/interlac` }, // TODO: should be dynamic
         { name: 'og:image', content: `${url}${require('../assets/img/meta_share.gif')}` },
         { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share.gif')}` }
       ]
+    },
+    'ardeche': {
+      name: 'ardeche',
+      displayName: 'Ardèche',
+      metaImage: `${url}${require('../assets/img/meta_share.gif')}`,
+      text: 'parce que l\'Ardèche c\'est chouette',
+      shuffle: true,
+      hidden: true,
+      meta: [
+        { name: 'og:url', content: `${url}/album/ardeche` }, // TODO: should be dynamic
+        { name: 'og:image', content: `${url}${require('../assets/img/meta_share.gif')}` },
+        { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share.gif')}` }
+      ]
     }
-    // 'ardeche': {
-    //   name: 'ardeche',
-    //   displayName: 'Ardèche',
-    //   metaImage: `${url}${require('../assets/img/meta_share.gif')}`,
-    //   text: 'parce que l\'Ardèche c\'est chouette',
-    //   shuffle: true,
-    //   meta: [
-    //     { name: 'og:url', content: `${url}/album/ardeche` }, // TODO: should be dynamic
-    //     { name: 'og:image', content: `${url}${require('../assets/img/meta_share.gif')}` },
-    //     { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share.gif')}` }
-    //   ]
-    // }
   },
   'social': [
     {
