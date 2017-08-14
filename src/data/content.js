@@ -23,7 +23,7 @@ export default {
     'malaysia': {
       name: 'malaysia',
       displayName: 'Malaysia',
-      cover: require('../assets/photos/malaysia/malaisie-11.jpg'),
+      cover: require('../assets/photos/malaysia/malaisie-2-11.jpg'),
       text: '18 days / 17 night, to backpack around Malaysia with <a class="link" href="http://www.voyatopia.com/" target="_blank">voyatopia</a>',
       shuffle: false,
       hidden: false,
@@ -36,7 +36,7 @@ export default {
     'malaysia-2': {
       name: 'malaysia-2',
       displayName: 'Malaysia Provia',
-      cover: require('../assets/photos/malaysia/malaisie-11.jpg'),
+      cover: require('../assets/photos/malaysia/malaisie-2-11.jpg'),
       text: 'test provia',
       shuffle: false,
       hidden: true,
