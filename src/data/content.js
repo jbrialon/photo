@@ -23,25 +23,12 @@ export default {
     'malaysia': {
       name: 'malaysia',
       displayName: 'Malaysia',
-      cover: require('../assets/photos/malaysia/malaisie-2-11.jpg'),
+      cover: require('../assets/photos/malaysia/malaisie-10.jpg'),
       text: '18 days / 17 night, to backpack around Malaysia with <a class="link" href="http://www.voyatopia.com/" target="_blank">voyatopia</a>',
       shuffle: false,
       hidden: false,
       meta: [
         { name: 'og:url', content: `${url}/album/malaysia` }, // TODO: should be dynamic
-        { name: 'og:image', content: `${url}${require('../assets/img/meta_share_malaysia.gif')}` },
-        { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share_malaysia.gif')}` }
-      ]
-    },
-    'malaysia-2': {
-      name: 'malaysia-2',
-      displayName: 'Malaysia',
-      cover: require('../assets/photos/malaysia/malaisie-2-11.jpg'),
-      text: '18 days / 17 night, to backpack around Malaysia with <a class="link" href="http://www.voyatopia.com/" target="_blank">voyatopia</a>',
-      shuffle: false,
-      hidden: true,
-      meta: [
-        { name: 'og:url', content: `${url}/album/malaysia-2` }, // TODO: should be dynamic
         { name: 'og:image', content: `${url}${require('../assets/img/meta_share_malaysia.gif')}` },
         { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share_malaysia.gif')}` }
       ]
