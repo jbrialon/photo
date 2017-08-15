@@ -35,9 +35,9 @@ export default {
     },
     'malaysia-2': {
       name: 'malaysia-2',
-      displayName: 'Malaysia Provia',
+      displayName: 'Malaysia',
       cover: require('../assets/photos/malaysia/malaisie-2-11.jpg'),
-      text: 'test provia',
+      text: '18 days / 17 night, to backpack around Malaysia with <a class="link" href="http://www.voyatopia.com/" target="_blank">voyatopia</a>',
       shuffle: false,
       hidden: true,
       meta: [
