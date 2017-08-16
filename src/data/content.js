@@ -24,7 +24,7 @@ export default {
       name: 'malaysia',
       displayName: 'Malaysia',
       cover: require('../assets/photos/malaysia/malaisie-10.jpg'),
-      text: '18 days / 17 night, to backpack around Malaysia with <a class="link" href="http://www.voyatopia.com/" target="_blank">voyatopia</a>',
+      text: '18 days / 17 night to backpack around Malaysia with <a class="link" href="http://www.voyatopia.com/" target="_blank">voyatopia</a>',
       shuffle: false,
       hidden: false,
       meta: [
@@ -36,7 +36,7 @@ export default {
     'kilimanjaro': {
       name: 'kilimanjaro',
       displayName: 'Kilimanjaro',
-      cover: require('../assets/photos/kilimanjaro/kilimanjaro-25.jpg'),
+      cover: require('../assets/photos/kilimanjaro/kilimanjaro-26.jpg'),
       text: '6 days / 4 night of trekking in Tanzania to climb mount Kilimanjaro (5985m) by the Machame route',
       shuffle: false,
       hidden: false,
