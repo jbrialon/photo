@@ -91,7 +91,7 @@ export default {
       cover: require('../assets/photos/GR20/gr20-33.jpg'),
       text: '5 + 7 jours pour faire le GR20 du Sud au Nord',
       shuffle: false,
-      hidden: false,
+      hidden: true,
       meta: [
         { name: 'og:url', content: `${url}/album/GR20` }, // TODO: should be dynamic
         { name: 'og:image', content: `${url}${require('../assets/img/meta_share_gr20.gif')}` },
