@@ -20,6 +20,19 @@ export default {
     ]
   },
   'albums': {
+    'myanmar': {
+      name: 'myanmar',
+      displayName: 'Myanmar',
+      cover: require('../assets/photos/myanmar/myanmar-11.jpg'),
+      text: '17 days and a lot of night buses to backpack around Myanmar',
+      shuffle: false,
+      hidden: true,
+      meta: [
+        { name: 'og:url', content: `${url}/album/myanmar` }, // TODO: should be dynamic
+        { name: 'og:image', content: `${url}${require('../assets/img/meta_share_malaysia.gif')}` },
+        { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share_malaysia.gif')}` }
+      ]
+    },
     'malaysia': {
       name: 'malaysia',
       displayName: 'Malaysia',
