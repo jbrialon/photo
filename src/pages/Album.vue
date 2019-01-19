@@ -1,5 +1,5 @@
 <template>
-  <div class="album">
+  <div class="album" :style="containerStyle">
     <article>
       <p>
         <span class="album__title">
@@ -35,6 +35,7 @@ export default {
   },
   data () {
     return {
+      containerStyle: null,
       isMobile: md.phone() !== null,
       isTablet: md.tablet() !== null,
       content: content.albums[this.name],
@@ -53,7 +54,11 @@ export default {
         width = Math.round(window.innerWidth)
         height = Math.round((width * photo.size.height) / photo.size.width)
       }
-
+      if (!this.containerStyle) {
+        this.containerStyle = {
+          width: `${width}px`
+        }
+      }
       return {
         width: `${width}px`,
         height: `${height}px`
@@ -103,9 +108,11 @@ export default {
 .album {
   width:100%;
   display:flex;
+  margin:auto;
   flex-wrap: wrap;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+  justify-content: space-between;
 
   article {
     display: flex;
@@ -132,9 +139,11 @@ export default {
     position:relative;
     background: $grey;
     margin-bottom:55px;
-
-    &:last-child {
-      margin-bottom:0;
+    // margin-left:55px;
+    // margin-right:55px;
+    @include small-only {
+      margin-left:0;
+      margin-right:0;
     }
   }
 
