@@ -1,5 +1,5 @@
 <template>
-  <div class="album" :style="containerStyle">
+  <div class="album" :style="containerStyle" :class="{'grid': grid}">
     <article>
       <p>
         <span class="album__title">
@@ -10,7 +10,7 @@
         <span v-html="this.content.text"></span>
       </p>
     </article>
-    <div class="album__photo" v-for="photo in photos" :style="photoContainerStyle(photo)">
+    <div class="album__photo" v-for="(photo, index) in photos" :key="index" :style="photoContainerStyle(photo)">
       <img v-lazy="photo" :style="photoStyle(photo)" :alt="alt">
       <loader class="album__loader"></loader>
     </div>
@@ -39,7 +39,8 @@ export default {
       isMobile: md.phone() !== null,
       isTablet: md.tablet() !== null,
       content: content.albums[this.name],
-      alt: `${content.albums[this.name].displayName} - ${content.meta.author}`
+      alt: `${content.albums[this.name].displayName} - ${content.meta.author}`,
+      grid: content.albums[this.name].grid
     }
   },
   methods: {
@@ -54,7 +55,7 @@ export default {
         width = Math.round(window.innerWidth)
         height = Math.round((width * photo.size.height) / photo.size.width)
       }
-      if (!this.containerStyle) {
+      if (!this.containerStyle && width > height) {
         this.containerStyle = {
           width: `${width}px`
         }
@@ -107,13 +108,16 @@ export default {
 
 .album {
   width:100%;
-  display:flex;
   margin:auto;
+  display:flex;
   flex-wrap: wrap;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
 
+  &.grid {
+    flex-direction: row;
+    justify-content: space-between;
+  }
   article {
     display: flex;
     justify-content: center;

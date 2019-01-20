@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <article v-for="item in menu" v-if="!item.hidden">
+    <article v-for="(item, index) in menu" :key="index" v-if="!item.hidden">
       <router-link :to="{ name: 'Album', params: { name: item.name }}">
         <h2>
           {{ item.displayName }}
@@ -37,7 +37,7 @@ export default {
   width:100%;
   display:flex;
   flex-wrap: wrap;
-
+  
   @include small-only {
     padding-top:5vw;
   }

@@ -24,22 +24,24 @@ export default {
       name: 'myanmar',
       displayName: 'Myanmar',
       cover: require('../assets/photos/myanmar/myanmar-55.jpg'),
-      text: '17 days and a lot of night buses to backpack around Myanmar',
+      text: '18 days / 17 nights and a lot of night buses to travel around Myanmar',
       shuffle: false,
-      hidden: true,
+      hidden: false,
+      grid: true,
       meta: [
         { name: 'og:url', content: `${url}/album/myanmar` }, // TODO: should be dynamic
-        { name: 'og:image', content: `${url}${require('../assets/img/meta_share_malaysia.gif')}` },
-        { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share_malaysia.gif')}` }
+        { name: 'og:image', content: `${url}${require('../assets/img/meta_share_myanmar.gif')}` },
+        { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share_myanmar.gif')}` }
       ]
     },
     'malaysia': {
       name: 'malaysia',
       displayName: 'Malaysia',
       cover: require('../assets/photos/malaysia/malaisie-10.jpg'),
-      text: '18 days / 17 night to backpack around Malaysia with <a class="link" href="http://www.voyatopia.com/" target="_blank">voyatopia</a>',
+      text: '18 days / 17 nights to travel around Malaysia with <a class="link" href="http://www.voyatopia.com/" target="_blank">voyatopia</a>',
       shuffle: false,
       hidden: false,
+      grid: false,
       meta: [
         { name: 'og:url', content: `${url}/album/malaysia` }, // TODO: should be dynamic
         { name: 'og:image', content: `${url}${require('../assets/img/meta_share_malaysia.gif')}` },
@@ -50,9 +52,10 @@ export default {
       name: 'kilimanjaro',
       displayName: 'Kilimanjaro',
       cover: require('../assets/photos/kilimanjaro/kilimanjaro-26.jpg'),
-      text: '6 days / 4 night of trekking in Tanzania to climb mount Kilimanjaro (5985m) by the Machame route',
+      text: '6 days / 4 nights of trekking in Tanzania to climb mount Kilimanjaro (5985m) by the Machame route',
       shuffle: false,
       hidden: false,
+      grid: false,
       meta: [
         { name: 'og:url', content: `${url}/album/kilimanjaro` }, // TODO: should be dynamic
         { name: 'og:image', content: `${url}${require('../assets/img/meta_share_kilimanjaro.gif')}` },
@@ -66,6 +69,7 @@ export default {
       text: '11 days / 0 night to go around Iceland in 4WD Clio ',
       shuffle: true,
       hidden: false,
+      grid: false,
       meta: [
         { name: 'og:url', content: `${url}/album/islande` }, // TODO: should be dynamic
         { name: 'og:image', content: `${url}${require('../assets/img/meta_share.gif')}` },
@@ -79,6 +83,7 @@ export default {
       text: '3 days / 2 nights to connect Lake Annecy to Lake Aix les Bains',
       shuffle: true,
       hidden: false,
+      grid: false,
       meta: [
         { name: 'og:url', content: `${url}/album/interlac` }, // TODO: should be dynamic
         { name: 'og:image', content: `${url}${require('../assets/img/meta_share.gif')}` },
@@ -92,6 +97,7 @@ export default {
       text: 'parce que l\'Ardèche c\'est chouette',
       shuffle: true,
       hidden: true,
+      grid: false,
       meta: [
         { name: 'og:url', content: `${url}/album/ardeche` }, // TODO: should be dynamic
         { name: 'og:image', content: `${url}${require('../assets/img/meta_share.gif')}` },
@@ -105,6 +111,7 @@ export default {
       text: '5 + 7 jours pour faire le GR20 du Sud au Nord',
       shuffle: false,
       hidden: true,
+      grid: false,
       meta: [
         { name: 'og:url', content: `${url}/album/GR20` }, // TODO: should be dynamic
         { name: 'og:image', content: `${url}${require('../assets/img/meta_share_gr20.gif')}` },
