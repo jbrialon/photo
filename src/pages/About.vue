@@ -12,12 +12,12 @@
           <br>
           <br>
           <br>
-          <span class="about__text" v-html="this.content.text"></span>
+          <span class="about__text" v-html="content.text"></span>
         </div>
       </div>
       <p class="about__links">
-        <template v-for="link in links">
-          <a :href="link.link" rel="noopener" target="_blank"> {{ link.title }} </a> <br>
+        <template v-for="(link, index) in links">
+          <a :href="link.link" rel="noopener" :key="index" target="_blank"> {{ link.title }} </a>
         </template>
       </p>
     </article>
@@ -131,7 +131,12 @@ export default {
   }
 
   &__links {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content: center;
     margin:70px auto;
+
   }
   &__links a {
     position:relative;
