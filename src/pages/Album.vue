@@ -113,7 +113,6 @@ export default {
   flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
-
   &.grid {
     flex-direction: row;
     justify-content: space-between;
@@ -143,8 +142,6 @@ export default {
     position:relative;
     background: $grey;
     margin-bottom:55px;
-    // margin-left:55px;
-    // margin-right:55px;
     @include small-only {
       margin-left:0;
       margin-right:0;
@@ -190,7 +187,6 @@ export default {
     font-weight: 400;
     font-style: normal;
     padding-bottom: 150px;
-
     @include small-only {
       padding-bottom:0;
     }

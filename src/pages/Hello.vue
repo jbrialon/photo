@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <article v-for="(item, index) in menu" :key="index" v-if="!item.hidden">
+    <article v-for="(item, index) in menu" :key="index">
       <router-link :to="{ name: 'Album', params: { name: item.name }}">
         <h2>
           {{ item.displayName }}
@@ -13,6 +13,7 @@
 
 <script>
 import content from '../data/content'
+import { pickBy } from 'lodash'
 
 export default {
   name: 'hello',
@@ -23,7 +24,7 @@ export default {
   },
   data () {
     return {
-      menu: content.albums
+      menu: pickBy(content.albums, item => !item.hidden)
     }
   }
 }

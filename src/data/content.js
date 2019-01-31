@@ -125,16 +125,8 @@ export default {
       'link': 'mailto:jeremzor@gmail.com' // this will backfire
     },
     {
-      'title': 'facebook',
-      'link': 'https://www.facebook.com/jbrialon'
-    },
-    {
       'title': 'instagram',
       'link': 'https://www.instagram.com/jbrialon_/'
-    },
-    {
-      'title': 'vimeo',
-      'link': 'https://vimeo.com/jbrialon'
     }
   ]
 }
