@@ -126,7 +126,7 @@ export default {
     },
     {
       'title': 'instagram',
-      'link': 'https://www.instagram.com/jbrialon_/'
+      'link': 'https://www.instagram.com/jbrialon/'
     }
   ]
 }
