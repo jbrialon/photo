@@ -117,6 +117,20 @@ export default {
         { name: 'og:image', content: `${url}${require('../assets/img/meta_share_gr20.gif')}` },
         { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share_gr20.gif')}` }
       ]
+    },
+    'kayak': {
+      name: 'kayak',
+      displayName: 'l\'ain en Kayak',
+      metaImage: `${url}${require('../assets/img/meta_share_kayak.gif')}`,
+      text: 'aucun poisson n\'a été bléssé dans cette aventure',
+      shuffle: false,
+      hidden: true,
+      grid: true,
+      meta: [
+        { name: 'og:url', content: `${url}/album/kayak` }, // TODO: should be dynamic
+        { name: 'og:image', content: `${url}${require('../assets/img/meta_share_kayak.gif')}` },
+        { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share_kayak.gif')}` }
+      ]
     }
   },
   'social': [
