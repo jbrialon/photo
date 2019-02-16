@@ -23,7 +23,7 @@ export default {
     'myanmar': {
       name: 'myanmar',
       displayName: 'Myanmar',
-      cover: require('../assets/photos/myanmar/myanmar-55.jpg'),
+      cover: require('../assets/photos/myanmar/myanmar-57.jpg'),
       text: '18 days / 17 nights and a lot of night buses to travel around Myanmar',
       shuffle: false,
       hidden: false,
