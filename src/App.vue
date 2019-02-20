@@ -8,7 +8,7 @@
       </h1>
       <ul>
         <li>
-          <a href="https://www.instagram.com/jbrialon_/" target="_blank" rel="noopener">
+          <a href="https://www.instagram.com/jbrialon/" target="_blank" rel="noopener">
             instagram
           </a>
         </li>
