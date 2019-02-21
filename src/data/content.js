@@ -141,6 +141,10 @@ export default {
     {
       'title': 'instagram',
       'link': 'https://www.instagram.com/jbrialon/'
+    },
+    {
+      'title': 'twitter',
+      'link': 'https://twitter.com/jbrialon/'
     }
   ]
 }
