@@ -67,7 +67,7 @@ export default {
         height = Math.round(window.innerHeight * 0.95)
         width = Math.round((height * photo.size.width) / photo.size.height)
       } else if (this.isMobile) {
-        width = Math.round(window.innerWidth)
+        width = Math.round(window.innerWidth - 20)
         height = Math.round((width * photo.size.height) / photo.size.width)
       }
       if (!this.containerStyle && width > height) {
