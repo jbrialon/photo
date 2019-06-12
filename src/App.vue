@@ -24,7 +24,7 @@
         </li>
       </ul>
     </header>
-    <transition name="page" mode="out-in" @before-enter="beforeEnter">
+    <transition name="page" mode="out-in">
       <router-view class="page"></router-view>
     </transition>
     <footer>
@@ -46,11 +46,6 @@ export default {
     return {
       title: content.meta.title,
       author: content.meta.author
-    }
-  },
-  methods: {
-    beforeEnter () {
-      window.scrollTo(0, 0)
     }
   }
 }

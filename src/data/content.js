@@ -20,10 +20,24 @@ export default {
     ]
   },
   'albums': {
+    'istanbul': {
+      name: 'istanbul',
+      displayName: 'Istanbul',
+      cover: require('../assets/photos/istanbul/istanbul-11.jpg'),
+      text: '4 days / 3 nights to visit Istanbul',
+      shuffle: false,
+      hidden: false,
+      grid: true,
+      meta: [
+        { name: 'og:url', content: `${url}/album/istanbul` }, // TODO: should be dynamic
+        { name: 'og:image', content: `${url}${require('../assets/img/meta_share_istanbul.gif')}` },
+        { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share_istanbul.gif')}` }
+      ]
+    },
     'myanmar': {
       name: 'myanmar',
       displayName: 'Myanmar',
-      cover: require('../assets/photos/myanmar/myanmar-57.jpg'),
+      cover: require('../assets/photos/myanmar/myanmar-11.jpg'),
       text: '18 days / 17 nights and a lot of night buses to travel around Myanmar',
       shuffle: false,
       hidden: false,
@@ -82,7 +96,7 @@ export default {
       cover: require('../assets/photos/interlac/interlac-25.jpg'),
       text: '3 days / 2 nights to connect Lake Annecy to Lake Aix les Bains',
       shuffle: true,
-      hidden: false,
+      hidden: true,
       grid: false,
       meta: [
         { name: 'og:url', content: `${url}/album/interlac` }, // TODO: should be dynamic

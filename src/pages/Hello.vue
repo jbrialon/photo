@@ -1,11 +1,11 @@
 <template>
   <div class="hello">
-    <article v-for="(item, index) in menu" :key="index">
-      <router-link :to="{ name: 'Album', params: { name: item.name }}">
+    <article v-for="(album, index) in albums" :key="index">
+      <router-link :to="{ name: 'Album', params: { name: album.name }}">
         <h2>
-          {{ item.displayName }}
+          {{ album.displayName }}
         </h2>
-        <div v-lazy:background-image="item.cover" class="img"></div>
+        <div v-lazy:background-image="album.cover" class="img"></div>
       </router-link>
     </article>
   </div>
@@ -24,7 +24,7 @@ export default {
   },
   data () {
     return {
-      menu: pickBy(content.albums, item => !item.hidden)
+      albums: pickBy(content.albums, album => !album.hidden)
     }
   }
 }

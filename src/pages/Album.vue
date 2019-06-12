@@ -3,16 +3,29 @@
     <article>
       <p>
         <span class="album__title">
-          {{ this.content.displayName }}
+          {{ album.displayName }}
         </span>
         <br>
         <br>
-        <span v-html="this.content.text"></span>
+        <span v-html="album.text"></span>
       </p>
     </article>
     <div class="album__photo" v-for="(photo, index) in photos" :key="index" :style="photoContainerStyle(photo)">
       <img v-lazy="photo" :style="photoStyle(photo)" :alt="alt">
       <loader class="album__loader"></loader>
+    </div>
+    <div class="album__discover" v-if="false">
+      <router-link 
+        class="album__discover-item" 
+        :to="{ name: 'Album', params: { name: album.name }}" 
+        v-for="(album, index) in albums" 
+        :key="index"
+        v-lazy:background-image="album.cover"
+      >
+        <h2>
+          {{ album.displayName }}
+        </h2>
+      </router-link>
     </div>
   </div>
 </template>
@@ -23,14 +36,15 @@ import MobileDetect from 'mobile-detect'
 const md = new MobileDetect(window.navigator.userAgent)
 import content from '../data/content'
 import loader from '../components/Loader'
+import { pickBy } from 'lodash'
 
 export default {
   name: 'album',
   props: ['name'],
   metaInfo () {
     return {
-      title: this.content.displayName.toUpperCase(),
-      meta: this.content.meta
+      title: this.album.displayName.toUpperCase(),
+      meta: this.album.meta
     }
   },
   data () {
@@ -38,7 +52,8 @@ export default {
       containerStyle: null,
       isMobile: md.phone() !== null,
       isTablet: md.tablet() !== null,
-      content: content.albums[this.name],
+      album: content.albums[this.name],
+      albums: pickBy(content.albums, item => !item.hidden),
       alt: `${content.albums[this.name].displayName} - ${content.meta.author}`,
       grid: content.albums[this.name].grid
     }
@@ -93,7 +108,7 @@ export default {
       .filter(item => item.includes(`/${this.name}/`))
       // return an Array of require items
       .map(item => req(item))
-      return this.content.shuffle ? shuffle(photos) : photos
+      return this.album.shuffle ? shuffle(photos) : photos
     }
   },
   components: {
@@ -157,12 +172,62 @@ export default {
     transition:opacity 600ms $easing;
   }
 
+  &__discover {
+    display:flex;
+    flex-wrap: wrap;
+    width:100%;
+    margin-top:140px;
+    justify-content: space-between;
+    &-item {
+      display:block;
+      position:relative;
+      width:calc(25% - 15px);
+      padding-bottom:16%;
+      background-size:100.5%;
+      background-repeat:no-repeat;
+      overflow:hidden;
+      background-color: $red;
+      &:hover {
+        h2 {
+          opacity:1;
+        }
+      }
+    }
+    h2 {
+      position:absolute;
+      opacity:0;
+      z-index:1;
+      transition:opacity 400ms $easing;
+      will-change:opacity;
+      top:50%;
+      left:50%;
+      transform:translate(-50%, -50%);
+      color:white;
+      background:black;
+      font-size: 22px;
+      line-height: 1.1em;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-weight: 700;
+      padding:6px 10px;
+      display: inline-block;
+      margin:0;
+      max-width: 70%;
+
+      @include small-only {
+        opacity:1;
+        font-size: 26px;
+      }
+
+      @include ipad {
+        opacity:1;
+        font-size: 32px;
+      }
+    }
+  }
   img {
     position:relative;
     z-index:10;
-    display:block;
-    margin: 0;
-    padding: 0;
     will-change: opacity;
     opacity: 0;
     transition:opacity 1.5s $easing;
