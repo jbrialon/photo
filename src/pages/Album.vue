@@ -51,7 +51,7 @@ export default {
     return {
       containerStyle: null,
       isMobile: md.phone() !== null,
-      isTablet: md.tablet() !== null,
+      isTablet: md.tablet() !== null && window.matchMedia('(orientation: portrait)').matches,
       album: content.albums[this.name],
       albums: pickBy(content.albums, item => !item.hidden),
       alt: `${content.albums[this.name].displayName} - ${content.meta.author}`,
@@ -63,9 +63,12 @@ export default {
       let width = photo.size.width
       let height = photo.size.height
 
-      if ((!this.isMobile && photo.size.height > photo.size.width) || (!this.isMobile && photo.size.width > window.innerWidth) || (!this.isMobile && photo.size.height > window.innerHeight)) {
+      if ((!this.isMobile && !this.isTablet && photo.size.height > photo.size.width) || (!this.isMobile && !this.isTablet && photo.size.width > window.innerWidth) || (!this.isMobile && !this.isTablet && photo.size.height > window.innerHeight)) {
         height = Math.round(window.innerHeight * 0.95)
         width = Math.round((height * photo.size.width) / photo.size.height)
+      } else if (this.isTablet) {
+        width = Math.round(window.innerWidth - 30)
+        height = Math.round((width * photo.size.height) / photo.size.width)
       } else if (this.isMobile) {
         width = Math.round(window.innerWidth - 20)
         height = Math.round((width * photo.size.height) / photo.size.width)
@@ -84,11 +87,11 @@ export default {
       let width = `${photo.size.width}px`
       let height = `${photo.size.height}px`
 
-      if ((!this.isMobile && photo.size.height > photo.size.width) || (!this.isMobile && photo.size.width > window.innerWidth) || (!this.isMobile && photo.size.height > window.innerHeight)) {
+      if ((!this.isMobile && !this.isTablet && photo.size.height > photo.size.width) || (!this.isMobile && !this.isTablet && photo.size.width > window.innerWidth) || (!this.isMobile && !this.isTablet && photo.size.height > window.innerHeight)) {
         height = Math.round(window.innerHeight * 0.95)
         width = `${Math.round((height * photo.size.width) / photo.size.height)}px`
         height = `${height}px`
-      } else if (this.isMobile) {
+      } else if (this.isMobile || this.isTablet) {
         width = '100%'
         height = 'auto'
       }
