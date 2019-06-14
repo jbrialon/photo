@@ -24,7 +24,7 @@ export default {
       name: 'istanbul',
       displayName: 'Istanbul',
       cover: require('../assets/photos/istanbul/istanbul-11.jpg'),
-      text: '4 days / 3 nights to visit Istanbul',
+      text: '4 days / 3 nights to visit a city on the border between the East and the West and bathed by the waters of the Bosphorus',
       shuffle: false,
       hidden: false,
       grid: true,
