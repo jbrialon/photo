@@ -20,6 +20,20 @@ export default {
     ]
   },
   'albums': {
+    'annapurna': {
+      name: 'annapurna',
+      displayName: 'annapurna',
+      cover: require('../assets/photos/annapurna/annapurna-28.jpg'),
+      text: '',
+      shuffle: false,
+      hidden: true,
+      grid: true,
+      meta: [
+        { name: 'og:url', content: `${url}/album/annapurna` }, // TODO: should be dynamic
+        { name: 'og:image', content: `${url}${require('../assets/photos/annapurna/annapurna-34.jpg')}` },
+        { name: 'twitter:image', content: `${url}${require('../assets/photos/annapurna/annapurna-34.jpg')}` }
+      ]
+    },
     'istanbul': {
       name: 'istanbul',
       displayName: 'Istanbul',
