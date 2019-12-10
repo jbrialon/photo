@@ -83,25 +83,23 @@ var webpackConfig = merge(baseWebpackConfig, {
         to: config.build.assetsRoot
       }
     ]),
-    new PrerenderSpaPlugin(
-      // Absolute path to compiled SPA
-      path.join(__dirname, '../dist'),
-      // List of routes to prerender
-      [ 
-        '/',
-        '/album/annapurna',
-        '/album/istanbul',
-        '/album/malaysia',
-        '/album/kilimanjaro',
-        '/album/interlac',
-        '/album/islande',
-        '/album/ardeche',
-        '/album/myanmar',
-        '/album/GR20',
-        '/album/kayak',
-        '/about'
-      ]
-    )
+    // new PrerenderSpaPlugin(
+    //   // Absolute path to compiled SPA
+    //   path.join(__dirname, '../dist'),
+    //   // List of routes to prerender
+    //   [ 
+    //     '/',
+    //     '/album/annapurna',
+    //     '/album/istanbul',
+    //     '/album/malaysia',
+    //     '/album/kilimanjaro',
+    //     '/album/interlac',
+    //     '/album/islande',
+    //     '/album/ardeche',
+    //     '/album/myanmar',
+    //     '/about'
+    //   ]
+    // )
   ]
 })
 
