@@ -19,6 +19,36 @@ export default {
       { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share.gif')}` }
     ]
   },
+  'octnov': {
+    'japon': {
+      name: 'japon',
+      displayName: 'Japon',
+      cover: require('../assets/photos/japon/japon-01.jpg'),
+      text: 'Jérémy tout seul',
+      gps: {lat: 26.212312, lon: 127.679157}
+    },
+    'nepal': {
+      name: 'nepal',
+      displayName: 'Népal',
+      cover: require('../assets/photos/nepal/nepal-01.jpg'),
+      text: 'Jérémy au pays des momos',
+      gps: {lat: 27.717245, lon: 85.323960}
+    },
+    'annapurna': {
+      name: 'annapurna',
+      displayName: 'Annapurna',
+      cover: require('../assets/photos/annapurna/annapurna-29.jpg'),
+      text: 'Jérémy chez les Yaks',
+      gps: {lat: 13.736717, lon: 100.523186}
+    },
+    'thailand': {
+      name: 'thailand',
+      displayName: 'Thaïlande',
+      cover: require('../assets/photos/thailande/thailande-01.jpg'),
+      text: 'Jérémy a la plage',
+      gps: {lat: 13.736717, lon: 100.523186}
+    }
+  },
   'albums': {
     'annapurna': {
       name: 'annapurna',

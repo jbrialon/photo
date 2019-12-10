@@ -1,6 +1,6 @@
 <template>
   <div id="app" v-cloak>
-    <header>
+    <header v-if="false"> 
       <h1>
         <router-link to="/">
           {{ title }}
@@ -27,7 +27,7 @@
     <transition name="page" mode="out-in">
       <router-view class="page"></router-view>
     </transition>
-    <footer>
+    <footer v-if="false">
       <p>{{ author }} © {{new Date().getFullYear()}} //</p>
     </footer>
   </div>
