@@ -31,7 +31,7 @@ export default {
       name: 'nepal',
       displayName: 'Népal',
       cover: require('../assets/photos/nepal/nepal-01.jpg'),
-      text: 'Jérémy au pays des momos',
+      text: 'Jérémy au pays des momos  test',
       gps: {lat: 27.717245, lon: 85.323960}
     },
     'annapurna': {
