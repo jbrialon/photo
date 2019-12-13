@@ -3,11 +3,7 @@
     <div class="hello__map">
       <mapbox
       access-token="pk.eyJ1IjoiamJyaWFsb24iLCJhIjoiZjJkNjkyNDNiMzU0YjAxY2FjNGZlMjU3MGFiYjYyZmQifQ.lwFTmFgGxSuvfoJdTcx7Jg"
-      :map-options="{
-        style: 'mapbox://styles/jbrialon/ck3yg7nb807lc1co990hb80mi/draft',
-        center: [100.9925, 15.8700],
-        zoom: 3,
-      }"
+      :map-options="mapOptions"
       @map-load="loaded"
     />
     </div>
@@ -18,8 +14,8 @@
         <span class="year">{{ new Date().getFullYear() }}</span>
       </div>
     </div>
-    <div class="hello__grid">
-      <div class="hello__item" v-for="(entry, propertyName, index) in menu" :key="index" @click="setDestination(propertyName)">
+    <div class="hello__grid" ref="items">
+      <div class="hello__item" ref="item" v-for="(entry, propertyName, index) in menu" :key="index" @click="setDestination(propertyName)">
         <h2 class="hello__item-title"><span>{{ entry.displayName }}</span></h2>
         <span class="hello__item-number"><span>{{ formatIndex(index) }}</span></span>
         <div class="hello__item-imgwrap">
@@ -29,8 +25,13 @@
           </div>
         </div>
       </div>
-      <div class="hello__item hello__item--more">
-        More +
+      <div class="hello__item hello__item--more" ref="more">
+        <router-link :to="{ name: 'Albums'}" ref="togglemore">
+           More +
+        </router-link>
+        <button @click="toggle('show')" ref="toggleBack">
+           Back
+        </button>
       </div>
     </div>
   </div>
@@ -39,6 +40,9 @@
 <script>
 import content from '../data/content'
 import Mapbox from 'mapbox-gl-vue'
+import { TweenMax } from 'gsap'
+
+let winsize = {width: window.innerWidth, height: window.innerHeight}
 
 export default {
   name: 'hello',
@@ -51,30 +55,97 @@ export default {
     return {
       menu: content.octnov,
       title: content.meta.title,
-      author: content.meta.author
+      map: null,
+      mapOptions: {
+        style: 'mapbox://styles/jbrialon/ck3yg7nb807lc1co990hb80mi/draft',
+        center: [100.9925, 15.8700],
+        zoom: 3
+      }
     }
   },
   components: { Mapbox },
   methods: {
     loaded (map) {
-      // var bounds = new mapboxgl.LngLatBounds()
+      this.map = map
+      this.map.scrollZoom.disable()
       Object.keys(this.menu).forEach(key => {
-        var gps = this.menu[key].gps
-        var marker = new mapboxgl.Marker()
-        var coord = new mapboxgl.LngLat(gps.lon, gps.lat)
-        // bounds.extend(coord)
+        let gps = this.menu[key].gps
+        let marker = new mapboxgl.Marker()
+        let coord = new mapboxgl.LngLat(gps.lon, gps.lat)
         marker.setLngLat(coord)
-        marker.addTo(map)
+        marker.addTo(this.map)
       })
-      // console.log(map.getZoom())
-      // map.fitBounds(bounds)
-      // map.setZoom(4)
+      this.map.on('moveend', () => {
+        console.log('moveend')
+        // this.map.triggerRepaint()
+      })
     },
     setDestination (propertyName) {
-      console.log(propertyName)
+      this.toggle('hide')
+      let country = content.octnov[propertyName]
+      let countryGPS = new mapboxgl.LngLat(country.gps.lon, country.gps.lat)
+      this.map.easeTo({
+        center: countryGPS,
+        zoom: this.mapOptions.zoom + 3,
+        duration: 1600
+      })
+    },
+    toggle (action) {
+      if (action === 'show') {
+        this.map.easeTo({
+          center: this.mapOptions.center,
+          zoom: this.mapOptions.zoom,
+          duration: 1600
+        })
+      }
+      // country items animation
+      this.$refs.item.forEach((item) => {
+        let speed = this.randomNumber(1, 1.5)
+        TweenMax.to(item, speed, {
+          delay: 0.2,
+          ease: 'Quint.easeInOut',
+          y: action === 'hide' ? -1 * winsize.height - 30 : 0
+        })
+      })
+      // button more/back animation
+      let speedMore = this.randomNumber(1, 1.10)
+      let moreButton = this.$refs.more
+      TweenMax.to(moreButton, speedMore, {
+        delay: 0.2,
+        ease: 'Quint.easeInOut',
+        y: action === 'hide' ? -1 * winsize.height + moreButton.offsetHeight : 0
+      })
+      TweenMax.to(moreButton, speedMore / 2, {
+        delay: 0.2,
+        ease: 'Quint.easeIn',
+        scaleY: 2
+      })
+      TweenMax.to(moreButton, speedMore / 2, {
+        delay: 0.2 + speedMore / 2,
+        ease: 'Quint.easeOut',
+        scaleY: 1
+      })
+      TweenMax.to(this.$refs.more.querySelector('a'), action === 'hide' ? 0.2 : 0.4, {
+        delay: action === 'hide' ? 0.2 : 1,
+        ease: action === 'hide' ? 'Quad.easeIn' : 'Quad.easeOut',
+        startAt: action === 'hide' ? {} : {opacity: 0, y: '-150%'},
+        y: action === 'hide' ? '-150%' : '0%',
+        opacity: action === 'hide' ? 0 : 1
+      })
+
+      TweenMax.to(this.$refs.more.querySelector('button'), action === 'hide' ? 0.4 : 0.2, {
+        delay: action === 'hide' ? 1 : 0.2,
+        ease: action === 'hide' ? 'Quad.easeOut' : 'Quad.easeIn',
+        startAt: action === 'hide' ? {opacity: 0, y: '150%'} : {},
+        y: action === 'hide' ? '0%' : '150%',
+        opacity: action === 'hide' ? 1 : 0
+      })
     },
     formatIndex (index) {
       return `0${index + 1}`
+    },
+    randomNumber (min, max) {
+      return Math.random() * (max - min) + min
     }
   }
 }
@@ -139,7 +210,7 @@ export default {
     grid-template-columns: 17vw 21vw 17vw 17vw 8vw;
     grid-column-gap: 5vw;
     overflow: hidden;
-
+    pointer-events: none;
     &--outer {
       padding: 0;
       grid-template-rows: 10rem auto;
@@ -150,6 +221,7 @@ export default {
     align-self: end;
     transform: translate3d(0,30px,0);
     cursor: pointer;
+    pointer-events: all;
     &:before,
     &:after {
       content: '';
@@ -189,6 +261,9 @@ export default {
     &:nth-child(4) {
       transform: translate3d(0px ,0px, 0);
     }
+    &:last-child:after {
+      display:none;
+    }
     &-title {
       position: absolute;
       top: -2rem;
@@ -211,18 +286,31 @@ export default {
       transition: transform 1.2s linear;
     }
     &--more {
-      background: #333;
-      color: #fff;
-      cursor: pointer;
-      height: calc(8vw + 30px);
       display: flex;
+      position: relative;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      font-size: 1.15rem;
-      position: relative;
+      background: #333;
+      height: 8vw;
       width: 100%;
-      pointer-events: auto;
+      transform: none;
+      cursor: pointer;
+      button,
+      a {
+        cursor: pointer;
+        opacity: 1;
+        color: #fff;
+        font-size: 1.15rem;
+        font-weight: 600;
+        text-decoration:none;
+      }
+      button {
+        opacity: 0;
+        background: none;
+        border: none;
+        position: absolute;
+      }
     }
   }
   &__item-imgwrap {

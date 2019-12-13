@@ -12,6 +12,7 @@
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
+    "gsap": "file:gsap-bonus.tgz",
     "lodash": "^4.17.4",
     "mapbox-gl": "^1.6.0",
     "mapbox-gl-vue": "^2.0.3",

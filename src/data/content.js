@@ -39,7 +39,7 @@ export default {
       displayName: 'Annapurna',
       cover: require('../assets/photos/annapurna/annapurna-29.jpg'),
       text: 'Jérémy chez les Yaks',
-      gps: {lat: 13.736717, lon: 100.523186}
+      gps: {lat: 27.717245, lon: 85.323960}
     },
     'thailand': {
       name: 'thailand',

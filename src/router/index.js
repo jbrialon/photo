@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Hello from 'pages/Hello'
+import Albums from 'pages/Albums'
 import Album from 'pages/Album'
 import About from 'pages/About'
 
@@ -18,6 +19,12 @@ export default new Router({
       path: '/',
       name: 'Hello',
       component: Hello
+    },
+    {
+      path: '/albums/',
+      name: 'Albums',
+      component: Albums,
+      props: true
     },
     {
       path: '/album/:name',
