@@ -93,9 +93,7 @@ var webpackConfig = merge(baseWebpackConfig, {
     //     '/album/istanbul',
     //     '/album/malaysia',
     //     '/album/kilimanjaro',
-    //     '/album/interlac',
     //     '/album/islande',
-    //     '/album/ardeche',
     //     '/album/myanmar',
     //     '/about'
     //   ]

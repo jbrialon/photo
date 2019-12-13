@@ -133,62 +133,6 @@ export default {
         { name: 'og:image', content: `${url}${require('../assets/img/meta_share.gif')}` },
         { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share.gif')}` }
       ]
-    },
-    'interlac': {
-      name: 'interlac',
-      displayName: 'Interlac',
-      cover: require('../assets/photos/interlac/interlac-25.jpg'),
-      text: '3 days / 2 nights to connect Lake Annecy to Lake Aix les Bains',
-      shuffle: true,
-      hidden: true,
-      grid: false,
-      meta: [
-        { name: 'og:url', content: `${url}/album/interlac` }, // TODO: should be dynamic
-        { name: 'og:image', content: `${url}${require('../assets/img/meta_share.gif')}` },
-        { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share.gif')}` }
-      ]
-    },
-    'ardeche': {
-      name: 'ardeche',
-      displayName: 'Ardèche',
-      metaImage: `${url}${require('../assets/img/meta_share.gif')}`,
-      text: 'parce que l\'Ardèche c\'est chouette',
-      shuffle: true,
-      hidden: true,
-      grid: false,
-      meta: [
-        { name: 'og:url', content: `${url}/album/ardeche` }, // TODO: should be dynamic
-        { name: 'og:image', content: `${url}${require('../assets/img/meta_share.gif')}` },
-        { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share.gif')}` }
-      ]
-    },
-    'GR20': {
-      name: 'GR20',
-      displayName: 'le GR20',
-      cover: require('../assets/photos/GR20/gr20-33.jpg'),
-      text: '5 + 7 jours pour faire le GR20 du Sud au Nord',
-      shuffle: false,
-      hidden: true,
-      grid: false,
-      meta: [
-        { name: 'og:url', content: `${url}/album/GR20` }, // TODO: should be dynamic
-        { name: 'og:image', content: `${url}${require('../assets/img/meta_share_gr20.gif')}` },
-        { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share_gr20.gif')}` }
-      ]
-    },
-    'kayak': {
-      name: 'kayak',
-      displayName: 'l\'ain en Kayak',
-      metaImage: `${url}${require('../assets/img/meta_share_kayak.gif')}`,
-      text: 'aucun poisson n\'a été bléssé dans cette aventure',
-      shuffle: false,
-      hidden: true,
-      grid: true,
-      meta: [
-        { name: 'og:url', content: `${url}/album/kayak` }, // TODO: should be dynamic
-        { name: 'og:image', content: `${url}${require('../assets/img/meta_share_kayak.gif')}` },
-        { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share_kayak.gif')}` }
-      ]
     }
   },
   'social': [
