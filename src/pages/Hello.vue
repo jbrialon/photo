@@ -61,7 +61,6 @@ export default {
   },
   methods: {
     loaded () {
-      console.log('e')
       this.map.scrollZoom.disable()
       Object.keys(this.menu).forEach(key => {
         let gps = this.menu[key].gps
@@ -69,10 +68,7 @@ export default {
         let coord = new mapboxgl.LngLat(gps.lon, gps.lat)
         marker.setLngLat(coord)
         marker.addTo(this.map)
-      })
-      this.map.on('moveend', () => {
-        console.log('moveend')
-        // this.map.triggerRepaint()
+        marker.getElement().addEventListener('click', () => this.setDestination(key))
       })
     },
     setDestination (propertyName) {
