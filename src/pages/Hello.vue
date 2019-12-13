@@ -1,11 +1,7 @@
 <template>
   <div class="hello">
     <div class="hello__map">
-      <mapbox
-      access-token="pk.eyJ1IjoiamJyaWFsb24iLCJhIjoiZjJkNjkyNDNiMzU0YjAxY2FjNGZlMjU3MGFiYjYyZmQifQ.lwFTmFgGxSuvfoJdTcx7Jg"
-      :map-options="mapOptions"
-      @map-load="loaded"
-    />
+      <div id="map" ref="map"></div>
     </div>
     <div class="hello__grid hello__grid--outer">
       <div class="title-wrap">
@@ -39,7 +35,6 @@
 
 <script>
 import content from '../data/content'
-import Mapbox from 'mapbox-gl-vue'
 import { TweenMax } from 'gsap'
 
 let winsize = {width: window.innerWidth, height: window.innerHeight}
@@ -57,16 +52,16 @@ export default {
       title: content.meta.title,
       map: null,
       mapOptions: {
+        token: 'pk.eyJ1IjoiamJyaWFsb24iLCJhIjoiZjJkNjkyNDNiMzU0YjAxY2FjNGZlMjU3MGFiYjYyZmQifQ.lwFTmFgGxSuvfoJdTcx7Jg',
         style: 'mapbox://styles/jbrialon/ck3yg7nb807lc1co990hb80mi/draft',
         center: [100.9925, 15.8700],
         zoom: 3
       }
     }
   },
-  components: { Mapbox },
   methods: {
-    loaded (map) {
-      this.map = map
+    loaded () {
+      console.log('e')
       this.map.scrollZoom.disable()
       Object.keys(this.menu).forEach(key => {
         let gps = this.menu[key].gps
@@ -147,6 +142,16 @@ export default {
     randomNumber (min, max) {
       return Math.random() * (max - min) + min
     }
+  },
+  mounted () {
+    mapboxgl.accessToken = this.mapOptions.token
+    this.map = new mapboxgl.Map({
+      container: 'map', // container id
+      style: this.mapOptions.style, // stylesheet location
+      center: this.mapOptions.center, // starting position [lng, lat]
+      zoom: this.mapOptions.zoom // starting zoom
+    })
+    this.map.on('load', this.loaded)
   }
 }
 </script>
@@ -193,7 +198,6 @@ export default {
     bottom: 0;
 
     #map {
-      width: 100vw;
       height: 100vh;
     }
     .mapboxgl-control-container {

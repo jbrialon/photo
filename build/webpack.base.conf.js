@@ -12,11 +12,6 @@ module.exports = {
   entry: {
     app: './src/main.js'
   },
-  plugins: [
-    new webpack.ProvidePlugin({
-      mapboxgl: 'mapbox-gl',
-    }),
-  ],
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',
