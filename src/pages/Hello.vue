@@ -1,5 +1,10 @@
 <template>
   <div class="hello">
+    <div class="hello__content" ref="content">
+      <template v-if="activeDestination">
+        <img v-lazy="photo" v-for="(photo, index) in photos" :key="index">
+      </template>
+    </div>
     <div class="hello__map">
       <div id="map" ref="map"></div>
     </div>
@@ -51,6 +56,7 @@ export default {
       menu: content.octnov,
       title: content.meta.title,
       map: null,
+      activeDestination: null,
       mapOptions: {
         token: 'pk.eyJ1IjoiamJyaWFsb24iLCJhIjoiZjJkNjkyNDNiMzU0YjAxY2FjNGZlMjU3MGFiYjYyZmQifQ.lwFTmFgGxSuvfoJdTcx7Jg',
         style: 'mapbox://styles/jbrialon/ck3yg7nb807lc1co990hb80mi/draft',
@@ -73,12 +79,13 @@ export default {
     },
     setDestination (propertyName) {
       this.toggle('hide')
-      let country = content.octnov[propertyName]
-      let countryGPS = new mapboxgl.LngLat(country.gps.lon, country.gps.lat)
+      this.activeDestination = content.octnov[propertyName]
+      let destinationGPS = new mapboxgl.LngLat(this.activeDestination.gps.lon, this.activeDestination.gps.lat)
       this.map.easeTo({
-        center: countryGPS,
+        center: destinationGPS,
         zoom: this.mapOptions.zoom + 3,
-        duration: 1600
+        duration: 1600,
+        offset: [550, 0]
       })
     },
     toggle (action) {
@@ -89,11 +96,12 @@ export default {
           duration: 1600
         })
       }
+      let delay = 0.2
       // country items animation
       this.$refs.item.forEach((item) => {
         let speed = this.randomNumber(1, 1.5)
         TweenMax.to(item, speed, {
-          delay: 0.2,
+          delay: delay,
           ease: 'Quint.easeInOut',
           y: action === 'hide' ? -1 * winsize.height - 30 : 0
         })
@@ -102,17 +110,17 @@ export default {
       let speedMore = this.randomNumber(1, 1.10)
       let moreButton = this.$refs.more
       TweenMax.to(moreButton, speedMore, {
-        delay: 0.2,
+        delay: delay,
         ease: 'Quint.easeInOut',
         y: action === 'hide' ? -1 * winsize.height + moreButton.offsetHeight : 0
       })
       TweenMax.to(moreButton, speedMore / 2, {
-        delay: 0.2,
+        delay: delay,
         ease: 'Quint.easeIn',
         scaleY: 2
       })
       TweenMax.to(moreButton, speedMore / 2, {
-        delay: 0.2 + speedMore / 2,
+        delay: delay + speedMore / 2,
         ease: 'Quint.easeOut',
         scaleY: 1
       })
@@ -131,12 +139,31 @@ export default {
         y: action === 'hide' ? '0%' : '150%',
         opacity: action === 'hide' ? 1 : 0
       })
+
+      // content
+      TweenMax.to(this.$refs.content, action === 'show' ? 1 : 1, {
+        delay: delay,
+        ease: action === 'show' ? 'Quint.easeInOut' : 'Quint.easeOut',
+        y: action === 'show' ? '100%' : '-100%'
+      })
     },
     formatIndex (index) {
       return `0${index + 1}`
     },
     randomNumber (min, max) {
       return Math.random() * (max - min) + min
+    }
+  },
+  computed: {
+    photos () {
+      // create a new context to get all images in assets/photos
+      const req = require.context('../assets/photos', true, /\.jpg$/)
+      const photos = req.keys()
+      // filter them by folder name (simple check if path contains album name)
+      .filter(item => item.includes(`/${this.activeDestination.name}/`))
+      // return an Array of require items
+      .map(item => req(item))
+      return photos
     }
   },
   mounted () {
@@ -186,6 +213,29 @@ export default {
       }
     }
   }
+  &__content {
+    position: absolute;
+    top: 100vh;
+    left: 0;
+    width: 65vw;
+    padding: 30vh 5vw 0 5vw;
+    z-index: 10;
+    height: 100vh;
+    background-color: #f3f3f3;
+    overflow: auto;
+
+    img {
+      display: block;
+      width: 60%;
+      margin-bottom: 5vw;
+      &:nth-child(even) {
+        float: right;
+      }
+      &:nth-child(odd) {
+        float: left;
+      }
+    }
+  }
   &__map {
     position: absolute;
     top: 0;
@@ -203,6 +253,7 @@ export default {
   &__grid {
     display: grid;
     position: absolute;
+    z-index: 30;
     top: 0;
     left: 0;
     right: 0;
@@ -212,6 +263,8 @@ export default {
     overflow: hidden;
     pointer-events: none;
     &--outer {
+      position: relative;
+      
       padding: 0;
       grid-template-rows: 10rem auto;
       align-items: start;
