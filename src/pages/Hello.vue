@@ -7,6 +7,10 @@
       <div id="map" ref="map"></div>
     </div>
     <div class="hello__grid hello__grid--outer">
+      <div class="hello__album-title" v-if="activeDestination">
+        {{ activeDestination.displayName }}
+        <span>{{ activeDestination.text }}</span>
+      </div>
       <div class="title-wrap">
         <h1 class="title">{{ title }}</h1>
         <span class="subtitle">Octobre+Novembre</span>
@@ -85,6 +89,12 @@ export default {
       this.toggle('hide')
       this.activeDestination = content.octnov[propertyName]
       let destinationGPS = new mapboxgl.LngLat(this.activeDestination.gps.lon, this.activeDestination.gps.lat)
+      // hide all markers but the one from the selected destination
+      Object.keys(this.markers).forEach(key => {
+        if (key !== propertyName) {
+          this.markers[key].getElement().style.visibility = 'hidden'
+        }
+      })
       this.map.easeTo({
         center: destinationGPS,
         zoom: this.mapOptions.zoom + 3,
@@ -98,6 +108,9 @@ export default {
           center: this.mapOptions.center,
           zoom: this.mapOptions.zoom,
           duration: 1600
+        })
+        Object.keys(this.markers).forEach(key => {
+          this.markers[key].getElement().style.visibility = 'visible'
         })
       }
       let delay = 0.2
@@ -192,9 +205,7 @@ export default {
           offset: [550, 0]
         })
         let activeMarker = this.markers[this.activeDestination.name]
-        console.log(this.activeDestination)
         if (activeMarker) {
-          console.log(activeMarker)
           activeMarker.setLngLat(destinationGPS)
         }
       }
@@ -237,12 +248,30 @@ export default {
       }
     }
   }
+  &__album-title {
+    position: relative;
+    z-index: 30;
+    grid-area: 2 / 3;
+    margin-right: 30px;
+    padding:0;
+    font-size: 2rem;
+    line-height: 1.2;
+    letter-spacing:0.5px;
+    writing-mode: vertical-rl;
+    text-align: left;
+    font-weight: 600;
+    span {
+      font-weight: 400;
+      display: block;
+      font-size:1.7rem;
+    }
+  }
   &__content {
     position: absolute;
     top: 100vh;
     left: 0;
     width: 65vw;
-    padding: 33vh 3vw 0 3vw;
+    padding: 10vh 10vh 0 3vh;
     z-index: 10;
     height: 100vh;
     background-color: #e5e5e5;
@@ -265,7 +294,6 @@ export default {
   &__grid {
     display: grid;
     position: absolute;
-    z-index: 30;
     top: 0;
     left: 0;
     right: 0;
@@ -276,7 +304,6 @@ export default {
     pointer-events: none;
     &--outer {
       position: relative;
-      
       padding: 0;
       grid-template-rows: 10rem auto;
       align-items: start;

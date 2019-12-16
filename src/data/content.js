@@ -41,8 +41,8 @@ export default {
       text: 'Jérémy chez les Yaks',
       gps: {lat: 27.717245, lon: 85.323960}
     },
-    'thailand': {
-      name: 'thailand',
+    'thailande': {
+      name: 'thailande',
       displayName: 'Thaïlande',
       cover: require('../assets/covers/cover-thailande.jpg'),
       text: 'Jérémy a la plage',

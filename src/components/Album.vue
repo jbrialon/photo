@@ -64,12 +64,8 @@ export default {
 
 .album {
   &__photo {
-    display: flex;
     position:relative;
     margin-bottom: 10vw;
-    background: white;
-    justify-content: center;
-    align-items: center;
     &:before {
       position: absolute;
       content: '';
