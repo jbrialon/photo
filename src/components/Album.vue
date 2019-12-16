@@ -1,16 +1,22 @@
 <template>
   <div class="album">
     <div class="album__photo" v-for="(photo, index) in photos" :key="index" :style="photoContainerStyle(photo)">
-      <img v-lazy="photo" :style="photoStyle(photo)">
+      <img v-lazy="photo" :style="photoStyle(photo)" :data-lat="getLatitude(photo.exif.GPS)" :data-long="getLongitude(photo.exif.GPS)">
+      <loader class="album__loader"></loader>
     </div>
   </div>
 </template>
 
 <script>
 
+import loader from '../components/Loader'
+
 export default {
   name: 'album',
-  props: ['destination'],
+  props: ['destination', 'map'],
+  components: {
+    loader
+  },
   computed: {
     photos () {
       // create a new context to get all images in assets/photos
@@ -41,12 +47,18 @@ export default {
         width: `${width}px`,
         height: `${height}px`
       }
+    },
+    getLatitude (gps) {
+      return gps ? gps.lat : ''
+    },
+    getLongitude (gps) {
+      return gps ? gps.lng : ''
     }
   }
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 @import '../scss/vars';
 @import '../scss/mixins';
 
@@ -73,18 +85,31 @@ export default {
     &:nth-child(odd) {
       float: left;
     }
-  }
-  img {
-    display: block;
-    width: 100%;
-    will-change: opacity;
-    opacity: 0;
-    transition:opacity 1.5s $easing;
-    cursor: pointer;
+    img {
+      display: block;
+      width: 100%;
+      will-change: opacity;
+      opacity: 0;
+      transition:opacity 1.5s $easing;
+      cursor: pointer;
 
+    }
+    img[lazy=loaded] {
+      opacity: 1;
+    }
+
+    img[lazy=loaded] + .loader {
+      opacity:0;
+    }
   }
-  img[lazy=loaded] {
-    opacity: 1;
+
+  &__loader {
+    position:absolute;
+    z-index:5;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    transition:opacity 600ms $easing;
   }
 }
 </style>

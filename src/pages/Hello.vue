@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <div class="hello__content" ref="content">
-      <Album v-if="activeDestination" :destination="activeDestination"></Album>
+      <Album v-if="activeDestination" :destination="activeDestination" :map="map"></Album>
     </div>
     <div class="hello__map">
       <div id="map" ref="map"></div>
@@ -55,6 +55,7 @@ export default {
       menu: content.octnov,
       title: content.meta.title,
       map: null,
+      markers: {},
       activeDestination: null,
       mapOptions: {
         token: 'pk.eyJ1IjoiamJyaWFsb24iLCJhIjoiZjJkNjkyNDNiMzU0YjAxY2FjNGZlMjU3MGFiYjYyZmQifQ.lwFTmFgGxSuvfoJdTcx7Jg',
@@ -77,6 +78,7 @@ export default {
         marker.setLngLat(coord)
         marker.addTo(this.map)
         marker.getElement().addEventListener('click', () => this.setDestination(key))
+        this.markers[key] = marker
       })
     },
     setDestination (propertyName) {
@@ -181,6 +183,22 @@ export default {
       zoom: this.mapOptions.zoom // starting zoom
     })
     this.map.on('load', this.loaded)
+    this.$Lazyload.$on('loaded', ({ bindType, el, naturalHeight, naturalWidth, $parent, src, loading, error }) => {
+      if (el.dataset.lat && el.dataset.long) {
+        let destinationGPS = new mapboxgl.LngLat(84.016667, 28.666667)
+        this.map.easeTo({
+          center: destinationGPS,
+          duration: 1600,
+          offset: [550, 0]
+        })
+        let activeMarker = this.markers[this.activeDestination.name]
+        console.log(this.activeDestination)
+        if (activeMarker) {
+          console.log(activeMarker)
+          activeMarker.setLngLat(destinationGPS)
+        }
+      }
+    })
   }
 }
 </script>
