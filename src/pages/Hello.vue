@@ -39,7 +39,7 @@
 <script>
 import Album from '../components/Album'
 import content from '../data/content'
-import { TweenMax } from 'gsap'
+import { TweenMax, Power4 } from 'gsap'
 
 let winsize = {width: window.innerWidth, height: window.innerHeight}
 
@@ -103,8 +103,7 @@ export default {
       this.$refs.item.forEach((item) => {
         let speed = this.randomNumber(1, 1.5)
         TweenMax.to(item, speed, {
-          delay: delay,
-          ease: 'Quint.easeInOut',
+          ease: Power4.easeInOut,
           y: action === 'hide' ? -1 * winsize.height - 30 : 0
         })
       })
@@ -113,22 +112,22 @@ export default {
       let moreButton = this.$refs.more
       TweenMax.to(moreButton, speedMore, {
         delay: delay,
-        ease: 'Quint.easeInOut',
+        ease: Power4.easeInOut,
         y: action === 'hide' ? -1 * winsize.height + moreButton.offsetHeight : 0
       })
       TweenMax.to(moreButton, speedMore / 2, {
         delay: delay,
-        ease: 'Quint.easeIn',
+        ease: Power4.easeIn,
         scaleY: 2
       })
       TweenMax.to(moreButton, speedMore / 2, {
         delay: delay + speedMore / 2,
-        ease: 'Quint.easeOut',
+        ease: Power4.easeOut,
         scaleY: 1
       })
       TweenMax.to(this.$refs.more.querySelector('a'), action === 'hide' ? 0.2 : 0.4, {
         delay: action === 'hide' ? 0.2 : 1,
-        ease: action === 'hide' ? 'Quad.easeIn' : 'Quad.easeOut',
+        ease: action === 'hide' ? Power4.easeIn : Power4.easeOut,
         startAt: action === 'hide' ? {} : {opacity: 0, y: '-150%'},
         y: action === 'hide' ? '-150%' : '0%',
         opacity: action === 'hide' ? 0 : 1
@@ -136,17 +135,22 @@ export default {
 
       TweenMax.to(this.$refs.more.querySelector('button'), action === 'hide' ? 0.4 : 0.2, {
         delay: action === 'hide' ? 1 : 0.2,
-        ease: action === 'hide' ? 'Quad.easeOut' : 'Quad.easeIn',
+        ease: action === 'hide' ? Power4.easeOut : Power4.easeIn,
         startAt: action === 'hide' ? {opacity: 0, y: '150%'} : {},
         y: action === 'hide' ? '0%' : '150%',
         opacity: action === 'hide' ? 1 : 0
       })
 
       // content
-      TweenMax.to(this.$refs.content, action === 'show' ? 1 : 1, {
+      TweenMax.to(this.$refs.content, action === 'show' ? 1.15 : 1, {
         delay: delay,
-        ease: action === 'show' ? 'Quint.easeInOut' : 'Quint.easeOut',
-        y: action === 'show' ? '100%' : '-100%'
+        ease: action === 'show' ? Power4.easeInOut : Power4.easeOut,
+        y: action === 'show' ? '100%' : '-100%',
+        onComplete: () => {
+          if (action === 'show') {
+            this.activeDestination = null
+          }
+        }
       })
     },
     formatIndex (index) {
@@ -220,10 +224,10 @@ export default {
     top: 100vh;
     left: 0;
     width: 65vw;
-    padding: 30vh 5vw 0 5vw;
+    padding: 33vh 3vw 0 3vw;
     z-index: 10;
     height: 100vh;
-    background-color: #f3f3f3;
+    background-color: #e5e5e5;
     overflow: auto;
   }
   &__map {

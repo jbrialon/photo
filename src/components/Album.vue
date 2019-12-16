@@ -1,6 +1,8 @@
 <template>
   <div class="album">
-    <img v-lazy="photo" v-for="(photo, index) in photos" :key="index">
+    <div class="album__photo" v-for="(photo, index) in photos" :key="index" :style="photoContainerStyle(photo)">
+      <img v-lazy="photo" :style="photoStyle(photo)">
+    </div>
   </div>
 </template>
 
@@ -20,6 +22,26 @@ export default {
       .map(item => req(item))
       return photos
     }
+  },
+  methods: {
+    photoContainerStyle (photo) {
+      let width = Math.round(window.innerWidth / 2.5)
+      let height = Math.round((width * photo.size.height) / photo.size.width)
+
+      return {
+        width: `${width}px`,
+        height: `${height}px`
+      }
+    },
+    photoStyle (photo) {
+      let width = Math.round(window.innerWidth / 2.5)
+      let height = Math.round((width * photo.size.height) / photo.size.width)
+
+      return {
+        width: `${width}px`,
+        height: `${height}px`
+      }
+    }
   }
 }
 </script>
@@ -29,14 +51,21 @@ export default {
 @import '../scss/mixins';
 
 .album {
-  img {
-    display: block;
+  &__photo {
+    display: flex;
     position:relative;
-    width: 60%;
-    margin-bottom: 5vw;
-    cursor: pointer;
-    &:hover {
-      z-index: 60;
+    margin-bottom: 10vw;
+    background: white;
+    justify-content: center;
+    align-items: center;
+    &:before {
+      position: absolute;
+      content: '';
+      top: -15px;
+      left: -15px;
+      bottom: -15px;
+      right: -15px;
+      background: white;
     }
     &:nth-child(even) {
       float: right;
@@ -44,6 +73,18 @@ export default {
     &:nth-child(odd) {
       float: left;
     }
+  }
+  img {
+    display: block;
+    width: 100%;
+    will-change: opacity;
+    opacity: 0;
+    transition:opacity 1.5s $easing;
+    cursor: pointer;
+
+  }
+  img[lazy=loaded] {
+    opacity: 1;
   }
 }
 </style>
