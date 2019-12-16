@@ -1,9 +1,7 @@
 <template>
   <div class="hello">
     <div class="hello__content" ref="content">
-      <template v-if="activeDestination">
-        <img v-lazy="photo" v-for="(photo, index) in photos" :key="index">
-      </template>
+      <Album v-if="activeDestination" :destination="activeDestination"></Album>
     </div>
     <div class="hello__map">
       <div id="map" ref="map"></div>
@@ -39,6 +37,7 @@
 </template>
 
 <script>
+import Album from '../components/Album'
 import content from '../data/content'
 import { TweenMax } from 'gsap'
 
@@ -64,6 +63,9 @@ export default {
         zoom: 3
       }
     }
+  },
+  components: {
+    Album
   },
   methods: {
     loaded () {
@@ -223,18 +225,6 @@ export default {
     height: 100vh;
     background-color: #f3f3f3;
     overflow: auto;
-
-    img {
-      display: block;
-      width: 60%;
-      margin-bottom: 5vw;
-      &:nth-child(even) {
-        float: right;
-      }
-      &:nth-child(odd) {
-        float: left;
-      }
-    }
   }
   &__map {
     position: absolute;

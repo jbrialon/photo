@@ -23,28 +23,28 @@ export default {
     'japon': {
       name: 'japon',
       displayName: 'Japon',
-      cover: require('../assets/photos/japon/japon-01.jpg'),
+      cover: require('../assets/covers/cover-japon.jpg'),
       text: 'Jérémy tout seul',
       gps: {lat: 26.212312, lon: 127.679157}
     },
     'nepal': {
       name: 'nepal',
       displayName: 'Népal',
-      cover: require('../assets/photos/nepal/nepal-01.jpg'),
-      text: 'Jérémy au pays des momos  test',
+      cover: require('../assets/covers/cover-nepal.jpg'),
+      text: 'Jérémy au pays des momos test',
       gps: {lat: 27.717245, lon: 85.323960}
     },
     'annapurna': {
       name: 'annapurna',
       displayName: 'Annapurna',
-      cover: require('../assets/photos/annapurna/annapurna-29.jpg'),
+      cover: require('../assets/covers/cover-annapurna.jpg'),
       text: 'Jérémy chez les Yaks',
       gps: {lat: 27.717245, lon: 85.323960}
     },
     'thailand': {
       name: 'thailand',
       displayName: 'Thaïlande',
-      cover: require('../assets/photos/thailande/thailande-01.jpg'),
+      cover: require('../assets/covers/cover-thailande.jpg'),
       text: 'Jérémy a la plage',
       gps: {lat: 13.736717, lon: 100.523186}
     }
