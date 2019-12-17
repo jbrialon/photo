@@ -1,8 +1,9 @@
 <template>
   <div class="album">
-    <div class="album__photo" v-for="(photo, index) in photos" :key="index" :style="photoContainerStyle(photo)">
+    <div class="album__photo" v-for="(photo, index) in photos" :key="index" :style="photoStyle(photo)" :class="getClass(photo)">
       <img v-lazy="photo" :style="photoStyle(photo)" :data-lat="getLatitude(photo.exif.GPS)" :data-long="getLongitude(photo.exif.GPS)">
       <loader class="album__loader"></loader>
+      <p v-if="photo.exif.Description">{{ photo.exif.Description }}</p>
     </div>
   </div>
 </template>
@@ -30,8 +31,9 @@ export default {
     }
   },
   methods: {
-    photoContainerStyle (photo) {
-      let width = Math.round(window.innerWidth / 2.5)
+    photoStyle (photo) {
+      let landscape = photo.size.width > photo.size.height
+      let width = landscape ? Math.round(window.innerWidth / 2.5) : Math.round(window.innerHeight / 2.2)
       let height = Math.round((width * photo.size.height) / photo.size.width)
 
       return {
@@ -39,14 +41,9 @@ export default {
         height: `${height}px`
       }
     },
-    photoStyle (photo) {
-      let width = Math.round(window.innerWidth / 2.5)
-      let height = Math.round((width * photo.size.height) / photo.size.width)
-
-      return {
-        width: `${width}px`,
-        height: `${height}px`
-      }
+    getClass (photo) {
+      let landscape = photo.size.width > photo.size.height
+      return landscape ? 'landscape' : 'portrait'
     },
     getLatitude (gps) {
       return gps ? gps.lat : ''
@@ -63,9 +60,22 @@ export default {
 @import '../scss/mixins';
 
 .album {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
   &__photo {
-    position:relative;
-    margin-bottom: 10vw;
+    position: relative;
+    margin-bottom: 7vw;
+    p {
+      margin: 19px -13px;
+      font-size: 12px;
+      line-height: 2em;
+      text-transform: uppercase;
+      letter-spacing: .15em;
+      font-weight: 500;
+      font-style: normal;
+      max-width: 75%;
+    }
     &:before {
       position: absolute;
       content: '';
@@ -76,10 +86,22 @@ export default {
       background: white;
     }
     &:nth-child(even) {
-      float: right;
+      &.landscape {
+        margin-left: 15vw;
+      }
+      &.portrait {
+        margin-top: 15vh;
+      }
+      p {
+        text-align: right;
+        float: right;
+      }
     }
     &:nth-child(odd) {
-      float: left;
+      p {
+        text-align: left;
+        float: left;
+      }
     }
     img {
       display: block;
@@ -88,17 +110,14 @@ export default {
       opacity: 0;
       transition:opacity 1.5s $easing;
       cursor: pointer;
-
     }
     img[lazy=loaded] {
       opacity: 1;
     }
-
     img[lazy=loaded] + .loader {
       opacity:0;
     }
   }
-
   &__loader {
     position:absolute;
     z-index:5;

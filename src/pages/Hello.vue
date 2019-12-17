@@ -7,14 +7,14 @@
       <div id="map" ref="map"></div>
     </div>
     <div class="hello__grid hello__grid--outer">
-      <div class="hello__album-title" v-if="activeDestination">
-        {{ activeDestination.displayName }}
-        <span>{{ activeDestination.text }}</span>
-      </div>
-      <div class="title-wrap">
+      <div class="title-wrap" ref="title">
         <h1 class="title">{{ title }}</h1>
         <span class="subtitle">Octobre+Novembre</span>
-        <span class="year">{{ new Date().getFullYear() }}</span>
+        <span class="year">2019</span>
+      </div>
+      <div class="subtitle-wrap" ref="subtitle">
+        <h2 class="title" v-if="activeDestination">{{ activeDestination.displayName }}</h2>
+        <span class="subtitle" v-if="activeDestination">{{ activeDestination.text }}</span>
       </div>
     </div>
     <div class="hello__grid" ref="items">
@@ -43,7 +43,8 @@
 <script>
 import Album from '../components/Album'
 import content from '../data/content'
-import { TweenMax, Power4 } from 'gsap'
+import { gsap, Power4, CSSPlugin } from 'gsap'
+gsap.registerPlugin(CSSPlugin)
 
 let winsize = {width: window.innerWidth, height: window.innerHeight}
 
@@ -117,7 +118,8 @@ export default {
       // country items animation
       this.$refs.item.forEach((item) => {
         let speed = this.randomNumber(1, 1.5)
-        TweenMax.to(item, speed, {
+        gsap.to(item, {
+          duration: speed,
           ease: Power4.easeInOut,
           y: action === 'hide' ? -1 * winsize.height - 30 : 0
         })
@@ -125,39 +127,43 @@ export default {
       // button more/back animation
       let speedMore = this.randomNumber(1, 1.10)
       let moreButton = this.$refs.more
-      TweenMax.to(moreButton, speedMore, {
+      gsap.to(moreButton, {
+        duration: speedMore,
         delay: delay,
         ease: Power4.easeInOut,
         y: action === 'hide' ? -1 * winsize.height + moreButton.offsetHeight : 0
       })
-      TweenMax.to(moreButton, speedMore / 2, {
+      gsap.to(moreButton, {
+        duration: speedMore / 2,
         delay: delay,
         ease: Power4.easeIn,
         scaleY: 2
       })
-      TweenMax.to(moreButton, speedMore / 2, {
+      gsap.to(moreButton, {
+        duration: speedMore / 2,
         delay: delay + speedMore / 2,
         ease: Power4.easeOut,
         scaleY: 1
       })
-      TweenMax.to(this.$refs.more.querySelector('a'), action === 'hide' ? 0.2 : 0.4, {
+      gsap.to(this.$refs.more.querySelector('a'), {
+        duration: action === 'hide' ? 0.2 : 0.4,
         delay: action === 'hide' ? 0.2 : 1,
         ease: action === 'hide' ? Power4.easeIn : Power4.easeOut,
         startAt: action === 'hide' ? {} : {opacity: 0, y: '-150%'},
         y: action === 'hide' ? '-150%' : '0%',
         opacity: action === 'hide' ? 0 : 1
       })
-
-      TweenMax.to(this.$refs.more.querySelector('button'), action === 'hide' ? 0.4 : 0.2, {
+      gsap.to(this.$refs.more.querySelector('button'), {
+        duration: action === 'hide' ? 0.4 : 0.2,
         delay: action === 'hide' ? 1 : 0.2,
         ease: action === 'hide' ? Power4.easeOut : Power4.easeIn,
         startAt: action === 'hide' ? {opacity: 0, y: '150%'} : {},
         y: action === 'hide' ? '0%' : '150%',
         opacity: action === 'hide' ? 1 : 0
       })
-
       // content
-      TweenMax.to(this.$refs.content, action === 'show' ? 1.15 : 1, {
+      gsap.to(this.$refs.content, {
+        duration: action === 'show' ? 1.15 : 1,
         delay: delay,
         ease: action === 'show' ? Power4.easeInOut : Power4.easeOut,
         y: action === 'show' ? '100%' : '-100%',
@@ -166,6 +172,19 @@ export default {
             this.activeDestination = null
           }
         }
+      })
+      // titles + subtitles
+      gsap.to(this.$refs.title, {
+        duration: action === 'show' ? 1.15 : 1,
+        delay: delay,
+        ease: Power4.easeInOut,
+        y: action === 'hide' ? -1 * winsize.height + moreButton.offsetHeight : 0
+      })
+      gsap.to(this.$refs.subtitle, {
+        duration: action === 'show' ? 0.4 : 1,
+        delay: delay,
+        alpha: action === 'show' ? 0 : 1,
+        ease: Power4.easeInOut
       })
     },
     formatIndex (index) {
@@ -248,19 +267,23 @@ export default {
       }
     }
   }
-  &__album-title {
+  .subtitle-wrap {
     position: relative;
     z-index: 30;
     grid-area: 2 / 3;
     margin-right: 30px;
-    padding:0;
-    font-size: 2rem;
-    line-height: 1.2;
-    letter-spacing:0.5px;
     writing-mode: vertical-rl;
     text-align: left;
-    font-weight: 600;
-    span {
+    opacity: 0;
+    .title {
+      font-size: 2rem;
+      line-height: 1.2;
+      letter-spacing:0.5px;
+      font-weight: 600;
+      padding: 0;
+      margin: 0;
+    }
+    .subtitle {
       font-weight: 400;
       display: block;
       font-size:1.7rem;
