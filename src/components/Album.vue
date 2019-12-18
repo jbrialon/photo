@@ -1,9 +1,11 @@
 <template>
   <div class="album">
     <div class="album__photo" v-for="(photo, index) in photos" :key="index" :style="photoStyle(photo)" :class="getClass(photo)">
+      <div class="album__overlay" v-if="photo.exif.Description">
+        <p>{{ photo.exif.Description }}</p>
+      </div>
       <img v-lazy="photo" :style="photoStyle(photo)" :data-lat="getLatitude(photo.exif.GPS)" :data-long="getLongitude(photo.exif.GPS)">
       <loader class="album__loader"></loader>
-      <p v-if="photo.exif.Description">{{ photo.exif.Description }}</p>
     </div>
   </div>
 </template>
@@ -66,15 +68,20 @@ export default {
   &__photo {
     position: relative;
     margin-bottom: 7vw;
+    &:hover {
+     .album__overlay {
+       opacity :0;
+     } 
+    }
     p {
       margin: 19px -13px;
-      font-size: 12px;
+      font-size: 0.8rem;
       line-height: 2em;
       text-transform: uppercase;
       letter-spacing: .15em;
-      font-weight: 500;
+      font-weight: 700;
       font-style: normal;
-      max-width: 75%;
+      color:white;
     }
     &:before {
       position: absolute;
@@ -117,6 +124,22 @@ export default {
     img[lazy=loaded] + .loader {
       opacity:0;
     }
+  }
+  &__overlay {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    text-align: center;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    opacity: 1;
+    transition: opacity 100ms ease-in-out; 
   }
   &__loader {
     position:absolute;
