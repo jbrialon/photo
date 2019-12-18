@@ -1,5 +1,10 @@
 <template>
   <div class="hello">
+    <transition name="slide">
+      <div class="hello__loader" v-if="!loaded">
+        <loader></loader>
+      </div>
+    </transition>
     <div class="hello__content" ref="content">
       <Album v-if="activeDestination" :destination="activeDestination" :map="map"></Album>
     </div>
@@ -22,10 +27,8 @@
         <h2 class="hello__item-title"><span>{{ entry.displayName }}</span></h2>
         <span class="hello__item-number"><span>{{ formatIndex(index) }}</span></span>
         <div class="hello__item-imgwrap">
+          <img class="hello__item-img" :src="entry.cover.src" />
           <div class="hello__item-bg" v-lazy:background-image="entry.cover"></div>
-          <div class="hello__item-img">
-            <img :src="entry.cover.src" />
-          </div>
         </div>
       </div>
       <div class="hello__item hello__item--more" ref="more">
@@ -42,9 +45,9 @@
 
 <script>
 import Album from '../components/Album'
+import loader from '../components/Loader'
 import content from '../data/content'
-import { gsap, Power4, CSSPlugin } from 'gsap'
-gsap.registerPlugin(CSSPlugin)
+import { gsap, Power4 } from 'gsap'
 
 let winsize = {width: window.innerWidth, height: window.innerHeight}
 
@@ -62,6 +65,7 @@ export default {
       map: null,
       markers: {},
       activeDestination: null,
+      loaded: false,
       mapOptions: {
         token: 'pk.eyJ1IjoiamJyaWFsb24iLCJhIjoiZjJkNjkyNDNiMzU0YjAxY2FjNGZlMjU3MGFiYjYyZmQifQ.lwFTmFgGxSuvfoJdTcx7Jg',
         style: 'mapbox://styles/jbrialon/ck3yg7nb807lc1co990hb80mi/draft',
@@ -71,10 +75,11 @@ export default {
     }
   },
   components: {
-    Album
+    Album,
+    loader
   },
   methods: {
-    loaded () {
+    mapload () {
       this.map.scrollZoom.disable()
       Object.keys(this.menu).forEach(key => {
         let gps = this.menu[key].gps
@@ -100,15 +105,21 @@ export default {
         center: destinationGPS,
         zoom: this.mapOptions.zoom + 3,
         duration: 1600,
-        offset: [550, 0]
+        offset: this.getMarkerOffset()
       })
+    },
+    getMarkerOffset () {
+      let x = (window.innerWidth / 2) - ((window.innerWidth - this.$refs.content.offsetWidth) / 2)
+      let y = 0
+      return [x, y]
     },
     toggle (action) {
       if (action === 'show') {
         this.map.easeTo({
           center: this.mapOptions.center,
           zoom: this.mapOptions.zoom,
-          duration: 1600
+          duration: 1600,
+          pitch: 0
         })
         Object.keys(this.markers).forEach(key => {
           this.markers[key].getElement().style.visibility = 'visible'
@@ -194,18 +205,6 @@ export default {
       return Math.random() * (max - min) + min
     }
   },
-  computed: {
-    photos () {
-      // create a new context to get all images in assets/photos
-      const req = require.context('../assets/photos', true, /\.jpg$/)
-      const photos = req.keys()
-      // filter them by folder name (simple check if path contains album name)
-      .filter(item => item.includes(`/${this.activeDestination.name}/`))
-      // return an Array of require items
-      .map(item => req(item))
-      return photos
-    }
-  },
   mounted () {
     mapboxgl.accessToken = this.mapOptions.token
     this.map = new mapboxgl.Map({
@@ -214,14 +213,22 @@ export default {
       center: this.mapOptions.center, // starting position [lng, lat]
       zoom: this.mapOptions.zoom // starting zoom
     })
-    this.map.on('load', this.loaded)
-    this.$Lazyload.$on('loaded', ({ bindType, el, naturalHeight, naturalWidth, $parent, src, loading, error }) => {
+    this.map.on('load', this.mapload)
+    var count = 0
+    this.$Lazyload.$on('loaded', ({ el }) => {
+      count++
+      if (count === 4) {
+        this.loaded = true
+      }
+      console.log(count, this.loaded)
       if (el.dataset.lat && el.dataset.long) {
         let destinationGPS = new mapboxgl.LngLat(84.016667, 28.666667)
         this.map.easeTo({
           center: destinationGPS,
+          zoom: 11,
           duration: 1600,
-          offset: [550, 0]
+          offset: this.getMarkerOffset(),
+          pitch: 60
         })
         let activeMarker = this.markers[this.activeDestination.name]
         if (activeMarker) {
@@ -288,6 +295,18 @@ export default {
       display: block;
       font-size:1.7rem;
     }
+  }
+  &__loader {
+    position:absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
+    background: white;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
   }
   &__content {
     position: absolute;
@@ -442,11 +461,10 @@ export default {
     transition: transform 1.2s linear;
   }
   &__item-img {
-    img {
-      display: block;
-      width: 100%;
-    }
+    display: block;
+    width: 100%;
+    will-change: opacity;
+    opacity: 0;
   }
-  
 }
 </style>
