@@ -7,14 +7,14 @@
 
 .slide-enter-active,
 .slide-leave-active {
-    transition: transform 500ms ease-in-out 100ms;
+    transition: transform 500ms ease-in-out 200ms;
     .loader {
-        transition: transform 600ms ease-in-out;
+        transition: transform 300ms ease-in-out;
     }
 }
 .slide-enter, .slide-leave-to  {
     transform: translateY(-100%);
     .loader {
-        transform: translateY(-100vh);
+        transform: translateY(-50vh);
     }
 }

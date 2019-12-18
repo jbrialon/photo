@@ -91,6 +91,13 @@ export default {
         this.markers[key] = marker
       })
     },
+    resetMarkerPosition () {
+      Object.keys(this.menu).forEach(key => {
+        let gps = this.menu[key].gps
+        let coord = new mapboxgl.LngLat(gps.lon, gps.lat)
+        this.markers[key].setLngLat(coord)
+      })
+    },
     setDestination (propertyName) {
       this.toggle('hide')
       this.activeDestination = content.octnov[propertyName]
@@ -124,6 +131,7 @@ export default {
         Object.keys(this.markers).forEach(key => {
           this.markers[key].getElement().style.visibility = 'visible'
         })
+        this.resetMarkerPosition()
       }
       let delay = 0.2
       // country items animation
@@ -220,7 +228,6 @@ export default {
       if (count === 4) {
         this.loaded = true
       }
-      console.log(count, this.loaded)
       if (el.dataset.lat && el.dataset.long) {
         let destinationGPS = new mapboxgl.LngLat(84.016667, 28.666667)
         this.map.easeTo({
