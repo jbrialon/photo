@@ -5,14 +5,14 @@
         <p>{{ photo.exif.Description }}</p>
       </div>
     
-      <img v-lazy="`${photo.src}?nf_resize=fit&w=1000`" :style="photoStyle(photo)" :data-lat="getLatitude(photo.exif.GPS)" :data-long="getLongitude(photo.exif.GPS)">
+      <img ref="photo" v-lazy="photo" :style="photoStyle(photo)" :data-lat="getLatitude(photo.exif.GPS)" :data-long="getLongitude(photo.exif.GPS)">
       <loader class="album__loader"></loader>
     </div>
   </div>
 </template>
 
 <script>
-
+import mediumZoom from 'medium-zoom'
 import loader from '../components/Loader'
 
 export default {
@@ -29,9 +29,7 @@ export default {
       // filter them by folder name (simple check if path contains album name)
       .filter(item => item.includes(`/${this.destination.name}/`))
       // return an Array of require items
-      .map(item => {
-        return req(item)
-      })
+      .map(item => req(item))
       return photos
     }
   },
@@ -55,11 +53,12 @@ export default {
     },
     getLongitude (gps) {
       return gps ? gps.lng : ''
-    },
-    getUrlFromMedia (photo) {
-      const filename = photo.src.split('/')[3].split('.')[0]
-      return `https://media--completementalest.netlify.com/static/img/${filename}.jpg`
     }
+  },
+  mounted () {
+    mediumZoom(this.$refs.photo, {
+      margin: 60
+    })
   }
 }
 </script>
@@ -123,7 +122,7 @@ export default {
       will-change: opacity;
       opacity: 0;
       transition:opacity 1.5s $easing;
-      cursor: pointer;
+      cursor: zoom-in;
     }
     img[lazy=loaded] {
       opacity: 1;

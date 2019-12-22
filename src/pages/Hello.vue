@@ -27,8 +27,8 @@
         <h2 class="hello__item-title"><span>{{ entry.displayName }}</span></h2>
         <span class="hello__item-number"><span>{{ formatIndex(index) }}</span></span>
         <div class="hello__item-imgwrap">
-          <img class="hello__item-img" :src="`${entry.cover.src}?nf_resize=fit&w=500`" />
-          <div class="hello__item-bg" v-lazy:background-image="`${entry.cover.src}?nf_resize=fit&w=500`"></div>
+          <img class="hello__item-img" :src="entry.cover.src" />
+          <div class="hello__item-bg" v-lazy:background-image="entry.cover.src"></div>
         </div>
       </div>
       <div class="hello__item hello__item--more" ref="more">
