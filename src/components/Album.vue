@@ -16,7 +16,7 @@ import loader from '../components/Loader'
 
 export default {
   name: 'album',
-  props: ['destination', 'map'],
+  props: ['destination'],
   components: {
     loader
   },
