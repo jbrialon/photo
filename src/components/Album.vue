@@ -4,7 +4,8 @@
       <div class="album__overlay" v-if="photo.exif.Description">
         <p>{{ photo.exif.Description }}</p>
       </div>
-      <img v-lazy="photo" :style="photoStyle(photo)" :data-lat="getLatitude(photo.exif.GPS)" :data-long="getLongitude(photo.exif.GPS)">
+    
+      <img v-lazy="photo.src" :style="photoStyle(photo)" :data-lat="getLatitude(photo.exif.GPS)" :data-long="getLongitude(photo.exif.GPS)">
       <loader class="album__loader"></loader>
     </div>
   </div>
@@ -28,7 +29,9 @@ export default {
       // filter them by folder name (simple check if path contains album name)
       .filter(item => item.includes(`/${this.destination.name}/`))
       // return an Array of require items
-      .map(item => req(item))
+      .map(item => {
+        return req(item)
+      })
       return photos
     }
   },
@@ -52,6 +55,10 @@ export default {
     },
     getLongitude (gps) {
       return gps ? gps.lng : ''
+    },
+    getUrlFromMedia (photo) {
+      const filename = photo.src.split('/')[3].split('.')[0]
+      return `https://media--completementalest.netlify.com/static/img/${filename}.jpg`
     }
   }
 }

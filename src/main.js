@@ -10,7 +10,15 @@ import 'normalize.css'
 Vue.use(Meta)
 Vue.use(VueLazyload, {
   preLoad: 2,
-  attempt: 3
+  attempt: 3,
+  observer: true,
+  filter: {
+    media (listener, options) {
+      const filename = listener.src.split('/')[3].split('.')[0]
+      listener.src = `https://media--completementalest.netlify.com/static/img/${filename}.jpg`
+      console.log(listener.src)
+    }
+  }
 })
 
 /* eslint-disable no-new */
