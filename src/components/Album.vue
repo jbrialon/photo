@@ -5,7 +5,7 @@
         <p>{{ photo.exif.Description }}</p>
       </div>
     
-      <img v-lazy="photo.src" :style="photoStyle(photo)" :data-lat="getLatitude(photo.exif.GPS)" :data-long="getLongitude(photo.exif.GPS)">
+      <img v-lazy="`${photo.src}?nf_resize=fit&w=1000`" :style="photoStyle(photo)" :data-lat="getLatitude(photo.exif.GPS)" :data-long="getLongitude(photo.exif.GPS)">
       <loader class="album__loader"></loader>
     </div>
   </div>

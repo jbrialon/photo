@@ -16,7 +16,7 @@ Vue.use(VueLazyload, {
     media (listener, options) {
       const filename = listener.src.split('/')[3].split('.')[0]
       console.log(filename)
-      // listener.src = `https://media--completementalest.netlify.com/static/img/${filename}.jpg`
+      listener.src = `https://media--completementalest.netlify.com/static/img/${filename}.jpg`
     }
   }
 })
