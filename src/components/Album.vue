@@ -1,13 +1,15 @@
 <template>
   <div class="album">
-    <div class="album__photo" v-for="(photo, index) in photos" :key="index" :style="photoStyle(photo)" :class="getClass(photo)">
-      <div class="album__overlay" v-if="photo.exif.Description">
+    <div class="album__photo" v-for="(photo, index) in photos" :key="index" :class="getClass(photo)"> 
+      <div class="album__inner" :style="photoStyle(photo)" >
+        <intersect @enter="enter(photo)">
+          <img ref="photo" v-lazy="photo" :style="photoStyle(photo)">
+        </intersect>
+        <loader class="album__loader"></loader>
+      </div>
+      <div class="album__description" v-if="photo.exif.Description" :style="photoStyle(photo)">
         <p>{{ photo.exif.Description }}</p>
       </div>
-      <intersect @enter="enter(photo)">
-        <img ref="photo" v-lazy="photo" :style="photoStyle(photo)">
-      </intersect>
-      <loader class="album__loader"></loader>
     </div>
   </div>
 </template>
@@ -48,8 +50,8 @@ export default {
   methods: {
     photoStyle (photo) {
       const landscape = photo.size.width > photo.size.height
-      const portraitRatio = this.isTablet ? 3.1 : 2.6
-      const width = landscape ? Math.round(window.innerWidth / 2.5) : Math.round(window.innerHeight / portraitRatio) // todo special case for iPad
+      const portraitRatio = this.isTablet ? 3.1 : 2.7
+      const width = landscape ? Math.round(window.innerWidth / 2.5) : Math.round(window.innerHeight / portraitRatio)
       const height = Math.round((width * photo.size.height) / photo.size.width)
 
       return {
@@ -101,36 +103,6 @@ export default {
   &__photo {
     position: relative;
     margin-bottom: 7vw;
-    &:hover {
-     .album__overlay {
-       opacity :0;
-     } 
-    }
-    p {
-      margin: 19px -13px;
-      font-size: 0.8rem;
-      line-height: 2em;
-      text-transform: uppercase;
-      letter-spacing: .15em;
-      font-weight: 700;
-      font-style: normal;
-      color:white;
-    }
-    &:before {
-      position: absolute;
-      content: '';
-      top: -15px;
-      left: -15px;
-      bottom: -15px;
-      right: -15px;
-      background: white;
-      @include ipad {
-        top: -10px;
-        left: -10px;
-        bottom: -10px;
-        right: -10px;
-      }
-    }
     &:nth-child(even) {
       &.landscape {
         margin-left: 15vw;
@@ -138,23 +110,13 @@ export default {
       &.portrait {
         margin-top: 15vh;
       }
-      p {
-        text-align: right;
-        float: right;
-      }
-    }
-    &:nth-child(odd) {
-      p {
-        text-align: left;
-        float: left;
-      }
     }
     img {
       display: block;
       width: 100%;
       will-change: opacity;
       opacity: 0;
-      transition:opacity 1.5s $easing;
+      transition:opacity 1500ms $easing;
       cursor: zoom-in;
     }
     img[lazy=loaded] {
@@ -164,21 +126,37 @@ export default {
       opacity:0;
     }
   }
-  &__overlay {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
-    text-align: center;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0.4);
-    cursor: pointer;
-    opacity: 1;
-    transition: opacity 100ms ease-in-out; 
+  &__inner {
+    position: relative;
+    &:before {
+      position: absolute;
+      content: '';
+      top: -15px;
+      left: -15px;
+      bottom: -15px;
+      right: -15px;
+      background: white;
+      z-index: -1;
+      @include ipad {
+        top: -10px;
+        left: -10px;
+        bottom: -10px;
+        right: -10px;
+      }
+    }
+  }
+  &__description {
+    height: auto !important;
+    p {
+      font-family: 'Libre Baskerville';
+      width: 100%;
+      text-align: center;
+      padding: 30px;
+      font-size: 1rem;
+      line-height: 1.625em;
+      font-style: normal;
+      color: black;
+    }
   }
   &__loader {
     position:absolute;
