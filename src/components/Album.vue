@@ -4,22 +4,34 @@
       <div class="album__overlay" v-if="photo.exif.Description">
         <p>{{ photo.exif.Description }}</p>
       </div>
-    
-      <img ref="photo" v-lazy="photo" :style="photoStyle(photo)" :data-lat="getLatitude(photo.exif.GPS)" :data-long="getLongitude(photo.exif.GPS)">
+      <intersect @enter="enter(photo)">
+        <img ref="photo" v-lazy="photo" :style="photoStyle(photo)">
+      </intersect>
       <loader class="album__loader"></loader>
     </div>
   </div>
 </template>
 
 <script>
+import Utils from '../services/Utils.js'
 import mediumZoom from 'medium-zoom'
 import loader from '../components/Loader'
+import Intersect from 'vue-intersect'
+import MobileDetect from 'mobile-detect'
+const md = new MobileDetect(window.navigator.userAgent)
 
 export default {
   name: 'album',
-  props: ['destination'],
+  props: ['destination', 'map', 'marker'],
+  data () {
+    return {
+      isMobile: md.phone() !== null,
+      isTablet: md.tablet() !== null
+    }
+  },
   components: {
-    loader
+    loader,
+    Intersect
   },
   computed: {
     photos () {
@@ -35,9 +47,10 @@ export default {
   },
   methods: {
     photoStyle (photo) {
-      let landscape = photo.size.width > photo.size.height
-      let width = landscape ? Math.round(window.innerWidth / 2.5) : Math.round(window.innerHeight / 2.2)
-      let height = Math.round((width * photo.size.height) / photo.size.width)
+      const landscape = photo.size.width > photo.size.height
+      const portraitRatio = this.isTablet ? 3.1 : 2.6
+      const width = landscape ? Math.round(window.innerWidth / 2.5) : Math.round(window.innerHeight / portraitRatio) // todo special case for iPad
+      const height = Math.round((width * photo.size.height) / photo.size.width)
 
       return {
         width: `${width}px`,
@@ -53,11 +66,25 @@ export default {
     },
     getLongitude (gps) {
       return gps ? gps.lng : ''
+    },
+    enter (photo) {
+      if (photo.exif.GPS) {
+        console.log(photo.src, photo.exif.GPS)
+        const destinationGPS = new mapboxgl.LngLat(photo.exif.GPS.lng, photo.exif.GPS.lat)
+        this.marker.setLngLat(destinationGPS)
+        this.map.easeTo({
+          center: destinationGPS,
+          zoom: 11,
+          duration: 1600,
+          offset: Utils.getMarkerOffset(),
+          pitch: 60
+        })
+      }
     }
   },
   mounted () {
     mediumZoom(this.$refs.photo, {
-      margin: 60
+      margin: 40
     })
   }
 }
@@ -97,6 +124,12 @@ export default {
       bottom: -15px;
       right: -15px;
       background: white;
+      @include ipad {
+        top: -10px;
+        left: -10px;
+        bottom: -10px;
+        right: -10px;
+      }
     }
     &:nth-child(even) {
       &.landscape {

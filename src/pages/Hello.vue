@@ -5,8 +5,8 @@
         <loader></loader>
       </div>
     </transition>
-    <div class="hello__content" ref="content">
-      <Album v-if="activeDestination" :destination="activeDestination" :map="map"></Album>
+    <div class="hello__content js-content" ref="content">
+      <Album v-if="activeDestination" :destination="activeDestination" :map="map" :marker="activeMarker"></Album>
     </div>
     <div class="hello__map">
       <div id="map" ref="map"></div>
@@ -48,6 +48,7 @@ import Album from '../components/Album'
 import loader from '../components/Loader'
 import content from '../data/content'
 import { gsap, Power4 } from 'gsap'
+import Utils from '../services/Utils.js'
 
 let winsize = {width: window.innerWidth, height: window.innerHeight}
 
@@ -112,13 +113,8 @@ export default {
         center: destinationGPS,
         zoom: this.mapOptions.zoom + 3,
         duration: 1600,
-        offset: this.getMarkerOffset()
+        offset: Utils.getMarkerOffset()
       })
-    },
-    getMarkerOffset () {
-      let x = (window.innerWidth / 2) - ((window.innerWidth - this.$refs.content.offsetWidth) / 2)
-      let y = 0
-      return [x, y]
     },
     toggle (action) {
       if (action === 'show') {
@@ -213,6 +209,11 @@ export default {
       return Math.random() * (max - min) + min
     }
   },
+  computed: {
+    activeMarker () {
+      return this.markers && this.activeDestination ? this.markers[this.activeDestination.name] : null
+    }
+  },
   mounted () {
     mapboxgl.accessToken = this.mapOptions.token
     this.map = new mapboxgl.Map({
@@ -227,20 +228,6 @@ export default {
       count++
       if (count === 4) {
         this.loaded = true
-      }
-      if (el.dataset.lat && el.dataset.long) {
-        let destinationGPS = new mapboxgl.LngLat(84.016667, 28.666667)
-        this.map.easeTo({
-          center: destinationGPS,
-          zoom: 11,
-          duration: 1600,
-          offset: this.getMarkerOffset(),
-          pitch: 60
-        })
-        let activeMarker = this.markers[this.activeDestination.name]
-        if (activeMarker) {
-          activeMarker.setLngLat(destinationGPS)
-        }
       }
     })
   }
@@ -285,10 +272,13 @@ export default {
     position: relative;
     z-index: 30;
     grid-area: 2 / 3;
-    margin-right: 30px;
+    margin-right: 15px;
     writing-mode: vertical-rl;
     text-align: left;
     opacity: 0;
+    @include ipad {
+      margin-right: 5px;
+    }
     .title {
       font-size: 2rem;
       line-height: 1.2;
@@ -296,11 +286,17 @@ export default {
       font-weight: 600;
       padding: 0;
       margin: 0;
+      @include ipad {
+        font-size: 1.3rem;
+      }
     }
     .subtitle {
       font-weight: 400;
       display: block;
       font-size:1.7rem;
+      @include ipad {
+        font-size: 1rem;
+      }
     }
   }
   &__loader {
@@ -320,7 +316,7 @@ export default {
     top: 100vh;
     left: 0;
     width: 65vw;
-    padding: 10vh 10vh 0 3vh;
+    padding: 10vh 10vh 0 5vh;
     z-index: 10;
     height: 100vh;
     background-color: #e5e5e5;
