@@ -5,7 +5,7 @@
   }
 
   @if $media-query == ipad {
-    @media all and (device-width: 1366px) and (device-height: 1024px) and (orientation:landscape) { @content; }
+    @media all and (max-width: 1366px) { @content; }
   }
 }
 
