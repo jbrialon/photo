@@ -343,6 +343,8 @@ export default {
     left: 0;
     right: 0;
     bottom: 0;
+    height: 100vh;
+    width: 100vw;
     grid-template-columns: 17vw 21vw 17vw 17vw 8vw;
     grid-column-gap: 5vw;
     overflow: hidden;
