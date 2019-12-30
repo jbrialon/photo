@@ -1,9 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Hello from 'pages/Hello'
-import Albums from 'pages/Albums'
-import Album from 'pages/Album'
-import About from 'pages/About'
+import Octnov from 'pages/Octnov'
+import Travels from 'pages/Travels'
+import Travel from 'pages/Travel'
+import MobileDetect from 'mobile-detect'
+
+const md = new MobileDetect(window.navigator.userAgent)
+const isMobile = md.phone() !== null
 
 Vue.use(Router)
 
@@ -16,25 +19,20 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Hello',
-      component: Hello
+      name: 'Octnov',
+      component: isMobile ? Travels : Octnov
     },
     {
-      path: '/albums/',
-      name: 'Albums',
-      component: Albums,
+      path: '/travels/',
+      name: 'Travels',
+      component: Travels,
       props: true
     },
     {
-      path: '/album/:name',
-      name: 'Album',
-      component: Album,
+      path: '/travel/:name',
+      name: 'Travel',
+      component: Travel,
       props: true
-    },
-    {
-      path: '/about',
-      name: 'About',
-      component: About
     }
   ]
 })

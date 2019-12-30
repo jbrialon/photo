@@ -1,22 +1,26 @@
 <template>
-  <div class="hello">
+  <div class="travels">
+    <c-header></c-header>
     <article v-for="(album, index) in albums" :key="index">
-      <router-link :to="{ name: 'Album', params: { name: album.name }}">
+      <router-link :to="{ name: 'Travel', params: { name: album.name }}">
         <h2>
           {{ album.displayName }}
         </h2>
         <div v-lazy:background-image="album.cover" class="img"></div>
       </router-link>
     </article>
+    <c-footer></c-footer>
   </div>
 </template>
 
 <script>
 import content from '../data/content'
 import { pickBy } from 'lodash'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
 
 export default {
-  name: 'hello',
+  name: 'travels',
   metaInfo: {
     title: content.meta.title,
     titleTemplate: `%s`,
@@ -26,6 +30,10 @@ export default {
     return {
       albums: pickBy(content.albums, album => !album.hidden)
     }
+  },
+  components: {
+    'c-header': Header,
+    'c-footer': Footer
   }
 }
 </script>
@@ -34,13 +42,13 @@ export default {
 @import '../scss/vars';
 @import '../scss/mixins';
 
-.hello {
+.travels {
   width:100%;
   display:flex;
   flex-wrap: wrap;
   
   @include small-only {
-    padding-top:5vw;
+    // padding-top:5vw;
   }
 
   article {

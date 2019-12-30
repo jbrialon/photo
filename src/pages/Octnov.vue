@@ -1,20 +1,20 @@
 <template>
-  <div class="hello">
+  <div class="octnov">
     <transition name="slide">
-      <div class="hello__loader" v-if="!loaded">
+      <div class="octnov__loader" v-if="!loaded">
         <loader></loader>
       </div>
     </transition>
-    <div class="hello__content js-content" ref="content">
+    <div class="octnov__content js-content" ref="content">
       <Album v-if="activeDestination" :destination="activeDestination" :map="map" :marker="activeMarker"></Album>
     </div>
-    <div class="hello__map">
+    <div class="octnov__map">
       <div id="map" ref="map"></div>
     </div>
-    <div class="hello__grid hello__grid--outer">
+    <div class="octnov__grid octnov__grid--outer">
       <div class="title-wrap" ref="title">
         <h1 class="title">{{ title }}</h1>
-        <span class="subtitle">Octobre+Novembre</span>
+        <span class="subtitle">October+November</span>
         <span class="year">2019</span>
       </div>
       <div class="subtitle-wrap" ref="subtitle">
@@ -22,17 +22,17 @@
         <span class="subtitle" v-if="activeDestination">{{ activeDestination.text }}</span>
       </div>
     </div>
-    <div class="hello__grid" ref="items">
-      <div class="hello__item" ref="item" v-for="(entry, propertyName, index) in menu" :key="index" @click="setDestination(propertyName)">
-        <h2 class="hello__item-title"><span>{{ entry.displayName }}</span></h2>
-        <span class="hello__item-number"><span>{{ formatIndex(index) }}</span></span>
-        <div class="hello__item-imgwrap">
-          <img class="hello__item-img" :src="entry.cover.src" />
-          <div class="hello__item-bg" v-lazy:background-image="entry.cover.src"></div>
+    <div class="octnov__grid" ref="items">
+      <div class="octnov__item" ref="item" v-for="(entry, propertyName, index) in menu" :key="index" @click="setDestination(propertyName)">
+        <h2 class="octnov__item-title"><span>{{ entry.displayName }}</span></h2>
+        <span class="octnov__item-number"><span>{{ formatIndex(index) }}</span></span>
+        <div class="octnov__item-imgwrap">
+          <img class="octnov__item-img" :src="entry.cover.src" />
+          <div class="octnov__item-bg" v-lazy:background-image="entry.cover.src"></div>
         </div>
       </div>
-      <div class="hello__item hello__item--more" ref="more">
-        <router-link :to="{ name: 'Albums'}" ref="togglemore">
+      <div class="octnov__item octnov__item--more" ref="more">
+        <router-link :to="{ name: 'Travels'}" ref="togglemore">
            More +
         </router-link>
         <button @click="toggle('show')" ref="toggleBack">
@@ -238,7 +238,7 @@ export default {
 @import '../scss/vars';
 @import '../scss/mixins';
 
-.hello {
+.octnov {
   position:relative;
   width: 100vw;
   height: 100vh;
@@ -378,13 +378,13 @@ export default {
       right: 0;
     }
     &:hover {
-      .hello__item-bg {
+      .octnov__item-bg {
         transform: translate3d(0px , 4px, 0) scale(0.99);
       }
-      .hello__item-title {
+      .octnov__item-title {
         transform: translate3d(3px , 3px, 0);
       }
-      .hello__item-number {
+      .octnov__item-number {
         transform: translate3d(0px , -4px, 0);
       }
     }

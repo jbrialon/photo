@@ -1,35 +1,8 @@
 <template>
   <div id="app" v-cloak>
-    <header v-if="false"> 
-      <h1>
-        <router-link to="/">
-          {{ title }}
-        </router-link>
-      </h1>
-      <ul>
-        <li>
-          <a href="https://www.instagram.com/jbrialon/" target="_blank" rel="noopener">
-            instagram
-          </a>
-        </li>
-        <li>
-          <router-link :to="{ name: 'Hello'}">
-            travels
-          </router-link>
-        </li>
-        <li>
-          <router-link :to="{ name: 'About'}">
-            about
-          </router-link>
-        </li>
-      </ul>
-    </header>
     <transition name="page" mode="out-in">
       <router-view class="page"></router-view>
     </transition>
-    <footer v-if="false">
-      <p>{{ author }} © {{new Date().getFullYear()}} //</p>
-    </footer>
   </div>
 </template>
 
@@ -41,12 +14,6 @@ export default {
   metaInfo: {
     title: content.meta.title,
     titleTemplate: `%s // — ${content.meta.title}`
-  },
-  data () {
-    return {
-      title: content.meta.title,
-      author: content.meta.author
-    }
   }
 }
 </script>
@@ -63,87 +30,8 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
 
-  header {
-    display:flex;
-    padding:15px;
-
-    h1 {
-      font-weight:400;
-      margin:auto auto auto 0;
-      border: 3px solid black;
-      padding:15px 20px;
-
-      @include small-only {
-        font-size:22px;
-        margin:auto;
-      }
-
-      a {
-        color:black;
-        text-decoration: none;
-      }
-    }
-
-    ul {
-      list-style:none;
-      margin:auto 0 auto auto;
-      font-size:17px;
-
-      @include small-only {
-        display:none;
-      }
-
-
-      li {
-        display:inline-block;
-        margin-right:15px;
-        font-size: 11px;
-        text-transform: uppercase;
-        letter-spacing: 0.16em;
-        font-weight: 400;
-        line-height: 1em;
-
-        a {
-          text-decoration:none;
-          color:black;
-          transition:color 300ms $easing;
-
-          &.active,
-          &:hover {
-            color:$red;
-          }
-        }
-
-        &:after {
-          content: '//'
-        }
-
-        &:last-child {
-          margin-right:0;
-        }
-
-        &:last-child:after {
-          // content:'';
-        }
-      }
-    }
-  }
-
   .page {
     will-change:transform, opacity;
-  }
-
-  footer {
-    display:flex;
-    text-transform:uppercase;
-    height:15vh;
-    padding:15px;
-
-    p {
-      font-weight: 400;
-      font-size:12px;
-      margin:auto 0 auto auto;
-    }
   }
 
   .page-enter-active, .page-leave-active {

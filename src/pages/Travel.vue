@@ -1,32 +1,36 @@
 <template>
-  <div class="album" :style="containerStyle" :class="{'grid': grid}">
-    <article>
-      <p>
-        <span class="album__title">
-          {{ album.displayName }}
-        </span>
-        <br>
-        <br>
-        <span v-html="album.text"></span>
-      </p>
-    </article>
-    <div class="album__photo" v-for="(photo, index) in photos" :key="index" :style="photoContainerStyle(photo)">
-      <img v-lazy="photo" :style="photoStyle(photo)" :alt="alt">
-      <loader class="album__loader"></loader>
+  <div>
+    <c-header></c-header>
+    <div class="travel" :style="containerStyle" :class="{'grid': grid}">
+      <article>
+        <p>
+          <span class="album__title">
+            {{ album.displayName }}
+          </span>
+          <br>
+          <br>
+          <span v-html="album.text"></span>
+        </p>
+      </article>
+      <div class="album__photo" v-for="(photo, index) in photos" :key="index" :style="photoContainerStyle(photo)">
+        <img v-lazy="photo" :style="photoStyle(photo)" :alt="alt">
+        <loader class="album__loader"></loader>
+      </div>
+      <div class="album__discover" v-if="false">
+        <router-link 
+          class="album__discover-item" 
+          :to="{ name: 'Album', params: { name: album.name }}" 
+          v-for="(album, index) in albums" 
+          :key="index"
+          v-lazy:background-image="album.cover"
+        >
+          <h2>
+            {{ album.displayName }}
+          </h2>
+        </router-link>
+      </div>
     </div>
-    <div class="album__discover" v-if="false">
-      <router-link 
-        class="album__discover-item" 
-        :to="{ name: 'Album', params: { name: album.name }}" 
-        v-for="(album, index) in albums" 
-        :key="index"
-        v-lazy:background-image="album.cover"
-      >
-        <h2>
-          {{ album.displayName }}
-        </h2>
-      </router-link>
-    </div>
+    <c-footer></c-footer>
   </div>
 </template>
 
@@ -37,6 +41,8 @@ const md = new MobileDetect(window.navigator.userAgent)
 import content from '../data/content'
 import loader from '../components/Loader'
 import { pickBy } from 'lodash'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
 
 export default {
   name: 'album',
@@ -115,7 +121,9 @@ export default {
     }
   },
   components: {
-    loader
+    loader,
+    'c-header': Header,
+    'c-footer': Footer
   }
 }
 </script>
@@ -124,7 +132,7 @@ export default {
 @import '../scss/vars';
 @import '../scss/mixins';
 
-.album {
+.travel {
   width:100%;
   margin:auto;
   display:flex;

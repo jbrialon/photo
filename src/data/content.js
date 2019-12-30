@@ -22,7 +22,7 @@ export default {
   'octnov': {
     'japon': {
       name: 'japon',
-      displayName: 'Japon',
+      displayName: 'Japan',
       cover: require('../assets/covers/cover-japon.jpg'),
       text: '日本国',
       gps: {lat: 26.212312, lon: 127.679157},
@@ -31,7 +31,7 @@ export default {
     },
     'nepal': {
       name: 'nepal',
-      displayName: 'Népal',
+      displayName: 'Nepal',
       cover: require('../assets/covers/cover-nepal.jpg'),
       text: 'नेपाल',
       gps: {lat: 27.717245, lon: 85.323960},
@@ -49,7 +49,7 @@ export default {
     },
     'thailande': {
       name: 'thailande',
-      displayName: 'Thaïlande',
+      displayName: 'Thailand',
       cover: require('../assets/covers/cover-thailande.jpg'),
       text: 'ราชอาณาจักรไทย',
       gps: {lat: 13.736717, lon: 100.523186},
