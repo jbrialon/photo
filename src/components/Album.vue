@@ -3,7 +3,7 @@
     <div class="album__photo" v-for="(photo, index) in photos" :key="index" :class="getClass(photo)"> 
       <div class="album__inner" :style="photoStyle(photo)" >
         <intersect @enter="enter(photo)">
-          <img ref="photo" v-lazy="photo" :style="photoStyle(photo)">
+          <img v-lazy="photo" :style="photoStyle(photo)">
         </intersect>
         <loader class="album__loader"></loader>
       </div>
@@ -16,19 +16,23 @@
 
 <script>
 import Utils from '../services/Utils.js'
-import mediumZoom from 'medium-zoom'
 import loader from '../components/Loader'
 import Intersect from 'vue-intersect'
-import MobileDetect from 'mobile-detect'
-const md = new MobileDetect(window.navigator.userAgent)
 
 export default {
   name: 'album',
-  props: ['destination', 'map', 'marker'],
-  data () {
-    return {
-      isMobile: md.phone() !== null,
-      isTablet: md.tablet() !== null
+  props: {
+    destination: {
+      type: Object,
+      required: true
+    },
+    map: {
+      type: Object,
+      required: true
+    },
+    marker: {
+      type: Object,
+      required: false
     }
   },
   components: {
@@ -50,8 +54,7 @@ export default {
   methods: {
     photoStyle (photo) {
       const landscape = photo.size.width > photo.size.height
-      const portraitRatio = this.isTablet ? 3.1 : 2.7
-      const width = landscape ? Math.round(window.innerWidth / 2.5) : Math.round(window.innerHeight / portraitRatio)
+      const width = landscape ? Math.round(window.innerWidth / 2.5) : Math.round(document.querySelector('.js-content').offsetWidth / 2.6)
       const height = Math.round((width * photo.size.height) / photo.size.width)
 
       return {
@@ -71,23 +74,17 @@ export default {
     },
     enter (photo) {
       if (photo.exif.GPS) {
-        console.log(photo.src, photo.exif.GPS)
         const destinationGPS = new mapboxgl.LngLat(photo.exif.GPS.lng, photo.exif.GPS.lat)
         this.marker.setLngLat(destinationGPS)
         this.map.easeTo({
           center: destinationGPS,
-          zoom: 11,
+          zoom: this.destination.zoom,
           duration: 1600,
           offset: Utils.getMarkerOffset(),
-          pitch: 60
+          pitch: this.destination.pitch
         })
       }
     }
-  },
-  mounted () {
-    mediumZoom(this.$refs.photo, {
-      margin: 40
-    })
   }
 }
 </script>
@@ -106,9 +103,19 @@ export default {
     &:nth-child(even) {
       &.landscape {
         margin-left: 15vw;
+        .album__description {
+          text-align: right;
+        }
       }
       &.portrait {
         margin-top: 15vh;
+      }
+    }
+    &:nth-child(odd) {
+      &.landscape {
+        .album__description {
+          text-align: left;
+        }    
       }
     }
     img {
@@ -116,8 +123,8 @@ export default {
       width: 100%;
       will-change: opacity;
       opacity: 0;
-      transition:opacity 1500ms $easing;
-      cursor: zoom-in;
+      transition: opacity 1000ms $easing;
+      // cursor: zoom-in;
     }
     img[lazy=loaded] {
       opacity: 1;
@@ -147,15 +154,17 @@ export default {
   }
   &__description {
     height: auto !important;
+    padding-top: 30px;
     p {
+      display: inline;
       font-family: 'Libre Baskerville';
-      width: 100%;
-      text-align: center;
-      padding: 30px;
+      padding: 5px;
       font-size: 1rem;
-      line-height: 1.625em;
+      line-height: 2.45rem;
       font-style: normal;
-      color: black;
+      color: #000;
+      background: #fff;
+      box-shadow: -16px 0 0 0 #fff, 10px 0 0 0 #fff
     }
   }
   &__loader {
