@@ -154,7 +154,10 @@ export default {
   }
   &__description {
     height: auto !important;
-    padding-top: 30px;
+    padding-top: 25px;
+    @include ipad {
+      padding-top: 15px;
+    }
     p {
       display: inline;
       font-family: 'Libre Baskerville';
@@ -164,7 +167,12 @@ export default {
       font-style: normal;
       color: #000;
       background: #fff;
-      box-shadow: -16px 0 0 0 #fff, 10px 0 0 0 #fff
+      box-shadow: -16px 0 0 0 #fff, 10px 0 0 0 #fff;
+      @include ipad {
+        font-size: 0.8rem;
+        line-height: 2rem;
+        box-shadow: -10px 0 0 0 #fff, 10px 0 0 0 #fff;
+      }
     }
   }
   &__loader {

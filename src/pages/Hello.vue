@@ -413,6 +413,9 @@ export default {
       writing-mode: vertical-rl;
       letter-spacing: 1.1px;
       transition: transform 1.2s linear;
+      @include ipad {
+        font-size: 1.4rem;
+      }
     }
     &-number {
       top: -2rem;
@@ -423,6 +426,9 @@ export default {
       z-index: 100;
       writing-mode: vertical-rl;
       transition: transform 1.2s linear;
+      @include ipad {
+        font-size: 1.2rem;
+      }
     }
     &--more {
       display: flex;
