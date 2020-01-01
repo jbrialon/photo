@@ -14,7 +14,7 @@
   "dependencies": {
     "gsap": "file:gsap-bonus.tgz",
     "lodash": "^4.17.4",
-    "mobile-detect": "^1.3.5",
+    "mobile-detect": "^1.4.4",
     "normalize.css": "^5.0.0",
     "vue": "^2.6.11",
     "vue-intersect": "^1.1.3",

@@ -1,5 +1,5 @@
 <template>
-  <div class="octnov">
+  <div class="octnov" :class="{'ipad': isTablet}">
     <transition name="fade">
       <div class="octnov__loader" v-if="!loaded">
         <loader></loader>
@@ -49,8 +49,10 @@ import loader from '../components/Loader'
 import content from '../data/content'
 import { gsap, Power4 } from 'gsap'
 import Utils from '../services/Utils.js'
+import MobileDetect from 'mobile-detect'
+const md = new MobileDetect(window.navigator.userAgent)
 
-let winsize = {width: window.innerWidth, height: window.innerHeight}
+const winsize = {width: window.innerWidth, height: window.innerHeight}
 
 export default {
   name: 'hello',
@@ -72,7 +74,8 @@ export default {
         style: 'mapbox://styles/jbrialon/ck3yg7nb807lc1co990hb80mi/draft',
         center: [100.9925, 15.8700],
         zoom: 3
-      }
+      },
+      isTablet: md.tablet() !== null || winsize.width === 1194
     }
   },
   components: {
@@ -241,7 +244,15 @@ export default {
 .octnov {
   position:relative;
   width: 100vw;
-  height: 100vh;
+  // height: 100vh;
+  &.ipad {
+    height: auto;
+    min-height: -webkit-fill-available;
+    .octnov__grid {
+      height: auto;
+      min-height: -webkit-fill-available;
+    }
+  }
   .title-wrap {
     padding: 0;
     grid-area: 2 / 2 / 2 / 6;
