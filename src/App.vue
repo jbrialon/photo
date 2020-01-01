@@ -33,13 +33,5 @@ export default {
   .page {
     will-change:transform, opacity;
   }
-
-  .page-enter-active, .page-leave-active {
-    transition: transform 750ms $easing, opacity 750ms $easing;
-  }
-  .page-enter, .page-leave-to {
-    opacity:0;
-    transform:translateY(-25px);
-  }
 }
 </style>

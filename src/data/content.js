@@ -127,20 +127,6 @@ export default {
         { name: 'og:image', content: `${url}${require('../assets/img/meta_share_kilimanjaro.gif')}` },
         { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share_kilimanjaro.gif')}` }
       ]
-    },
-    'islande': {
-      name: 'islande',
-      displayName: 'Ísland',
-      cover: require('../assets/photos/islande/islande-53.jpg'),
-      text: '11 days / 0 night to go around Iceland in 4WD Clio ',
-      shuffle: true,
-      hidden: true,
-      grid: false,
-      meta: [
-        { name: 'og:url', content: `${url}/travel/islande` }, // TODO: should be dynamic
-        { name: 'og:image', content: `${url}${require('../assets/img/meta_share.gif')}` },
-        { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share.gif')}` }
-      ]
     }
   },
   'social': [

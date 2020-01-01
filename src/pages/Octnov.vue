@@ -1,6 +1,6 @@
 <template>
   <div class="octnov">
-    <transition name="slide">
+    <transition name="fade">
       <div class="octnov__loader" v-if="!loaded">
         <loader></loader>
       </div>
