@@ -67,7 +67,7 @@ export default {
       hidden: false,
       grid: true,
       meta: [
-        { name: 'og:url', content: `${url}/album/annapurna` }, // TODO: should be dynamic
+        { name: 'og:url', content: `${url}/travel/annapurna` }, // TODO: should be dynamic
         { name: 'og:image', content: `${url}${require('../assets/photos/annapurna/annapurna-34.jpg')}` },
         { name: 'twitter:image', content: `${url}${require('../assets/photos/annapurna/annapurna-34.jpg')}` }
       ]
@@ -81,7 +81,7 @@ export default {
       hidden: false,
       grid: true,
       meta: [
-        { name: 'og:url', content: `${url}/album/istanbul` }, // TODO: should be dynamic
+        { name: 'og:url', content: `${url}/travel/istanbul` }, // TODO: should be dynamic
         { name: 'og:image', content: `${url}${require('../assets/img/meta_share_istanbul.gif')}` },
         { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share_istanbul.gif')}` }
       ]
@@ -95,7 +95,7 @@ export default {
       hidden: false,
       grid: true,
       meta: [
-        { name: 'og:url', content: `${url}/album/myanmar` }, // TODO: should be dynamic
+        { name: 'og:url', content: `${url}/travel/myanmar` }, // TODO: should be dynamic
         { name: 'og:image', content: `${url}${require('../assets/img/meta_share_myanmar.gif')}` },
         { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share_myanmar.gif')}` }
       ]
@@ -109,7 +109,7 @@ export default {
       hidden: false,
       grid: false,
       meta: [
-        { name: 'og:url', content: `${url}/album/malaysia` }, // TODO: should be dynamic
+        { name: 'og:url', content: `${url}/travel/malaysia` }, // TODO: should be dynamic
         { name: 'og:image', content: `${url}${require('../assets/img/meta_share_malaysia.gif')}` },
         { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share_malaysia.gif')}` }
       ]
@@ -123,7 +123,7 @@ export default {
       hidden: false,
       grid: false,
       meta: [
-        { name: 'og:url', content: `${url}/album/kilimanjaro` }, // TODO: should be dynamic
+        { name: 'og:url', content: `${url}/travel/kilimanjaro` }, // TODO: should be dynamic
         { name: 'og:image', content: `${url}${require('../assets/img/meta_share_kilimanjaro.gif')}` },
         { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share_kilimanjaro.gif')}` }
       ]
@@ -137,7 +137,7 @@ export default {
       hidden: true,
       grid: false,
       meta: [
-        { name: 'og:url', content: `${url}/album/islande` }, // TODO: should be dynamic
+        { name: 'og:url', content: `${url}/travel/islande` }, // TODO: should be dynamic
         { name: 'og:image', content: `${url}${require('../assets/img/meta_share.gif')}` },
         { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share.gif')}` }
       ]
