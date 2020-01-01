@@ -61,10 +61,10 @@ export default {
     'annapurna': {
       name: 'annapurna',
       displayName: 'annapurna',
-      cover: require('../assets/photos/annapurna/annapurna-28.jpg'),
-      text: '',
+      cover: require('../assets/photos/annapurna/annapurna-37.jpg'),
+      text: '8 days of walking on one of the most legendary Himalayan treks surrounded by peaks sometimes reaching more than 8000 meters',
       shuffle: false,
-      hidden: true,
+      hidden: false,
       grid: true,
       meta: [
         { name: 'og:url', content: `${url}/album/annapurna` }, // TODO: should be dynamic
@@ -134,7 +134,7 @@ export default {
       cover: require('../assets/photos/islande/islande-53.jpg'),
       text: '11 days / 0 night to go around Iceland in 4WD Clio ',
       shuffle: true,
-      hidden: false,
+      hidden: true,
       grid: false,
       meta: [
         { name: 'og:url', content: `${url}/album/islande` }, // TODO: should be dynamic

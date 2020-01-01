@@ -1,5 +1,5 @@
 <template>
-  <header> 
+  <header class="header"> 
     <h1>
       <router-link to="/">
         {{ title }}
@@ -38,11 +38,11 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 @import '../scss/vars';
 @import '../scss/mixins';
 
-header {
+header.header {
   display:flex;
   padding:15px;
   margin: auto;

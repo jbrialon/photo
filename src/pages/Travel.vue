@@ -4,7 +4,7 @@
     <div class="travel" :style="containerStyle" :class="{'grid': grid}">
       <article>
         <p>
-          <span class="album__title">
+          <span class="travel__title">
             {{ album.displayName }}
           </span>
           <br>
@@ -12,13 +12,13 @@
           <span v-html="album.text"></span>
         </p>
       </article>
-      <div class="album__photo" v-for="(photo, index) in photos" :key="index" :style="photoContainerStyle(photo)">
+      <div class="travel__photo" v-for="(photo, index) in photos" :key="index" :style="photoContainerStyle(photo)">
         <img v-lazy="photo" :style="photoStyle(photo)" :alt="alt">
-        <loader class="album__loader"></loader>
+        <loader class="travel__loader"></loader>
       </div>
-      <div class="album__discover" v-if="false">
+      <div class="travel__discover" v-if="false">
         <router-link 
-          class="album__discover-item" 
+          class="travel__discover-item" 
           :to="{ name: 'Album', params: { name: album.name }}" 
           v-for="(album, index) in albums" 
           :key="index"
@@ -57,7 +57,7 @@ export default {
     return {
       containerStyle: null,
       isMobile: md.phone() !== null,
-      isTablet: md.tablet() !== null && window.matchMedia('(orientation: portrait)').matches,
+      isTablet: md.tablet() !== null,
       album: content.albums[this.name],
       albums: pickBy(content.albums, item => !item.hidden),
       alt: `${content.albums[this.name].displayName} - ${content.meta.author}`,

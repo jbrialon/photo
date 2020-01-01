@@ -47,10 +47,28 @@ export default {
   display:flex;
   flex-wrap: wrap;
   
-  @include small-only {
-    // padding-top:5vw;
-  }
+  header.header {
+    justify-content: center;
+    width: 50%;
+    height:55vh;
+    padding: 0 35px;
+    @include small-only {
+      width: 100%;
+      height:250px;
+    }
 
+    @include ipad {
+      height:340px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      h1,
+      ul {
+        margin: auto;
+        padding: 0;
+      }
+    }
+  }
   article {
     position:relative;
     width: 50%;
