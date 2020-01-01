@@ -68,8 +68,8 @@ export default {
       grid: true,
       meta: [
         { name: 'og:url', content: `${url}/travel/annapurna` }, // TODO: should be dynamic
-        { name: 'og:image', content: `${url}${require('../assets/photos/annapurna/annapurna-34.jpg')}` },
-        { name: 'twitter:image', content: `${url}${require('../assets/photos/annapurna/annapurna-34.jpg')}` }
+        { name: 'og:image', content: `${url}${require('../assets/img/meta_share_annapurna.gif')}` },
+        { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share_annapurna.gif')}` }
       ]
     },
     'istanbul': {
