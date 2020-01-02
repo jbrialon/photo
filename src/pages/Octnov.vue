@@ -65,8 +65,7 @@ const winsize = {width: window.innerWidth, height: window.innerHeight}
 export default {
   name: 'hello',
   metaInfo: {
-    title: content.meta.title,
-    titleTemplate: `%s`,
+    title: 'Oct+Nov',
     meta: content.meta.meta
   },
   data () {

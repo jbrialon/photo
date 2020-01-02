@@ -30,7 +30,7 @@ export default new Router({
       props: true
     },
     {
-      path: '/travel/:name',
+      path: '/album/:name',
       name: 'Travel',
       component: Travel,
       props: true
