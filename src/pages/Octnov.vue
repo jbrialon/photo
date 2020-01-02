@@ -1,8 +1,15 @@
 <template>
   <div class="octnov" :class="{'ipad': isTablet}">
     <transition name="fade">
-      <div class="octnov__loader" v-if="!loaded">
+      <div class="octnov__loader" v-if="!loaded || isMobile">
+        <c-header v-if="isMobile"></c-header>
         <loader></loader>
+        <div class="disclaimer" v-if="isMobile">
+          <p>this experience is desktop/tablet only :(</p>
+          <router-link :to="{ name: 'Travels'}" ref="togglemore">
+           back
+          </router-link>
+        </div>
       </div>
     </transition>
     <div class="octnov__content js-content" ref="content">
@@ -46,6 +53,7 @@
 <script>
 import Album from '../components/Album'
 import loader from '../components/Loader'
+import Header from '../components/Header'
 import content from '../data/content'
 import { gsap, Power4 } from 'gsap'
 import Utils from '../services/Utils.js'
@@ -75,12 +83,14 @@ export default {
         center: [100.9925, 15.8700],
         zoom: 3
       },
+      isMobile: md.phone() !== null,
       isTablet: md.tablet() !== null || winsize.width === 1194
     }
   },
   components: {
     Album,
-    loader
+    loader,
+    'c-header': Header
   },
   methods: {
     mapload () {
@@ -311,12 +321,32 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     z-index: 20;
     background: white;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
+    .loader {
+      @include small-only {
+        display: none !important;
+      }
+    }
+    header.header {
+      margin: 0;
+    }
+    .disclaimer {
+      p, 
+      a {
+        font-weight: 700;
+        font-size: 1.2rem;
+        line-height: 2.1rem;
+        text-transform: uppercase;
+        color: #989898;
+      }
+      width:75%;
+    }
   }
   &__content {
     position: absolute;
