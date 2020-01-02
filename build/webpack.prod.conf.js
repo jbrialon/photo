@@ -89,11 +89,11 @@ var webpackConfig = merge(baseWebpackConfig, {
       // List of routes to prerender
       [ 
         '/',
-        '/travel/annapurna',
-        '/travel/istanbul',
-        '/travel/malaysia',
-        '/travel/kilimanjaro',
-        '/travel/myanmar',
+        '/album/annapurna',
+        '/album/istanbul',
+        '/album/malaysia',
+        '/album/kilimanjaro',
+        '/album/myanmar',
         '/octnov'
       ]
     )
