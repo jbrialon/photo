@@ -109,6 +109,9 @@ export default {
       }
       &.portrait {
         margin-top: 15vh;
+        .album__description {
+          text-align: right;
+        }
       }
     }
     &:nth-child(odd) {
@@ -116,6 +119,11 @@ export default {
         .album__description {
           text-align: left;
         }    
+      }
+      &.portrait {
+        .album__description {
+          text-align: left;
+        }
       }
     }
     img {
