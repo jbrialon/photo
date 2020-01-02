@@ -167,7 +167,7 @@ export default {
       font-style: normal;
       color: #000;
       background: #fff;
-      box-shadow: -16px 0 0 0 #fff, 10px 0 0 0 #fff;
+      box-shadow: -15px 0 0 0 #fff, 15px 0 0 0 #fff;
       @include ipad {
         font-size: 0.8rem;
         line-height: 2rem;
