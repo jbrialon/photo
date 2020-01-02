@@ -226,12 +226,8 @@ export default {
       zoom: this.mapOptions.zoom // starting zoom
     })
     this.map.on('load', this.mapload)
-    var count = 0
-    this.$Lazyload.$on('loaded', ({ el }) => {
-      count++
-      if (count === 4) {
-        this.loaded = true
-      }
+    Utils.preLoadFirstImages(content.octnov).then(() => {
+      this.loaded = true
     })
   }
 }
