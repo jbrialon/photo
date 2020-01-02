@@ -1,8 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Hello from 'pages/Hello'
-import Album from 'pages/Album'
-import About from 'pages/About'
+import Octnov from 'pages/Octnov'
+import Travels from 'pages/Travels'
+import Travel from 'pages/Travel'
+// import MobileDetect from 'mobile-detect'
+
+// const md = new MobileDetect(window.navigator.userAgent)
+// const isMobile = md.phone() !== null
 
 Vue.use(Router)
 
@@ -10,25 +14,26 @@ export default new Router({
   mode: 'history',
   linkExactActiveClass: 'active',
   scrollBehavior (to, from, savedPosition) {
-    console.log('ee')
     return { x: 0, y: 0 }
   },
   routes: [
     {
       path: '/',
-      name: 'Hello',
-      component: Hello
-    },
-    {
-      path: '/album/:name',
-      name: 'Album',
-      component: Album,
+      name: 'Travels',
+      component: Travels,
       props: true
     },
     {
-      path: '/about',
-      name: 'About',
-      component: About
+      path: '/octnov/',
+      name: 'Octnov',
+      component: Octnov,
+      props: true
+    },
+    {
+      path: '/album/:name',
+      name: 'Travel',
+      component: Travel,
+      props: true
     }
   ]
 })

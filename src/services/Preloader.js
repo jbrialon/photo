@@ -11,7 +11,7 @@ export default {
       if (done[src]) {
         return Promise.resolve()
       }
-      console.log('preloading', src)
+      // console.log('preloading', src)
       return this.loadImage(src)
     }))
   },

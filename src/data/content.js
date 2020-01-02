@@ -19,19 +19,57 @@ export default {
       { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share.gif')}` }
     ]
   },
+  'octnov': {
+    'japon': {
+      name: 'japon',
+      displayName: 'Japan',
+      cover: require('../assets/covers/cover-japon.jpg'),
+      text: '日本国',
+      gps: {lat: 26.212312, lon: 127.679157},
+      zoom: 11,
+      pitch: 60
+    },
+    'nepal': {
+      name: 'nepal',
+      displayName: 'Nepal',
+      cover: require('../assets/covers/cover-nepal.jpg'),
+      text: 'नेपाल',
+      gps: {lat: 27.717245, lon: 85.323960},
+      zoom: 11,
+      pitch: 60
+    },
+    'annapurna': {
+      name: 'annapurna',
+      displayName: 'Annapurna',
+      cover: require('../assets/covers/cover-annapurna.jpg'),
+      text: 'अन्नपूर्ण संरक्षण क्षेत्र',
+      gps: {lat: 27.717245, lon: 85.323960},
+      zoom: 11,
+      pitch: 60
+    },
+    'thailande': {
+      name: 'thailande',
+      displayName: 'Thailand',
+      cover: require('../assets/covers/cover-thailande.jpg'),
+      text: 'ราชอาณาจักรไทย',
+      gps: {lat: 13.736717, lon: 100.523186},
+      zoom: 11,
+      pitch: 60
+    }
+  },
   'albums': {
     'annapurna': {
       name: 'annapurna',
       displayName: 'annapurna',
-      cover: require('../assets/photos/annapurna/annapurna-28.jpg'),
-      text: '',
+      cover: require('../assets/photos/annapurna/annapurna-25.jpg'),
+      text: '8 days of walking on one of the most legendary Himalayan treks surrounded by peaks sometimes reaching more than 8000 meters',
       shuffle: false,
-      hidden: true,
+      hidden: false,
       grid: true,
       meta: [
-        { name: 'og:url', content: `${url}/album/annapurna` }, // TODO: should be dynamic
-        { name: 'og:image', content: `${url}${require('../assets/photos/annapurna/annapurna-34.jpg')}` },
-        { name: 'twitter:image', content: `${url}${require('../assets/photos/annapurna/annapurna-34.jpg')}` }
+        { name: 'og:url', content: `${url}/travel/annapurna` }, // TODO: should be dynamic
+        { name: 'og:image', content: `${url}${require('../assets/img/meta_share_annapurna.gif')}` },
+        { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share_annapurna.gif')}` }
       ]
     },
     'istanbul': {
@@ -43,7 +81,7 @@ export default {
       hidden: false,
       grid: true,
       meta: [
-        { name: 'og:url', content: `${url}/album/istanbul` }, // TODO: should be dynamic
+        { name: 'og:url', content: `${url}/travel/istanbul` }, // TODO: should be dynamic
         { name: 'og:image', content: `${url}${require('../assets/img/meta_share_istanbul.gif')}` },
         { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share_istanbul.gif')}` }
       ]
@@ -57,7 +95,7 @@ export default {
       hidden: false,
       grid: true,
       meta: [
-        { name: 'og:url', content: `${url}/album/myanmar` }, // TODO: should be dynamic
+        { name: 'og:url', content: `${url}/travel/myanmar` }, // TODO: should be dynamic
         { name: 'og:image', content: `${url}${require('../assets/img/meta_share_myanmar.gif')}` },
         { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share_myanmar.gif')}` }
       ]
@@ -71,7 +109,7 @@ export default {
       hidden: false,
       grid: false,
       meta: [
-        { name: 'og:url', content: `${url}/album/malaysia` }, // TODO: should be dynamic
+        { name: 'og:url', content: `${url}/travel/malaysia` }, // TODO: should be dynamic
         { name: 'og:image', content: `${url}${require('../assets/img/meta_share_malaysia.gif')}` },
         { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share_malaysia.gif')}` }
       ]
@@ -85,79 +123,9 @@ export default {
       hidden: false,
       grid: false,
       meta: [
-        { name: 'og:url', content: `${url}/album/kilimanjaro` }, // TODO: should be dynamic
+        { name: 'og:url', content: `${url}/travel/kilimanjaro` }, // TODO: should be dynamic
         { name: 'og:image', content: `${url}${require('../assets/img/meta_share_kilimanjaro.gif')}` },
         { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share_kilimanjaro.gif')}` }
-      ]
-    },
-    'islande': {
-      name: 'islande',
-      displayName: 'Ísland',
-      cover: require('../assets/photos/islande/islande-53.jpg'),
-      text: '11 days / 0 night to go around Iceland in 4WD Clio ',
-      shuffle: true,
-      hidden: false,
-      grid: false,
-      meta: [
-        { name: 'og:url', content: `${url}/album/islande` }, // TODO: should be dynamic
-        { name: 'og:image', content: `${url}${require('../assets/img/meta_share.gif')}` },
-        { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share.gif')}` }
-      ]
-    },
-    'interlac': {
-      name: 'interlac',
-      displayName: 'Interlac',
-      cover: require('../assets/photos/interlac/interlac-25.jpg'),
-      text: '3 days / 2 nights to connect Lake Annecy to Lake Aix les Bains',
-      shuffle: true,
-      hidden: true,
-      grid: false,
-      meta: [
-        { name: 'og:url', content: `${url}/album/interlac` }, // TODO: should be dynamic
-        { name: 'og:image', content: `${url}${require('../assets/img/meta_share.gif')}` },
-        { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share.gif')}` }
-      ]
-    },
-    'ardeche': {
-      name: 'ardeche',
-      displayName: 'Ardèche',
-      metaImage: `${url}${require('../assets/img/meta_share.gif')}`,
-      text: 'parce que l\'Ardèche c\'est chouette',
-      shuffle: true,
-      hidden: true,
-      grid: false,
-      meta: [
-        { name: 'og:url', content: `${url}/album/ardeche` }, // TODO: should be dynamic
-        { name: 'og:image', content: `${url}${require('../assets/img/meta_share.gif')}` },
-        { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share.gif')}` }
-      ]
-    },
-    'GR20': {
-      name: 'GR20',
-      displayName: 'le GR20',
-      cover: require('../assets/photos/GR20/gr20-33.jpg'),
-      text: '5 + 7 jours pour faire le GR20 du Sud au Nord',
-      shuffle: false,
-      hidden: true,
-      grid: false,
-      meta: [
-        { name: 'og:url', content: `${url}/album/GR20` }, // TODO: should be dynamic
-        { name: 'og:image', content: `${url}${require('../assets/img/meta_share_gr20.gif')}` },
-        { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share_gr20.gif')}` }
-      ]
-    },
-    'kayak': {
-      name: 'kayak',
-      displayName: 'l\'ain en Kayak',
-      metaImage: `${url}${require('../assets/img/meta_share_kayak.gif')}`,
-      text: 'aucun poisson n\'a été bléssé dans cette aventure',
-      shuffle: false,
-      hidden: true,
-      grid: true,
-      meta: [
-        { name: 'og:url', content: `${url}/album/kayak` }, // TODO: should be dynamic
-        { name: 'og:image', content: `${url}${require('../assets/img/meta_share_kayak.gif')}` },
-        { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share_kayak.gif')}` }
       ]
     }
   },

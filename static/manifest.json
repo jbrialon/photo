@@ -1,0 +1,14 @@
+{
+  "background_color": "#e5e5e5",
+  "theme_color": "#9e0000",
+  "name": "Il fait des jolis photos ton appareil",
+  "short_name": "à l'est //",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "160x160",
+      "type": "image/png"
+    }
+  ]
+}

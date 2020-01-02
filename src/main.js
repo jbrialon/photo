@@ -10,7 +10,8 @@ import 'normalize.css'
 Vue.use(Meta)
 Vue.use(VueLazyload, {
   preLoad: 2,
-  attempt: 3
+  attempt: 3,
+  observer: true
 })
 
 /* eslint-disable no-new */

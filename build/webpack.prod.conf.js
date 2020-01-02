@@ -93,13 +93,8 @@ var webpackConfig = merge(baseWebpackConfig, {
         '/album/istanbul',
         '/album/malaysia',
         '/album/kilimanjaro',
-        '/album/interlac',
-        '/album/islande',
-        '/album/ardeche',
         '/album/myanmar',
-        '/album/GR20',
-        '/album/kayak',
-        '/about'
+        '/octnov'
       ]
     )
   ]
