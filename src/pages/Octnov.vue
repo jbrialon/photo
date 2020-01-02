@@ -236,8 +236,9 @@ export default {
       zoom: this.mapOptions.zoom // starting zoom
     })
     this.map.on('load', this.mapload)
-    Utils.preLoadFirstImages(content.octnov).then(() => {
+    Utils.preloadFirstImages().then(() => {
       this.loaded = true
+      Utils.preloadImages()
     })
   }
 }
