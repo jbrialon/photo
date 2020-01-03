@@ -5,10 +5,15 @@
         <c-header v-if="isMobile"></c-header>
         <loader></loader>
         <div class="disclaimer" v-if="isMobile">
-          <p>this experience is desktop/tablet only :(</p>
-          <router-link :to="{ name: 'Travels'}" ref="togglemore">
-           back
-          </router-link>
+          <br>
+          <br>
+          <br>
+          <p>
+            This page is desktop and tablet only, but you can see the photos <router-link :to="{ name: 'Travels'}">here</router-link>.
+            <br>
+            <br>
+            Or send yourself an <a href="mailto:?subject=Oct+Nov%20-Nov%20Complètement%20à%20l'est&body=I%20really%20should%20visit%20https://www.completementalest.fr/octnov%20!">email</a> as a reminder to visit this page on your computer.
+          </p>
         </div>
       </div>
     </transition>
@@ -337,13 +342,20 @@ export default {
       margin: 0;
     }
     .disclaimer {
+      text-align: center;
       p, 
       a {
-        font-weight: 700;
-        font-size: 1.2rem;
-        line-height: 2.1rem;
-        text-transform: uppercase;
-        color: #949494;
+        display: inline;
+        
+        font-family: 'Libre Baskerville';
+        font-size: 1.1rem;
+        line-height: 2.5rem;
+        color: #fff;
+        background: #000;
+      }
+      p {
+        padding: 5px;
+        box-shadow: -15px 0 0 0 #000, 15px 0 0 0 #000;
       }
       width:75%;
     }
