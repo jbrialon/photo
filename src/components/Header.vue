@@ -6,7 +6,7 @@
       </router-link>
     </h1>
     <ul>
-      <li v-if="false">
+      <li>
         <router-link :to="{ name: 'Octnov'}">
           Oct+nov
         </router-link>

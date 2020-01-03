@@ -13,7 +13,7 @@
       </div>
     </transition>
     <div class="octnov__content js-content" ref="content">
-      <Album v-if="activeDestination" :destination="activeDestination" :map="map" :marker="activeMarker"></Album>
+      <Album v-if="activeDestination" :destination="activeDestination" :map="map" :marker="activeMarker" :back="toggle"></Album>
     </div>
     <div class="octnov__map">
       <div id="map" ref="map"></div>
@@ -42,7 +42,7 @@
         <router-link :to="{ name: 'Travels'}" ref="togglemore">
            More +
         </router-link>
-        <button @click="toggle('show')" ref="toggleBack">
+        <button @click="toggle('show')" ref="toggleBack" v-show="activeDestination">
            Back
         </button>
       </div>
@@ -343,7 +343,7 @@ export default {
         font-size: 1.2rem;
         line-height: 2.1rem;
         text-transform: uppercase;
-        color: #989898;
+        color: #949494;
       }
       width:75%;
     }
@@ -353,7 +353,7 @@ export default {
     top: 100vh;
     left: 0;
     width: 65vw;
-    padding: 10vh 10vh 0 5vh;
+    padding: 10vh 10vh 10vh 5vh;
     z-index: 10;
     height: 100vh;
     background-color: #e5e5e5;

@@ -1,15 +1,38 @@
 <template>
   <div class="album">
-    <div class="album__photo" v-for="(photo, index) in photos" :key="index" :class="getClass(photo)"> 
-      <div class="album__inner" :style="photoStyle(photo)" >
-        <intersect @enter="enter(photo)">
-          <img v-lazy="photo" :style="photoStyle(photo)">
-        </intersect>
-        <loader class="album__loader"></loader>
+    <template v-if="hasPhoto">
+      <div class="album__photo" v-for="(photo, index) in photos" :key="index" :class="getClass(photo)">
+        <div class="album__inner" :style="photoStyle(photo)" >
+          <intersect @enter="enter(photo)">
+            <img v-lazy="photo" :style="photoStyle(photo)">
+          </intersect>
+          <loader class="album__loader"></loader>
+        </div>
+        <div class="album__description" v-if="photo.exif.Description" :style="photoStyle(photo)">
+          <p>{{ photo.exif.Description }}</p>
+        </div>
       </div>
-      <div class="album__description" v-if="photo.exif.Description" :style="photoStyle(photo)">
-        <p>{{ photo.exif.Description }}</p>
+      <div class="album__link">
+        <router-link :to="{ name: 'Travel', params: { name: destination.name }}" title="See Photo in Big">
+          album
+        </router-link>
+        <button @click="back('show')">
+          back
+        </button>
       </div>
+     </template>
+    <div v-else>
+      <p>
+        <pre>
+   _____    ____     ____    _   _ 
+  / ____|  / __ \   / __ \  | \ | |
+ | (___   | |  | | | |  | | |  \| |
+  \___ \  | |  | | | |  | | | . ` |
+  ____) | | |__| | | |__| | | |\  |
+ |_____/   \____/   \____/  |_| \_|
+                                                   
+        </pre>
+      </p>
     </div>
   </div>
 </template>
@@ -33,6 +56,10 @@ export default {
     marker: {
       type: Object,
       required: false
+    },
+    back: {
+      type: Function,
+      required: true
     }
   },
   components: {
@@ -49,6 +76,9 @@ export default {
       // return an Array of require items
       .map(item => req(item))
       return photos
+    },
+    hasPhoto () {
+      return this.photos.length > 3
     }
   },
   methods: {
@@ -180,6 +210,30 @@ export default {
         font-size: 0.8rem;
         line-height: 2rem;
         box-shadow: -10px 0 0 0 #fff, 10px 0 0 0 #fff;
+      }
+    }
+  }
+  &__link {
+    width: 100%;
+    button, 
+    a {
+      display: inline-block;
+      height: auto;
+      padding: 10px;
+      font-size: 1rem;
+      line-height: 1.45rem;
+      text-transform: uppercase;
+      text-decoration:none;
+      font-style: normal;
+      font-weight: 700;
+      color: #949494;
+      background: #fff;
+      box-shadow: -15px 0 0 0 #fff, 15px 0 0 0 #fff;
+      border: none; 
+      margin: 0;
+      cursor: pointer;
+      &:last-child {
+        margin-left: 55px;
       }
     }
   }
