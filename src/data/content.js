@@ -61,7 +61,7 @@ export default {
     'annapurna': {
       name: 'annapurna',
       displayName: 'annapurna',
-      cover: require('../assets/photos/annapurna/annapurna-25.jpg'),
+      cover: require('../assets/photos/annapurna/annapurna-23.jpg'),
       text: '8 days of walking on one of the most legendary Himalayan treks surrounded by peaks sometimes reaching more than 8000 meters',
       shuffle: false,
       hidden: false,
