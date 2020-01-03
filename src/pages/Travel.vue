@@ -1,7 +1,7 @@
 <template>
   <div>
     <c-header></c-header>
-    <div class="travel" :style="containerStyle" :class="{'grid': grid}">
+    <div class="travel" :class="{'grid': grid}">
       <article>
         <p>
           <span class="travel__title">
@@ -12,7 +12,7 @@
           <span v-html="album.text"></span>
         </p>
       </article>
-      <div class="travel__photo" v-for="(photo, index) in photos" :key="index" :style="photoContainerStyle(photo)">
+      <div class="travel__photo" v-for="(photo, index) in photos" :key="index" :style="photoContainerStyle(photo)" :class="getClass(photo)">
         <img v-lazy="photo" :style="photoStyle(photo)" :alt="alt">
         <loader class="travel__loader"></loader>
       </div>
@@ -55,9 +55,8 @@ export default {
   },
   data () {
     return {
-      containerStyle: null,
       isMobile: md.phone() !== null,
-      isTablet: md.tablet() !== null,
+      isTablet: md.tablet() !== null || window.innerWidth === 1194,
       album: content.albums[this.name],
       albums: pickBy(content.albums, item => !item.hidden),
       alt: `${content.albums[this.name].displayName} - ${content.meta.author}`,
@@ -65,6 +64,10 @@ export default {
     }
   },
   methods: {
+    getClass (photo) {
+      let landscape = photo.size.width > photo.size.height
+      return landscape ? 'landscape' : 'portrait'
+    },
     photoContainerStyle (photo) {
       let width = photo.size.width
       let height = photo.size.height
@@ -79,16 +82,16 @@ export default {
           height = (width * photo.size.height) / photo.size.width
         }
       } else if (this.isTablet) {
-        width = window.innerWidth - 30
-        height = (width * photo.size.height) / photo.size.width
+        if (photo.size.width > photo.size.height) {
+          width = window.innerWidth - 30
+          height = (width * photo.size.height) / photo.size.width
+        } else {
+          height = window.innerHeight - 60
+          width = (height * photo.size.width) / photo.size.height
+        }
       } else if (this.isMobile) {
         width = window.innerWidth - 20
         height = (width * photo.size.height) / photo.size.width
-      }
-      if (!this.containerStyle && width > height) {
-        this.containerStyle = {
-          width: `${width}px`
-        }
       }
       return {
         width: `${Math.round(width)}px`,
@@ -151,9 +154,10 @@ export default {
   flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
+  max-width: 1440px;
   &.grid {
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
   }
   article {
     display: flex;
@@ -179,10 +183,47 @@ export default {
   &__photo {
     position:relative;
     background: $grey;
-    margin-bottom:55px;
+    margin-bottom:7vh;
     @include small-only {
       margin-left:0;
       margin-right:0;
+    }
+    &:before {
+      position: absolute;
+      content: '';
+      top: -15px;
+      left: -15px;
+      bottom: -15px;
+      right: -15px;
+      background: $grey;
+      z-index: -1;
+      @include small-only {
+        display: none;
+      }
+      @include ipad {
+        display:none;
+      }
+    }
+    &:nth-child(even) {
+      &.landscape {
+        // margin-left: 25vw;
+      }
+      &.portrait {
+        margin-top: 20vh;
+        @include ipad {
+          margin-top: 0;
+        }
+        @include small-only {
+          margin-top: 0;
+        }
+      }
+    }
+    &:nth-child(odd) {
+      &.landscape { 
+        // margin-left: 20vw;   
+      }
+      &.portrait {
+      }
     }
   }
 
