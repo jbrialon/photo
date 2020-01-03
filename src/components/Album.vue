@@ -1,38 +1,26 @@
 <template>
   <div class="album">
-    <template v-if="hasPhoto">
-      <div class="album__photo" v-for="(photo, index) in photos" :key="index" :class="getClass(photo)">
-        <div class="album__inner" :style="photoStyle(photo)" >
-          <intersect @enter="enter(photo)">
-            <img v-lazy="photo" :style="photoStyle(photo)">
-          </intersect>
-          <loader class="album__loader"></loader>
-        </div>
-        <div class="album__description" v-if="photo.exif.Description" :style="photoStyle(photo)">
-          <p>{{ photo.exif.Description }}</p>
-        </div>
+    <div class="album__photo" v-for="(photo, index) in photos" :key="index" :class="getClass(photo)">
+      <div class="album__inner" :style="photoStyle(photo)">
+        <intersect @enter="enter(photo)">
+          <img v-lazy="photo" :style="photoStyle(photo)">
+        </intersect>
+        <loader class="album__loader"></loader>
       </div>
-      <div class="album__link">
-        <router-link :to="{ name: 'Travel', params: { name: destination.name }}" title="See Photo in Big">
-          album
-        </router-link>
-        <button @click="back('show')">
-          back
-        </button>
+      <div class="album__overlay" v-if="!hasPhoto">
+        SOON
       </div>
-     </template>
-    <div v-else>
-      <p>
-        <pre>
-   _____    ____     ____    _   _ 
-  / ____|  / __ \   / __ \  | \ | |
- | (___   | |  | | | |  | | |  \| |
-  \___ \  | |  | | | |  | | | . ` |
-  ____) | | |__| | | |__| | | |\  |
- |_____/   \____/   \____/  |_| \_|
-                                                   
-        </pre>
-      </p>
+      <div class="album__description" v-if="photo.exif.Description" :style="photoStyle(photo)">
+        <p>{{ photo.exif.Description }}</p>
+      </div>
+    </div>
+    <div class="album__link">
+      <router-link :to="{ name: 'Travel', params: { name: destination.name }}" title="See Photo in Big" v-if="hasPhoto">
+        album
+      </router-link>
+      <button @click="back('show')" title="back to map">
+        back
+      </button>
     </div>
   </div>
 </template>
@@ -190,6 +178,22 @@ export default {
       }
     }
   }
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 10;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 3rem;
+    letter-spacing: 1.3rem;
+  }
   &__description {
     height: auto !important;
     padding-top: 25px;
@@ -219,7 +223,7 @@ export default {
     a {
       display: inline-block;
       height: auto;
-      padding: 10px;
+      padding: 10px 25px;
       font-size: 1rem;
       line-height: 1.45rem;
       text-transform: uppercase;
@@ -228,12 +232,16 @@ export default {
       font-weight: 700;
       color: #949494;
       background: #fff;
-      box-shadow: -15px 0 0 0 #fff, 15px 0 0 0 #fff;
       border: none; 
       margin: 0;
+      min-width: 165px;
+      letter-spacing: 1.5px;
       cursor: pointer;
       &:last-child {
-        margin-left: 55px;
+        margin-left: 25px;
+      }
+      &:hover {
+        color: black;
       }
     }
   }
