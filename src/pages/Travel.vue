@@ -83,7 +83,7 @@ export default {
         }
       } else if (this.isTablet) {
         if (photo.size.width > photo.size.height) {
-          width = window.innerWidth - 30
+          width = window.innerWidth - 80
           height = (width * photo.size.height) / photo.size.width
         } else {
           height = window.innerHeight - 60
@@ -183,7 +183,7 @@ export default {
   &__photo {
     position:relative;
     background: $grey;
-    margin-bottom:7vh;
+    margin-bottom:10vh;
     @include small-only {
       margin-left:0;
       margin-right:0;

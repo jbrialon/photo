@@ -242,7 +242,6 @@ export default {
     this.map.on('load', this.mapload)
     Utils.preloadFirstImages().then(() => {
       this.loaded = true
-      // Utils.preloadImages()
     })
   }
 }
