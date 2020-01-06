@@ -2,14 +2,14 @@
   "start_url": "https://www.completementalest.fr/",
   "background_color": "#e5e5e5",
   "theme_color": "#9e0000",
-  "name": "Il fait des jolis photos ton appareil",
+  "name": "Complètement à l'est //",
   "short_name": "à l'est //",
   "display": "standalone",
   "icons": [
     {
       "src": "/static/logo_white.jpg",
       "sizes": "160x160",
-      "type": "image/png"
+      "type": "image/jpg"
     }
   ]
 }
