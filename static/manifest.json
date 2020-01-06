@@ -7,9 +7,9 @@
   "display": "standalone",
   "icons": [
     {
-      "src": "/static/logo_white.jpg",
-      "sizes": "160x160",
-      "type": "image/jpg"
+      "src": "/static/logo_white.png",
+      "sizes": "256x256",
+      "type": "image/png"
     }
   ]
 }
