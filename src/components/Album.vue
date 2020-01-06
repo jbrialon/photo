@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import Utils from '../services/Utils.js'
+import { getMarkerOffset } from '../services/Utils.js'
 import loader from '../components/Loader'
 import Intersect from 'vue-intersect'
 
@@ -98,7 +98,7 @@ export default {
           center: destinationGPS,
           zoom: this.destination.zoom,
           duration: 1600,
-          offset: Utils.getMarkerOffset(),
+          offset: getMarkerOffset(),
           pitch: this.destination.pitch
         })
       }

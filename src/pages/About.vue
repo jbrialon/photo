@@ -53,11 +53,9 @@ export default {
   flex-wrap: wrap;
   justify-content: center;
   min-height:80vh;
-
   @include small-only {
     padding-top:5vw;
   }
-
   &__article {
     width:calc(100vw - 45px);
     height: 60vh;
@@ -68,7 +66,6 @@ export default {
       padding: 5vw 0 25vw 0;
     }
   }
-
   &__top {
     display:flex;
     position:relative;
@@ -98,7 +95,6 @@ export default {
       opacity: 1;
     }
   }
-
   &__title {
     display:inline;
     text-transform: uppercase;
@@ -111,7 +107,6 @@ export default {
       font-size:20px;
     }
   }
-
   &__text {
     margin: auto;
     max-width: 620px;
@@ -129,14 +124,12 @@ export default {
       font-size:15px;
     }
   }
-
   &__links {
     display:flex;
     flex-direction:column;
     align-items:center;
     justify-content: center;
     margin:70px auto;
-
   }
   &__links a {
     position:relative;
@@ -149,7 +142,6 @@ export default {
     line-height: 2.2em;
     letter-spacing: .08em;
     font-weight: 400;
-
     &:after {
       display:block;
       position:absolute;

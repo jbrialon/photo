@@ -172,14 +172,12 @@ export default {
       padding: 5vw 0 25vw 0;
     }
   }
-
   &__title {
     font-size:18px;
     letter-spacing: 0.45em;
     margin-right: -1.45em;
     padding:5px 10px;
   }
-
   &__photo {
     position:relative;
     background: $grey;
@@ -226,7 +224,6 @@ export default {
       }
     }
   }
-
   &__loader {
     position:absolute;
     z-index:5;
@@ -235,7 +232,6 @@ export default {
     transform: translate(-50%, -50%);
     transition:opacity 600ms $easing;
   }
-
   &__discover {
     display:flex;
     flex-wrap: wrap;
@@ -277,12 +273,10 @@ export default {
       display: inline-block;
       margin:0;
       max-width: 70%;
-
       @include small-only {
         opacity:1;
         font-size: 26px;
       }
-
       @include ipad {
         opacity:1;
         font-size: 32px;

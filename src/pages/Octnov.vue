@@ -61,7 +61,7 @@ import loader from '../components/Loader'
 import Header from '../components/Header'
 import content from '../data/content'
 import { gsap, Power4 } from 'gsap'
-import Utils from '../services/Utils.js'
+import { getMarkerOffset, preloadFirstImages } from '../services/Utils.js'
 import MobileDetect from 'mobile-detect'
 const md = new MobileDetect(window.navigator.userAgent)
 
@@ -130,7 +130,7 @@ export default {
         center: destinationGPS,
         zoom: this.mapOptions.zoom + 3,
         duration: 1600,
-        offset: Utils.getMarkerOffset()
+        offset: getMarkerOffset()
       })
     },
     toggle (action) {
@@ -240,7 +240,7 @@ export default {
       zoom: this.mapOptions.zoom // starting zoom
     })
     this.map.on('load', this.mapload)
-    Utils.preloadFirstImages().then(() => {
+    preloadFirstImages().then(() => {
       this.loaded = true
     })
   }
