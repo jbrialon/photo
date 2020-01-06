@@ -83,11 +83,9 @@ var webpackConfig = merge(baseWebpackConfig, {
         to: config.build.assetsRoot
       }
     ]),
-    new PrerenderSpaPlugin(
-      // Absolute path to compiled SPA
-      path.join(__dirname, '../dist'),
-      // List of routes to prerender
-      [ 
+    new PrerenderSpaPlugin({
+      staticDir: path.join(__dirname, '../dist'),
+      routes: [ 
         '/',
         '/album/annapurna',
         '/album/istanbul',
@@ -96,7 +94,7 @@ var webpackConfig = merge(baseWebpackConfig, {
         '/album/myanmar',
         '/octnov'
       ]
-    )
+    })
   ]
 })
 
