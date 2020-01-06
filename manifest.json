@@ -1,4 +1,5 @@
 {
+  "start_url": "https://www.completementalest.fr/",
   "background_color": "#e5e5e5",
   "theme_color": "#9e0000",
   "name": "Il fait des jolis photos ton appareil",
@@ -6,7 +7,7 @@
   "display": "standalone",
   "icons": [
     {
-      "src": "/static/logo.png",
+      "src": "/static/logo_white.png",
       "sizes": "160x160",
       "type": "image/png"
     }
