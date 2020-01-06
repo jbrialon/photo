@@ -7,6 +7,11 @@ export default {
       { name: 'og:url', content: url },
       { name: 'og:image', content: `${url}${require('../assets/img/meta_share.gif')}` },
       { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share.gif')}` }
+    ],
+    octnov: [
+      { name: 'og:url', content: `${url}/octnov` },
+      { name: 'og:image', content: `${url}${require('../assets/img/meta_share_octnov.gif')}` },
+      { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share_octnov.gif')}` }
     ]
   },
   'about': {

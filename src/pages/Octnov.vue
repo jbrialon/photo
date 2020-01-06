@@ -71,7 +71,7 @@ export default {
   name: 'hello',
   metaInfo: {
     title: 'Oct+Nov',
-    meta: content.meta.meta
+    meta: content.meta.octnov
   },
   data () {
     return {
