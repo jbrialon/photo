@@ -128,10 +128,10 @@ export default {
       // create a new context to get all images in assets/photos
       const req = require.context('../assets/photos', true, /\.jpg$/)
       const photos = req.keys()
-      // filter them by folder name (simple check if path contains album name)
-      .filter(item => item.includes(`/${this.name}/`))
-      // return an Array of require items
-      .map(item => req(item))
+        // filter them by folder name (simple check if path contains album name)
+        .filter(item => item.includes(`/${this.name}/`))
+        // return an Array of require items
+        .map(item => req(item))
       return this.album.shuffle ? shuffle(photos) : photos
     }
   },

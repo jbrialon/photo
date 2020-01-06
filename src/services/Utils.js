@@ -15,14 +15,14 @@ export default {
       // create a new context to get all images in assets/photos
       const req = require.context('../assets/photos', true, /\.jpg$/)
       const photos = req.keys()
-      // filter them by folder name (simple check if path contains album name)
-      .filter(item => item.includes(`/${entry}/`))
-      // return an Array of require items
-      .map(item => req(item))
-      .map((item) => {
-        return item.src
-      })
-      .slice(0, 5)
+        // filter them by folder name (simple check if path contains album name)
+        .filter(item => item.includes(`/${entry}/`))
+        // return an Array of require items
+        .map(item => req(item))
+        .map((item) => {
+          return item.src
+        })
+        .slice(0, 5)
       photosArray.push(...photos)
     })
     return Preloader.load(photosArray)
@@ -53,13 +53,13 @@ export default {
       // create a new context to get all images in assets/photos
       const req = require.context('../assets/photos', true, /\.jpg$/)
       const photos = req.keys()
-      // filter them by folder name (simple check if path contains album name)
-      .filter(item => item.includes(`/${entry}/`))
-      // return an Array of require items
-      .map(item => req(item))
-      .map((item) => {
-        return item.src
-      })
+        // filter them by folder name (simple check if path contains album name)
+        .filter(item => item.includes(`/${entry}/`))
+        // return an Array of require items
+        .map(item => req(item))
+        .map((item) => {
+          return item.src
+        })
       photosArray.push(...photos)
     })
 
