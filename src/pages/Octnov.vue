@@ -220,7 +220,6 @@ export default {
       return this.markers && this.activeDestination ? this.markers[this.activeDestination.name] : null
     },
     loadingText () {
-      console.log(this.index)
       return content.loader[this.index]
     }
   },
