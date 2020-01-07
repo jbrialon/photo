@@ -31,7 +31,6 @@
         <span class="octnov__item-number"><span>{{ formatIndex(index) }}</span></span>
         <div class="octnov__item-imgwrap">
           <img class="octnov__item-img" :src="entry.cover.src" :alt="`cover of the ${entry.displayName} album`" />
-          <div class="octnov__item-bg" v-lazy:background-image="entry.cover.src"></div>
         </div>
       </div>
       <div class="octnov__item octnov__item--more" ref="more">
@@ -403,9 +402,6 @@ export default {
       right: 0;
     }
     &:hover {
-      .octnov__item-bg {
-        transform: translate3d(0px , 4px, 0) scale(0.99);
-      }
       .octnov__item-title {
         transform: translate3d(3px , 3px, 0);
       }
@@ -487,20 +483,9 @@ export default {
     position: relative;
     overflow: hidden;
   }
-  &__item-bg {
-    width: 120%;
-    height: 120%;
-    position: absolute;
-    top: -10%;
-    left: -10%;
-    background-size: cover;
-    transition: transform 1.2s linear;
-  }
   &__item-img {
     display: block;
     width: 100%;
-    will-change: opacity;
-    opacity: 0;
   }
 }
 </style>
