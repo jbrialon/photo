@@ -1,5 +1,5 @@
 <template>
-  <div class="octnov" :class="{'ipad': isTablet}">
+  <div class="octnov" :class="{'ipad': isTablet}" v-cloak>
     <transition name="fade">
       <div class="octnov__loader" v-if="!loaded">
         <loader></loader>
