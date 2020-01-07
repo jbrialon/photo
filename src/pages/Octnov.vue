@@ -3,6 +3,9 @@
     <transition name="fade">
       <div class="octnov__loader" v-if="!loaded">
         <loader></loader>
+        <p>
+          {{ loadingText }}
+        </p>
       </div>
     </transition>
     <div class="octnov__content js-content" ref="content">
@@ -74,7 +77,8 @@ export default {
         center: [100.9925, 15.8700],
         zoom: 3
       },
-      isTablet: md.tablet() !== null || winsize.width === 1194
+      isTablet: md.tablet() !== null || winsize.width === 1194,
+      index: 0
     }
   },
   components: {
@@ -214,9 +218,16 @@ export default {
   computed: {
     activeMarker () {
       return this.markers && this.activeDestination ? this.markers[this.activeDestination.name] : null
+    },
+    loadingText () {
+      console.log(this.index)
+      return content.loader[this.index]
     }
   },
   mounted () {
+    const Interval = setInterval(() => {
+      this.index = Math.round(this.randomNumber(0, content.loader.length - 1))
+    }, 1700)
     mapboxgl.accessToken = this.mapOptions.token
     this.map = new mapboxgl.Map({
       container: 'map', // container id
@@ -227,6 +238,7 @@ export default {
     this.map.on('load', this.mapload)
     preloadFirstImages().then(() => {
       this.loaded = true
+      clearInterval(Interval)
     })
   }
 }
@@ -317,6 +329,13 @@ export default {
     left: 0;
     right: 0;
     bottom: 0;
+    p {
+      color: #949494;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      // font-size: 1.1rem;
+      text-transform: uppercase;
+    }
   }
   &__content {
     position: absolute;

@@ -14,6 +14,16 @@ export default {
       { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share_octnov.gif')}` }
     ]
   },
+  'loader': [
+    'Initiating launch sequence',
+    'Loading the digital stuff',
+    'Calibrating the flux',
+    'Charging everything',
+    'loading aesthetics',
+    'scaling bananas',
+    'procedurally generating buttons',
+    'loading code'
+  ],
   'about': {
     cover: require('../assets/photos/cover.jpg'),
     displayName: 'about',
