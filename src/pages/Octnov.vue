@@ -1,20 +1,8 @@
 <template>
   <div class="octnov" :class="{'ipad': isTablet}">
     <transition name="fade">
-      <div class="octnov__loader" v-if="!loaded || isMobile">
-        <c-header v-if="isMobile"></c-header>
+      <div class="octnov__loader" v-if="!loaded">
         <loader></loader>
-        <div class="disclaimer" v-if="isMobile">
-          <br>
-          <br>
-          <br>
-          <p>
-            This page is desktop and tablet only, but you can see the photos <router-link :to="{ name: 'Travels'}">here</router-link>.
-            <br>
-            <br>
-            Or send yourself an <a href="mailto:?subject=Oct+Nov%20-Nov%20Complètement%20à%20l'est&body=I%20really%20should%20visit%20https://www.completementalest.fr/octnov%20!">email</a> as a reminder to visit this page on your computer.
-          </p>
-        </div>
       </div>
     </transition>
     <div class="octnov__content js-content" ref="content">
@@ -39,7 +27,7 @@
         <h2 class="octnov__item-title"><span>{{ entry.displayName }}</span></h2>
         <span class="octnov__item-number"><span>{{ formatIndex(index) }}</span></span>
         <div class="octnov__item-imgwrap">
-          <img class="octnov__item-img" :src="entry.cover.src" />
+          <img class="octnov__item-img" :src="entry.cover.src" :alt="`cover of the ${entry.displayName} album`" />
           <div class="octnov__item-bg" v-lazy:background-image="entry.cover.src"></div>
         </div>
       </div>
@@ -58,7 +46,6 @@
 <script>
 import Album from '../components/Album'
 import loader from '../components/Loader'
-import Header from '../components/Header'
 import content from '../data/content'
 import { gsap, Power4 } from 'gsap'
 import { getMarkerOffset, preloadFirstImages } from '../services/Utils.js'
@@ -87,14 +74,12 @@ export default {
         center: [100.9925, 15.8700],
         zoom: 3
       },
-      isMobile: md.phone() !== null,
       isTablet: md.tablet() !== null || winsize.width === 1194
     }
   },
   components: {
     Album,
-    loader,
-    'c-header': Header
+    loader
   },
   methods: {
     mapload () {
@@ -241,7 +226,7 @@ export default {
     })
     this.map.on('load', this.mapload)
     preloadFirstImages().then(() => {
-      this.loaded = true
+      // this.loaded = true
     })
   }
 }
@@ -332,32 +317,6 @@ export default {
     left: 0;
     right: 0;
     bottom: 0;
-    .loader {
-      @include small-only {
-        display: none !important;
-      }
-    }
-    header.header {
-      margin: 0;
-    }
-    .disclaimer {
-      text-align: center;
-      p, 
-      a {
-        display: inline;
-        
-        font-family: 'Libre Baskerville';
-        font-size: 1.1rem;
-        line-height: 2.5rem;
-        color: #fff;
-        background: #000;
-      }
-      p {
-        padding: 5px;
-        box-shadow: -15px 0 0 0 #000, 15px 0 0 0 #000;
-      }
-      width:75%;
-    }
   }
   &__content {
     position: absolute;

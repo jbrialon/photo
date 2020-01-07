@@ -1,12 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Octnov from 'pages/Octnov'
+import Disclaimer from 'pages/Disclaimer'
 import Travels from 'pages/Travels'
 import Travel from 'pages/Travel'
-// import MobileDetect from 'mobile-detect'
+import MobileDetect from 'mobile-detect'
 
-// const md = new MobileDetect(window.navigator.userAgent)
-// const isMobile = md.phone() !== null
+const md = new MobileDetect(window.navigator.userAgent)
+const isMobile = md.phone() !== null
 
 Vue.use(Router)
 
@@ -26,7 +27,7 @@ export default new Router({
     {
       path: '/octnov/',
       name: 'Octnov',
-      component: Octnov,
+      component: isMobile ? Disclaimer : Octnov,
       props: true
     },
     {
