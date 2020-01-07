@@ -1,5 +1,5 @@
 <template>
-  <div class="octnov" :class="{'ipad': isTablet}" v-cloak>
+  <div class="octnov" :class="{'ipad': isTablet}">
     <transition name="fade">
       <div class="octnov__loader" v-if="!loaded">
         <loader></loader>
@@ -11,7 +11,7 @@
     <div class="octnov__content js-content" ref="content">
       <Album v-if="activeDestination" :destination="activeDestination" :map="map" :marker="activeMarker" :back="toggle"></Album>
     </div>
-    <div class="octnov__map">
+    <div class="octnov__map" v-cloak>
       <div id="map" ref="map"></div>
     </div>
     <div class="octnov__grid octnov__grid--outer">

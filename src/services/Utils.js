@@ -12,17 +12,17 @@ export function preloadFirstImages () {
   Object.keys(content.octnov).forEach(entry => {
     photosArray.push(content.octnov[entry].cover.src)
     // create a new context to get all images in assets/photos
-    // const req = require.context('../assets/photos', true, /\.jpg$/)
-    // const photos = req.keys()
-    //   // filter them by folder name (simple check if path contains album name)
-    //   .filter(item => item.includes(`/${entry}/`))
-    //   // return an Array of require items
-    //   .map(item => req(item))
-    //   .map((item) => {
-    //     return item.src
-    //   })
-    //   .slice(0, 5)
-    // photosArray.push(...photos)
+    const req = require.context('../assets/photos', true, /\.jpg$/)
+    const photos = req.keys()
+      // filter them by folder name (simple check if path contains album name)
+      .filter(item => item.includes(`/${entry}/`))
+      // return an Array of require items
+      .map(item => req(item))
+      .map((item) => {
+        return item.src
+      })
+      .slice(0, 4)
+    photosArray.push(...photos)
   })
   return Preloader.load(photosArray)
 }
