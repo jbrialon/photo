@@ -226,7 +226,7 @@ export default {
     })
     this.map.on('load', this.mapload)
     preloadFirstImages().then(() => {
-      // this.loaded = true
+      this.loaded = true
     })
   }
 }
