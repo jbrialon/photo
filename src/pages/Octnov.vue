@@ -53,7 +53,6 @@ import { gsap, Power4 } from 'gsap'
 import { getMarkerOffset, preloadFirstImages } from '../services/Utils.js'
 import MobileDetect from 'mobile-detect'
 const md = new MobileDetect(window.navigator.userAgent)
-
 const winsize = {width: window.innerWidth, height: window.innerHeight}
 
 export default {
