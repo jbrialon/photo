@@ -122,7 +122,7 @@ export default {
       text: '18 days / 17 nights to travel around Malaysia with <a class="link" href="http://www.voyatopia.com/" target="_blank">voyatopia</a>',
       shuffle: false,
       hidden: false,
-      grid: false,
+      grid: true,
       meta: [
         { name: 'og:url', content: `${url}/travel/malaysia` }, // TODO: should be dynamic
         { name: 'og:image', content: `${url}${require('../assets/img/meta_share_malaysia.gif')}` },
