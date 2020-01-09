@@ -17,5 +17,4 @@ npm run build
 
 
 TODO: 
-- portrait mode disable on tablet
 - over animation blurry on firefox

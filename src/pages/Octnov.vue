@@ -8,6 +8,10 @@
         </p>
       </div>
     </transition>
+    <div class="octnov__orientation">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve"><g><path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" d="M55.5,90V10c0-2.8-2.2-5-5-5H10.7c-2.8,0-5,2.2-5,5   v80c0,2.8,2.2,5,5,5h39.8C53.3,95,55.5,92.8,55.5,90z M30.6,92.4c-1.4,0-2.6-1.1-2.6-2.6s1.1-2.6,2.6-2.6c1.4,0,2.6,1.1,2.6,2.6   S32,92.4,30.6,92.4z M51.6,82.7c0,1.1-0.9,2-2,2H11.7c-1.1,0-2-0.9-2-2V14c0-1.1,0.9-2,2-2h37.9c1.1,0,2,0.9,2,2V82.7z"/><path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" d="M90.1,45.1H55.5v4h30.6c1.1,0,2,0.9,2,2V89   c0,1.1-0.9,2-2,2l-30.7,0c-1.4,3.7-3.5,3.8-4.9,4l39.5-0.1c2.8,0,5-2.2,5-5V50.1C95.1,47.4,92.8,45.1,90.1,45.1z"/><g><g><path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" d="M61.1,9.6c14.5,0,26.6,10,29.9,23.6"/><g><polygon points="85.7,32.5 91.8,40.3 95.6,31.1     "/></g></g></g></g></svg>
+      This page is landscape only
+    </div>
     <div class="octnov__content js-content" ref="content">
       <Album v-if="activeDestination" :destination="activeDestination" :map="map" :marker="activeMarker" :back="toggle"></Album>
     </div>
@@ -53,8 +57,10 @@ import { gsap, Power4 } from 'gsap'
 import { getMarkerOffset, preloadFirstImages } from '../services/Utils.js'
 import MobileDetect from 'mobile-detect'
 const md = new MobileDetect(window.navigator.userAgent)
-const winsize = {width: window.innerWidth, height: window.innerHeight}
-
+let winsize = {width: window.innerWidth, height: window.innerHeight}
+window.addEventListener('resize', () => {
+  winsize = {width: window.innerWidth, height: window.innerHeight}
+})
 export default {
   name: 'hello',
   metaInfo: {
@@ -222,6 +228,7 @@ export default {
     }
   },
   mounted () {
+    this.index = Math.round(this.randomNumber(0, content.loader.length - 1))
     const Interval = setInterval(() => {
       this.index = Math.round(this.randomNumber(0, content.loader.length - 1))
     }, 1700)
@@ -312,6 +319,26 @@ export default {
       @include ipad {
         font-size: 1rem;
       }
+    }
+  }
+  &__orientation {
+    position:absolute;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 20;
+    background: white;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    @include portrait {
+      display: flex;
+    }
+    svg {
+      width: 30vw;
+      margin-bottom: 30px;
     }
   }
   &__loader {
@@ -407,18 +434,6 @@ export default {
       .octnov__item-number {
         transform: translate3d(0px , -4px, 0);
       }
-    }
-    &:nth-child(1) {
-      transform: translate3d(0px , 160px, 0);
-    }
-    &:nth-child(2) {
-      transform: translate3d(0px ,0, 0);
-    }
-    &:nth-child(3) {
-      transform: translate3d(0px ,80px, 0);
-    }
-    &:nth-child(4) {
-      transform: translate3d(0px ,0px, 0);
     }
     &:last-child:after {
       display:none;
