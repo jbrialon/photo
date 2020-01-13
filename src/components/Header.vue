@@ -21,6 +21,11 @@
           travels
         </router-link>
       </li>
+      <li v-if="false">
+        <router-link :to="{ name: 'About'}">
+          about
+        </router-link>
+      </li>
     </ul>
   </header>
 </template>

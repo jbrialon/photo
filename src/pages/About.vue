@@ -1,5 +1,6 @@
 <template>
   <div class="about">
+    <c-header></c-header>
     <article class="about__article">
       <div class="about__top">
         <div class="about__background" v-lazy:background-image="content.cover"></div>
@@ -15,17 +16,20 @@
           <span class="about__text" v-html="content.text"></span>
         </div>
       </div>
-      <p class="about__links">
+      <p class="about__links" v-if="false">
         <template v-for="(link, index) in links">
           <a :href="link.link" rel="noopener" :key="index" target="_blank"> {{ link.title }} </a>
         </template>
       </p>
     </article>
+    <c-footer></c-footer>
   </div>
 </template>
 
 <script>
 import content from '../data/content'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
 
 export default {
   name: 'about',
@@ -39,6 +43,10 @@ export default {
       links: content.social,
       content: content.about
     }
+  },
+  components: {
+    'c-header': Header,
+    'c-footer': Footer
   }
 }
 </script>
@@ -52,7 +60,10 @@ export default {
   display:flex;
   flex-wrap: wrap;
   justify-content: center;
-  min-height:80vh;
+  min-height: 100vh;
+  header.header {
+    width: calc(100vw - 15px);
+  }
   @include small-only {
     padding-top:5vw;
   }
@@ -100,9 +111,11 @@ export default {
     text-transform: uppercase;
     font-size:32px;
     letter-spacing: 0.45em;
-    padding:5px 0px 5px 30px;
+    margin-right: -0.45em;
+    padding:5px;
     color:white;
     background:black;
+    box-shadow: -25px 0 0 0 #000, 10px 0 0 0 #000;
     @include small-only {
       font-size:20px;
     }

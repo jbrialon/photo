@@ -218,7 +218,7 @@ export default {
     }
     &:nth-child(odd) {
       &.landscape { 
-        // margin-left: 20vw;   
+        // margin-left: 20vw;
       }
       &.portrait {
       }

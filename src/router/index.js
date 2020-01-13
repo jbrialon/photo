@@ -4,6 +4,7 @@ import Octnov from 'pages/Octnov'
 import Disclaimer from 'pages/Disclaimer'
 import Travels from 'pages/Travels'
 import Travel from 'pages/Travel'
+import About from 'pages/About'
 import MobileDetect from 'mobile-detect'
 
 const md = new MobileDetect(window.navigator.userAgent)
@@ -34,6 +35,12 @@ export default new Router({
       path: '/album/:name',
       name: 'Travel',
       component: Travel,
+      props: true
+    },
+    {
+      path: '/about',
+      name: 'About',
+      component: About,
       props: true
     }
   ]
