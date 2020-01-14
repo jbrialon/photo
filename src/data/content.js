@@ -147,15 +147,11 @@ export default {
   'social': [
     {
       'title': 'mail',
-      'link': 'mailto:jeremzor@gmail.com' // this will backfire
+      'link': 'mailto:jeremy@completementalest.fr'
     },
     {
       'title': 'instagram',
       'link': 'https://www.instagram.com/jbrialon/'
-    },
-    {
-      'title': 'twitter',
-      'link': 'https://twitter.com/jbrialon/'
     }
   ]
 }

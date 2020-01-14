@@ -2,7 +2,7 @@
   <div class="about">
     <c-header></c-header>
     <article class="about__article">
-      <div class="about__top">
+      <div class="about__bottom">
         <div class="about__background" v-lazy:background-image="content.cover"></div>
         <div class="about__content">
           <h1 class="about__title">
@@ -16,7 +16,7 @@
           <span class="about__text" v-html="content.text"></span>
         </div>
       </div>
-      <p class="about__links" v-if="false">
+      <p class="about__links">
         <template v-for="(link, index) in links">
           <a :href="link.link" rel="noopener" :key="index" target="_blank"> {{ link.title }} </a>
         </template>
@@ -63,13 +63,16 @@ export default {
   min-height: 100vh;
   header.header {
     width: calc(100vw - 15px);
+    // height: 10vh;
+    padding: 15px;
   }
   @include small-only {
     padding-top:5vw;
   }
   &__article {
+    position: relative;
     width:calc(100vw - 45px);
-    height: 60vh;
+    height: 76vh;
 
     @include small-only {
       width:90%;
@@ -77,15 +80,16 @@ export default {
       padding: 5vw 0 25vw 0;
     }
   }
-  &__top {
+  &__bottom {
     display:flex;
-    position:relative;
+    position:absolute;
     flex-direction: column;
     justify-content: center;
     width:100%;
     background: $grey;
     padding:0 45px;
-    height:45vh;
+    height: 38vh;
+    bottom: 0;
   }
   &__content {
     position:relative;
@@ -129,44 +133,46 @@ export default {
     letter-spacing: 0.15em;
     font-weight: 400;
     font-style: normal;
-    color:white;
-    background:black;
-    padding:5px 5px 5px 5px;
+    color: white;
+    background: black;
+    padding: 5px 5px 5px 5px;
     box-shadow: -10px 0 0 0 #000, 10px 0 0 0 #000;
     @include small-only {
-      font-size:15px;
+      font-size: 15px;
     }
   }
   &__links {
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content: center;
-    margin:70px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    height: 38vh;
+    margin: 0;
+    padding: 50px;
   }
   &__links a {
     position:relative;
     text-decoration: none;
     text-transform: uppercase;
-    color:black;
-    display:inline-flex;
+    color: black;
+    display: inline-flex;
     align-items: center;
     font-size: 15px;
     line-height: 2.2em;
     letter-spacing: .08em;
     font-weight: 400;
     &:after {
-      display:block;
-      position:absolute;
+      display: block;
+      position: absolute;
       content:'';
-      background:black;
-      width:0;
-      bottom:4px;
-      height:2px;
-      transition:width 500ms ease-in-out;
+      background: black;
+      width: 0;
+      bottom: 4px;
+      height: 1px;
+      transition:width 350ms ease-in-out;
     }
     &:hover:after {
-      width:100%;
+      width:99%;
     }
   }
 }

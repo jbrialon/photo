@@ -22,16 +22,16 @@ export default {
 @import '../scss/mixins';
 
 footer {
-    display:flex;
-    text-transform:uppercase;
-    height:15vh;
-    padding:15px;
+    display: flex;
+    text-transform: uppercase;
+    height: 10vh;
+    padding: 15px;
     width: 100%;
 
     p {
       font-weight: 400;
-      font-size:12px;
-      margin:auto 0 auto auto;
+      font-size: 12px;
+      margin: auto 0 auto auto;
     }
   }
 </style>

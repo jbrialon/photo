@@ -12,16 +12,11 @@
         </router-link>
       </li>
       <li>
-        <a href="https://www.instagram.com/jbrialon/" target="_blank" rel="noopener">
-          instagram
-        </a>
-      </li>
-      <li>
         <router-link :to="{ name: 'Travels'}">
           travels
         </router-link>
       </li>
-      <li v-if="false">
+      <li>
         <router-link :to="{ name: 'About'}">
           about
         </router-link>
