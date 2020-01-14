@@ -46,9 +46,12 @@ export default new Router({
     },
     {
       path: '/404',
-      name: '404',
-      component: NotFound,
-      props: true
+      name: 'NotFound',
+      component: NotFound
+    },
+    {
+      path: '*',
+      component: NotFound
     }
   ]
 })

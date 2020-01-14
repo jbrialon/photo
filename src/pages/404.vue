@@ -16,7 +16,7 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 
 export default {
-  name: '404',
+  name: 'NotFound',
   metaInfo: {
     title: content.meta.title,
     titleTemplate: `%s`,
