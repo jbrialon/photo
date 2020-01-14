@@ -57,8 +57,11 @@ export default {
       padding: 5vw 0 25vw 0;
     }
     h1 {
+      position: relative;
       font-size: 25vw;
       text-transform: uppercase;
+      z-index: -1;
+      line-height: 1.1em;
     }
   }
 }
