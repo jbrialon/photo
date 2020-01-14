@@ -1,44 +1,46 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import Octnov from 'pages/Octnov'
-// import Disclaimer from 'pages/Disclaimer'
-// import Travels from 'pages/Travels'
-// import MobileDetect from 'mobile-detect'
+import Octnov from 'pages/Octnov'
+import Disclaimer from 'pages/Disclaimer'
+import Travels from 'pages/Travels'
+import Travel from 'pages/Travel'
+import About from 'pages/About'
+import MobileDetect from 'mobile-detect'
 
-// const md = new MobileDetect(window.navigator.userAgent)
-// const isMobile = md.phone() !== null
+const md = new MobileDetect(window.navigator.userAgent)
+const isMobile = md.phone() !== null
 
 Vue.use(Router)
 
 export default new Router({
   mode: 'history',
   linkExactActiveClass: 'active',
-  scrollBehavior () {
+  scrollBehavior (to, from, savedPosition) {
     return { x: 0, y: 0 }
   },
   routes: [
     {
       path: '/',
       name: 'Travels',
-      component: () => import(/* webpackChunkName: "travels" */ 'pages/Travels.vue'),
+      component: Travels,
       props: true
     },
     {
       path: '/octnov/',
       name: 'Octnov',
-      components: () => import(/* webpackChunkName: "octnov" */ 'pages/Octnov.vue'),
+      component: isMobile ? Disclaimer : Octnov,
       props: true
     },
     {
       path: '/album/:name',
       name: 'Travel',
-      component: () => import(/* webpackChunkName: "travel" */ 'pages/Travel.vue'),
+      component: Travel,
       props: true
     },
     {
       path: '/about',
       name: 'About',
-      component: () => import(/* webpackChunkName: "about" */ 'pages/About.vue'),
+      component: About,
       props: true
     }
   ]
