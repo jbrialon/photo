@@ -5,6 +5,7 @@ import Disclaimer from 'pages/Disclaimer'
 import Travels from 'pages/Travels'
 import Travel from 'pages/Travel'
 import About from 'pages/About'
+import NotFound from 'pages/404'
 import MobileDetect from 'mobile-detect'
 
 const md = new MobileDetect(window.navigator.userAgent)
@@ -41,6 +42,12 @@ export default new Router({
       path: '/about',
       name: 'About',
       component: About,
+      props: true
+    },
+    {
+      path: '/404',
+      name: '404',
+      component: NotFound,
       props: true
     }
   ]

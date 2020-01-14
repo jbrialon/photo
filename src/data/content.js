@@ -27,7 +27,7 @@ export default {
   'about': {
     cover: require('../assets/photos/cover.jpg'),
     displayName: 'about',
-    text: '↟ Hello my name is Jérémy ↟ <br> ↟ I like going places and take pictures ↟',
+    text: 'Hello my name is Jérémy<br>I code website, I take pictures<br><br>and sometimes I do both',
     meta: [
       { name: 'og:url', content: `${url}/about` }, // TODO: should be dynamic
       { name: 'og:image', content: `${url}${require('../assets/img/meta_share.gif')}` },
