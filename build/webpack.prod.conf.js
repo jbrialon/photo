@@ -7,6 +7,7 @@ var baseWebpackConfig = require('./webpack.base.conf')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var PrerenderSpaPlugin = require('prerender-spa-plugin')
+var CopyWebpackPlugin = require('copy-webpack-plugin')
 
 var env = config.build.env
 
@@ -76,6 +77,12 @@ var webpackConfig = merge(baseWebpackConfig, {
       name: 'manifest',
       chunks: ['vendor']
     }),
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, '../netlify.toml'),
+        to: config.build.assetsRoot
+      }
+    ]),
     new PrerenderSpaPlugin({
       staticDir: path.join(__dirname, '../dist'),
       routes: [ 
