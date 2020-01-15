@@ -128,7 +128,7 @@ export default {
       &.portrait {
         margin-top: 15vh;
         .album__description {
-          text-align: right;
+          text-align: left;
         }
       }
     }
@@ -140,7 +140,7 @@ export default {
       }
       &.portrait {
         .album__description {
-          text-align: left;
+          text-align: right;
         }
       }
     }
