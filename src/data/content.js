@@ -41,8 +41,8 @@ export default {
       cover: require('../assets/covers/cover-japon.jpg'),
       text: '日本国',
       gps: {lat: 26.212312, lon: 127.679157},
-      zoom: 11,
-      pitch: 60
+      zoom: 9,
+      pitch: 0
     },
     'nepal': {
       name: 'nepal',

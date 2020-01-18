@@ -259,7 +259,7 @@ export default {
   &.ipad {
     height: auto;
     min-height: -webkit-fill-available;
-    .octnov__grid {
+    .octnov__grid{
       height: auto;
       min-height: -webkit-fill-available;
     }

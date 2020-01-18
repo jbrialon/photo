@@ -30,6 +30,14 @@ import { getMarkerOffset } from '../services/Utils.js'
 import loader from '../components/Loader'
 import Intersect from 'vue-intersect'
 
+const removeEmpty = obj =>
+  Object.fromEntries(
+    Object.entries(obj)
+      .filter(([k, v]) => v !== null)
+      .filter(([k, v]) => v !== '')
+      .map(([k, v]) => (typeof v === 'object' ? [k, removeEmpty(v)] : [k, v]))
+  )
+
 export default {
   name: 'album',
   props: {
@@ -62,7 +70,7 @@ export default {
         // filter them by folder name (simple check if path contains album name)
         .filter(item => item.includes(`/${this.destination.name}/`))
         // return an Array of require items
-        .map(item => req(item))
+        .map((item) => removeEmpty(req(item)))
       return photos
     },
     hasPhoto () {
@@ -150,7 +158,6 @@ export default {
       will-change: opacity;
       opacity: 0;
       transition: opacity 1000ms $easing;
-      // cursor: zoom-in;
     }
     img[lazy=loaded] {
       opacity: 1;
@@ -230,18 +237,21 @@ export default {
       text-decoration:none;
       font-style: normal;
       font-weight: 700;
+      // color: #949494;
       color: #949494;
-      background: #fff;
-      border: none; 
+      background: none;
+      border: 2px solid #949494; 
       margin: 0;
       min-width: 165px;
       letter-spacing: 1.5px;
+      transition: all 300ms ease-in-out;
       cursor: pointer;
       &:last-child {
         margin-left: 25px;
       }
       &:hover {
         color: black;
+        border-color: black;
       }
     }
   }
