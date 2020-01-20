@@ -12,6 +12,19 @@
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve"><g><path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" d="M55.5,90V10c0-2.8-2.2-5-5-5H10.7c-2.8,0-5,2.2-5,5   v80c0,2.8,2.2,5,5,5h39.8C53.3,95,55.5,92.8,55.5,90z M30.6,92.4c-1.4,0-2.6-1.1-2.6-2.6s1.1-2.6,2.6-2.6c1.4,0,2.6,1.1,2.6,2.6   S32,92.4,30.6,92.4z M51.6,82.7c0,1.1-0.9,2-2,2H11.7c-1.1,0-2-0.9-2-2V14c0-1.1,0.9-2,2-2h37.9c1.1,0,2,0.9,2,2V82.7z"/><path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" d="M90.1,45.1H55.5v4h30.6c1.1,0,2,0.9,2,2V89   c0,1.1-0.9,2-2,2l-30.7,0c-1.4,3.7-3.5,3.8-4.9,4l39.5-0.1c2.8,0,5-2.2,5-5V50.1C95.1,47.4,92.8,45.1,90.1,45.1z"/><g><g><path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" d="M61.1,9.6c14.5,0,26.6,10,29.9,23.6"/><g><polygon points="85.7,32.5 91.8,40.3 95.6,31.1     "/></g></g></g></g></svg>
       This page is landscape only
     </div>
+    <div class="octnov__stats" v-if="stats" @click="toggleStats()">
+      <div class="inner">
+        <h3>
+          LENS USAGE STATISTICS 
+        </h3>
+        <div class="pie" :style="getPieStyle()"></div>
+        <ul>
+          <li v-for="(lens, index) in statsData.lensStats" :key="index">
+            {{ Math.round(lens[1]) }}% Fujinon {{ lens[0] }}
+          </li>
+        </ul>
+      </div>
+    </div>
     <div class="octnov__content js-content" ref="content">
       <Album v-if="activeDestination" :destination="activeDestination" :map="map" :marker="activeMarker" :back="toggle"></Album>
     </div>
@@ -22,7 +35,7 @@
       <div class="title-wrap" ref="title">
         <h1 class="title">{{ title }}</h1>
         <span class="subtitle">October+November</span>
-        <span class="year">2019</span>
+        <span @click="toggleStats()" class="year">2019</span>
       </div>
       <div class="subtitle-wrap" ref="subtitle">
         <h2 class="title" v-if="activeDestination">{{ activeDestination.displayName }}</h2>
@@ -53,14 +66,18 @@
 import Album from '../components/Album'
 import loader from '../components/Loader'
 import content from '../data/content'
+import stats from '../data/stats'
 import { gsap, Power4 } from 'gsap'
 import { getMarkerOffset, preloadFirstImages } from '../services/Utils.js'
 import MobileDetect from 'mobile-detect'
+
 const md = new MobileDetect(window.navigator.userAgent)
 let winsize = {width: window.innerWidth, height: window.innerHeight}
+
 window.addEventListener('resize', () => {
   winsize = {width: window.innerWidth, height: window.innerHeight}
 })
+
 export default {
   name: 'hello',
   metaInfo: {
@@ -82,7 +99,14 @@ export default {
         zoom: 3
       },
       isTablet: md.tablet() !== null || winsize.width === 1194,
-      index: 0
+      index: 0,
+      stats: false,
+      statsData: stats,
+      statsColor: [
+        '#e5e5e5',
+        '#ddd',
+        '#aaa'
+      ]
     }
   },
   components: {
@@ -217,6 +241,16 @@ export default {
     },
     randomNumber (min, max) {
       return Math.random() * (max - min) + min
+    },
+    toggleStats () {
+      this.stats = !this.stats
+    },
+    getPieStyle () {
+      return {
+        '--segment1': this.statsData.lensStats[0][1],
+        '--segment2': this.statsData.lensStats[1][1],
+        '--segment3': this.statsData.lensStats[2][1]
+      }
     }
   },
   computed: {
@@ -284,6 +318,7 @@ export default {
     .year {
       font-size: 1.25rem;
       display: block;
+      pointer-events: all;
       &:before {
         content: '―';
         margin-right: 0.5rem;
@@ -339,6 +374,81 @@ export default {
     svg {
       width: 30vw;
       margin-bottom: 30px;
+    }
+  }
+  &__stats {
+    position:absolute;
+    cursor:pointer;
+    z-index: 999999;
+    background: white;
+    top: 20vh;
+    left: 20vw;
+    right: 20vw;
+    bottom: 20vh;
+    z-index: 10;
+    .inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      position:relative;
+      width: 100%;
+      height: 100%;
+      z-index: 10;
+      background: white;
+    }
+    &:before {
+      position: fixed;
+      display: block;
+      content: '';
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background: rgba(0,0,0,.75);
+      z-index: -1;
+    }
+    .pie { 
+      display: inline-block;
+      width: 20vh;
+      height: 20vh;
+      border-radius: 50%;
+      border: .15em solid #fff;
+      box-shadow: 0 .075em .2em .05em rgba(0,0,0,.25);
+      background-origin: border-box; 
+      background-image: conic-gradient(
+        #d44 calc(3.6deg * var(--segment1, 100)),
+        #fc3 0 calc(3.6deg * var(--segment2, 100)),
+        #ac0 0 calc(3.6deg * var(--segment3, 100)),
+        #0ac 0 calc(3.6deg * var(--segment4, 100)),
+        #f7b 0
+      );
+    }
+    ul {
+      list-style: none;
+      li {
+        position: relative;
+        text-align: left;
+        padding: 5px;
+        font-size: 0.7em;
+        letter-spacing: 1px;
+        &:nth-child(1):before {
+          background: #d44;
+        }
+        &:nth-child(2):before {
+          background: #fc3;
+        }
+        &:nth-child(3):before {
+          background: #0ac;
+        }
+        &:before {
+          position: absolute;
+          content: '';
+          left: -20px;
+          width: 15px;
+          height: 15px;
+        }
+      }
     }
   }
   &__loader {
