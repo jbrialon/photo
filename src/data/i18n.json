@@ -1,0 +1,168 @@
+{
+  "en": {
+    "menu": {
+      "octnov": "Oct+Nov",
+      "travels": "travels",
+      "about": "about"
+    },
+    "octnov": {
+      "subtitle": "October+November",
+      "landscape": "This page is landscape only",
+      "lens": "LENS USAGE STATISTICS",
+      "back": "Back",
+      "more": "More +"
+    },
+    "albums": {
+      "japan": {
+        "displayName": "Japan",
+        "text": "TODO"
+      },
+      "nepal": {
+        "displayName": "Nepal",
+        "text": "TODO"
+      },
+      "annapurna": {
+        "displayName": "Annapurna",
+        "text": "8 days of walking on one of the most legendary Himalayan treks surrounded by peaks sometimes reaching more than 8000 meters",
+        "story": {
+          "1": "Day 1 - After a full day of transport, bus + 4x4 from Kathmandu to Jagat, 8 days of walking begin on one of the most legendary treks of the Himalayas.",
+          "6": "Annapurna  II - 7937 m",
+          "8": "Dal bhat, \"lentil rice\", one of the main dish we ate during the trek.",
+          "11": "Day 2",
+          "13": "The Nepalese style buildings are slowly replaced by Tibetan architecture.",
+          "18": "Day 3 - The famous \"Nepali Flat\": A little bit up, a little bit down!",
+          "21": "And all of a sudden it looks like it's fall season.",
+          "25": "The size of the village is giving a nice scale of how big the moutains are here.",
+          "32": "A yak not in his natural habitat.",
+          "35": "Day 5 - Rest day in Manang, the occasion to visit the village and to do some acclimation walks.",
+          "36": "Momo & Dal bhat factory.",
+          "39": "Day 6",
+          "40": "The mountains above 6000 meters above sea level are so many that most of them have no name, only a number.",
+          "42": "Tishna, our cook, cooking breakfast and warming up at the same time.",
+          "44": "Day 7",
+          "48": "Day 8 - The main difficulty of the trek, Thorong-La Pass, a pass at 5414 meters above sea level. During his ascent, which begins in the night, the horses are there to help walkers struggling to reach the pass and walk to the opposite valley to continue their journey.",
+          "51": "Thorong-La Pass - 5400 m",
+          "53": "A never ending day, after crossing the pass, we descend quickly to a less dangerous altitude, the snow is quickly replaced by sand and stones as far as the eye can see.",
+          "57": "Day 9 - Given the quality of the roads, the return to Kathmandu is via small cuckoos with propellers which fly at sight, here we had to make twice the journey because there was too much cloud the first time to land."
+        }
+      },
+      "thailand": {
+        "displayName": "Thailand",
+        "text": "TODO"
+      },
+      "istanbul": {
+        "displayName": "Istanbul",
+        "text": "4 days / 3 nights to visit a city on the border between the East and the West and bathed by the waters of the Bosphorus"
+      },
+      "myanmar": {
+        "displayName": "Myanmar",
+        "text": "18 days / 17 nights and a lot of night buses to travel around Myanmar"
+      },
+      "malaysia": {
+        "displayName": "Malaysia",
+        "text": "18 days / 17 nights to travel around Malaysia with <a class='link' href='http://www.voyatopia.com/' target='_blank'>voyatopia</a>"
+      },
+      "kilimanjaro": {
+        "displayName": "Kilimanjaro",
+        "text": "6 days / 4 nights of trekking in Tanzania to climb mount Kilimanjaro (5985m) by the Machame route"
+      }
+    },
+    "about": {
+      "displayName": "about",
+      "text": "Hello my name is Jérémy<br>I code website, I take pictures<br><br>and sometimes I do both"
+    },
+    "loader": {
+      "0": "Initiating launch sequence",
+      "1": "Loading the digital stuff",
+      "2": "Calibrating the flux",
+      "3": "Charging everything",
+      "4": "loading aesthetics",
+      "5": "scaling bananas",
+      "6": "procedurally generating buttons",
+      "7": "loading code"
+    }
+  },
+  "fr": {
+    "menu": {
+      "octnov": "Oct+Nov",
+      "travels": "voyages",
+      "about": "à propos"
+    },
+    "octnov": {
+      "subtitle": "Octobre+Novembre",
+      "landscape": "Cette page est visible en mode paysage uniquement",
+      "lens": "STATISTIQUES D'UTILISATION DES OBJECTIFS",
+      "back": "Retour",
+      "more": "Plus +"
+    },
+    "albums": {
+      "japan": {
+        "displayName": "Japon",
+        "text": "TODO"
+      },
+      "nepal": {
+        "displayName": "Népal",
+        "text": "TODO"
+      },
+      "annapurna": {
+        "displayName": "Annapurna",
+        "text": "8 days of walking on one of the most legendary Himalayan treks surrounded by peaks sometimes reaching more than 8000 meters",
+        "story": {
+          "1": "Jour 1 - Après une journée entière de transport, bus + 4x4 depuis Kathmandu pour aller à Jagat, 8 jours de marche commencent sur l'un des plus legendaire treks Himalayen.",
+          "6": "Annapurna  II - 7937 m",
+          "8": "Dal bhat, \"lentil rice\", one of the main dish we ate during the trek.",
+          "11": "Day 2",
+          "13": "The Nepalese style buildings are slowly replaced by Tibetan architecture.",
+          "18": "Day 3 - The famous \"Nepali Flat\": A little bit up, a little bit down!",
+          "21": "And all of a sudden it looks like it's fall season.",
+          "25": "The size of the village is giving a nice scale of how big the moutains are here.",
+          "32": "A yak not in his natural habitat.",
+          "35": "Day 5 - Rest day in Manang, the occasion to visit the village and to do some acclimation walks.",
+          "36": "Momo & Dal bhat factory.",
+          "39": "Day 6",
+          "40": "The mountains above 6000 meters above sea level are so many that most of them have no name, only a number.",
+          "42": "Tishna, our cook, cooking breakfast and warming up at the same time.",
+          "44": "Day 7",
+          "48": "Day 8 - The main difficulty of the trek, Thorong-La Pass, a pass at 5414 meters above sea level. During his ascent, which begins in the night, the horses are there to help walkers struggling to reach the pass and walk to the opposite valley to continue their journey.",
+          "51": "Thorong-La Pass - 5400 m",
+          "53": "A never ending day, after crossing the pass, we descend quickly to a less dangerous altitude, the snow is quickly replaced by sand and stones as far as the eye can see.",
+          "57": "Day 9 - Given the quality of the roads, the return to Kathmandu is via small cuckoos with propellers which fly at sight, here we had to make twice the journey because there was too much cloud the first time to land."
+        }
+      },
+      "thailand": {
+        "displayName": "Thaïlande",
+        "text": "TODO"
+      },
+      "istanbul": {
+        "displayName": "Istanbul",
+        "text": "4 days / 3 nights to visit a city on the border between the East and the West and bathed by the waters of the Bosphorus"
+      },
+      "myanmar": {
+        "displayName": "Myanmar",
+        "text": "18 days / 17 nights and a lot of night buses to travel around Myanmar"
+      },
+      "malaysia": {
+        "displayName": "Malaisie",
+        "text": "18 jours / 17 nuits pour barouder en Malaisie avec <a class='link' href='http://www.voyatopia.com/' target='_blank'>voyatopia</a>"
+      },
+      "kilimanjaro": {
+        "displayName": "Kilimanjaro",
+        "text": "6 jours / 4 nuits de trek en Tanzanie pour gravir le Kilimanjaro (5985m) par la route Machame"
+      }
+    },
+    "about": {
+      "displayName": "à propos",
+      "text": "Hello my name is Jérémy<br>I code website, I take pictures<br><br>and sometimes I do both"
+    },
+    "loader": {
+      "0": "Initialisation de la structure de lancement",
+      "1": "Chargement des trucs digitaux",
+      "2": "Calibration du flux",
+      "3": "Chargement de tout les éléments",
+      "4": "Chargement de l'esthetique",
+      "5": "Mise à l'échelle des images",
+      "6": "Generation prodédurale des boutons",
+      "7": "Chargement du code"
+    }
+  }
+}

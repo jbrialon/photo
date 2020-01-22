@@ -10,12 +10,12 @@
     </transition>
     <div class="octnov__orientation">
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve"><g><path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" d="M55.5,90V10c0-2.8-2.2-5-5-5H10.7c-2.8,0-5,2.2-5,5   v80c0,2.8,2.2,5,5,5h39.8C53.3,95,55.5,92.8,55.5,90z M30.6,92.4c-1.4,0-2.6-1.1-2.6-2.6s1.1-2.6,2.6-2.6c1.4,0,2.6,1.1,2.6,2.6   S32,92.4,30.6,92.4z M51.6,82.7c0,1.1-0.9,2-2,2H11.7c-1.1,0-2-0.9-2-2V14c0-1.1,0.9-2,2-2h37.9c1.1,0,2,0.9,2,2V82.7z"/><path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" d="M90.1,45.1H55.5v4h30.6c1.1,0,2,0.9,2,2V89   c0,1.1-0.9,2-2,2l-30.7,0c-1.4,3.7-3.5,3.8-4.9,4l39.5-0.1c2.8,0,5-2.2,5-5V50.1C95.1,47.4,92.8,45.1,90.1,45.1z"/><g><g><path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" d="M61.1,9.6c14.5,0,26.6,10,29.9,23.6"/><g><polygon points="85.7,32.5 91.8,40.3 95.6,31.1     "/></g></g></g></g></svg>
-      This page is landscape only
+      {{ $t("octnov.landscape") }}
     </div>
     <div class="octnov__stats" v-if="stats" @click="toggleStats()">
       <div class="inner">
         <h3>
-          LENS USAGE STATISTICS 
+          {{ $t("octnov.lens") }}
         </h3>
         <div class="pie" :style="getPieStyle()"></div>
         <ul>
@@ -34,28 +34,28 @@
     <div class="octnov__grid octnov__grid--outer">
       <div class="title-wrap" ref="title">
         <h1 class="title">{{ title }}</h1>
-        <span class="subtitle">October+November</span>
+        <span class="subtitle">{{ $t("octnov.subtitle") }}</span>
         <span @click="toggleStats()" class="year">2019</span>
       </div>
       <div class="subtitle-wrap" ref="subtitle">
-        <h2 class="title" v-if="activeDestination">{{ activeDestination.displayName }}</h2>
+        <h2 class="title" v-if="activeDestination">{{ $t(`albums.${activeDestination.name}.displayName`) }}</h2>
         <span class="subtitle" v-if="activeDestination">{{ activeDestination.text }}</span>
       </div>
     </div>
     <div class="octnov__grid" ref="items">
       <div class="octnov__item" ref="item" v-for="(entry, propertyName, index) in menu" :key="index" @click="setDestination(propertyName)">
-        <h2 class="octnov__item-title"><span>{{ entry.displayName }}</span></h2>
+        <h2 class="octnov__item-title"><span>{{ $t(`albums.${propertyName}.displayName`) }}</span></h2>
         <span class="octnov__item-number"><span>{{ formatIndex(index) }}</span></span>
         <div class="octnov__item-imgwrap">
-          <img class="octnov__item-img" :src="entry.cover.src" :alt="`cover of the ${entry.displayName} album`" />
+          <img class="octnov__item-img" :src="entry.cover.src" />
         </div>
       </div>
       <div class="octnov__item octnov__item--more" ref="more">
         <router-link :to="{ name: 'Travels'}" ref="togglemore">
-           More +
+           {{ $t("octnov.more") }}
         </router-link>
         <button @click="toggle('show')" ref="toggleBack" v-show="activeDestination">
-           Back
+           {{ $t("octnov.back") }}
         </button>
       </div>
     </div>
@@ -101,12 +101,7 @@ export default {
       isTablet: md.tablet() !== null || winsize.width === 1194,
       index: 0,
       stats: false,
-      statsData: stats,
-      statsColor: [
-        '#e5e5e5',
-        '#ddd',
-        '#aaa'
-      ]
+      statsData: stats
     }
   },
   components: {
@@ -246,11 +241,11 @@ export default {
       this.stats = !this.stats
     },
     getPieStyle () {
-      return {
-        '--segment1': this.statsData.lensStats[0][1],
-        '--segment2': this.statsData.lensStats[1][1],
-        '--segment3': this.statsData.lensStats[2][1]
-      }
+      const style = {}
+      this.statsData.lensStats.map((lens, index) => {
+        style[`--segment${index + 1}`] = lens[1]
+      })
+      return style
     }
   },
   computed: {
@@ -258,7 +253,7 @@ export default {
       return this.markers && this.activeDestination ? this.markers[this.activeDestination.name] : null
     },
     loadingText () {
-      return content.loader[this.index]
+      return this.$t(`loader.${this.index}`)
     }
   },
   mounted () {

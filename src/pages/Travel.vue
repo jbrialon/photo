@@ -5,29 +5,17 @@
       <article>
         <p>
           <span class="travel__title">
-            {{ album.displayName }}
+            {{ $t(`albums.${album.name}.displayName`) }}
           </span>
           <br>
           <br>
-          <span v-html="album.text"></span>
+          <span v-html="$t(`albums.${album.name}.text`)">
+          </span>
         </p>
       </article>
       <div class="travel__photo" v-for="(photo, index) in photos" :key="index" :style="photoContainerStyle(photo)" :class="getClass(photo)">
         <img v-lazy="photo" :style="photoStyle(photo)" :alt="alt">
         <loader class="travel__loader"></loader>
-      </div>
-      <div class="travel__discover" v-if="false">
-        <router-link 
-          class="travel__discover-item" 
-          :to="{ name: 'Album', params: { name: album.name }}" 
-          v-for="(album, index) in albums" 
-          :key="index"
-          v-lazy:background-image="album.cover"
-        >
-          <h2>
-            {{ album.displayName }}
-          </h2>
-        </router-link>
       </div>
     </div>
     <c-footer></c-footer>
@@ -57,7 +45,7 @@ export default {
   props: ['name'],
   metaInfo () {
     return {
-      title: this.album.displayName.toUpperCase(),
+      title: this.$t(`albums.${this.album.name}.displayName`).toUpperCase(),
       meta: this.album.meta
     }
   },
@@ -67,7 +55,7 @@ export default {
       isTablet: md.tablet() !== null || window.innerWidth === 1194,
       album: content.albums[this.name],
       albums: pickBy(content.albums, item => !item.hidden),
-      alt: `${content.albums[this.name].displayName} - ${content.meta.author}`,
+      alt: `${this.$t(`albums.${this.name}.displayName`)} - ${content.meta.author}`,
       grid: content.albums[this.name].grid
     }
   },
@@ -239,57 +227,6 @@ export default {
     left:50%;
     transform: translate(-50%, -50%);
     transition:opacity 600ms $easing;
-  }
-  &__discover {
-    display:flex;
-    flex-wrap: wrap;
-    width:100%;
-    margin-top:140px;
-    justify-content: space-between;
-    &-item {
-      display:block;
-      position:relative;
-      width:calc(25% - 15px);
-      padding-bottom:16%;
-      background-size:100.5%;
-      background-repeat:no-repeat;
-      overflow:hidden;
-      background-color: $red;
-      &:hover {
-        h2 {
-          opacity:1;
-        }
-      }
-    }
-    h2 {
-      position:absolute;
-      opacity:0;
-      z-index:1;
-      transition:opacity 400ms $easing;
-      will-change:opacity;
-      top:50%;
-      left:50%;
-      transform:translate(-50%, -50%);
-      color:white;
-      background:black;
-      font-size: 22px;
-      line-height: 1.1em;
-      text-transform: uppercase;
-      letter-spacing: .12em;
-      font-weight: 700;
-      padding:6px 10px;
-      display: inline-block;
-      margin:0;
-      max-width: 70%;
-      @include small-only {
-        opacity:1;
-        font-size: 26px;
-      }
-      @include ipad {
-        opacity:1;
-        font-size: 32px;
-      }
-    }
   }
   img {
     position:relative;

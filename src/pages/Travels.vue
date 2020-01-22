@@ -4,7 +4,7 @@
     <article v-for="(album, index) in albums" :key="index">
       <router-link :to="{ name: 'Travel', params: { name: album.name }}">
         <h2>
-          {{ album.displayName }}
+          {{ $t(`albums.${album.name}.displayName`) }}
         </h2>
         <div v-lazy:background-image="album.cover" class="img"></div>
       </router-link>

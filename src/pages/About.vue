@@ -6,14 +6,14 @@
         <div class="about__background" v-lazy:background-image="content.cover"></div>
         <div class="about__content">
           <h1 class="about__title">
-            {{ this.content.displayName }}
+            {{ $t("about.displayName") }}
           </h1>
           <br>
           <br>
           <br>
           <br>
           <br>
-          <span class="about__text" v-html="content.text"></span>
+          <span class="about__text" v-html="$t('about.text')"></span>
         </div>
       </div>
       <p class="about__links">
@@ -33,10 +33,12 @@ import Footer from '../components/Footer'
 
 export default {
   name: 'about',
-  metaInfo: {
-    title: content.about.displayName.toUpperCase(),
-    titleTemplate: `%s //`,
-    meta: content.about.meta
+  metaInfo () {
+    return {
+      title: this.$t('about.displayName').toUpperCase(),
+      titleTemplate: `%s //`,
+      meta: content.about.meta
+    }
   },
   data () {
     return {

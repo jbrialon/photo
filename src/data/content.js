@@ -26,8 +26,6 @@ export default {
   ],
   'about': {
     cover: require('../assets/photos/cover.jpg'),
-    displayName: 'about',
-    text: 'Hello my name is Jérémy<br>I code website, I take pictures<br><br>and sometimes I do both',
     meta: [
       { name: 'og:url', content: `${url}/about` }, // TODO: should be dynamic
       { name: 'og:image', content: `${url}${require('../assets/img/meta_share.gif')}` },
@@ -35,9 +33,8 @@ export default {
     ]
   },
   'octnov': {
-    'japon': {
-      name: 'japon',
-      displayName: 'Japan',
+    'japan': {
+      name: 'japan',
       cover: require('../assets/covers/cover-japon.jpg'),
       text: '日本国',
       gps: {lat: 26.212312, lon: 127.679157},
@@ -46,7 +43,6 @@ export default {
     },
     'nepal': {
       name: 'nepal',
-      displayName: 'Nepal',
       cover: require('../assets/covers/cover-nepal.jpg'),
       text: 'नेपाल',
       gps: {lat: 27.717245, lon: 85.323960},
@@ -55,16 +51,14 @@ export default {
     },
     'annapurna': {
       name: 'annapurna',
-      displayName: 'Annapurna',
       cover: require('../assets/covers/cover-annapurna.jpg'),
       text: 'अन्नपूर्ण संरक्षण क्षेत्र',
       gps: {lat: 27.717245, lon: 85.323960},
       zoom: 11,
       pitch: 60
     },
-    'thailande': {
-      name: 'thailande',
-      displayName: 'Thailand',
+    'thailand': {
+      name: 'thailand',
       cover: require('../assets/covers/cover-thailande.jpg'),
       text: 'ราชอาณาจักรไทย',
       gps: {lat: 13.736717, lon: 100.523186},
@@ -75,9 +69,7 @@ export default {
   'albums': {
     'annapurna': {
       name: 'annapurna',
-      displayName: 'annapurna',
       cover: require('../assets/photos/annapurna/annapurna-25.jpg'),
-      text: '8 days of walking on one of the most legendary Himalayan treks surrounded by peaks sometimes reaching more than 8000 meters',
       shuffle: false,
       hidden: false,
       grid: true,
@@ -87,58 +79,63 @@ export default {
         { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share_annapurna.gif')}` }
       ]
     },
-    'istanbul': {
-      name: 'istanbul',
-      displayName: 'Istanbul',
-      cover: require('../assets/photos/istanbul/istanbul-11.jpg'),
-      text: '4 days / 3 nights to visit a city on the border between the East and the West and bathed by the waters of the Bosphorus',
+    'japan': {
+      name: 'japan',
+      cover: require('../assets/photos/japan/japon-006.jpg'),
+      text: 'TODO',
       shuffle: false,
       hidden: false,
       grid: true,
       meta: [
-        { name: 'og:url', content: `${url}/travel/istanbul` }, // TODO: should be dynamic
+        { name: 'og:url', content: `${url}/album/japan` }, // TODO: should be dynamic
+        { name: 'og:image', content: `${url}${require('../assets/img/meta_share_annapurna.gif')}` }, // TODO
+        { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share_annapurna.gif')}` } // TODO
+      ]
+    },
+    'istanbul': {
+      name: 'istanbul',
+      cover: require('../assets/photos/istanbul/istanbul-11.jpg'),
+      shuffle: false,
+      hidden: false,
+      grid: true,
+      meta: [
+        { name: 'og:url', content: `${url}/album/istanbul` }, // TODO: should be dynamic
         { name: 'og:image', content: `${url}${require('../assets/img/meta_share_istanbul.gif')}` },
         { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share_istanbul.gif')}` }
       ]
     },
     'myanmar': {
       name: 'myanmar',
-      displayName: 'Myanmar',
       cover: require('../assets/photos/myanmar/myanmar-11.jpg'),
-      text: '18 days / 17 nights and a lot of night buses to travel around Myanmar',
       shuffle: false,
       hidden: false,
       grid: true,
       meta: [
-        { name: 'og:url', content: `${url}/travel/myanmar` }, // TODO: should be dynamic
+        { name: 'og:url', content: `${url}/album/myanmar` }, // TODO: should be dynamic
         { name: 'og:image', content: `${url}${require('../assets/img/meta_share_myanmar.gif')}` },
         { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share_myanmar.gif')}` }
       ]
     },
     'malaysia': {
       name: 'malaysia',
-      displayName: 'Malaysia',
       cover: require('../assets/photos/malaysia/malaisie-10.jpg'),
-      text: '18 days / 17 nights to travel around Malaysia with <a class="link" href="http://www.voyatopia.com/" target="_blank">voyatopia</a>',
       shuffle: false,
       hidden: false,
       grid: true,
       meta: [
-        { name: 'og:url', content: `${url}/travel/malaysia` }, // TODO: should be dynamic
+        { name: 'og:url', content: `${url}/album/malaysia` }, // TODO: should be dynamic
         { name: 'og:image', content: `${url}${require('../assets/img/meta_share_malaysia.gif')}` },
         { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share_malaysia.gif')}` }
       ]
     },
     'kilimanjaro': {
       name: 'kilimanjaro',
-      displayName: 'Kilimanjaro',
       cover: require('../assets/photos/kilimanjaro/kilimanjaro-26.jpg'),
-      text: '6 days / 4 nights of trekking in Tanzania to climb mount Kilimanjaro (5985m) by the Machame route',
       shuffle: false,
       hidden: false,
       grid: false,
       meta: [
-        { name: 'og:url', content: `${url}/travel/kilimanjaro` }, // TODO: should be dynamic
+        { name: 'og:url', content: `${url}/album/kilimanjaro` }, // TODO: should be dynamic
         { name: 'og:image', content: `${url}${require('../assets/img/meta_share_kilimanjaro.gif')}` },
         { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share_kilimanjaro.gif')}` }
       ]

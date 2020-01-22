@@ -8,18 +8,26 @@
     <ul>
       <li>
         <router-link :to="{ name: 'Octnov'}">
-          Oct+nov
+          {{ $t("menu.octnov") }}
         </router-link>
       </li>
       <li>
         <router-link :to="{ name: 'Travels'}">
-          travels
+          {{ $t("menu.travels") }}
         </router-link>
       </li>
       <li>
         <router-link :to="{ name: 'About'}">
-          about
+          {{ $t("menu.about") }}
         </router-link>
+      </li>
+      <li>
+        <button @click="setLang('fr')" v-if="$i18n.locale == 'en'">
+          🇫🇷
+        </button>
+        <button @click="setLang('en')" v-if="$i18n.locale == 'fr'">
+          🇬🇧
+        </button>
       </li>
     </ul>
   </header>
@@ -33,6 +41,11 @@ export default {
   data () {
     return {
       title: content.meta.title
+    }
+  },
+  methods: {
+    setLang (lang) {
+      this.$i18n.locale = lang
     }
   }
 }
@@ -81,7 +94,11 @@ header.header {
       letter-spacing: 0.16em;
       font-weight: 400;
       line-height: 1em;
-
+      button {
+        border: 0;
+        background: 0;
+        cursor: pointer;
+      }
       a {
         text-decoration:none;
         color:black;

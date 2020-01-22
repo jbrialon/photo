@@ -10,8 +10,10 @@
       <div class="album__overlay" v-if="!hasPhoto">
         SOON
       </div>
-      <div class="album__description" v-if="photo.exif.Description" :style="photoStyle(photo)">
-        <p>{{ photo.exif.Description }}</p>
+      <div class="album__description" v-if="$te(`albums.${destination.name}.story.${index + 1}`)" :style="photoStyle(photo)">
+        <p>
+          {{ $t(`albums.${destination.name}.story.${index + 1}`) }}
+        </p>
       </div>
     </div>
     <div class="album__link">
@@ -19,7 +21,7 @@
         album
       </router-link>
       <button @click="back('show')" title="back to map">
-        back
+        {{ $t("octnov.back") }}
       </button>
     </div>
   </div>
