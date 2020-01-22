@@ -32,14 +32,6 @@ import { pickBy } from 'lodash'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 
-const removeEmpty = obj =>
-  Object.fromEntries(
-    Object.entries(obj)
-      .filter(([k, v]) => v !== null)
-      .filter(([k, v]) => v !== '')
-      .map(([k, v]) => (typeof v === 'object' ? [k, removeEmpty(v)] : [k, v]))
-  )
-
 export default {
   name: 'album',
   props: ['name'],
@@ -127,7 +119,7 @@ export default {
         // filter them by folder name (simple check if path contains album name)
         .filter(item => item.includes(`/${this.name}/`))
         // return an Array of require items
-        .map(item => removeEmpty(req(item)))
+        .map(item => req(item))
       return this.album.shuffle ? shuffle(photos) : photos
     }
   },

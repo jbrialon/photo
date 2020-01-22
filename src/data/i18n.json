@@ -134,23 +134,23 @@
         "story": {
           "1": "Jour 1 - Après une journée entière de transport, bus + 4x4 depuis Kathmandu pour aller à Jagat, 8 jours de marche commencent sur l'un des plus legendaire treks Himalayen.",
           "6": "Annapurna  II - 7937 m",
-          "8": "Dal bhat, \"lentil rice\", one of the main dish we ate during the trek.",
-          "11": "Day 2",
+          "8": "Dal bhat, \"riz lentille\", presque le plat principal durant le trek, très très nourrisant.",
+          "11": "Jour 2",
           "13": "The Nepalese style buildings are slowly replaced by Tibetan architecture.",
-          "18": "Day 3 - The famous \"Nepali Flat\": A little bit up, a little bit down!",
+          "18": "Jour 3 - The famous \"Nepali Flat\": A little bit up, a little bit down!",
           "21": "And all of a sudden it looks like it's fall season.",
           "25": "The size of the village is giving a nice scale of how big the moutains are here.",
-          "32": "A yak not in his natural habitat.",
-          "35": "Day 5 - Rest day in Manang, the occasion to visit the village and to do some acclimation walks.",
+          "32": "Un yak dans son habitat naturel (non).",
+          "35": "Jour 5 - Rest day in Manang, the occasion to visit the village and to do some acclimation walks.",
           "36": "Momo & Dal bhat factory.",
           "39": "Day 6",
           "40": "The mountains above 6000 meters above sea level are so many that most of them have no name, only a number.",
-          "42": "Tishna, our cook, cooking breakfast and warming up at the same time.",
-          "44": "Day 7",
-          "48": "Day 8 - The main difficulty of the trek, Thorong-La Pass, a pass at 5414 meters above sea level. During his ascent, which begins in the night, the horses are there to help walkers struggling to reach the pass and walk to the opposite valley to continue their journey.",
+          "42": "Tishna, le cuisinier, en train de preparer le petit dej et se rechauffant en meme temps.",
+          "44": "Jour 7",
+          "48": "Jour 8 - The main difficulty of the trek, Thorong-La Pass, a pass at 5414 meters above sea level. During his ascent, which begins in the night, the horses are there to help walkers struggling to reach the pass and walk to the opposite valley to continue their journey.",
           "51": "Thorong-La Pass - 5400 m",
           "53": "A never ending day, after crossing the pass, we descend quickly to a less dangerous altitude, the snow is quickly replaced by sand and stones as far as the eye can see.",
-          "57": "Day 9 - Given the quality of the roads, the return to Kathmandu is via small cuckoos with propellers which fly at sight, here we had to make twice the journey because there was too much cloud the first time to land."
+          "57": "Jour 9 - Given the quality of the roads, the return to Kathmandu is via small cuckoos with propellers which fly at sight, here we had to make twice the journey because there was too much cloud the first time to land."
         }
       },
       "thailand": {
@@ -183,10 +183,10 @@
       "1": "Chargement des trucs digitaux",
       "2": "Calibration du flux",
       "3": "Chargement de tout les éléments",
-      "4": "Chargement de l'esthetique",
+      "4": "Chargement de l'esthétique",
       "5": "Mise à l'échelle des images",
       "6": "Generation prodédurale des boutons",
-      "7": "Chargement du code"
+      "7": "Execution du code"
     }
   }
 }
