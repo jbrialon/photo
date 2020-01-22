@@ -15,7 +15,7 @@
     "albums": {
       "japan": {
         "displayName": "Japan",
-        "text": "TODO",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae velit vel neque sagittis venenatis.",
         "story": {
           "1": "Naha - Okinawa",
           "5": "You can find these kind of drink dispensers everywhere.",
@@ -110,7 +110,7 @@
     "albums": {
       "japan": {
         "displayName": "Japon",
-        "text": "TODO",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae velit vel neque sagittis venenatis.",
         "story": {
           "1": "Naha - Okinawa",
           "5": "You can find these kind of drink dispensers everywhere.",

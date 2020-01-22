@@ -81,7 +81,7 @@ export default {
     },
     'japan': {
       name: 'japan',
-      cover: require('../assets/photos/japan/japon-006.jpg'),
+      cover: require('../assets/photos/japan/japon-007.jpg'),
       text: 'TODO',
       shuffle: false,
       hidden: false,

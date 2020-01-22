@@ -153,7 +153,7 @@ export default {
     flex-direction: column;
     height: 60vh;
     margin:auto;
-
+    min-width: 100vw;
     @include small-only {
       width:90%;
       height:auto;
