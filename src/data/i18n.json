@@ -15,7 +15,19 @@
     "albums": {
       "japan": {
         "displayName": "Japan",
-        "text": "TODO"
+        "text": "TODO",
+        "story": {
+          "1": "Naha - Okinawa",
+          "5": "You can find these kind of drink dispensers everywhere.",
+          "11": "Tsuboya Pottery District",
+          "21": "Everywhere.",
+          "30": "Kabira Bay - Ishigaki Island",
+          "34": "Taketomi Island",
+          "41": "Iriomote Island",
+          "60": "Zamami Island",
+          "70": "Tokashiki Island",
+          "78": "Yakushima Island"
+        }
       },
       "nepal": {
         "displayName": "Nepal",
@@ -69,7 +81,7 @@
     },
     "about": {
       "displayName": "about",
-      "text": "Hello my name is Jérémy<br>I code website, I take pictures<br><br>and sometimes I do both"
+      "text": "Hello 👋 my name is Jérémy<br>I code website, I take pictures<br><br>and sometimes I do both"
     },
     "loader": {
       "0": "Initiating launch sequence",
@@ -98,7 +110,19 @@
     "albums": {
       "japan": {
         "displayName": "Japon",
-        "text": "TODO"
+        "text": "TODO",
+        "story": {
+          "1": "Naha - Okinawa",
+          "5": "You can find these kind of drink dispensers everywhere.",
+          "11": "Tsuboya Pottery District",
+          "21": "Everywhere.",
+          "30": "Kabira Bay - Ishigaki Island",
+          "34": "Taketomi Island",
+          "41": "Iriomote Island",
+          "60": "Zamami Island",
+          "70": "Tokashiki Island",
+          "78": "Yakushima Island"
+        }
       },
       "nepal": {
         "displayName": "Népal",
@@ -106,7 +130,7 @@
       },
       "annapurna": {
         "displayName": "Annapurna",
-        "text": "8 days of walking on one of the most legendary Himalayan treks surrounded by peaks sometimes reaching more than 8000 meters",
+        "text": "8 jours de marche sur l'un des plus legendaire treks Himalayen, entourés de sommets depassant parfois plus les 8000m.",
         "story": {
           "1": "Jour 1 - Après une journée entière de transport, bus + 4x4 depuis Kathmandu pour aller à Jagat, 8 jours de marche commencent sur l'un des plus legendaire treks Himalayen.",
           "6": "Annapurna  II - 7937 m",
@@ -135,11 +159,11 @@
       },
       "istanbul": {
         "displayName": "Istanbul",
-        "text": "4 days / 3 nights to visit a city on the border between the East and the West and bathed by the waters of the Bosphorus"
+        "text": "4 jours / 3 nuits pour visiter une ville à la frontière entre l'Est et l'Ouest, baignée dans les eaux du Bosphore"
       },
       "myanmar": {
         "displayName": "Myanmar",
-        "text": "18 days / 17 nights and a lot of night buses to travel around Myanmar"
+        "text": "18 jours et beaucoup de bus de nuits pour faire le tour du Myanmar"
       },
       "malaysia": {
         "displayName": "Malaisie",
@@ -152,7 +176,7 @@
     },
     "about": {
       "displayName": "à propos",
-      "text": "Hello my name is Jérémy<br>I code website, I take pictures<br><br>and sometimes I do both"
+      "text": "Salut 👋 je m'appelle Jérémy<br>je fais du code, je prends des photos<br><br>et parfois je fais les deux"
     },
     "loader": {
       "0": "Initialisation de la structure de lancement",

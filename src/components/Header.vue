@@ -89,6 +89,7 @@ header.header {
     li {
       display:inline-block;
       margin-right:15px;
+      padding: 10px 0;
       font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 0.16em;
