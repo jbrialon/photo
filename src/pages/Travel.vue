@@ -3,7 +3,7 @@
     <c-header></c-header>
     <div class="travel" :class="{'grid': grid}">
       <article>
-        <p>
+        <p class="travel__description">
           <span class="travel__title">
             {{ $t(`albums.${album.name}.displayName`) }}
           </span>
@@ -13,9 +13,16 @@
           </span>
         </p>
       </article>
-      <div class="travel__photo" v-for="(photo, index) in photos" :key="index" :style="photoContainerStyle(photo)" :class="getClass(photo)">
-        <img v-lazy="photo" :style="photoStyle(photo)" :alt="alt">
-        <loader class="travel__loader"></loader>
+      <div class="travel__container" v-for="(photo, index) in photos" :key="index">
+        <div class="travel__photo" :style="photoContainerStyle(photo)" :class="getClass(photo)">
+          <img v-lazy="photo" :style="photoStyle(photo)" :alt="alt">
+          <loader class="travel__loader"></loader>
+        </div>
+        <div class="travel__text" v-if="$te(`albums.${album.name}.story.${index + 1}`)">
+          <p>
+            {{ $t(`albums.${album.name}.story.${index + 1}`) }}
+          </p>
+        </div>
       </div>
     </div>
     <c-footer></c-footer>
@@ -151,6 +158,7 @@ export default {
     display: flex;
     justify-content: center;
     flex-direction: column;
+    text-transform: uppercase;
     height: 60vh;
     margin:auto;
     min-width: 100vw;
@@ -166,13 +174,53 @@ export default {
     margin-right: -1.45em;
     padding:5px 10px;
   }
+  &__description {
+    margin: auto;
+    max-width: 620px;
+    font-size: 14px;
+    line-height: 2em;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-weight: 400;
+    font-style: normal;
+    @include small-only {
+      padding-bottom:0;
+    }
+  }
+  &__container {
+    margin-bottom:10vh;
+    @include small-only {
+      margin-bottom: 5vh;
+    }
+    &:nth-child(even) {
+      .landscape {
+        // margin-left: 25vw;
+      }
+      .travel__photo.portrait {
+        margin-top: 20vh;
+        @include ipad {
+          margin-top: 0;
+        }
+        @include small-only {
+          margin-top: 0;
+        }
+      }
+    }
+    &:nth-child(odd) {
+      .landscape { 
+        // margin-left: 20vw;
+      }
+      .portrait {
+      }
+    }
+  }
+
   &__photo {
     position:relative;
     background: $grey;
-    margin-bottom:10vh;
+    
     @include small-only {
-      margin-left:0;
-      margin-right:0;
+      margin: 0 auto 0 auto;
     }
     &:before {
       position: absolute;
@@ -190,26 +238,27 @@ export default {
         display:none;
       }
     }
-    &:nth-child(even) {
-      &.landscape {
-        // margin-left: 25vw;
-      }
-      &.portrait {
-        margin-top: 20vh;
-        @include ipad {
-          margin-top: 0;
-        }
-        @include small-only {
-          margin-top: 0;
-        }
-      }
+  }
+
+  &__text {
+    display: none;
+    width: calc(100vw - 30px);
+    text-align:left;
+    margin: auto;
+    padding-top: 10px;
+    @include small-only {
+      display: block;
     }
-    &:nth-child(odd) {
-      &.landscape { 
-        // margin-left: 20vw;
-      }
-      &.portrait {
-      }
+    p {
+      display: inline;
+      font-family: 'Libre Baskerville';
+      padding: 5px;
+      font-size: 0.9rem;
+      line-height: 2.5;
+      font-style: normal;
+      color: #fff;
+      background: #000;
+      box-shadow: -5px 0 0 0 #000, 5px 0 0 0 #000;
     }
   }
   &__loader {
@@ -235,21 +284,6 @@ export default {
 
   img[src^="http"] + .loader {
     opacity:0;
-  }
-
-  p {
-    margin: auto;
-    max-width: 620px;
-    font-size: 14px;
-    line-height: 2em;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    font-weight: 400;
-    font-style: normal;
-    padding-bottom: 150px;
-    @include small-only {
-      padding-bottom:0;
-    }
   }
 }
 </style>
