@@ -88,10 +88,11 @@ var webpackConfig = merge(baseWebpackConfig, {
       routes: [ 
         '/',
         '/album/annapurna',
+        '/album/japan',
         '/album/istanbul',
+        '/album/myanmar',
         '/album/malaysia',
         '/album/kilimanjaro',
-        '/album/myanmar',
         '/octnov',
         '/404'
       ]

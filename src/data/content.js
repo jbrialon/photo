@@ -64,7 +64,7 @@ export default {
       hidden: false,
       grid: true,
       meta: [
-        { name: 'og:url', content: `${url}/travel/annapurna` }, // TODO: should be dynamic
+        { name: 'og:url', content: `${url}/travel/annapurna` },
         { name: 'og:image', content: `${url}${require('../assets/img/meta_share_annapurna.gif')}` },
         { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share_annapurna.gif')}` }
       ]
@@ -76,9 +76,9 @@ export default {
       hidden: false,
       grid: true,
       meta: [
-        { name: 'og:url', content: `${url}/album/japan` }, // TODO: should be dynamic
-        { name: 'og:image', content: `${url}${require('../assets/img/meta_share_annapurna.gif')}` }, // TODO
-        { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share_annapurna.gif')}` } // TODO
+        { name: 'og:url', content: `${url}/album/japan` },
+        { name: 'og:image', content: `${url}${require('../assets/img/meta_share_japan.gif')}` },
+        { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share_japan.gif')}` }
       ]
     },
     'istanbul': {
@@ -88,7 +88,7 @@ export default {
       hidden: false,
       grid: true,
       meta: [
-        { name: 'og:url', content: `${url}/album/istanbul` }, // TODO: should be dynamic
+        { name: 'og:url', content: `${url}/album/istanbul` },
         { name: 'og:image', content: `${url}${require('../assets/img/meta_share_istanbul.gif')}` },
         { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share_istanbul.gif')}` }
       ]
@@ -100,7 +100,7 @@ export default {
       hidden: false,
       grid: true,
       meta: [
-        { name: 'og:url', content: `${url}/album/myanmar` }, // TODO: should be dynamic
+        { name: 'og:url', content: `${url}/album/myanmar` },
         { name: 'og:image', content: `${url}${require('../assets/img/meta_share_myanmar.gif')}` },
         { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share_myanmar.gif')}` }
       ]
@@ -112,7 +112,7 @@ export default {
       hidden: false,
       grid: true,
       meta: [
-        { name: 'og:url', content: `${url}/album/malaysia` }, // TODO: should be dynamic
+        { name: 'og:url', content: `${url}/album/malaysia` },
         { name: 'og:image', content: `${url}${require('../assets/img/meta_share_malaysia.gif')}` },
         { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share_malaysia.gif')}` }
       ]
@@ -124,7 +124,7 @@ export default {
       hidden: false,
       grid: false,
       meta: [
-        { name: 'og:url', content: `${url}/album/kilimanjaro` }, // TODO: should be dynamic
+        { name: 'og:url', content: `${url}/album/kilimanjaro` },
         { name: 'og:image', content: `${url}${require('../assets/img/meta_share_kilimanjaro.gif')}` },
         { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share_kilimanjaro.gif')}` }
       ]
