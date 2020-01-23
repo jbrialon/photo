@@ -15,7 +15,7 @@
     "albums": {
       "japan": {
         "displayName": "Japan",
-        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae velit vel neque sagittis venenatis.",
+        "text": "20 days of island-hopping in the southern islands of japan between beach and jungle.",
         "story": {
           "1": "Naha - Okinawa",
           "5": "You can find these kind of drink dispensers everywhere.",
@@ -110,7 +110,7 @@
     "albums": {
       "japan": {
         "displayName": "Japon",
-        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae velit vel neque sagittis venenatis.",
+        "text": "20 jours d'île en île dans les îles du sud du Japon entre plage et jungle.",
         "story": {
           "1": "Naha - Okinawa",
           "5": "You can find these kind of drink dispensers everywhere.",
@@ -130,27 +130,27 @@
       },
       "annapurna": {
         "displayName": "Annapurna",
-        "text": "8 jours de marche sur l'un des plus legendaire treks Himalayen, entourés de sommets depassant parfois plus les 8000m.",
+        "text": "8 jours de marche sur un des treks Himalayen les plus mythiques entouré de sommets culminant parfois à plus de 8000 mètres",
         "story": {
           "1": "Jour 1 - Après une journée entière de transport, bus + 4x4 depuis Kathmandu pour aller à Jagat, 8 jours de marche commencent sur l'un des plus legendaire treks Himalayen.",
-          "6": "Annapurna  II - 7937 m",
-          "8": "Dal bhat, \"riz lentille\", presque le plat principal durant le trek, très très nourrisant.",
+          "6": "Annapurna  II - 7937m",
+          "8": "Dal bhat, \"riz lentille\", un des plats principal durant le trek, extrêmement nourrissant 😅.",
           "11": "Jour 2",
-          "13": "The Nepalese style buildings are slowly replaced by Tibetan architecture.",
-          "18": "Jour 3 - The famous \"Nepali Flat\": A little bit up, a little bit down!",
-          "21": "And all of a sudden it looks like it's fall season.",
-          "25": "The size of the village is giving a nice scale of how big the moutains are here.",
+          "13": "Plus on avance et plus les bâtiments de style népalais sont remplacés par l'architecture tibétaine",
+          "18": "Jour 3 - Le fameux \"Plat Népalais\": tu montes ou tu descends.",
+          "21": "Et tout d'un coup on pourrait se croire en automne.",
+          "25": "La taille du village permet de se rendre compte de l'immensité des montagnes autour.",
           "32": "Un yak dans son habitat naturel (non).",
-          "35": "Jour 5 - Rest day in Manang, the occasion to visit the village and to do some acclimation walks.",
-          "36": "Momo & Dal bhat factory.",
-          "39": "Day 6",
-          "40": "The mountains above 6000 meters above sea level are so many that most of them have no name, only a number.",
+          "35": "Jour 5 - Jour de repos à Manang, l'occasion de visiter le village et de faire une marche d'acclimatation.",
+          "36": "Usine à Momo & Dal bhat 🤤.",
+          "39": "Jour 6.",
+          "40": "Les montagnes dépassant les 6000 mètres d’altitudes sont tellement nombreuse que la plupart n’on pas de nom, seulement un numéro.",
           "42": "Tishna, le cuisinier, en train de preparer le petit dej et se rechauffant en meme temps.",
-          "44": "Jour 7",
-          "48": "Jour 8 - The main difficulty of the trek, Thorong-La Pass, a pass at 5414 meters above sea level. During his ascent, which begins in the night, the horses are there to help walkers struggling to reach the pass and walk to the opposite valley to continue their journey.",
-          "51": "Thorong-La Pass - 5400 m",
-          "53": "A never ending day, after crossing the pass, we descend quickly to a less dangerous altitude, the snow is quickly replaced by sand and stones as far as the eye can see.",
-          "57": "Jour 9 - Given the quality of the roads, the return to Kathmandu is via small cuckoos with propellers which fly at sight, here we had to make twice the journey because there was too much cloud the first time to land."
+          "44": "Jour 7.",
+          "48": "Jour 8 - La principale difficulté du trek, Thorong-La Pass, un col à 5414 mètre d’altitude. Durant son ascension, qui commence dans la nuit, des chevaux sont là pour aider les marcheurs en difficulté à atteindre le col, et rejoindre la vallée opposée afin continuer le trek.",
+          "51": "Thorong-La Pass - 5400m",
+          "53": "Un jour sans fin, après avoir atteind le col, nous descendons rapidement a une altitude moins dangereuse, la neige est rapidement remplacée par du sable et des pierres à perte de vue.",
+          "57": "Jour 9 - Au vu la qualité des routes, le retour à Katmandou se fait via de petits coucous à hélices qui volent à vue, ici on a du faire deux fois la trajet car il y avait trop de nuage la première fois pour atterrir "
         }
       },
       "thailand": {
