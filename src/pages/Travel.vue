@@ -171,7 +171,7 @@ export default {
   &__title {
     font-size:18px;
     letter-spacing: 0.45em;
-    margin-right: -1.45em;
+    margin-right: -0.45em;
     padding:5px 10px;
   }
   &__description {
@@ -185,6 +185,7 @@ export default {
     font-style: normal;
     @include small-only {
       padding-bottom:0;
+      max-width:80vw;
     }
   }
   &__container {
@@ -243,7 +244,7 @@ export default {
   &__text {
     display: none;
     width: calc(100vw - 30px);
-    text-align:left;
+    text-align: justify;
     margin: auto;
     padding-top: 10px;
     @include small-only {

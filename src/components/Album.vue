@@ -148,14 +148,18 @@ export default {
     }
     &.portrait {
       .album__description {
-        text-align: right;
+        text-align: left;
       }
     }
     &.landscape + .portrait {
       .album__description {
         text-align: left;
       }
-      
+    }
+    &.portrait + .portrait {
+      .album__description {
+        text-align: right;
+      }
     }
     img {
       display: block;

@@ -580,7 +580,7 @@ export default {
       height: 8vw;
       width: 100%;
       transform: none;
-      cursor: pointer;
+      cursor: default;
       button,
       a {
         cursor: pointer;
