@@ -23,7 +23,7 @@ Vue.use(VueLazyload, {
 const i18n = new VueI18n({
   locale: getNavigatorLanguage(),
   messages,
-  fallbackLocale: 'en'
+  fallbackLocale: 'fr'
 })
 
 /* eslint-disable no-new */

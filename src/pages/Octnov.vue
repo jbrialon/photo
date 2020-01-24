@@ -257,9 +257,9 @@ export default {
     }
   },
   mounted () {
-    this.index = Math.round(this.randomNumber(0, 8))
+    this.index = Math.round(this.randomNumber(0, 7))
     const Interval = setInterval(() => {
-      this.index = Math.round(this.randomNumber(0, 8))
+      this.index = Math.round(this.randomNumber(0, 7))
     }, 1700)
     mapboxgl.accessToken = this.mapOptions.token
     this.map = new mapboxgl.Map({
