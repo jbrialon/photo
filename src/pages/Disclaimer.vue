@@ -7,10 +7,10 @@
           <br>
           <br>
           <p>
-            This page is desktop and tablet only, but you can see the photos <router-link :to="{ name: 'Travels'}">here</router-link>.
+            {{ $t('disclaimer.paragraph1') }} <router-link :to="{ name: 'Travels'}">{{ $t('disclaimer.link') }}</router-link>.
             <br>
             <br>
-            Or send yourself an <a href="mailto:?subject=Oct+Nov%20-Nov%20Complètement%20à%20l'est&body=I%20really%20should%20visit%20https://www.completementalest.fr/octnov%20!">email</a> as a reminder to visit this page on your computer.
+            <span v-html="$t('disclaimer.paragraph2')"></span>
           </p>
         </div>
     </div>
@@ -22,7 +22,7 @@ import content from '../data/content'
 import Header from '../components/Header'
 
 export default {
-  name: 'Disclaimer Disclaimer',
+  name: 'Disclaimer',
   metaInfo: {
     title: 'Oct+Nov',
     meta: content.meta.octnov
@@ -33,7 +33,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 @import '../scss/vars';
 @import '../scss/mixins';
 
@@ -55,9 +55,9 @@ export default {
   &__text {
     width: 75%;
     p, 
-    a {
+    a,
+    span a {
       display: inline;
-      
       font-family: 'Libre Baskerville';
       font-size: 1.1rem;
       line-height: 2.5rem;

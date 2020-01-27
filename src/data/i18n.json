@@ -97,6 +97,11 @@
         "text": "6 days / 4 nights of trekking in Tanzania to climb mount Kilimanjaro (5985m) by the Machame route"
       }
     },
+    "disclaimer": {
+      "paragraph1": "This page is desktop and tablet only, but you can see the photos",
+      "link": "here",
+      "paragraph2": "Or send yourself an <a href=\"mailto:?subject=Oct+Nov%20-Nov%20Complètement%20à%20l'est&body=I%20really%20should%20visit%20https://www.completementalest.fr/octnov%20!\">email</a> as a reminder to visit this page on your computer."
+    },
     "about": {
       "displayName": "about",
       "text": "Hello 👋 my name is Jérémy<br>I code website, I take pictures<br><br>and sometimes I do both"
@@ -213,6 +218,11 @@
     "about": {
       "displayName": "à propos",
       "text": "Salut 👋 je m'appelle Jérémy<br>je fais du code, je prends des photos<br><br>et parfois je fais les deux"
+    },
+    "disclaimer": {
+      "paragraph1": "Cette page est uniquement sur un ordinateur ou une tablette, mais vous pouvez voir les photos",
+      "link": "ici",
+      "paragraph2": "Ou envoyez-vous un <a href=\"mailto:?subject=Oct+Nov%20-Nov%20Complètement%20à%20l'est&body=je%20devrais%20vraiment%20aller%20sur%20https://www.completementalest.fr/octnov%20!\">email</a> as a reminder to visit this page on your computer."
     },
     "loader": {
       "0": "Initialisation de la structure de lancement",
