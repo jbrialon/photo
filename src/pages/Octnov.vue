@@ -9,7 +9,20 @@
       </div>
     </transition>
     <div class="octnov__orientation" v-if="portrait">
-      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve"><g><path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" d="M55.5,90V10c0-2.8-2.2-5-5-5H10.7c-2.8,0-5,2.2-5,5   v80c0,2.8,2.2,5,5,5h39.8C53.3,95,55.5,92.8,55.5,90z M30.6,92.4c-1.4,0-2.6-1.1-2.6-2.6s1.1-2.6,2.6-2.6c1.4,0,2.6,1.1,2.6,2.6   S32,92.4,30.6,92.4z M51.6,82.7c0,1.1-0.9,2-2,2H11.7c-1.1,0-2-0.9-2-2V14c0-1.1,0.9-2,2-2h37.9c1.1,0,2,0.9,2,2V82.7z"/><path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" d="M90.1,45.1H55.5v4h30.6c1.1,0,2,0.9,2,2V89   c0,1.1-0.9,2-2,2l-30.7,0c-1.4,3.7-3.5,3.8-4.9,4l39.5-0.1c2.8,0,5-2.2,5-5V50.1C95.1,47.4,92.8,45.1,90.1,45.1z"/><g><g><path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" d="M61.1,9.6c14.5,0,26.6,10,29.9,23.6"/><g><polygon points="85.7,32.5 91.8,40.3 95.6,31.1     "/></g></g></g></g></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+      <g>
+        <path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" d="M55.5,90V10c0-2.8-2.2-5-5-5H10.7c-2.8,0-5,2.2-5,5   v80c0,2.8,2.2,5,5,5h39.8C53.3,95,55.5,92.8,55.5,90z M30.6,92.4c-1.4,0-2.6-1.1-2.6-2.6s1.1-2.6,2.6-2.6c1.4,0,2.6,1.1,2.6,2.6   S32,92.4,30.6,92.4z M51.6,82.7c0,1.1-0.9,2-2,2H11.7c-1.1,0-2-0.9-2-2V14c0-1.1,0.9-2,2-2h37.9c1.1,0,2,0.9,2,2V82.7z"/>
+        <path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" d="M90.1,45.1H55.5v4h30.6c1.1,0,2,0.9,2,2V89   c0,1.1-0.9,2-2,2l-30.7,0c-1.4,3.7-3.5,3.8-4.9,4l39.5-0.1c2.8,0,5-2.2,5-5V50.1C95.1,47.4,92.8,45.1,90.1,45.1z"/>
+        <g>
+          <g>
+            <path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" d="M61.1,9.6c14.5,0,26.6,10,29.9,23.6"/>
+            <g>
+              <polygon points="85.7,32.5 91.8,40.3 95.6,31.1     "/>
+            </g>
+          </g>
+          </g>
+        </g>
+      </svg>
       {{ $t("octnov.landscape") }}
     </div>
     <div class="octnov__content js-content" ref="content">
@@ -22,7 +35,17 @@
       <div class="title-wrap" ref="title">
         <h1 class="title">{{ title }}</h1>
         <span class="subtitle">{{ $t("octnov.subtitle") }}</span>
-        <span class="year">2019</span>
+        <span class="year">
+          2019
+          <span class="lang">
+            <button @click="setLang('fr')" v-if="$i18n.locale == 'en'">
+              🇫🇷
+            </button>
+            <button @click="setLang('en')" v-if="$i18n.locale == 'fr'">
+              🇬🇧
+            </button>
+          </span>
+        </span>
       </div>
       <div class="subtitle-wrap" ref="subtitle">
         <h2 class="title" v-if="activeDestination">{{ $t(`albums.${activeDestination.name}.displayName`) }}</h2>
@@ -217,6 +240,9 @@ export default {
     },
     randomNumber (min, max) {
       return Math.random() * (max - min) + min
+    },
+    setLang (lang) {
+      this.$i18n.locale = lang
     }
   },
   computed: {
@@ -291,6 +317,16 @@ export default {
       &:before {
         content: '―';
         margin-right: 0.5rem;
+      }
+    }
+    .lang {
+      pointer-events: all;
+      button {
+        background: none;
+        padding: 0;
+        margin: 0 0 0 10px;
+        border:none;
+        cursor: pointer;
       }
     }
   }
