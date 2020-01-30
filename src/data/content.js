@@ -52,11 +52,23 @@ export default {
       cover: require('../assets/covers/cover-thailande.jpg'),
       text: 'ราชอาณาจักรไทย',
       gps: {lat: 13.736717, lon: 100.523186},
-      zoom: 11,
-      pitch: 60
+      zoom: 10,
+      pitch: 0
     }
   },
   'albums': {
+    'thailand': {
+      name: 'thailand',
+      cover: require('../assets/photos/thailand/thailand-14.jpg'),
+      shuffle: false,
+      hidden: true,
+      grid: true,
+      meta: [
+        { name: 'og:url', content: `${url}/travel/thailand` },
+        { name: 'og:image', content: `${url}${require('../assets/img/meta_share_annapurna.gif')}` },
+        { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share_annapurna.gif')}` }
+      ]
+    },
     'annapurna': {
       name: 'annapurna',
       cover: require('../assets/photos/annapurna/annapurna-25.jpg'),

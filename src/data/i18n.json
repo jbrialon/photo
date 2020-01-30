@@ -78,7 +78,14 @@
       },
       "thailand": {
         "displayName": "Thailand",
-        "text": "TODO"
+        "text": "Last stage of a two month trip in asia",
+        "story": {
+          "1": "Bangkok - Last step of the trip, a little tired and not really excited about the idea of still visiting temples 😬, I decided to go to more unusual places",
+          "3": "Museum of Contemporary Art (MOCA BANGKOK) ",
+          "7": "Not really easy to access, metro + bus + a railway line to cross on foot to access it, it's the largest museum of contemporary art in Asia and the building alone is worth it",
+          "13": "Ko Kood",
+          "15": "Not very touristy and not very far from Bangkok, this is the last stage of the trip, Paddle, Nap and DIY with the owner of the hut and then it will be time to return to France ☹️"
+        }
       },
       "istanbul": {
         "displayName": "Istanbul",
@@ -196,7 +203,14 @@
       },
       "thailand": {
         "displayName": "Thaïlande",
-        "text": "TODO"
+        "text": "Last stage of a two month trip in asia",
+        "story": {
+          "1": "Bangkok - Dernière étape du voyage, un peu fatigué et pas franchement emballé à l'idée de visiter encore des temples 😬, je décide d'aller dans des endroits plus atypique",
+          "3": "Museum of Contemporary Art (MOCA BANGKOK) ",
+          "7": "pas franchement facile d'accès, metro + bus + une ligne de chemin de fer à traverser a pied pour y acceder, c'est le plus grand musée d'art contemporain de l'Asie et le batiment à lui seul vaut le coup",
+          "13": "Ko Kood",
+          "15": "pas très touristique et pas très loin de Bangkok, c'est la dernière étape du voyage, au programme Paddle,Sieste et Bricolage avec le proprietaire de la paillote et ensuite ca sera l'heure de rentrer en France ☹️"
+        }
       },
       "istanbul": {
         "displayName": "Istanbul",
