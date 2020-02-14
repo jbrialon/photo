@@ -61,12 +61,12 @@ export default {
       name: 'thailand',
       cover: require('../assets/photos/thailand/thailand-14.jpg'),
       shuffle: false,
-      hidden: true,
+      hidden: false,
       grid: true,
       meta: [
         { name: 'og:url', content: `${url}/album/thailand` },
-        { name: 'og:image', content: `${url}${require('../assets/img/meta_share_annapurna.gif')}` },
-        { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share_annapurna.gif')}` }
+        { name: 'og:image', content: `${url}${require('../assets/img/meta_share_thailand.gif')}` },
+        { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share_thailand.gif')}` }
       ]
     },
     'annapurna': {
@@ -89,8 +89,8 @@ export default {
       grid: true,
       meta: [
         { name: 'og:url', content: `${url}/album/nepal` },
-        { name: 'og:image', content: `${url}${require('../assets/img/meta_share_annapurna.gif')}` },
-        { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share_annapurna.gif')}` }
+        { name: 'og:image', content: `${url}${require('../assets/img/meta_share_nepal.gif')}` },
+        { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share_nepal.gif')}` }
       ]
     },
     'japan': {
