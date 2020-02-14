@@ -186,7 +186,7 @@
         "text": "Deux semaine dans la vallée de Katmandou pour s'imprégner de la culture Népalaise avant de partir dans les montagnes",
         "story": {
           "1": "Katmandou",
-          "5": "Deuxième destination, le Népal avec une ambiance bien différente du Japon",
+          "5": "Deuxième destination, le Népal et une ambiance bien différente du Japon",
           "6": "Boudhanath",
           "7": "avec comme but de visiter un peu la vallée de Katmandou pour s'imprégner de la culture Népalaise avant de partir dans les montagnes",
           "10": "Bhaktapur",
@@ -221,13 +221,13 @@
       },
       "thailand": {
         "displayName": "Thaïlande",
-        "text": "Last stage of a two month trip in asia",
+        "text": "Dernière étape d'un voyage de deux mois en Asie",
         "story": {
           "1": "Bangkok - Dernière étape du voyage, un peu fatigué et pas franchement emballé à l'idée de visiter encore des temples 😬, je décide d'aller dans des endroits plus atypique",
           "3": "Museum of Contemporary Art (MOCA BANGKOK) ",
           "7": "pas franchement facile d'accès, metro + bus + une ligne de chemin de fer à traverser a pied pour y acceder, c'est le plus grand musée d'art contemporain de l'Asie et le batiment à lui seul vaut le coup",
           "13": "Ko Kood",
-          "15": "pas très touristique et pas très loin de Bangkok, c'est la dernière étape du voyage, au programme Paddle,Sieste et Bricolage avec le proprietaire de la paillote et ensuite ca sera l'heure de rentrer en France ☹️"
+          "15": "peu touristique et pas très loin de Bangkok, c'est la dernière étape du voyage, au programme Paddle,Sieste et Bricolage avec le proprietaire de la paillote et ensuite ca sera l'heure de rentrer en France ☹️"
         }
       },
       "istanbul": {
