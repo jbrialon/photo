@@ -58,8 +58,8 @@ export default {
 @import '../scss/mixins';
 
 .about {
-  width:100%;
-  display:flex;
+  width: 100%;
+  display: flex;
   flex-wrap: wrap;
   justify-content: center;
   min-height: 100vh;
@@ -73,57 +73,57 @@ export default {
   }
   &__article {
     position: relative;
-    width:calc(100vw - 45px);
+    width: calc(100vw - 45px);
     height: 76vh;
 
     @include small-only {
-      width:90%;
-      height:auto;
+      width: 90%;
+      height: auto;
       padding: 5vw 0 25vw 0;
     }
   }
   &__bottom {
-    display:flex;
-    position:absolute;
+    display: flex;
+    position: absolute;
     flex-direction: column;
     justify-content: center;
-    width:100%;
+    width: 100%;
     background: $grey;
     padding:0 45px;
     height: 38vh;
     bottom: 0;
   }
   &__content {
-    position:relative;
-    z-index:1;
+    position: relative;
+    z-index: 1;
   }
   &__background {
-    position:absolute;
-    top:0;
-    right:0;
-    bottom:0;
-    left:0;
-    z-index:0;
-    opacity:0;
-    background-size:cover;
-    background-position:center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+    opacity: 0;
+    background-size: cover;
+    background-position: top;
     transition:opacity 400ms $easing;
     &[lazy=loaded] {
       opacity: 1;
     }
   }
   &__title {
-    display:inline;
+    display: inline;
     text-transform: uppercase;
-    font-size:32px;
+    font-size: 32px;
     letter-spacing: 0.45em;
     margin-right: -0.45em;
-    padding:5px;
-    color:white;
-    background:black;
+    padding: 5px;
+    color: white;
+    background :black;
     box-shadow: -25px 0 0 0 #000, 10px 0 0 0 #000;
     @include small-only {
-      font-size:20px;
+      font-size: 20px;
     }
   }
   &__text {
@@ -153,7 +153,7 @@ export default {
     padding: 50px;
   }
   &__links a {
-    position:relative;
+    position: relative;
     text-decoration: none;
     text-transform: uppercase;
     color: black;
