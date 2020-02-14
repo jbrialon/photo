@@ -36,8 +36,8 @@ export default {
       cover: require('../assets/covers/cover-nepal.jpg'),
       text: 'नेपाल',
       gps: {lat: 27.717245, lon: 85.323960},
-      zoom: 11,
-      pitch: 60
+      zoom: 10,
+      pitch: 0
     },
     'annapurna': {
       name: 'annapurna',
@@ -64,7 +64,7 @@ export default {
       hidden: true,
       grid: true,
       meta: [
-        { name: 'og:url', content: `${url}/travel/thailand` },
+        { name: 'og:url', content: `${url}/album/thailand` },
         { name: 'og:image', content: `${url}${require('../assets/img/meta_share_annapurna.gif')}` },
         { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share_annapurna.gif')}` }
       ]
@@ -76,7 +76,19 @@ export default {
       hidden: false,
       grid: true,
       meta: [
-        { name: 'og:url', content: `${url}/travel/annapurna` },
+        { name: 'og:url', content: `${url}/album/annapurna` },
+        { name: 'og:image', content: `${url}${require('../assets/img/meta_share_annapurna.gif')}` },
+        { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share_annapurna.gif')}` }
+      ]
+    },
+    'nepal': {
+      name: 'nepal',
+      cover: require('../assets/photos/nepal/nepal-09.jpg'),
+      shuffle: false,
+      hidden: false,
+      grid: true,
+      meta: [
+        { name: 'og:url', content: `${url}/album/nepal` },
         { name: 'og:image', content: `${url}${require('../assets/img/meta_share_annapurna.gif')}` },
         { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share_annapurna.gif')}` }
       ]

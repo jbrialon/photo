@@ -49,7 +49,16 @@
       },
       "nepal": {
         "displayName": "Nepal",
-        "text": "TODO"
+        "text": "Two weeks in the Kathmandu valley to soak up the Nepalese culture before going to the mountains",
+        "story": {
+          "1": "Kathmandu",
+          "5": "Second destination, Nepal with an atmosphere very different from Japan",
+          "6": "Boudhanath",
+          "7": "with the goal of visiting some of Kathmandu valley to absorb the Nepalese culture before heading into the mountains",
+          "10": "Bhaktapur",
+          "14": "the valley suffered a lot from earthquakes in 2015, many buildings are still quirky",
+          "15": "Nagarkot"
+        }
       },
       "annapurna": {
         "displayName": "Annapurna",
@@ -174,7 +183,16 @@
       },
       "nepal": {
         "displayName": "Népal",
-        "text": "TODO"
+        "text": "Deux semaine dans la vallée de Katmandou pour s'imprégner de la culture Népalaise avant de partir dans les montagnes",
+        "story": {
+          "1": "Katmandou",
+          "5": "Deuxième destination, le Népal avec une ambiance bien différente du Japon",
+          "6": "Boudhanath",
+          "7": "avec comme but de visiter un peu la vallée de Katmandou pour s'imprégner de la culture Népalaise avant de partir dans les montagnes",
+          "10": "Bhaktapur",
+          "14": "la vallée beaucoup souffert des séismes en 2015, beaucoup de bâtiments sont encore tout biscornus",
+          "15": "Nagarkot"
+        }
       },
       "annapurna": {
         "displayName": "Annapurna",
