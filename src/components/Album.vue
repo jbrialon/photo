@@ -226,6 +226,9 @@ export default {
       color: #000;
       background: #fff;
       box-shadow: -15px 0 0 0 #fff, 15px 0 0 0 #fff;
+      // https://www.w3.org/TR/css-backgrounds-3/#the-box-decoration-break  
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
       @include ipad {
         font-size: 0.8rem;
         line-height: 2rem;
