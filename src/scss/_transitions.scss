@@ -26,3 +26,11 @@
     opacity:0;
     transform:translateY(-25px);
 }
+
+.slide-fade-enter-active,
+.slide-fade-leave-active {
+    transition: transform 500ms ease-in-out 50ms;
+}
+.slide-fade-enter, .slide-fade-leave-to  {
+    transform: translateX(100%);
+}

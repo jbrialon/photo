@@ -25,6 +25,27 @@
       </svg>
       {{ $t("octnov.landscape") }}
     </div>
+    <transition name="slide-fade">
+    <div class="octnov__badges" v-if="!activeDestination">
+      <ul>
+        <li>
+          <a href="https://cssdesignawards.com/sites/completement-a-lest-oct-nov/36693/" target="_blank">
+            <img src="../assets/best-ui-black.png" alt="CSSDA Best UI Design Badge">
+          </a>
+        </li>
+        <li>
+          <a href="https://cssdesignawards.com/sites/completement-a-lest-oct-nov/36693/" target="_blank">
+            <img src="../assets/best-ux-black.png" alt="CSSDA Best UX Design Badge">
+          </a>
+        </li>
+        <li>
+          <a href="https://cssdesignawards.com/sites/completement-a-lest-oct-nov/36693/" target="_blank">
+            <img src="../assets/best-innovation-black.png" alt="CSSDA Best Innovation Badge">
+          </a>
+        </li>
+      </ul>
+    </div>
+    </transition>
     <div class="octnov__content js-content" ref="content">
       <Album v-if="activeDestination" :destination="activeDestination" :map="map" :marker="activeMarker" :back="toggle"></Album>
     </div>
@@ -376,6 +397,41 @@ export default {
     svg {
       width: 30vw;
       margin-bottom: 30px;
+    }
+  }
+  &__badges {
+    position: absolute;
+    z-index: 19;
+    right: 0;
+    top: 10vh;
+    cursor: pointer;
+    &:hover {
+      li {
+        transform: translateX(0) rotate(0deg);
+      }
+    }
+    ul {
+      list-style: none;
+      margin: 0;
+    }
+    li {
+      width: 77px;
+      margin: 10px;
+      transition: transform 250ms cubic-bezier(0.785, 0.135, 0.150, 0.860);
+      transform: translateX(56px) rotate(-90deg);
+      will-change: transform;
+      &:nth-child(1) {
+        transition-delay: 0;
+      }
+      &:nth-child(2) {
+        transition-delay: 80ms;
+      }
+      &:nth-child(3) {
+        transition-delay: 180ms;
+      }
+    }
+    img {
+      width: 100%;
     }
   }
   &__loader {
