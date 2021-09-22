@@ -10,7 +10,7 @@
 <script>
 import content from '../data/content'
 import Header from '../components/Header'
-import geojson from '../assets/gpx/one.json'
+import geojson from '../assets/geojson/full.json'
 import gju from 'geojson-utils'
 
 export default {
@@ -29,11 +29,8 @@ export default {
       map: null,
       animation: null,
       animationParams: {
-        speedFactor: 30,
-        startTime: 0,
-        index: 0,
-        progress: 0,
-        resetTime: false
+        speedFactor: 45,
+        index: 0
       },
       geojson: geojson,
       emptyGeoJson: {
@@ -61,23 +58,16 @@ export default {
   },
   methods: {
     animateLine (timestamp) {
-      if (this.animationParams.resetTime) {
-        // resume previous progress
-        this.animationParams.startTime = performance.now() - this.animationParams.progress
-        this.animationParams.resetTime = false
-      } else {
-        this.animationParams.progress = timestamp - this.animationParams.startTime
-      }
-
-      // restart if it finishes a loop
+      // stop if it finishes
       if (this.animationParams.index >= this.geojson.features[0].geometry.coordinates.length) {
         cancelAnimationFrame(this.animation)
-        console.log('cancel')
       } else {
+        // get the next position
         let pos = [
           this.geojson.features[0].geometry.coordinates[this.animationParams.index][0],
           this.geojson.features[0].geometry.coordinates[this.animationParams.index][1]
         ]
+        // append new coordinates to the lineString
         this.emptyGeoJson.features[0].geometry.coordinates.push(pos)
         this.animationParams.index += this.animationParams.speedFactor
         // then update the map
@@ -87,15 +77,13 @@ export default {
       }
     },
     mapload () {
-      // const geojson = this.geojson.features[0].geometry
-
       this.map.addSource('line', {
         'type': 'geojson',
         'data': this.emptyGeoJson
       })
 
       this.map.addLayer({
-        'id': 'day1-layer',
+        'id': 'line-animation',
         'type': 'line',
         'source': 'line',
         'layout': {
@@ -103,13 +91,13 @@ export default {
           'line-join': 'round'
         },
         'paint': {
-          'line-color': '#ed6498',
-          'line-width': 5,
-          'line-opacity': 0.8
+          'line-color': 'grey',
+          'line-width': 3,
+          'line-opacity': 1
         }
       })
 
-      this.map.on('click', 'day1-layer', (e) => {
+      this.map.on('click', 'line-animation', (e) => {
         var coordinates = this.geojson.features[0].geometry.coordinates
         var times = this.geojson.features[0].properties.coordinateProperties.times
         var closestIndex = null
@@ -130,16 +118,15 @@ export default {
         console.log(testDate)
       })
 
-      this.map.on('mouseenter', 'day1-layer', () => {
+      this.map.on('mouseenter', 'line-animation', () => {
         this.map.getCanvas().style.cursor = 'pointer'
       })
 
-      this.map.on('mouseleave', 'day1-layer', () => {
+      this.map.on('mouseleave', 'line-animation', () => {
         this.map.getCanvas().style.cursor = ''
       })
       this.map.scrollZoom.disable()
 
-      this.animationParams.startTime = performance.now()
       this.animateLine()
     }
   },
