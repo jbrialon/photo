@@ -47,6 +47,7 @@ export function getGPXasJSON (gpx) {
       const parsedGPX = new DOMParser().parseFromString(str)
       const geojson = converter.gpx(parsedGPX)
 
+      console.log(JSON.stringify(geojson))
       return geojson
     })
 }

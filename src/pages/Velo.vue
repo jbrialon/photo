@@ -29,7 +29,7 @@ export default {
       map: null,
       animation: null,
       animationParams: {
-        speedFactor: 45,
+        speedFactor: 60,
         index: 0
       },
       geojson: geojson,
@@ -69,7 +69,11 @@ export default {
         ]
         // append new coordinates to the lineString
         this.emptyGeoJson.features[0].geometry.coordinates.push(pos)
-        this.animationParams.index += this.animationParams.speedFactor
+        if (this.animationParams.index > 88029 && this.animationParams.index < 89588) {
+          this.animationParams.index += 6
+        } else {
+          this.animationParams.index += this.animationParams.speedFactor
+        }
         // then update the map
         this.map.getSource('line').setData(this.emptyGeoJson)
         // Request the next frame of the animation.
@@ -115,7 +119,7 @@ export default {
           }
         })
         const testDate = new Date(times[closestIndex])
-        console.log(testDate)
+        console.log(testDate, closestIndex)
       })
 
       this.map.on('mouseenter', 'line-animation', () => {
