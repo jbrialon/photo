@@ -4,6 +4,7 @@ import Octnov from 'pages/Octnov'
 import Disclaimer from 'pages/Disclaimer'
 import Travels from 'pages/Travels'
 import Travel from 'pages/Travel'
+import Velo from 'pages/Velo'
 import About from 'pages/About'
 import NotFound from 'pages/404'
 import MobileDetect from 'mobile-detect'
@@ -36,6 +37,12 @@ export default new Router({
       path: '/album/:name',
       name: 'Travel',
       component: Travel,
+      props: true
+    },
+    {
+      path: '/velo',
+      name: 'Velo',
+      component: Velo,
       props: true
     },
     {

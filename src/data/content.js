@@ -22,6 +22,14 @@ export default {
       { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share.gif')}` }
     ]
   },
+  'velo': {
+    cover: require('../assets/photos/cover.jpg'),
+    meta: [
+      { name: 'og:url', content: `${url}/velo` }, // TODO: should be dynamic
+      { name: 'og:image', content: `${url}${require('../assets/img/meta_share.gif')}` },
+      { name: 'twitter:image', content: `${url}${require('../assets/img/meta_share.gif')}` }
+    ]
+  },
   'octnov': {
     'japan': {
       name: 'japan',

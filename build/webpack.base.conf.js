@@ -82,6 +82,12 @@ module.exports = {
         ]
       },
       {
+        test: /\.gpx$/i,
+        use: [{
+            loader: 'file-loader'
+        }]
+      },
+      {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
         loader: 'url-loader',
         query: {

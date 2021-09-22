@@ -1,6 +1,9 @@
 import Preloader from '../services/Preloader.js'
 import content from '../data/content'
 
+const converter = require('@tmcw/togeojson')
+const DOMParser = require('xmldom').DOMParser
+
 export function getMarkerOffset () {
   const x = (window.innerWidth / 2) - ((window.innerWidth - document.querySelector('.js-content').offsetWidth) / 2)
   const y = 0
@@ -35,4 +38,15 @@ export function getNavigatorLanguage () {
     lang = navigator.userLanguage || navigator.language || navigator.browserLanguage || 'en'
   }
   return lang.substring(0, 2)
+}
+
+export function getGPXasJSON (gpx) {
+  fetch(gpx)
+    .then(response => response.text())
+    .then(str => {
+      const parsedGPX = new DOMParser().parseFromString(str)
+      const geojson = converter.gpx(parsedGPX)
+
+      return geojson
+    })
 }
