@@ -1,6 +1,18 @@
 <template>
   <div class="velo">
-    <c-header></c-header>
+    <div class="velo__content" v-cloak>
+      <transition name="fade">
+        <div class="velo__content-day">
+          Jour : {{ activity.dayNumber }}
+          <br>
+          <br>
+          Départ : {{ velo[activity.dayNumber - 1].startLocation }}
+          <br>
+          <br>
+          Arrivée : {{ velo[activity.dayNumber - 1].endLocation }}
+        </div>
+      </transition>
+    </div>
     <div class="velo__map" v-cloak>
       <div id="map" ref="map"></div>
     </div>
@@ -11,6 +23,7 @@
 import content from '../data/content'
 import Header from '../components/Header'
 import geojson from '../assets/geojson/full.json'
+import data from '../data/velo.json'
 import gju from 'geojson-utils'
 
 export default {
@@ -29,9 +42,15 @@ export default {
       map: null,
       animation: null,
       animationParams: {
-        speedFactor: 60,
+        speedFactor: 45,
         index: 0
       },
+      activity: {
+        currentDate: new Date(geojson.features[0].properties.coordinateProperties.times[0]),
+        currentDay: new Date(geojson.features[0].properties.coordinateProperties.times[0]).getDate(),
+        dayNumber: 1
+      },
+      velo: data.velo,
       geojson: geojson,
       emptyGeoJson: {
         'type': 'FeatureCollection',
@@ -47,7 +66,7 @@ export default {
       },
       mapOptions: {
         token: 'pk.eyJ1IjoiamJyaWFsb24iLCJhIjoiZjJkNjkyNDNiMzU0YjAxY2FjNGZlMjU3MGFiYjYyZmQifQ.lwFTmFgGxSuvfoJdTcx7Jg',
-        style: 'mapbox://styles/jbrialon/ck3yg7nb807lc1co990hb80mi/draft',
+        style: 'mapbox://styles/jbrialon/cktviax1t2amj19qooc4d32qy/draft',
         center: [8.227512, 46.818188],
         zoom: 8
       }
@@ -58,6 +77,8 @@ export default {
   },
   methods: {
     animateLine (timestamp) {
+      let currentDate = null
+      let times = this.geojson.features[0].properties.coordinateProperties.times
       // stop if it finishes
       if (this.animationParams.index >= this.geojson.features[0].geometry.coordinates.length) {
         cancelAnimationFrame(this.animation)
@@ -69,10 +90,17 @@ export default {
         ]
         // append new coordinates to the lineString
         this.emptyGeoJson.features[0].geometry.coordinates.push(pos)
-        if (this.animationParams.index > 88029 && this.animationParams.index < 89588) {
-          this.animationParams.index += 6
+        if (this.animationParams.index > 88029 && this.animationParams.index < 88704) {
+          this.animationParams.index += 3
         } else {
           this.animationParams.index += this.animationParams.speedFactor
+        }
+
+        currentDate = new Date(times[this.animationParams.index])
+        if (this.activity.currentDay !== currentDate.getDate()) {
+          this.activity.currentDate = currentDate
+          this.activity.currentDay = currentDate.getDate()
+          this.activity.dayNumber++
         }
         // then update the map
         this.map.getSource('line').setData(this.emptyGeoJson)
@@ -119,7 +147,7 @@ export default {
           }
         })
         const testDate = new Date(times[closestIndex])
-        console.log(testDate, closestIndex)
+        console.log(testDate)
       })
 
       this.map.on('mouseenter', 'line-animation', () => {
@@ -156,12 +184,34 @@ export default {
   width: 100vw;
   height: 100vh;
 
+  &__content {
+    pointer-events: none;
+    position: relative;
+    z-index: 10;
+    width: 100vw;
+    height: 100vh;
+
+    &-day {
+      position: absolute;
+      left: 25px;
+      top: 25px;
+      display: inline-block;
+      font-weight: 500;
+      margin: auto auto auto 0;
+      border: 2px solid black;
+      padding: 10px 15px;
+      text-transform: uppercase;
+      text-align: left;
+    }
+  }
+
   &__map {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
+    z-index: -1;
 
     #map {
       height: 100vh;

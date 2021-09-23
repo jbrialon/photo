@@ -1,0 +1,28 @@
+{
+  "velo": [
+    {
+      "startLocation": "Annemasse",
+      "endLocation" : "Vevey"
+    },
+    {
+      "startLocation": "Vevey",
+      "endLocation" : "Gstaad"
+    },
+    {
+      "startLocation": "Gstaad",
+      "endLocation" : "Meiringen"
+    },
+    {
+      "startLocation": "Meiringen",
+      "endLocation" : "Zug"
+    },
+    {
+      "startLocation": "Zug",
+      "endLocation" : "Niederurnen"
+    },
+    {
+      "startLocation": "Niederurnen",
+      "endLocation" : "Rorschach"
+    }
+  ]
+}
