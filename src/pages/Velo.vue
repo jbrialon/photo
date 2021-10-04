@@ -70,8 +70,8 @@ export default {
       mapOptions: {
         token: 'pk.eyJ1IjoiamJyaWFsb24iLCJhIjoiZjJkNjkyNDNiMzU0YjAxY2FjNGZlMjU3MGFiYjYyZmQifQ.lwFTmFgGxSuvfoJdTcx7Jg',
         style: 'mapbox://styles/jbrialon/cktviax1t2amj19qooc4d32qy/draft',
-        center: [8.227512, 46.818188],
-        zoom: 8
+        center: [6.621296291298819, 46.31963262434434],
+        zoom: 10
       }
     }
   },
@@ -109,8 +109,17 @@ export default {
           this.activity.currentDate = currentDate
           this.activity.currentDay = currentDate.getDate()
           this.activity.dayNumber++
-          this.activity.circPos.push(pos)
           this.drawCircle(pos, this.animationParams.index)
+          this.map.flyTo({
+            center: [
+              pos[0],
+              pos[1]
+            ],
+            offset: [-350, 300],
+            speed: 0.8,
+            curve: 0.6,
+            essential: true // this animation is considered essential with respect to prefers-reduced-motion
+          })
         }
         // then update the map
         this.map.getSource('line').setData(this.emptyGeoJson)
@@ -134,7 +143,7 @@ export default {
         },
         'paint': {
           'line-color': 'grey',
-          'line-width': 2,
+          'line-width': 3,
           'line-opacity': 1
         }
       })
@@ -175,9 +184,11 @@ export default {
       this.animateLine()
     },
     drawCircle (pos, index) {
+      this.activity.circPos.push(pos)
+
       const sourceName = `source-circle-${index}`
       const id = `circle-${index}`
-
+      let radius = 0
       this.map.addSource(sourceName, {
         'type': 'geojson',
         'data': {
@@ -196,18 +207,16 @@ export default {
         'id': id,
         'type': 'circle',
         'source': sourceName,
+        'properties': {
+          'test': 'huhu'
+        },
         'paint': {
-          'circle-radius': {
-            stops: [
-              [5, 1],
-              [15, 850]
-            ],
-            base: 2
+          'circle-radius': radius,
+          'circle-radius-transition': {
+            'duration': 0
           },
           'circle-color': 'DimGray',
           'circle-opacity': 1
-          // 'circle-translate': [30, 30]
-
         }
       })
 
@@ -216,33 +225,39 @@ export default {
         'type': 'circle',
         'source': sourceName,
         'paint': {
-          'circle-radius': {
-            stops: [
-              [5, 1],
-              [15, 1200]
-            ],
-            base: 2
+          'circle-radius': radius + 12,
+          'circle-radius-transition': {
+            'duration': 0
           },
           'circle-color': 'DimGray',
           'circle-opacity': 0,
           'circle-stroke-color': 'DimGray',
-          'circle-stroke-width': 1
-
+          'circle-stroke-width': 1,
+          'circle-stroke-opacity': 0
         }
       })
 
-      // Mouse over gpx
+      const anim = setInterval(() => {
+        this.map.setPaintProperty(id, 'circle-radius', radius)
+        radius = ++radius % 20
+        if (radius >= 10) {
+          clearInterval(anim)
+          this.map.setPaintProperty(`${id}_border`, 'circle-stroke-opacity', 1)
+        }
+      }, 50)
+
+      // Mouse over circle
       this.map.on('mouseenter', id, () => {
         this.map.getCanvas().style.cursor = 'pointer'
       })
 
-      // Mouse out GPX
+      // Mouse out circle
       this.map.on('mouseleave', id, () => {
         this.map.getCanvas().style.cursor = ''
       })
 
       this.map.on('click', id, (e) => {
-        console.log(e)
+        console.log(e.features[0])
       })
     }
   },
@@ -255,6 +270,9 @@ export default {
       zoom: this.mapOptions.zoom // starting zoom
     })
     this.map.on('load', this.mapload)
+    this.map.on('click', (e) => {
+      console.log(e)
+    })
   }
 }
 </script>
