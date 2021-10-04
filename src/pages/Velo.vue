@@ -1,8 +1,8 @@
 <template>
-  <div class="velo">
-    <div class="velo__content" v-cloak>
-      <transition name="fade">
-        <div class="velo__content-day">
+  <div class='velo'>
+    <div class='velo__content' v-cloak>
+      <transition name='fade'>
+        <div class='velo__content-day'>
           Jour : {{ activity.dayNumber }}
           <br>
           <br>
@@ -13,8 +13,8 @@
         </div>
       </transition>
     </div>
-    <div class="velo__map" v-cloak>
-      <div id="map" ref="map"></div>
+    <div class='velo__map' v-cloak>
+      <div id='map' ref='map'></div>
     </div>
   </div>
 </template>
@@ -26,6 +26,7 @@ import geojson from '../assets/geojson/full.json'
 import data from '../data/velo.json'
 import gju from 'geojson-utils'
 
+const startPath = [6.236866, 46.198834]
 export default {
   name: 'velo',
   metaInfo () {
@@ -41,6 +42,7 @@ export default {
       content: content.velo,
       map: null,
       animation: null,
+      startPath: startPath,
       animationParams: {
         speedFactor: 45,
         index: 0
@@ -48,7 +50,8 @@ export default {
       activity: {
         currentDate: new Date(geojson.features[0].properties.coordinateProperties.times[0]),
         currentDay: new Date(geojson.features[0].properties.coordinateProperties.times[0]).getDate(),
-        dayNumber: 1
+        dayNumber: 1,
+        circPos: []
       },
       velo: data.velo,
       geojson: geojson,
@@ -59,7 +62,7 @@ export default {
             'type': 'Feature',
             'geometry': {
               'type': 'LineString',
-              'coordinates': [[6.236866, 46.198834]]
+              'coordinates': [startPath]
             }
           }
         ]
@@ -81,6 +84,11 @@ export default {
       let times = this.geojson.features[0].properties.coordinateProperties.times
       // stop if it finishes
       if (this.animationParams.index >= this.geojson.features[0].geometry.coordinates.length) {
+        let lastPos = [
+          this.geojson.features[0].geometry.coordinates[this.geojson.features[0].geometry.coordinates.length - 1][0],
+          this.geojson.features[0].geometry.coordinates[this.geojson.features[0].geometry.coordinates.length - 1][1]
+        ]
+        this.drawCircle(lastPos, this.animationParams.index)
         cancelAnimationFrame(this.animation)
       } else {
         // get the next position
@@ -101,6 +109,8 @@ export default {
           this.activity.currentDate = currentDate
           this.activity.currentDay = currentDate.getDate()
           this.activity.dayNumber++
+          this.activity.circPos.push(pos)
+          this.drawCircle(pos, this.animationParams.index)
         }
         // then update the map
         this.map.getSource('line').setData(this.emptyGeoJson)
@@ -124,7 +134,7 @@ export default {
         },
         'paint': {
           'line-color': 'grey',
-          'line-width': 3,
+          'line-width': 2,
           'line-opacity': 1
         }
       })
@@ -150,16 +160,90 @@ export default {
         console.log(testDate)
       })
 
+      // Mouse over gpx
       this.map.on('mouseenter', 'line-animation', () => {
         this.map.getCanvas().style.cursor = 'pointer'
       })
 
+      // Mouse out GPX
       this.map.on('mouseleave', 'line-animation', () => {
         this.map.getCanvas().style.cursor = ''
       })
       this.map.scrollZoom.disable()
 
+      this.drawCircle(startPath, 0)
       this.animateLine()
+    },
+    drawCircle (pos, index) {
+      const sourceName = `source-circle-${index}`
+      const id = `circle-${index}`
+
+      this.map.addSource(sourceName, {
+        'type': 'geojson',
+        'data': {
+          'type': 'FeatureCollection',
+          'features': [{
+            'type': 'Feature',
+            'geometry': {
+              'type': 'Point',
+              'coordinates': pos
+            }
+          }]
+        }
+      })
+
+      this.map.addLayer({
+        'id': id,
+        'type': 'circle',
+        'source': sourceName,
+        'paint': {
+          'circle-radius': {
+            stops: [
+              [5, 1],
+              [15, 850]
+            ],
+            base: 2
+          },
+          'circle-color': 'DimGray',
+          'circle-opacity': 1
+          // 'circle-translate': [30, 30]
+
+        }
+      })
+
+      this.map.addLayer({
+        'id': `${id}_border`,
+        'type': 'circle',
+        'source': sourceName,
+        'paint': {
+          'circle-radius': {
+            stops: [
+              [5, 1],
+              [15, 1200]
+            ],
+            base: 2
+          },
+          'circle-color': 'DimGray',
+          'circle-opacity': 0,
+          'circle-stroke-color': 'DimGray',
+          'circle-stroke-width': 1
+
+        }
+      })
+
+      // Mouse over gpx
+      this.map.on('mouseenter', id, () => {
+        this.map.getCanvas().style.cursor = 'pointer'
+      })
+
+      // Mouse out GPX
+      this.map.on('mouseleave', id, () => {
+        this.map.getCanvas().style.cursor = ''
+      })
+
+      this.map.on('click', id, (e) => {
+        console.log(e)
+      })
     }
   },
   mounted () {
@@ -175,7 +259,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style scoped lang='scss'>
 @import '../scss/vars';
 @import '../scss/mixins';
 
