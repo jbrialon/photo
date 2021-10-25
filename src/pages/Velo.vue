@@ -1,17 +1,20 @@
 <template>
   <div class='velo'>
     <div class='velo__content' v-cloak>
-      <transition name='fade'>
-        <div class='velo__content-day'>
-          Jour : {{ activity.dayNumber }}
-          <br>
-          <br>
-          Départ : {{ velo[activity.dayNumber - 1].startLocation }}
-          <br>
-          <br>
-          Arrivée : {{ velo[activity.dayNumber - 1].endLocation }}
+      <div class="title-wrap">
+        <h1 class="title">Complètement à l'est //</h1>
+        <span class="subtitle">
+          Jour {{ activity.dayNumber }} :
+          {{ velo[activity.dayNumber - 1].startLocation }} -
+          {{ velo[activity.dayNumber - 1].endLocation }}
+        </span>
+        <div class="subtitle">
+          Distance : <animated-number :value="activity.totalDistance" :duration="1000" :formatValue="formatToKm" />
         </div>
-      </transition>
+        <div class="subtitle">
+          Denivelé : <animated-number :value="activity.totalElevation" :duration="1000" :formatValue="formatToElevation" />
+        </div>
+      </div>
     </div>
     <div class='velo__map' v-cloak>
       <div id='map' ref='map'></div>
@@ -25,8 +28,12 @@ import Header from '../components/Header'
 import geojson from '../assets/geojson/full.json'
 import data from '../data/velo.json'
 import gju from 'geojson-utils'
+import MobileDetect from 'mobile-detect'
+import AnimatedNumber from 'animated-number-vue'
 
+const md = new MobileDetect(window.navigator.userAgent)
 const startPath = [6.236866, 46.198834]
+
 export default {
   name: 'velo',
   metaInfo () {
@@ -38,6 +45,7 @@ export default {
   },
   data () {
     return {
+      isMobile: md.phone() !== null,
       links: content.social,
       content: content.velo,
       map: null,
@@ -77,7 +85,9 @@ export default {
             [9.186209, 47.115204],
             [9.705132257091371, 47.554503792029195]
           )
-        ]
+        ],
+        totalDistance: 0,
+        totalElevation: 0
       },
       velo: data.velo,
       geojson: geojson,
@@ -102,7 +112,8 @@ export default {
     }
   },
   components: {
-    'c-header': Header
+    'c-header': Header,
+    'animated-number': AnimatedNumber
   },
   methods: {
     animateLine (timestamp) {
@@ -115,6 +126,8 @@ export default {
           this.geojson.features[0].geometry.coordinates[this.geojson.features[0].geometry.coordinates.length - 1][1]
         ]
         this.drawCircle(lastPos, this.animationParams.index)
+        this.activity.totalDistance += this.velo[this.activity.dayNumber - 1].distance
+        this.activity.totalElevation += this.velo[this.activity.dayNumber - 1].elevation
         cancelAnimationFrame(this.animation)
       } else {
         // get the next position
@@ -137,8 +150,10 @@ export default {
           this.activity.dayNumber++
           this.drawCircle(pos, this.animationParams.index)
           this.map.fitBounds(this.activity.bounds[this.activity.dayNumber - 1], {
-            padding: 150
+            padding: this.isMobile ? 45 : 150
           })
+          this.activity.totalDistance += this.velo[this.activity.dayNumber - 1].distance
+          this.activity.totalElevation += this.velo[this.activity.dayNumber - 1].elevation
         }
         // then update the map
         this.map.getSource('line').setData(this.emptyGeoJson)
@@ -168,8 +183,10 @@ export default {
       })
 
       this.map.fitBounds(this.activity.bounds[this.activity.dayNumber - 1], {
-        padding: 300
+        padding: this.isMobile ? 60 : 300
       })
+      this.activity.totalDistance += this.velo[this.activity.dayNumber - 1].distance
+      this.activity.totalElevation += this.velo[this.activity.dayNumber - 1].elevation
 
       this.map.on('click', 'line-animation', (e) => {
         var coordinates = this.geojson.features[0].geometry.coordinates
@@ -201,7 +218,7 @@ export default {
       this.map.on('mouseleave', 'line-animation', () => {
         this.map.getCanvas().style.cursor = ''
       })
-      this.map.scrollZoom.disable()
+      // this.map.scrollZoom.disable()
 
       this.drawCircle(startPath, 0)
       this.animateLine()
@@ -278,6 +295,12 @@ export default {
       this.map.on('mouseleave', id, () => {
         this.map.getCanvas().style.cursor = ''
       })
+    },
+    formatToKm (value) {
+      return `${Number(value).toFixed(2)} km`
+    },
+    formatToElevation (value) {
+      return `${Number(value).toFixed(0)} m`
     }
   },
   mounted () {
@@ -289,9 +312,6 @@ export default {
       zoom: this.mapOptions.zoom // starting zoom
     })
     this.map.on('load', this.mapload)
-    this.map.on('click', (e) => {
-      console.log(e)
-    })
   }
 }
 </script>
@@ -311,6 +331,37 @@ export default {
     z-index: 10;
     width: 100vw;
     height: 100vh;
+
+    .title-wrap {
+      position: absolute;
+      top: 10vh;
+      left: 10vh;
+      text-align: left;
+      @include small-only {
+        top: 5vh;
+        left: 5vh;
+      }
+      .title {
+        margin: 0;
+        padding:0;
+        font-size: 2rem;
+        line-height: 1.2;
+        margin-bottom:10px;
+        @include small-only {
+          font-size: 1.5rem;
+          margin-bottom: 5px;
+        }
+      }
+      .subtitle {
+        display: block;
+        font-size: 1.25rem;
+        margin: 0;
+        margin-bottom: 5px;
+        @include small-only {
+          font-size: 1rem;
+        }
+      }
+    }
 
     &-day {
       position: absolute;

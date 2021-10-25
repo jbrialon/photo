@@ -2,27 +2,40 @@
   "velo": [
     {
       "startLocation": "Annemasse",
-      "endLocation" : "Vevey"
+      "endLocation" : "Vevey",
+      "distance": 104,
+      "elevation": 1029
     },
     {
       "startLocation": "Vevey",
-      "endLocation" : "Gstaad"
+      "endLocation" : "Gstaad",
+      "distance": 88.7,
+      "elevation": 1707
+
     },
     {
       "startLocation": "Gstaad",
-      "endLocation" : "Meiringen"
+      "endLocation" : "Meiringen",
+      "distance": 120,
+      "elevation": 1200
     },
     {
       "startLocation": "Meiringen",
-      "endLocation" : "Zug"
+      "endLocation" : "Zug",
+      "distance": 93.81,
+      "elevation": 815
     },
     {
       "startLocation": "Zug",
-      "endLocation" : "Niederurnen"
+      "endLocation" : "Niederurnen",
+      "distance": 117.67,
+      "elevation": 1284
     },
     {
       "startLocation": "Niederurnen",
-      "endLocation" : "Rorschach"
+      "endLocation" : "Rorschach",
+      "distance": 121.47,
+      "elevation": 504
     }
   ]
 }
