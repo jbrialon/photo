@@ -51,7 +51,33 @@ export default {
         currentDate: new Date(geojson.features[0].properties.coordinateProperties.times[0]),
         currentDay: new Date(geojson.features[0].properties.coordinateProperties.times[0]).getDate(),
         dayNumber: 1,
-        circPos: []
+        circPos: [],
+        bounds: [
+          new mapboxgl.LngLatBounds(
+            [6.236866, 46.198834],
+            [6.841184, 46.459159]
+          ),
+          new mapboxgl.LngLatBounds(
+            [6.841184, 46.459159],
+            [7.347178503121125, 46.61349919114108]
+          ),
+          new mapboxgl.LngLatBounds(
+            [7.322, 46.4245],
+            [8.190455, 46.71943]
+          ),
+          new mapboxgl.LngLatBounds(
+            [8.190455, 46.71943],
+            [8.513203, 47.170359]
+          ),
+          new mapboxgl.LngLatBounds(
+            [8.513203, 47.170359],
+            [9.186209, 47.115204]
+          ),
+          new mapboxgl.LngLatBounds(
+            [9.186209, 47.115204],
+            [9.705132257091371, 47.554503792029195]
+          )
+        ]
       },
       velo: data.velo,
       geojson: geojson,
@@ -110,15 +136,8 @@ export default {
           this.activity.currentDay = currentDate.getDate()
           this.activity.dayNumber++
           this.drawCircle(pos, this.animationParams.index)
-          this.map.flyTo({
-            center: [
-              pos[0],
-              pos[1]
-            ],
-            offset: [-350, 300],
-            speed: 0.8,
-            curve: 0.6,
-            essential: true // this animation is considered essential with respect to prefers-reduced-motion
+          this.map.fitBounds(this.activity.bounds[this.activity.dayNumber - 1], {
+            padding: 150
           })
         }
         // then update the map
@@ -146,6 +165,10 @@ export default {
           'line-width': 3,
           'line-opacity': 1
         }
+      })
+
+      this.map.fitBounds(this.activity.bounds[this.activity.dayNumber - 1], {
+        padding: 300
       })
 
       this.map.on('click', 'line-animation', (e) => {
@@ -254,10 +277,6 @@ export default {
       // Mouse out circle
       this.map.on('mouseleave', id, () => {
         this.map.getCanvas().style.cursor = ''
-      })
-
-      this.map.on('click', id, (e) => {
-        console.log(e.features[0])
       })
     }
   },
