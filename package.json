@@ -15,7 +15,7 @@
     "date-fns": "^2.25.0",
     "geojson-utils": "^1.1.0",
     "gsap": "file:gsap-bonus.tgz",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.21",
     "mobile-detect": "^1.4.4",
     "normalize.css": "^5.0.0",
     "vue": "^2.6.11",
