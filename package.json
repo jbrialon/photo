@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@tmcw/togeojson": "^4.5.0",
+    "date-fns": "^2.25.0",
     "geojson-utils": "^1.1.0",
     "gsap": "file:gsap-bonus.tgz",
     "lodash": "^4.17.4",
