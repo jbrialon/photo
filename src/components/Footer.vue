@@ -1,7 +1,6 @@
 <template>
   <footer>
     <p>{{ author }} © {{new Date().getFullYear()}} //</p>
-    <a style="display:none;" rel="me" href="https://mastodon.social/@Jerem">Mastodon</a>
   </footer>
 </template>
 
