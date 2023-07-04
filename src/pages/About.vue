@@ -3,22 +3,27 @@
     <c-header></c-header>
     <article class="about__article">
       <div class="about__bottom">
-        <div class="about__background" v-lazy:background-image="content.cover"></div>
+        <div
+          class="about__background"
+          v-lazy:background-image="content.cover"
+        ></div>
         <div class="about__content">
           <h1 class="about__title">
             {{ $t("about.displayName") }}
           </h1>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
           <span class="about__text" v-html="$t('about.text')"></span>
         </div>
       </div>
       <p class="about__links">
         <template v-for="(link, index) in links">
-          <a :href="link.link" rel="noopener" :key="index" target="_blank"> {{ link.title }} </a>
+          <a :href="link.link" rel="noopener" :key="index" target="_blank">
+            {{ link.title }}
+          </a>
         </template>
       </p>
     </article>
@@ -27,35 +32,35 @@
 </template>
 
 <script>
-import content from '../data/content'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
+import content from "../data/content";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 export default {
-  name: 'about',
-  metaInfo () {
+  name: "about",
+  metaInfo() {
     return {
-      title: this.$t('about.displayName').toUpperCase(),
+      title: this.$t("about.displayName").toUpperCase(),
       titleTemplate: `%s //`,
-      meta: content.about.meta
-    }
+      meta: content.about.meta,
+    };
   },
-  data () {
+  data() {
     return {
       links: content.social,
-      content: content.about
-    }
+      content: content.about,
+    };
   },
   components: {
-    'c-header': Header,
-    'c-footer': Footer
-  }
-}
+    "c-header": Header,
+    "c-footer": Footer,
+  },
+};
 </script>
 
 <style scoped lang="scss">
-@import '../scss/vars';
-@import '../scss/mixins';
+@import "../scss/vars";
+@import "../scss/mixins";
 
 .about {
   width: 100%;
@@ -69,7 +74,7 @@ export default {
     padding: 15px;
   }
   @include small-only {
-    padding-top:5vw;
+    padding-top: 5vw;
   }
   &__article {
     position: relative;
@@ -89,7 +94,7 @@ export default {
     justify-content: center;
     width: 100%;
     background: $grey;
-    padding:0 45px;
+    padding: 0 45px;
     height: 38vh;
     bottom: 0;
   }
@@ -107,8 +112,8 @@ export default {
     opacity: 0;
     background-size: cover;
     background-position: top;
-    transition:opacity 400ms $easing;
-    &[lazy=loaded] {
+    transition: opacity 400ms $easing;
+    &[lazy="loaded"] {
       opacity: 1;
     }
   }
@@ -120,7 +125,7 @@ export default {
     margin-right: -0.45em;
     padding: 5px;
     color: white;
-    background :black;
+    background: black;
     box-shadow: -25px 0 0 0 #000, 10px 0 0 0 #000;
     @include small-only {
       font-size: 20px;
@@ -161,20 +166,20 @@ export default {
     align-items: center;
     font-size: 15px;
     line-height: 2.2em;
-    letter-spacing: .08em;
+    letter-spacing: 0.08em;
     font-weight: 400;
     &:after {
       display: block;
       position: absolute;
-      content:'';
+      content: "";
       background: black;
       width: 0;
       bottom: 4px;
       height: 1px;
-      transition:width 350ms ease-in-out;
+      transition: width 350ms ease-in-out;
     }
     &:hover:after {
-      width:99%;
+      width: 99%;
     }
   }
 }

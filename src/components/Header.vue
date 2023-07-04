@@ -1,5 +1,5 @@
 <template>
-  <header class="header"> 
+  <header class="header">
     <h1>
       <router-link to="/">
         {{ title }}
@@ -7,88 +7,83 @@
     </h1>
     <ul>
       <li>
-        <router-link :to="{ name: 'Octnov'}">
+        <router-link :to="{ name: 'Octnov' }">
           {{ $t("menu.octnov") }}
         </router-link>
       </li>
       <li>
-        <router-link :to="{ name: 'Travels'}">
+        <router-link :to="{ name: 'Travels' }">
           {{ $t("menu.travels") }}
         </router-link>
       </li>
       <li>
-        <router-link :to="{ name: 'About'}">
+        <router-link :to="{ name: 'About' }">
           {{ $t("menu.about") }}
         </router-link>
       </li>
       <li>
-        <button @click="setLang('fr')" v-if="$i18n.locale == 'en'">
-          🇫🇷
-        </button>
-        <button @click="setLang('en')" v-if="$i18n.locale == 'fr'">
-          🇬🇧
-        </button>
+        <button @click="setLang('fr')" v-if="$i18n.locale == 'en'">🇫🇷</button>
+        <button @click="setLang('en')" v-if="$i18n.locale == 'fr'">🇬🇧</button>
       </li>
     </ul>
   </header>
 </template>
 
 <script>
-import content from 'data/content'
+import content from "data/content";
 
 export default {
-  name: 'c-header',
-  data () {
+  name: "c-header",
+  data() {
     return {
-      title: content.meta.title
-    }
+      title: content.meta.title,
+    };
   },
   methods: {
-    setLang (lang) {
-      this.$i18n.locale = lang
-    }
-  }
-}
+    setLang(lang) {
+      this.$i18n.locale = lang;
+    },
+  },
+};
 </script>
 
 <style lang="scss">
-@import '../scss/vars';
-@import '../scss/mixins';
+@import "../scss/vars";
+@import "../scss/mixins";
 
 header.header {
-  display:flex;
-  padding:15px;
+  display: flex;
+  padding: 15px;
   margin: auto;
   h1 {
-    font-weight:400;
-    margin:auto auto auto 0;
+    font-weight: 400;
+    margin: auto auto auto 0;
     border: 3px solid black;
-    padding:15px 20px;
+    padding: 15px 20px;
 
     @include small-only {
-      font-size:22px;
-      margin:auto;
+      font-size: 22px;
+      margin: auto;
     }
 
     a {
-      color:black;
+      color: black;
       text-decoration: none;
     }
   }
 
   ul {
-    list-style:none;
-    margin:auto 0 auto auto;
-    font-size:17px;
+    list-style: none;
+    margin: auto 0 auto auto;
+    font-size: 17px;
 
     @include small-only {
-      display:none;
+      display: none;
     }
 
-
     li {
-      display:inline-block;
-      margin-right:15px;
+      display: inline-block;
+      margin-right: 15px;
       padding: 10px 0;
       font-size: 11px;
       text-transform: uppercase;
@@ -101,22 +96,22 @@ header.header {
         cursor: pointer;
       }
       a {
-        text-decoration:none;
-        color:black;
-        transition:color 300ms $easing;
+        text-decoration: none;
+        color: black;
+        transition: color 300ms $easing;
 
         &.active,
         &:hover {
-          color:$red;
+          color: $red;
         }
       }
 
       &:after {
-        content: '//'
+        content: "//";
       }
 
       &:last-child {
-        margin-right:0;
+        margin-right: 0;
       }
 
       &:last-child:after {

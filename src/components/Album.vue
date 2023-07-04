@@ -1,23 +1,34 @@
 <template>
   <div class="album">
-    <div class="album__photo" v-for="(photo, index) in photos" :key="index" :class="getClass(photo)">
+    <div
+      class="album__photo"
+      v-for="(photo, index) in photos"
+      :key="index"
+      :class="getClass(photo)"
+    >
       <div class="album__inner" :style="photoStyle(photo)">
         <intersect @enter="enter(photo)">
-          <img v-lazy="photo" :style="photoStyle(photo)">
+          <img v-lazy="photo" :style="photoStyle(photo)" />
         </intersect>
         <loader class="album__loader"></loader>
       </div>
-      <div class="album__overlay" v-if="!hasPhoto">
-        SOON
-      </div>
-      <div class="album__description" v-if="$te(`albums.${destination.name}.story.${index + 1}`)" :style="photoStyle(photo)">
+      <div class="album__overlay" v-if="!hasPhoto">SOON</div>
+      <div
+        class="album__description"
+        v-if="$te(`albums.${destination.name}.story.${index + 1}`)"
+        :style="photoStyle(photo)"
+      >
         <p>
           {{ $t(`albums.${destination.name}.story.${index + 1}`) }}
         </p>
       </div>
     </div>
     <div class="album__link">
-      <router-link :to="{ name: 'Travel', params: { name: destination.name }}" title="See Photo in Big" v-if="hasPhoto">
+      <router-link
+        :to="{ name: 'Travel', params: { name: destination.name } }"
+        title="See Photo in Big"
+        v-if="hasPhoto"
+      >
         album
       </router-link>
       <button @click="back('show')" title="back to map">
@@ -28,90 +39,96 @@
 </template>
 
 <script>
-import { getMarkerOffset } from '../services/Utils.js'
-import loader from '../components/Loader'
-import Intersect from 'vue-intersect'
+import { getMarkerOffset } from "../services/Utils.js";
+import loader from "../components/Loader";
+import Intersect from "vue-intersect";
 
 export default {
-  name: 'album',
+  name: "album",
   props: {
     destination: {
       type: Object,
-      required: true
+      required: true,
     },
     map: {
       type: Object,
-      required: true
+      required: true,
     },
     marker: {
       type: Object,
-      required: false
+      required: false,
     },
     back: {
       type: Function,
-      required: true
-    }
+      required: true,
+    },
   },
   components: {
     loader,
-    Intersect
+    Intersect,
   },
   computed: {
-    photos () {
+    photos() {
       // create a new context to get all images in assets/photos
-      const req = require.context('../assets/photos', true, /\.jpg$/)
-      const photos = req.keys()
+      const req = require.context("../assets/photos", true, /\.jpg$/);
+      const photos = req
+        .keys()
         // filter them by folder name (simple check if path contains album name)
-        .filter(item => item.includes(`/${this.destination.name}/`))
+        .filter((item) => item.includes(`/${this.destination.name}/`))
         // return an Array of require items
-        .map(item => req(item))
-      return photos
+        .map((item) => req(item));
+      return photos;
     },
-    hasPhoto () {
-      return this.photos.length > 3
-    }
+    hasPhoto() {
+      return this.photos.length > 3;
+    },
   },
   methods: {
-    photoStyle (photo) {
-      const landscape = photo.size.width > photo.size.height
-      const width = landscape ? Math.round(window.innerWidth / 2.5) : Math.round(document.querySelector('.js-content').offsetWidth / 2.6)
-      const height = Math.round((width * photo.size.height) / photo.size.width)
+    photoStyle(photo) {
+      const landscape = photo.size.width > photo.size.height;
+      const width = landscape
+        ? Math.round(window.innerWidth / 2.5)
+        : Math.round(document.querySelector(".js-content").offsetWidth / 2.6);
+      const height = Math.round((width * photo.size.height) / photo.size.width);
 
       return {
         width: `${width}px`,
-        height: `${height}px`
-      }
+        height: `${height}px`,
+      };
     },
-    getClass (photo) {
-      let landscape = photo.size.width > photo.size.height
-      return landscape ? 'landscape' : 'portrait'
+    getClass(photo) {
+      let landscape = photo.size.width > photo.size.height;
+      return landscape ? "landscape" : "portrait";
     },
-    getLatitude (gps) {
-      return gps ? gps.lat : ''
+    getLatitude(gps) {
+      return gps ? gps.lat : "";
     },
-    getLongitude (gps) {
-      return gps ? gps.lng : ''
+    getLongitude(gps) {
+      return gps ? gps.lng : "";
     },
-    enter (photo) {
+    enter(photo) {
       if (photo.exif.GPS) {
-        const destinationGPS = new mapboxgl.LngLat(photo.exif.GPS.lng, photo.exif.GPS.lat)
-        this.marker.setLngLat(destinationGPS)
+        const destinationGPS = new mapboxgl.LngLat(
+          photo.exif.GPS.lng,
+          photo.exif.GPS.lat
+        );
+        this.marker.setLngLat(destinationGPS);
         this.map.easeTo({
           center: destinationGPS,
           zoom: this.destination.zoom,
           duration: 1600,
           offset: getMarkerOffset(),
-          pitch: this.destination.pitch
-        })
+          pitch: this.destination.pitch,
+        });
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style lang="scss">
-@import '../scss/vars';
-@import '../scss/mixins';
+@import "../scss/vars";
+@import "../scss/mixins";
 
 .album {
   display: flex;
@@ -138,7 +155,7 @@ export default {
       &.landscape {
         .album__description {
           text-align: left;
-        }    
+        }
       }
       &.portrait {
         .album__description {
@@ -168,18 +185,18 @@ export default {
       opacity: 0;
       transition: opacity 1000ms $easing;
     }
-    img[lazy=loaded] {
+    img[lazy="loaded"] {
       opacity: 1;
     }
-    img[lazy=loaded] + .loader {
-      opacity:0;
+    img[lazy="loaded"] + .loader {
+      opacity: 0;
     }
   }
   &__inner {
     position: relative;
     &:before {
       position: absolute;
-      content: '';
+      content: "";
       top: -15px;
       left: -15px;
       bottom: -15px;
@@ -218,7 +235,7 @@ export default {
     }
     p {
       display: inline;
-      font-family: 'Libre Baskerville';
+      font-family: "Libre Baskerville";
       padding: 5px;
       font-size: 1rem;
       line-height: 2.45rem;
@@ -226,7 +243,7 @@ export default {
       color: #000;
       background: #fff;
       box-shadow: -15px 0 0 0 #fff, 15px 0 0 0 #fff;
-      // https://www.w3.org/TR/css-backgrounds-3/#the-box-decoration-break  
+      // https://www.w3.org/TR/css-backgrounds-3/#the-box-decoration-break
       box-decoration-break: clone;
       -webkit-box-decoration-break: clone;
       @include ipad {
@@ -238,7 +255,7 @@ export default {
   }
   &__link {
     width: 100%;
-    button, 
+    button,
     a {
       display: inline-block;
       height: auto;
@@ -246,13 +263,13 @@ export default {
       font-size: 1rem;
       line-height: 1.45rem;
       text-transform: uppercase;
-      text-decoration:none;
+      text-decoration: none;
       font-style: normal;
       font-weight: 700;
       // color: #949494;
       color: #949494;
       background: none;
-      border: 2px solid #949494; 
+      border: 2px solid #949494;
       margin: 0;
       min-width: 165px;
       letter-spacing: 1.5px;
@@ -268,12 +285,12 @@ export default {
     }
   }
   &__loader {
-    position:absolute;
-    z-index:5;
-    top:50%;
-    left:50%;
+    position: absolute;
+    z-index: 5;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
-    transition:opacity 600ms $easing;
+    transition: opacity 600ms $easing;
   }
 }
 </style>
