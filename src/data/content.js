@@ -89,6 +89,24 @@ export default {
     },
   },
   albums: {
+    indonesia: {
+      name: "indonesia",
+      cover: require("../assets/photos/indonesia/indonesia-01.jpg"),
+      shuffle: false,
+      hidden: false,
+      grid: true,
+      meta: [
+        { name: "og:url", content: `${url}/album/indonesia` },
+        {
+          name: "og:image",
+          content: `${url}${require("../assets/img/meta_share_thailand.gif")}`,
+        },
+        {
+          name: "twitter:image",
+          content: `${url}${require("../assets/img/meta_share_thailand.gif")}`,
+        },
+      ],
+    },
     thailand: {
       name: "thailand",
       cover: require("../assets/photos/thailand/thailand-14.jpg"),

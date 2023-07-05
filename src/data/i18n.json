@@ -13,6 +13,10 @@
       "more": "More +"
     },
     "albums": {
+      "indonesia": {
+        "displayName": "Indonesia",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In facilisis arcu nec vehicula aliquet."
+      },
       "japan": {
         "displayName": "Japan",
         "text": "20 days of island-hopping in the southern islands of japan between beach and jungle.",
