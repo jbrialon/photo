@@ -15,7 +15,7 @@
     "albums": {
       "indonesia": {
         "displayName": "Indonesia",
-        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In facilisis arcu nec vehicula aliquet."
+        "text": "3 weeks in Indonesia, between Java & Bali"
       },
       "japan": {
         "displayName": "Japan",
@@ -154,6 +154,10 @@
       "more": "Plus +"
     },
     "albums": {
+      "indonesia": {
+        "displayName": "Indonesie",
+        "text": "3 semaines en Indonésie, entre Java & Bali"
+      },
       "japan": {
         "displayName": "Japon",
         "text": "21 jours d'île en île dans les archipels du sud du Japon entre plage et jungle",

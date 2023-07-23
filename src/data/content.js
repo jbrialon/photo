@@ -91,19 +91,18 @@ export default {
   albums: {
     indonesia: {
       name: "indonesia",
-      cover: require("../assets/photos/indonesia/indonesia-01.jpg"),
+      cover: require("../assets/photos/indonesia/indonesia-34.jpg"),
       shuffle: false,
       hidden: false,
-      grid: true,
       meta: [
         { name: "og:url", content: `${url}/album/indonesia` },
         {
           name: "og:image",
-          content: `${url}${require("../assets/img/meta_share_thailand.gif")}`,
+          content: `${url}${require("../assets/img/meta_share_indonesia.gif")}`,
         },
         {
           name: "twitter:image",
-          content: `${url}${require("../assets/img/meta_share_thailand.gif")}`,
+          content: `${url}${require("../assets/img/meta_share_indonesia.gif")}`,
         },
       ],
     },
@@ -112,7 +111,6 @@ export default {
       cover: require("../assets/photos/thailand/thailand-14.jpg"),
       shuffle: false,
       hidden: false,
-      grid: true,
       meta: [
         { name: "og:url", content: `${url}/album/thailand` },
         {
@@ -130,7 +128,6 @@ export default {
       cover: require("../assets/photos/annapurna/annapurna-25.jpg"),
       shuffle: false,
       hidden: false,
-      grid: true,
       meta: [
         { name: "og:url", content: `${url}/album/annapurna` },
         {
@@ -148,7 +145,6 @@ export default {
       cover: require("../assets/photos/nepal/nepal-09.jpg"),
       shuffle: false,
       hidden: false,
-      grid: true,
       meta: [
         { name: "og:url", content: `${url}/album/nepal` },
         {
@@ -166,7 +162,6 @@ export default {
       cover: require("../assets/photos/japan/japon-006.jpg"),
       shuffle: false,
       hidden: false,
-      grid: true,
       meta: [
         { name: "og:url", content: `${url}/album/japan` },
         {
@@ -184,7 +179,6 @@ export default {
       cover: require("../assets/photos/istanbul/istanbul-11.jpg"),
       shuffle: false,
       hidden: false,
-      grid: true,
       meta: [
         { name: "og:url", content: `${url}/album/istanbul` },
         {
@@ -202,7 +196,6 @@ export default {
       cover: require("../assets/photos/myanmar/myanmar-11.jpg"),
       shuffle: false,
       hidden: false,
-      grid: true,
       meta: [
         { name: "og:url", content: `${url}/album/myanmar` },
         {
@@ -220,7 +213,6 @@ export default {
       cover: require("../assets/photos/malaysia/malaisie-10.jpg"),
       shuffle: false,
       hidden: false,
-      grid: true,
       meta: [
         { name: "og:url", content: `${url}/album/malaysia` },
         {
@@ -238,7 +230,6 @@ export default {
       cover: require("../assets/photos/kilimanjaro/kilimanjaro-26.jpg"),
       shuffle: false,
       hidden: false,
-      grid: false,
       meta: [
         { name: "og:url", content: `${url}/album/kilimanjaro` },
         {
@@ -256,10 +247,6 @@ export default {
     {
       title: "mail",
       link: "mailto:jeremy@completementalest.fr",
-    },
-    {
-      title: "instagram",
-      link: "https://www.instagram.com/jbrialon/",
     },
   ],
 };

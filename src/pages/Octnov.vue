@@ -174,7 +174,7 @@ const md = new MobileDetect(window.navigator.userAgent);
 let winsize = { width: window.innerWidth, height: window.innerHeight };
 
 export default {
-  name: "hello",
+  name: "OctNov",
   metaInfo: {
     title: "Oct+Nov",
     meta: content.meta.octnov,

@@ -39,12 +39,12 @@ export default new Router({
       component: Travel,
       props: true,
     },
-    {
-      path: "/velo",
-      name: "Velo",
-      component: Velo,
-      props: true,
-    },
+    // {
+    //   path: "/velo",
+    //   name: "Velo",
+    //   component: Velo,
+    //   props: true,
+    // },
     {
       path: "/about",
       name: "About",

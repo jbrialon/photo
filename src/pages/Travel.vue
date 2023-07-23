@@ -1,15 +1,19 @@
 <template>
   <div>
     <c-header></c-header>
-    <div class="travel" :class="{ grid: grid }">
+    <div class="travel">
       <article>
         <p class="travel__description">
-          <span class="travel__title">
+          <span class="travel__title" :class="{ loaded: showDescription }">
             {{ $t(`albums.${album.name}.displayName`) }}
           </span>
           <br />
           <br />
-          <span v-html="$t(`albums.${album.name}.text`)"> </span>
+          <span
+            :class="{ loaded: showDescription }"
+            v-html="$t(`albums.${album.name}.text`)"
+          >
+          </span>
         </p>
       </article>
       <div
@@ -50,7 +54,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 export default {
-  name: "album",
+  name: "Album",
   props: ["name"],
   metaInfo() {
     return {
@@ -60,6 +64,7 @@ export default {
   },
   data() {
     return {
+      showDescription: false,
       isMobile: md.phone() !== null,
       isTablet: md.tablet() !== null || window.innerWidth === 1194,
       album: content.albums[this.name],
@@ -148,6 +153,12 @@ export default {
     "c-header": Header,
     "c-footer": Footer,
   },
+  mounted() {
+    this.showDescription = false;
+    setTimeout(() => {
+      this.showDescription = true;
+    }, 1200);
+  },
 };
 </script>
 
@@ -160,13 +171,16 @@ export default {
   margin: auto;
   display: flex;
   flex-wrap: wrap;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-around;
   align-items: center;
   max-width: 1440px;
-  &.grid {
-    flex-direction: row;
-    justify-content: space-around;
+  &.map {
+    flex-direction: column;
+    max-width: 40vw;
+    margin: 0;
   }
+
   article {
     display: flex;
     justify-content: center;
@@ -182,10 +196,40 @@ export default {
     }
   }
   &__title {
-    font-size: 18px;
-    letter-spacing: 0.45em;
-    margin-right: -0.45em;
-    padding: 5px 10px;
+    display: block;
+    position: relative;
+    font-size: 42px;
+    line-height: 1.1em;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 700;
+    color: white;
+    @include small-only {
+      font-size: 18px;
+      letter-spacing: 0.45em;
+      margin-right: -0.45em;
+      padding: 5px 10px;
+      font-weight: 400;
+      color: black;
+    }
+    &.loaded:before {
+      width: calc(100% + 25px);
+    }
+    &:before {
+      position: absolute;
+      display: block;
+      content: "";
+      z-index: -1;
+      top: -15px;
+      left: -15px;
+      bottom: -15px;
+      width: 0;
+      transition: width 900ms ease-in-out;
+      background: black;
+      @include small-only {
+        display: none;
+      }
+    }
   }
   &__description {
     margin: auto;
@@ -199,6 +243,14 @@ export default {
     @include small-only {
       padding-bottom: 0;
       max-width: 80vw;
+    }
+
+    span:last-child {
+      opacity: 0;
+      transition: opacity 600ms ease-in-out;
+      &.loaded {
+        opacity: 1;
+      }
     }
   }
   &__container {
