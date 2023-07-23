@@ -4,7 +4,7 @@
 
 ## Build Setup
 
-``` bash
+```bash
 # install dependencies
 npm install
 
@@ -15,6 +15,4 @@ npm run dev
 npm run build
 ```
 
-
-TODO: 
-- over animation blurry on firefox
+node version: v12.22.1
