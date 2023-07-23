@@ -13,6 +13,10 @@
       "more": "More +"
     },
     "albums": {
+      "indonesia": {
+        "displayName": "Indonesia",
+        "text": "3 weeks in Indonesia, between Java & Bali"
+      },
       "japan": {
         "displayName": "Japan",
         "text": "20 days of island-hopping in the southern islands of japan between beach and jungle.",
@@ -150,6 +154,10 @@
       "more": "Plus +"
     },
     "albums": {
+      "indonesia": {
+        "displayName": "Indonesie",
+        "text": "3 semaines en Indonésie, entre Java & Bali"
+      },
       "japan": {
         "displayName": "Japon",
         "text": "21 jours d'île en île dans les archipels du sud du Japon entre plage et jungle",

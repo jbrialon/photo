@@ -1,37 +1,37 @@
 <template>
   <footer>
-    <p>{{ author }} © {{new Date().getFullYear()}} //</p>
+    <p>{{ author }} © {{ new Date().getFullYear() }} //</p>
   </footer>
 </template>
 
 <script>
-import content from 'data/content'
+import content from "data/content";
 
 export default {
-  name: 'c-footer',
-  data () {
+  name: "c-footer",
+  data() {
     return {
-      author: content.meta.author
-    }
-  }
-}
+      author: content.meta.author,
+    };
+  },
+};
 </script>
 
 <style scoped lang="scss">
-@import '../scss/vars';
-@import '../scss/mixins';
+@import "../scss/vars";
+@import "../scss/mixins";
 
 footer {
-    display: flex;
-    text-transform: uppercase;
-    height: 10vh;
-    padding: 15px;
-    width: 100%;
+  display: flex;
+  text-transform: uppercase;
+  height: 10vh;
+  padding: 15px;
+  width: 100%;
 
-    p {
-      font-weight: 400;
-      font-size: 12px;
-      margin: auto 0 auto auto;
-    }
+  p {
+    font-weight: 400;
+    font-size: 12px;
+    margin: auto 0 auto auto;
   }
+}
 </style>

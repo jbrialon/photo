@@ -1,92 +1,130 @@
 <template>
   <div class="loader">
-    <svg xmlns="http://www.w3.org/2000/svg"
-         width="80px" height="60px"
-         viewBox="5 0 80 60">
-        <path ref="path" id="wave"
-            fill="none"
-            stroke="#c5c5c5"
-            stroke-width="3"
-            stroke-linecap="round">
-        </path>
-      </svg>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="80px"
+      height="60px"
+      viewBox="5 0 80 60"
+    >
+      <path
+        ref="path"
+        id="wave"
+        fill="none"
+        stroke="#c5c5c5"
+        stroke-width="3"
+        stroke-linecap="round"
+      ></path>
+    </svg>
   </div>
 </template>
 
 <script>
 // https://codepen.io/winkerVSbecks/pen/EVJGVj
-const m = 0.512286623256592433
+const m = 0.512286623256592433;
 
 export default {
-  name: 'loader',
+  name: "loader",
   methods: {
-    buildWave (w, h) {
-      const a = h / 4
-      const y = h / 2
+    buildWave(w, h) {
+      const a = h / 4;
+      const y = h / 2;
 
       const pathData = [
-        'M', w * 0, y + a / 2,
-        'c',
-        a * m, 0,
-        -(1 - a) * m, -a,
-        a, -a,
-        's',
-        -(1 - a) * m, a,
-        a, a,
-        's',
-        -(1 - a) * m, -a,
-        a, -a,
-        's',
-        -(1 - a) * m, a,
-        a, a,
-        's',
-        -(1 - a) * m, -a,
-        a, -a,
+        "M",
+        w * 0,
+        y + a / 2,
+        "c",
+        a * m,
+        0,
+        -(1 - a) * m,
+        -a,
+        a,
+        -a,
+        "s",
+        -(1 - a) * m,
+        a,
+        a,
+        a,
+        "s",
+        -(1 - a) * m,
+        -a,
+        a,
+        -a,
+        "s",
+        -(1 - a) * m,
+        a,
+        a,
+        a,
+        "s",
+        -(1 - a) * m,
+        -a,
+        a,
+        -a,
 
-        's',
-        -(1 - a) * m, a,
-        a, a,
-        's',
-        -(1 - a) * m, -a,
-        a, -a,
-        's',
-        -(1 - a) * m, a,
-        a, a,
-        's',
-        -(1 - a) * m, -a,
-        a, -a,
-        's',
-        -(1 - a) * m, a,
-        a, a,
-        's',
-        -(1 - a) * m, -a,
-        a, -a,
-        's',
-        -(1 - a) * m, a,
-        a, a,
-        's',
-        -(1 - a) * m, -a,
-        a, -a,
-        's',
-        -(1 - a) * m, a,
-        a, a,
-        's',
-        -(1 - a) * m, -a,
-        a, -a
-      ].join(' ')
+        "s",
+        -(1 - a) * m,
+        a,
+        a,
+        a,
+        "s",
+        -(1 - a) * m,
+        -a,
+        a,
+        -a,
+        "s",
+        -(1 - a) * m,
+        a,
+        a,
+        a,
+        "s",
+        -(1 - a) * m,
+        -a,
+        a,
+        -a,
+        "s",
+        -(1 - a) * m,
+        a,
+        a,
+        a,
+        "s",
+        -(1 - a) * m,
+        -a,
+        a,
+        -a,
+        "s",
+        -(1 - a) * m,
+        a,
+        a,
+        a,
+        "s",
+        -(1 - a) * m,
+        -a,
+        a,
+        -a,
+        "s",
+        -(1 - a) * m,
+        a,
+        a,
+        a,
+        "s",
+        -(1 - a) * m,
+        -a,
+        a,
+        -a,
+      ].join(" ");
 
-      this.$refs.path.setAttribute('d', pathData)
-    }
+      this.$refs.path.setAttribute("d", pathData);
+    },
   },
-  mounted () {
-    this.buildWave(90, 60)
-  }
-}
+  mounted() {
+    this.buildWave(90, 60);
+  },
+};
 </script>
 
 <style scoped lang="scss">
-@import '../scss/vars';
-@import '../scss/mixins';
+@import "../scss/vars";
+@import "../scss/mixins";
 
 .loader {
   align-items: center;

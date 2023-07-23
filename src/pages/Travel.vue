@@ -1,24 +1,38 @@
 <template>
   <div>
     <c-header></c-header>
-    <div class="travel" :class="{'grid': grid}">
+    <div class="travel">
       <article>
         <p class="travel__description">
-          <span class="travel__title">
+          <span class="travel__title" :class="{ loaded: showDescription }">
             {{ $t(`albums.${album.name}.displayName`) }}
           </span>
-          <br>
-          <br>
-          <span v-html="$t(`albums.${album.name}.text`)">
+          <br />
+          <br />
+          <span
+            :class="{ loaded: showDescription }"
+            v-html="$t(`albums.${album.name}.text`)"
+          >
           </span>
         </p>
       </article>
-      <div class="travel__container" v-for="(photo, index) in photos" :key="index">
-        <div class="travel__photo" :style="photoContainerStyle(photo)" :class="getClass(photo)">
-          <img v-lazy="photo" :style="photoStyle(photo)" :alt="alt">
+      <div
+        class="travel__container"
+        v-for="(photo, index) in photos"
+        :key="index"
+      >
+        <div
+          class="travel__photo"
+          :style="photoContainerStyle(photo)"
+          :class="getClass(photo)"
+        >
+          <img v-lazy="photo" :style="photoStyle(photo)" :alt="alt" />
           <loader class="travel__loader"></loader>
         </div>
-        <div class="travel__text" v-if="$te(`albums.${album.name}.story.${index + 1}`)">
+        <div
+          class="travel__text"
+          v-if="$te(`albums.${album.name}.story.${index + 1}`)"
+        >
           <p>
             {{ $t(`albums.${album.name}.story.${index + 1}`) }}
           </p>
@@ -30,149 +44,192 @@
 </template>
 
 <script>
-import shuffle from 'lodash/shuffle'
-import MobileDetect from 'mobile-detect'
-const md = new MobileDetect(window.navigator.userAgent)
-import content from '../data/content'
-import loader from '../components/Loader'
-import { pickBy } from 'lodash'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
+import shuffle from "lodash/shuffle";
+import MobileDetect from "mobile-detect";
+const md = new MobileDetect(window.navigator.userAgent);
+import content from "../data/content";
+import loader from "../components/Loader";
+import { pickBy } from "lodash";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 export default {
-  name: 'album',
-  props: ['name'],
-  metaInfo () {
+  name: "Album",
+  props: ["name"],
+  metaInfo() {
     return {
       title: this.$t(`albums.${this.album.name}.displayName`).toUpperCase(),
-      meta: this.album.meta
-    }
+      meta: this.album.meta,
+    };
   },
-  data () {
+  data() {
     return {
+      showDescription: false,
       isMobile: md.phone() !== null,
       isTablet: md.tablet() !== null || window.innerWidth === 1194,
       album: content.albums[this.name],
-      albums: pickBy(content.albums, item => !item.hidden),
-      alt: `${this.$t(`albums.${this.name}.displayName`)} - ${content.meta.author}`,
-      grid: content.albums[this.name].grid
-    }
+      albums: pickBy(content.albums, (item) => !item.hidden),
+      alt: `${this.$t(`albums.${this.name}.displayName`)} - ${
+        content.meta.author
+      }`,
+      grid: content.albums[this.name].grid,
+    };
   },
   methods: {
-    getClass (photo) {
-      let landscape = photo.size.width > photo.size.height
-      return landscape ? 'landscape' : 'portrait'
+    getClass(photo) {
+      let landscape = photo.size.width > photo.size.height;
+      return landscape ? "landscape" : "portrait";
     },
-    photoContainerStyle (photo) {
-      let width = photo.size.width
-      let height = photo.size.height
+    photoContainerStyle(photo) {
+      let width = photo.size.width;
+      let height = photo.size.height;
 
       // desktop + ipad pro
-      if ((!this.isMobile && !this.isTablet)) {
+      if (!this.isMobile && !this.isTablet) {
         if (photo.size.width > photo.size.height) {
-          width = photo.size.width / 2
-          height = photo.size.height / 2
+          width = photo.size.width / 2;
+          height = photo.size.height / 2;
         } else {
-          width = photo.size.height / 3
-          height = (width * photo.size.height) / photo.size.width
+          width = photo.size.height / 3;
+          height = (width * photo.size.height) / photo.size.width;
         }
       } else if (this.isTablet) {
         if (photo.size.width > photo.size.height) {
-          width = window.innerWidth - 80
-          height = (width * photo.size.height) / photo.size.width
+          width = window.innerWidth - 80;
+          height = (width * photo.size.height) / photo.size.width;
         } else {
-          height = window.innerHeight - 60
-          width = (height * photo.size.width) / photo.size.height
+          height = window.innerHeight - 60;
+          width = (height * photo.size.width) / photo.size.height;
         }
       } else if (this.isMobile) {
-        width = window.innerWidth - 20
-        height = (width * photo.size.height) / photo.size.width
+        width = window.innerWidth - 20;
+        height = (width * photo.size.height) / photo.size.width;
       }
       return {
         width: `${Math.round(width)}px`,
-        height: `${Math.round(height)}px`
-      }
+        height: `${Math.round(height)}px`,
+      };
     },
-    photoStyle (photo) {
-      let width = `${photo.size.width}px`
-      let height = `${photo.size.height}px`
+    photoStyle(photo) {
+      let width = `${photo.size.width}px`;
+      let height = `${photo.size.height}px`;
 
-      if ((!this.isMobile && !this.isTablet)) {
+      if (!this.isMobile && !this.isTablet) {
         if (photo.size.width > photo.size.height) {
-          width = photo.size.width / 2
-          height = photo.size.height / 2
+          width = photo.size.width / 2;
+          height = photo.size.height / 2;
         } else {
-          width = photo.size.height / 3
-          height = (width * photo.size.height) / photo.size.width
+          width = photo.size.height / 3;
+          height = (width * photo.size.height) / photo.size.width;
         }
-        width = `${Math.round(width)}px`
-        height = `${Math.round(height)}px`
+        width = `${Math.round(width)}px`;
+        height = `${Math.round(height)}px`;
       } else if (this.isMobile || this.isTablet) {
-        width = '100%'
-        height = 'auto'
+        width = "100%";
+        height = "auto";
       }
 
       return {
         width: width,
-        height: height
-      }
-    }
+        height: height,
+      };
+    },
   },
   computed: {
-    photos () {
+    photos() {
       // create a new context to get all images in assets/photos
-      const req = require.context('../assets/photos', true, /\.jpg$/)
-      const photos = req.keys()
+      const req = require.context("../assets/photos", true, /\.jpg$/);
+      const photos = req
+        .keys()
         // filter them by folder name (simple check if path contains album name)
-        .filter(item => item.includes(`/${this.name}/`))
+        .filter((item) => item.includes(`/${this.name}/`))
         // return an Array of require items
-        .map(item => req(item))
-      return this.album.shuffle ? shuffle(photos) : photos
-    }
+        .map((item) => req(item));
+      return this.album.shuffle ? shuffle(photos) : photos;
+    },
   },
   components: {
     loader,
-    'c-header': Header,
-    'c-footer': Footer
-  }
-}
+    "c-header": Header,
+    "c-footer": Footer,
+  },
+  mounted() {
+    this.showDescription = false;
+    setTimeout(() => {
+      this.showDescription = true;
+    }, 1200);
+  },
+};
 </script>
 
 <style scoped lang="scss">
-@import '../scss/vars';
-@import '../scss/mixins';
+@import "../scss/vars";
+@import "../scss/mixins";
 
 .travel {
-  width:100%;
-  margin:auto;
-  display:flex;
+  width: 100%;
+  margin: auto;
+  display: flex;
   flex-wrap: wrap;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-around;
   align-items: center;
   max-width: 1440px;
-  &.grid {
-    flex-direction: row;
-    justify-content: space-around;
+  &.map {
+    flex-direction: column;
+    max-width: 40vw;
+    margin: 0;
   }
+
   article {
     display: flex;
     justify-content: center;
     flex-direction: column;
     text-transform: uppercase;
     height: 60vh;
-    margin:auto;
+    margin: auto;
     min-width: 100vw;
     @include small-only {
-      width:90%;
-      height:auto;
+      width: 90%;
+      height: auto;
       padding: 5vw 0 25vw 0;
     }
   }
   &__title {
-    font-size:18px;
-    letter-spacing: 0.45em;
-    margin-right: -0.45em;
-    padding:5px 10px;
+    display: block;
+    position: relative;
+    font-size: 42px;
+    line-height: 1.1em;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 700;
+    color: white;
+    @include small-only {
+      font-size: 18px;
+      letter-spacing: 0.45em;
+      margin-right: -0.45em;
+      padding: 5px 10px;
+      font-weight: 400;
+      color: black;
+    }
+    &.loaded:before {
+      width: calc(100% + 25px);
+    }
+    &:before {
+      position: absolute;
+      display: block;
+      content: "";
+      z-index: -1;
+      top: -15px;
+      left: -15px;
+      bottom: -15px;
+      width: 0;
+      transition: width 900ms ease-in-out;
+      background: black;
+      @include small-only {
+        display: none;
+      }
+    }
   }
   &__description {
     margin: auto;
@@ -184,12 +241,20 @@ export default {
     font-weight: 400;
     font-style: normal;
     @include small-only {
-      padding-bottom:0;
-      max-width:80vw;
+      padding-bottom: 0;
+      max-width: 80vw;
+    }
+
+    span:last-child {
+      opacity: 0;
+      transition: opacity 600ms ease-in-out;
+      &.loaded {
+        opacity: 1;
+      }
     }
   }
   &__container {
-    margin-bottom:10vh;
+    margin-bottom: 10vh;
     @include small-only {
       margin-bottom: 5vh;
     }
@@ -208,7 +273,7 @@ export default {
       }
     }
     &:nth-child(odd) {
-      .landscape { 
+      .landscape {
         // margin-left: 20vw;
       }
       .portrait {
@@ -217,15 +282,15 @@ export default {
   }
 
   &__photo {
-    position:relative;
+    position: relative;
     background: $grey;
-    
+
     @include small-only {
       margin: 0 auto 0 auto;
     }
     &:before {
       position: absolute;
-      content: '';
+      content: "";
       top: -15px;
       left: -15px;
       bottom: -15px;
@@ -236,7 +301,7 @@ export default {
         display: none;
       }
       @include ipad {
-        display:none;
+        display: none;
       }
     }
   }
@@ -252,7 +317,7 @@ export default {
     }
     p {
       display: inline;
-      font-family: 'Libre Baskerville';
+      font-family: "Libre Baskerville";
       padding: 5px;
       font-size: 0.9rem;
       line-height: 2.5;
@@ -263,28 +328,28 @@ export default {
     }
   }
   &__loader {
-    position:absolute;
-    z-index:5;
-    top:50%;
-    left:50%;
+    position: absolute;
+    z-index: 5;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
-    transition:opacity 600ms $easing;
+    transition: opacity 600ms $easing;
   }
   img {
-    position:relative;
-    z-index:10;
+    position: relative;
+    z-index: 10;
     will-change: opacity;
     opacity: 0;
-    transition:opacity 1.5s $easing;
+    transition: opacity 1.5s $easing;
     max-width: 100%;
   }
 
-  img[lazy=loaded] {
+  img[lazy="loaded"] {
     opacity: 1;
   }
 
   img[src^="http"] + .loader {
-    opacity:0;
+    opacity: 0;
   }
 }
 </style>

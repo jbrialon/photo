@@ -1,64 +1,64 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Octnov from 'pages/Octnov'
-import Disclaimer from 'pages/Disclaimer'
-import Travels from 'pages/Travels'
-import Travel from 'pages/Travel'
-import Velo from 'pages/Velo'
-import About from 'pages/About'
-import NotFound from 'pages/404'
-import MobileDetect from 'mobile-detect'
+import Vue from "vue";
+import Router from "vue-router";
+import Octnov from "pages/Octnov";
+import Disclaimer from "pages/Disclaimer";
+import Travels from "pages/Travels";
+import Travel from "pages/Travel";
+import Velo from "pages/Velo";
+import About from "pages/About";
+import NotFound from "pages/404";
+import MobileDetect from "mobile-detect";
 
-const md = new MobileDetect(window.navigator.userAgent)
-const isMobile = md.phone() !== null
+const md = new MobileDetect(window.navigator.userAgent);
+const isMobile = md.phone() !== null;
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
-  mode: 'history',
-  linkExactActiveClass: 'active',
-  scrollBehavior (to, from, savedPosition) {
-    return { x: 0, y: 0 }
+  mode: "history",
+  linkExactActiveClass: "active",
+  scrollBehavior(to, from, savedPosition) {
+    return { x: 0, y: 0 };
   },
   routes: [
     {
-      path: '/',
-      name: 'Travels',
+      path: "/",
+      name: "Travels",
       component: Travels,
-      props: true
+      props: true,
     },
     {
-      path: '/octnov/',
-      name: 'Octnov',
+      path: "/octnov/",
+      name: "Octnov",
       component: isMobile ? Disclaimer : Octnov,
-      props: true
+      props: true,
     },
     {
-      path: '/album/:name',
-      name: 'Travel',
+      path: "/album/:name",
+      name: "Travel",
       component: Travel,
-      props: true
+      props: true,
     },
+    // {
+    //   path: "/velo",
+    //   name: "Velo",
+    //   component: Velo,
+    //   props: true,
+    // },
     {
-      path: '/velo',
-      name: 'Velo',
-      component: Velo,
-      props: true
-    },
-    {
-      path: '/about',
-      name: 'About',
+      path: "/about",
+      name: "About",
       component: About,
-      props: true
+      props: true,
     },
     {
-      path: '/404',
-      name: 'NotFound',
-      component: NotFound
+      path: "/404",
+      name: "NotFound",
+      component: NotFound,
     },
     {
-      path: '*',
-      component: NotFound
-    }
-  ]
-})
+      path: "*",
+      component: NotFound,
+    },
+  ],
+});

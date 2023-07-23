@@ -1,41 +1,45 @@
 <template>
   <div class="disclaimer">
     <div class="disclaimer__content">
-        <c-header></c-header>
-        <div class="disclaimer__text">
-          <br>
-          <br>
-          <br>
-          <p>
-            {{ $t('disclaimer.paragraph1') }} <router-link :to="{ name: 'Travels'}">{{ $t('disclaimer.link') }}</router-link>.
-            <br>
-            <br>
-            <span v-html="$t('disclaimer.paragraph2')"></span>
-          </p>
-        </div>
+      <c-header></c-header>
+      <div class="disclaimer__text">
+        <br />
+        <br />
+        <br />
+        <p>
+          {{ $t("disclaimer.paragraph1") }}
+          <router-link :to="{ name: 'Travels' }">{{
+            $t("disclaimer.link")
+          }}</router-link
+          >.
+          <br />
+          <br />
+          <span v-html="$t('disclaimer.paragraph2')"></span>
+        </p>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import content from '../data/content'
-import Header from '../components/Header'
+import content from "../data/content";
+import Header from "../components/Header";
 
 export default {
-  name: 'Disclaimer',
+  name: "Disclaimer",
   metaInfo: {
-    title: 'Oct+Nov',
-    meta: content.meta.octnov
+    title: "Oct+Nov",
+    meta: content.meta.octnov,
   },
   components: {
-    'c-header': Header
-  }
-}
+    "c-header": Header,
+  },
+};
 </script>
 
 <style lang="scss">
-@import '../scss/vars';
-@import '../scss/mixins';
+@import "../scss/vars";
+@import "../scss/mixins";
 
 .disclaimer {
   width: 100%;
@@ -54,11 +58,11 @@ export default {
   }
   &__text {
     width: 75%;
-    p, 
+    p,
     a,
     span a {
       display: inline;
-      font-family: 'Libre Baskerville';
+      font-family: "Libre Baskerville";
       font-size: 1.1rem;
       line-height: 2.5rem;
       color: #fff;
