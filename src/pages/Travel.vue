@@ -192,7 +192,7 @@ export default {
     @include small-only {
       width: 90%;
       height: auto;
-      padding: 5vw 0 25vw 0;
+      padding: 5vw 0 15vw 0;
     }
   }
   &__title {
@@ -204,6 +204,7 @@ export default {
     letter-spacing: 0.12em;
     font-weight: 700;
     color: white;
+    transition: opacity 900ms ease-in-out;
     @include small-only {
       font-size: 18px;
       letter-spacing: 0.45em;
@@ -211,9 +212,15 @@ export default {
       padding: 5px 10px;
       font-weight: 400;
       color: black;
+      opacity: 0;
     }
-    &.loaded:before {
-      width: calc(100% + 25px);
+    &.loaded {
+      @include small-only {
+        opacity: 1;
+      }
+      &:before {
+        width: calc(100% + 25px);
+      }
     }
     &:before {
       position: absolute;
@@ -301,7 +308,11 @@ export default {
         display: none;
       }
       @include ipad {
-        display: none;
+        top: -10px;
+        left: -10px;
+        bottom: -10px;
+        right: -10px;
+        // display: none;
       }
     }
   }
