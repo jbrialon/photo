@@ -248,5 +248,9 @@ export default {
       title: "mail",
       link: "mailto:jeremy@completementalest.fr",
     },
+    {
+      title: "Mastodon",
+      link: "https://mastodon.art/@jerem",
+    },
   ],
 };
