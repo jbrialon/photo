@@ -245,8 +245,8 @@ export default {
   },
   social: [
     {
-      title: "mail",
-      link: "mailto:jeremy@completementalest.fr",
+      title: "github",
+      link: "https://github.com/jbrialon",
     },
     {
       title: "Mastodon",
