@@ -75,7 +75,9 @@ export default {
         content.meta.author
       }`,
       grid: content.albums[this.name].grid,
-      photos: photos[this.name],
+      photos: this.album.shuffle
+        ? shuffle(photos[this.name])
+        : photos[this.name],
     };
   },
   methods: {
