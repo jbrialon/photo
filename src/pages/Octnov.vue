@@ -163,7 +163,7 @@
 </template>
 
 <script>
-import { gsap, Power4 } from "gsap";
+import { gsap } from "gsap";
 import { getMarkerOffset, preloadFirstImages } from "../utils/Utils.js";
 import MobileDetect from "mobile-detect";
 
@@ -265,7 +265,7 @@ export default {
         let speed = this.randomNumber(1, 1.5);
         gsap.to(item, {
           duration: speed,
-          ease: Power4.easeInOut,
+          ease: "power4.inOut",
           y: action === "hide" ? -1 * winsize.height - 30 : 0,
         });
       });
@@ -275,7 +275,7 @@ export default {
       gsap.to(moreButton, {
         duration: speedMore,
         delay: delay,
-        ease: Power4.easeInOut,
+        ease: "power4.inOut",
         y:
           action === "hide" ? -1 * winsize.height + moreButton.offsetHeight : 0,
       });
@@ -311,7 +311,7 @@ export default {
       gsap.to(this.$refs.content, {
         duration: action === "show" ? 1.15 : 1,
         delay: delay,
-        ease: action === "show" ? Power4.easeInOut : Power4.easeOut,
+        ease: action === "show" ? "power4.inOut" : Power4.easeOut,
         y: action === "show" ? "100%" : "-100%",
         onComplete: () => {
           if (action === "show") {
@@ -323,7 +323,7 @@ export default {
       gsap.to(this.$refs.title, {
         duration: action === "show" ? 1.15 : 1,
         delay: delay,
-        ease: Power4.easeInOut,
+        ease: "power4.inOut",
         y:
           action === "hide" ? -1 * winsize.height + moreButton.offsetHeight : 0,
       });
@@ -331,7 +331,7 @@ export default {
         duration: action === "show" ? 0.4 : 1,
         delay: delay,
         alpha: action === "show" ? 0 : 1,
-        ease: Power4.easeInOut,
+        ease: "power4.inOut",
       });
     },
     formatIndex(index) {
