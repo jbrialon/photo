@@ -5,6 +5,9 @@
 ## Build Setup
 
 ```bash
+# create photos.json
+npm run export
+
 # install dependencies
 npm install
 
@@ -15,4 +18,4 @@ npm run dev
 npm run build
 ```
 
-node version: v12.22.1
+node version: v18.18.0
