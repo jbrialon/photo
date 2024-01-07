@@ -1,5 +1,5 @@
-const url = "https://www.completementalest.fr";
-
+// const url = "https://www.completementalest.fr";
+const url = "https://completementalest-vite5.netlify.app/";
 export default {
   meta: {
     title: "Complétement à l'est //",
@@ -8,22 +8,22 @@ export default {
       { name: "og:url", content: url },
       {
         name: "og:image",
-        content: `${url}${"../assets/img/meta_share.gif"}`,
+        content: `${url}${"/img/meta_share.gif"}`,
       },
       {
         name: "twitter:image",
-        content: `${url}${"../assets/img/meta_share.gif"}`,
+        content: `${url}${"/img/meta_share.gif"}`,
       },
     ],
     octnov: [
       { name: "og:url", content: `${url}/octnov` },
       {
         name: "og:image",
-        content: `${url}${"../assets/img/meta_share_octnov.gif"}`,
+        content: `${url}${"/img/meta_share_octnov.gif"}`,
       },
       {
         name: "twitter:image",
-        content: `${url}${"../assets/img/meta_share_octnov.gif"}`,
+        content: `${url}${"/img/meta_share_octnov.gif"}`,
       },
     ],
   },
@@ -33,11 +33,11 @@ export default {
       { name: "og:url", content: `${url}/about` }, // TODO: should be dynamic
       {
         name: "og:image",
-        content: `${url}${"../assets/img/meta_share.gif"}`,
+        content: `${url}${"/img/meta_share.gif"}`,
       },
       {
         name: "twitter:image",
-        content: `${url}${"../assets/img/meta_share.gif"}`,
+        content: `${url}${"/img/meta_share.gif"}`,
       },
     ],
   },
@@ -85,11 +85,11 @@ export default {
         { name: "og:url", content: `${url}/album/indonesia` },
         {
           name: "og:image",
-          content: `${url}${"../assets/img/meta_share_indonesia.gif"}`,
+          content: `${url}${"/img/meta_share_indonesia.gif"}`,
         },
         {
           name: "twitter:image",
-          content: `${url}${"../assets/img/meta_share_indonesia.gif"}`,
+          content: `${url}${"/img/meta_share_indonesia.gif"}`,
         },
       ],
     },
@@ -102,11 +102,11 @@ export default {
         { name: "og:url", content: `${url}/album/thailand` },
         {
           name: "og:image",
-          content: `${url}${"../assets/img/meta_share_thailand.gif"}`,
+          content: `${url}${"/img/meta_share_thailand.gif"}`,
         },
         {
           name: "twitter:image",
-          content: `${url}${"../assets/img/meta_share_thailand.gif"}`,
+          content: `${url}${"/img/meta_share_thailand.gif"}`,
         },
       ],
     },
@@ -119,11 +119,11 @@ export default {
         { name: "og:url", content: `${url}/album/annapurna` },
         {
           name: "og:image",
-          content: `${url}${"../assets/img/meta_share_annapurna.gif"}`,
+          content: `${url}${"/img/meta_share_annapurna.gif"}`,
         },
         {
           name: "twitter:image",
-          content: `${url}${"../assets/img/meta_share_annapurna.gif"}`,
+          content: `${url}${"/img/meta_share_annapurna.gif"}`,
         },
       ],
     },
@@ -136,11 +136,11 @@ export default {
         { name: "og:url", content: `${url}/album/nepal` },
         {
           name: "og:image",
-          content: `${url}${"../assets/img/meta_share_nepal.gif"}`,
+          content: `${url}${"/img/meta_share_nepal.gif"}`,
         },
         {
           name: "twitter:image",
-          content: `${url}${"../assets/img/meta_share_nepal.gif"}`,
+          content: `${url}${"/img/meta_share_nepal.gif"}`,
         },
       ],
     },
@@ -153,11 +153,11 @@ export default {
         { name: "og:url", content: `${url}/album/japan` },
         {
           name: "og:image",
-          content: `${url}${"../assets/img/meta_share_japan.gif"}`,
+          content: `${url}${"/img/meta_share_japan.gif"}`,
         },
         {
           name: "twitter:image",
-          content: `${url}${"../assets/img/meta_share_japan.gif"}`,
+          content: `${url}${"/img/meta_share_japan.gif"}`,
         },
       ],
     },
@@ -170,11 +170,11 @@ export default {
         { name: "og:url", content: `${url}/album/istanbul` },
         {
           name: "og:image",
-          content: `${url}${"../assets/img/meta_share_istanbul.gif"}`,
+          content: `${url}${"/img/meta_share_istanbul.gif"}`,
         },
         {
           name: "twitter:image",
-          content: `${url}${"../assets/img/meta_share_istanbul.gif"}`,
+          content: `${url}${"/img/meta_share_istanbul.gif"}`,
         },
       ],
     },
@@ -187,11 +187,11 @@ export default {
         { name: "og:url", content: `${url}/album/myanmar` },
         {
           name: "og:image",
-          content: `${url}${"../assets/img/meta_share_myanmar.gif"}`,
+          content: `${url}${"/img/meta_share_myanmar.gif"}`,
         },
         {
           name: "twitter:image",
-          content: `${url}${"../assets/img/meta_share_myanmar.gif"}`,
+          content: `${url}${"/img/meta_share_myanmar.gif"}`,
         },
       ],
     },
@@ -204,11 +204,11 @@ export default {
         { name: "og:url", content: `${url}/album/malaysia` },
         {
           name: "og:image",
-          content: `${url}${"../assets/img/meta_share_malaysia.gif"}`,
+          content: `${url}${"/img/meta_share_malaysia.gif"}`,
         },
         {
           name: "twitter:image",
-          content: `${url}${"../assets/img/meta_share_malaysia.gif"}`,
+          content: `${url}${"/img/meta_share_malaysia.gif"}`,
         },
       ],
     },
@@ -221,11 +221,11 @@ export default {
         { name: "og:url", content: `${url}/album/kilimanjaro` },
         {
           name: "og:image",
-          content: `${url}${"../assets/img/meta_share_kilimanjaro.gif"}`,
+          content: `${url}${"/img/meta_share_kilimanjaro.gif"}`,
         },
         {
           name: "twitter:image",
-          content: `${url}${"../assets/img/meta_share_kilimanjaro.gif"}`,
+          content: `${url}${"/img/meta_share_kilimanjaro.gif"}`,
         },
       ],
     },
