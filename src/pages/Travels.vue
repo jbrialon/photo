@@ -6,8 +6,7 @@
         <h2>
           {{ $t(`albums.${album.name}.displayName`) }}
         </h2>
-        <!-- <div v-lazy="album.cover" class="img"></div> -->
-        <img v-lazy="album.cover" class="img" />
+        <img v-lazy="album.cover" class="img" :alt="album.name" />
       </router-link>
     </article>
     <c-footer></c-footer>

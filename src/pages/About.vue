@@ -4,7 +4,7 @@
     <article class="about__article">
       <div class="about__bottom">
         <div class="about__background">
-          <img v-lazy="content.cover" />
+          <img v-lazy="content.cover" :alt="a photo where I look too tired" />
         </div>
         <div class="about__content">
           <h1 class="about__title">

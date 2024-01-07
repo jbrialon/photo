@@ -1,5 +1,4 @@
-// const url = "https://www.completementalest.fr";
-const url = "https://completementalest-vite5.netlify.app/";
+const url = "https://www.completementalest.fr";
 export default {
   meta: {
     title: "Complétement à l'est //",
