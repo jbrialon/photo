@@ -9,17 +9,16 @@
 </template>
 
 <script>
-import content from "../data/content";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import Header from "../components/Header.vue";
+import Footer from "../components/Footer.vue";
 
 export default {
   name: "NotFound",
-  metaInfo: {
-    title: content.meta.title,
-    titleTemplate: `%s`,
-    meta: content.meta.meta,
-  },
+  // metaInfo: {
+  //   title: content.meta.title,
+  //   titleTemplate: `%s`,
+  //   meta: content.meta.meta,
+  // },
   components: {
     "c-header": Header,
     "c-footer": Footer,

@@ -20,8 +20,8 @@
         </div>
       </div>
       <p class="about__links">
-        <template v-for="(link, index) in links">
-          <a :href="link.link" rel="noopener" :key="index" target="_blank">
+        <template v-for="(link, index) in links" :key="index">
+          <a :href="link.link" rel="noopener" target="_blank">
             {{ link.title }}
           </a>
         </template>
@@ -32,19 +32,19 @@
 </template>
 
 <script>
-import content from "../data/content";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import content from "../data/content.js";
+import Header from "../components/Header.vue";
+import Footer from "../components/Footer.vue";
 
 export default {
   name: "about",
-  metaInfo() {
-    return {
-      title: this.$t("about.displayName").toUpperCase(),
-      titleTemplate: `%s //`,
-      meta: content.about.meta,
-    };
-  },
+  // metaInfo() {
+  //   return {
+  //     title: this.$t("about.displayName").toUpperCase(),
+  //     titleTemplate: `%s //`,
+  //     meta: content.about.meta,
+  //   };
+  // },
   data() {
     return {
       links: content.social,

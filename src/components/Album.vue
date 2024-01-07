@@ -39,8 +39,10 @@
 </template>
 
 <script>
-import { getMarkerOffset } from "../services/Utils.js";
-import loader from "../components/Loader";
+import photos from "../data/photos.json";
+
+import { getMarkerOffset } from "../utils/Utils.js";
+import loader from "../components/Loader.vue";
 import Intersect from "vue-intersect";
 
 export default {
@@ -63,22 +65,27 @@ export default {
       required: true,
     },
   },
+  data() {
+    return {
+      photos: photos[this.destination.name],
+    };
+  },
   components: {
     loader,
     Intersect,
   },
   computed: {
-    photos() {
-      // create a new context to get all images in assets/photos
-      const req = require.context("../assets/photos", true, /\.jpg$/);
-      const photos = req
-        .keys()
-        // filter them by folder name (simple check if path contains album name)
-        .filter((item) => item.includes(`/${this.destination.name}/`))
-        // return an Array of require items
-        .map((item) => req(item));
-      return photos;
-    },
+    // photos() {
+    //   // create a new context to get all images in assets/photos
+    //   const req = require.context("../assets/photos", true, /\.jpg$/);
+    //   const photos = req
+    //     .keys()
+    //     // filter them by folder name (simple check if path contains album name)
+    //     .filter((item) => item.includes(`/${this.destination.name}/`))
+    //     // return an Array of require items
+    //     .map((item) => req(item));
+    //   return photos;
+    // },
     hasPhoto() {
       return this.photos.length > 3;
     },

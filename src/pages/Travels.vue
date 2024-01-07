@@ -6,7 +6,7 @@
         <h2>
           {{ $t(`albums.${album.name}.displayName`) }}
         </h2>
-        <div v-lazy:background-image="album.cover" class="img"></div>
+        <div v-lazy="album.cover" class="img"></div>
       </router-link>
     </article>
     <c-footer></c-footer>
@@ -14,18 +14,19 @@
 </template>
 
 <script>
-import content from "../data/content";
 import { pickBy } from "lodash";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+
+import content from "../data/content.js";
+import Header from "../components/Header.vue";
+import Footer from "../components/Footer.vue";
 
 export default {
   name: "travels",
-  metaInfo: {
-    title: content.meta.title,
-    titleTemplate: `%s`,
-    meta: content.meta.meta,
-  },
+  // metaInfo: {
+  //   title: content.meta.title,
+  //   titleTemplate: `%s`,
+  //   meta: content.meta.meta,
+  // },
   data() {
     return {
       albums: pickBy(content.albums, (album) => !album.hidden),

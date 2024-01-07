@@ -143,7 +143,7 @@
           ><span>{{ formatIndex(index) }}</span></span
         >
         <div class="octnov__item-imgwrap">
-          <img class="octnov__item-img" :src="entry.cover.src" />
+          <img class="octnov__item-img" :src="entry.cover" />
         </div>
       </div>
       <div class="octnov__item octnov__item--more" ref="more">
@@ -163,22 +163,23 @@
 </template>
 
 <script>
-import Album from "../components/Album";
-import loader from "../components/Loader";
-import content from "../data/content";
 import { gsap, Power4 } from "gsap";
-import { getMarkerOffset, preloadFirstImages } from "../services/Utils.js";
+import { getMarkerOffset, preloadFirstImages } from "../utils/Utils.js";
 import MobileDetect from "mobile-detect";
+
+import Album from "../components/Album.vue";
+import loader from "../components/Loader.vue";
+import content from "../data/content.js";
 
 const md = new MobileDetect(window.navigator.userAgent);
 let winsize = { width: window.innerWidth, height: window.innerHeight };
 
 export default {
   name: "OctNov",
-  metaInfo: {
-    title: "Oct+Nov",
-    meta: content.meta.octnov,
-  },
+  // metaInfo: {
+  //   title: "Oct+Nov",
+  //   meta: content.meta.octnov,
+  // },
   data() {
     return {
       menu: content.octnov,

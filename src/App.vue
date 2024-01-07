@@ -1,20 +1,22 @@
 <template>
   <div id="app" v-cloak>
-    <transition name="page" mode="out-in">
-      <router-view class="page"></router-view>
-    </transition>
+    <router-view v-slot="{ Component }" class="page">
+      <transition name="page" mode="out-in">
+        <component :is="Component" />
+      </transition>
+    </router-view>
   </div>
 </template>
 
 <script>
-import content from "data/content";
+import content from "./data/content.js";
 
 export default {
   name: "app",
-  metaInfo: {
-    title: content.meta.title,
-    titleTemplate: `%s // — ${content.meta.title}`,
-  },
+  // metaInfo: {
+  //   title: content.meta.title,
+  //   titleTemplate: `%s // — ${content.meta.title}`,
+  // },
 };
 </script>
 

@@ -22,15 +22,15 @@
 </template>
 
 <script>
-import content from "../data/content";
-import Header from "../components/Header";
+import content from "../data/content.js";
+import Header from "../components/Header.vue";
 
 export default {
   name: "Disclaimer",
-  metaInfo: {
-    title: "Oct+Nov",
-    meta: content.meta.octnov,
-  },
+  // metaInfo: {
+  //   title: "Oct+Nov",
+  //   meta: content.meta.octnov,
+  // },
   components: {
     "c-header": Header,
   },

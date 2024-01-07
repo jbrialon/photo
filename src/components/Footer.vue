@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import content from "data/content";
+import content from "../data/content";
 
 export default {
   name: "c-footer",

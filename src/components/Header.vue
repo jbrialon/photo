@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import content from "data/content";
+import content from "../data/content.js";
 
 export default {
   name: "c-header",

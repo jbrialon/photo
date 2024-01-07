@@ -26,7 +26,7 @@
           :style="photoContainerStyle(photo)"
           :class="getClass(photo)"
         >
-          <img v-lazy="photo" :style="photoStyle(photo)" :alt="alt" />
+          <img v-lazy="photo.src" :style="photoStyle(photo)" :alt="alt" />
           <loader class="travel__loader"></loader>
         </div>
         <div
@@ -44,24 +44,26 @@
 </template>
 
 <script>
+import pickBy from "lodash/pickBy";
 import shuffle from "lodash/shuffle";
 import MobileDetect from "mobile-detect";
 const md = new MobileDetect(window.navigator.userAgent);
-import content from "../data/content";
-import loader from "../components/Loader";
-import { pickBy } from "lodash";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+
+import content from "../data/content.js";
+import photos from "../data/photos.json";
+import loader from "../components/Loader.vue";
+import Header from "../components/Header.vue";
+import Footer from "../components/Footer.vue";
 
 export default {
   name: "Album",
   props: ["name"],
-  metaInfo() {
-    return {
-      title: this.$t(`albums.${this.album.name}.displayName`).toUpperCase(),
-      meta: this.album.meta,
-    };
-  },
+  // metaInfo() {
+  //   return {
+  //     title: this.$t(`albums.${this.album.name}.displayName`).toUpperCase(),
+  //     meta: this.album.meta,
+  //   };
+  // },
   data() {
     return {
       showDescription: false,
@@ -73,6 +75,7 @@ export default {
         content.meta.author
       }`,
       grid: content.albums[this.name].grid,
+      photos: photos[this.name],
     };
   },
   methods: {
@@ -133,19 +136,6 @@ export default {
         width: width,
         height: height,
       };
-    },
-  },
-  computed: {
-    photos() {
-      // create a new context to get all images in assets/photos
-      const req = require.context("../assets/photos", true, /\.jpg$/);
-      const photos = req
-        .keys()
-        // filter them by folder name (simple check if path contains album name)
-        .filter((item) => item.includes(`/${this.name}/`))
-        // return an Array of require items
-        .map((item) => req(item));
-      return this.album.shuffle ? shuffle(photos) : photos;
     },
   },
   components: {

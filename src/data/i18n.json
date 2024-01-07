@@ -126,9 +126,6 @@
       "displayName": "about",
       "text": "Hello 👋 my name is Jérémy<br>I code website, I take pictures<br><br>and sometimes I do both"
     },
-    "velo": {
-      "displayName": "Vélo"
-    },
     "loader": {
       "0": "Initiating launch sequence",
       "1": "Loading the digital stuff",
@@ -261,9 +258,6 @@
     "about": {
       "displayName": "à propos",
       "text": "Salut 👋 je m'appelle Jérémy<br>je fais du code, je prends des photos<br><br>et parfois je fais les deux"
-    },
-    "velo": {
-      "displayName": "Vélo"
     },
     "disclaimer": {
       "paragraph1": "Cette page est visible uniquement sur un ordinateur ou une tablette, mais vous pouvez voir les photos",
