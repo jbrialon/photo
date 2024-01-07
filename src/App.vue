@@ -17,6 +17,9 @@ export default {
   //   title: content.meta.title,
   //   titleTemplate: `%s // — ${content.meta.title}`,
   // },
+  mounted() {
+    document.dispatchEvent(new Event("custom-render-trigger"));
+  },
 };
 </script>
 

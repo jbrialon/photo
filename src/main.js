@@ -24,9 +24,19 @@ const app = createApp({
 
 app.use(router);
 app.use(VueLazyLoad, {
-  preLoad: 2,
-  attempt: 3,
-  observer: true,
+  loading: "",
+  error: "",
+  lifecycle: {
+    loading: (el) => {
+      // console.log("loading", el);
+    },
+    error: (el) => {
+      console.log("error", el);
+    },
+    loaded: (el) => {
+      // console.log("loaded", el);
+    },
+  },
 });
 app.use(i18n);
 

@@ -3,10 +3,9 @@
     <c-header></c-header>
     <article class="about__article">
       <div class="about__bottom">
-        <div
-          class="about__background"
-          v-lazy:background-image="content.cover"
-        ></div>
+        <div class="about__background">
+          <img v-lazy="content.cover" />
+        </div>
         <div class="about__content">
           <h1 class="about__title">
             {{ $t("about.displayName") }}
@@ -109,12 +108,16 @@ export default {
     bottom: 0;
     left: 0;
     z-index: 0;
-    opacity: 0;
-    background-size: cover;
     background-position: top;
-    transition: opacity 400ms $easing;
-    &[lazy="loaded"] {
-      opacity: 1;
+    overflow: hidden;
+
+    img {
+      opacity: 0;
+      width: 100%;
+      transition: opacity 400ms $easing;
+      &[lazy="loaded"] {
+        opacity: 1;
+      }
     }
   }
   &__title {

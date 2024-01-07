@@ -24,6 +24,8 @@
     "vue3-lazyload": "^0.3.8"
   },
   "devDependencies": {
+    "@prerenderer/renderer-puppeteer": "^1.2.2",
+    "@prerenderer/rollup-plugin": "^0.3.7",
     "@vitejs/plugin-vue": "^4.5.2",
     "exif-parser": "^0.1.12",
     "sass": "^1.69.7",

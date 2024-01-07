@@ -6,7 +6,8 @@
         <h2>
           {{ $t(`albums.${album.name}.displayName`) }}
         </h2>
-        <div v-lazy="album.cover" class="img"></div>
+        <!-- <div v-lazy="album.cover" class="img"></div> -->
+        <img v-lazy="album.cover" class="img" />
       </router-link>
     </article>
     <c-footer></c-footer>
@@ -114,6 +115,8 @@ export default {
       }
 
       .img[lazy="loaded"] {
+        transition-duration: 400ms;
+        transition-delay: 0ms;
         opacity: 0.75;
       }
     }
@@ -158,11 +161,9 @@ export default {
       right: 0;
       z-index: 0;
       opacity: 0;
-      transition: opacity 400ms $easing;
+      transition: opacity 1800ms $easing 200ms;
       will-change: opacity;
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: cover;
+      width: 100%;
     }
 
     .img[lazy="loaded"] {
