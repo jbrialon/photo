@@ -176,10 +176,12 @@ let winsize = { width: window.innerWidth, height: window.innerHeight };
 
 export default {
   name: "OctNov",
-  // metaInfo: {
-  //   title: "Oct+Nov",
-  //   meta: content.meta.octnov,
-  // },
+  head() {
+    return {
+      title: "Oct+Nov",
+      meta: content.meta.octnov,
+    };
+  },
   data() {
     return {
       menu: content.octnov,

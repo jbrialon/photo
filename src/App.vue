@@ -11,12 +11,16 @@
 <script>
 import content from "./data/content.js";
 
+import { useHead } from "@unhead/vue";
+
 export default {
   name: "app",
-  // metaInfo: {
-  //   title: content.meta.title,
-  //   titleTemplate: `%s // — ${content.meta.title}`,
-  // },
+  head() {
+    return {
+      title: content.meta.title,
+      titleTemplate: `%s // — ${content.meta.title}`,
+    };
+  },
   mounted() {
     document.dispatchEvent(new Event("custom-render-trigger"));
   },

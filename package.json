@@ -13,6 +13,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@unhead/vue": "^1.8.9",
     "gsap": "^3.12.4",
     "lodash": "^4.17.21",
     "mobile-detect": "^1.4.5",

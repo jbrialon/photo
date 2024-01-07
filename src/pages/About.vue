@@ -37,13 +37,13 @@ import Footer from "../components/Footer.vue";
 
 export default {
   name: "about",
-  // metaInfo() {
-  //   return {
-  //     title: this.$t("about.displayName").toUpperCase(),
-  //     titleTemplate: `%s //`,
-  //     meta: content.about.meta,
-  //   };
-  // },
+  head() {
+    return {
+      title: this.$t("about.displayName").toUpperCase(),
+      titleTemplate: `%s //`,
+      meta: content.about.meta,
+    };
+  },
   data() {
     return {
       links: content.social,

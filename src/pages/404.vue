@@ -14,11 +14,13 @@ import Footer from "../components/Footer.vue";
 
 export default {
   name: "NotFound",
-  // metaInfo: {
-  //   title: content.meta.title,
-  //   titleTemplate: `%s`,
-  //   meta: content.meta.meta,
-  // },
+  head() {
+    return {
+      title: content.meta.title,
+      titleTemplate: `%s`,
+      meta: content.meta.meta,
+    };
+  },
   components: {
     "c-header": Header,
     "c-footer": Footer,

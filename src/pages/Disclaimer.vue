@@ -27,10 +27,12 @@ import Header from "../components/Header.vue";
 
 export default {
   name: "Disclaimer",
-  // metaInfo: {
-  //   title: "Oct+Nov",
-  //   meta: content.meta.octnov,
-  // },
+  head() {
+    return {
+      title: "Oct+Nov",
+      meta: content.meta.octnov,
+    };
+  },
   components: {
     "c-header": Header,
   },

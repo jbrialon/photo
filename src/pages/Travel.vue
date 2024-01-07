@@ -58,12 +58,12 @@ import Footer from "../components/Footer.vue";
 export default {
   name: "Album",
   props: ["name"],
-  // metaInfo() {
-  //   return {
-  //     title: this.$t(`albums.${this.album.name}.displayName`).toUpperCase(),
-  //     meta: this.album.meta,
-  //   };
-  // },
+  head() {
+    return {
+      title: this.$t(`albums.${this.album.name}.displayName`).toUpperCase(),
+      meta: this.album.meta,
+    };
+  },
   data() {
     return {
       showDescription: false,

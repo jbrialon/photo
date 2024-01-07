@@ -23,11 +23,13 @@ import Footer from "../components/Footer.vue";
 
 export default {
   name: "travels",
-  // metaInfo: {
-  //   title: content.meta.title,
-  //   titleTemplate: `%s`,
-  //   meta: content.meta.meta,
-  // },
+  head() {
+    return {
+      title: content.meta.title,
+      titleTemplate: `%s`,
+      meta: content.meta.meta,
+    };
+  },
   data() {
     return {
       albums: pickBy(content.albums, (album) => !album.hidden),
