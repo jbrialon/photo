@@ -65,19 +65,18 @@ export default {
     };
   },
   data() {
+    const album = content.albums[this.name];
     return {
       showDescription: false,
       isMobile: md.phone() !== null,
       isTablet: md.tablet() !== null || window.innerWidth === 1194,
-      album: content.albums[this.name],
+      album: album,
       albums: pickBy(content.albums, (item) => !item.hidden),
       alt: `${this.$t(`albums.${this.name}.displayName`)} - ${
         content.meta.author
       }`,
       grid: content.albums[this.name].grid,
-      photos: this.album.shuffle
-        ? shuffle(photos[this.name])
-        : photos[this.name],
+      photos: album.shuffle ? shuffle(photos[this.name]) : photos[this.name],
     };
   },
   methods: {
