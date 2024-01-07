@@ -284,19 +284,19 @@ export default {
       gsap.to(moreButton, {
         duration: speedMore / 2,
         delay: delay,
-        ease: Power4.easeIn,
+        ease: "power4.in",
         scaleY: 2,
       });
       gsap.to(moreButton, {
         duration: speedMore / 2,
         delay: delay + speedMore / 2,
-        ease: Power4.easeOut,
+        ease: "power4.out",
         scaleY: 1,
       });
       gsap.to(this.$refs.more.querySelector("a"), {
         duration: action === "hide" ? 0.2 : 0.4,
         delay: action === "hide" ? 0.2 : 1,
-        ease: action === "hide" ? Power4.easeIn : Power4.easeOut,
+        ease: action === "hide" ? "power4.in" : "power4.out",
         startAt: action === "hide" ? {} : { opacity: 0, y: "-150%" },
         y: action === "hide" ? "-150%" : "0%",
         opacity: action === "hide" ? 0 : 1,
@@ -304,7 +304,7 @@ export default {
       gsap.to(this.$refs.more.querySelector("button"), {
         duration: action === "hide" ? 0.4 : 0.2,
         delay: action === "hide" ? 1 : 0.2,
-        ease: action === "hide" ? Power4.easeOut : Power4.easeIn,
+        ease: action === "hide" ? "power4.out" : "power4.in",
         startAt: action === "hide" ? { opacity: 0, y: "150%" } : {},
         y: action === "hide" ? "0%" : "150%",
         opacity: action === "hide" ? 1 : 0,
@@ -313,7 +313,7 @@ export default {
       gsap.to(this.$refs.content, {
         duration: action === "show" ? 1.15 : 1,
         delay: delay,
-        ease: action === "show" ? "power4.inOut" : Power4.easeOut,
+        ease: action === "show" ? "power4.inOut" : "power4.out",
         y: action === "show" ? "100%" : "-100%",
         onComplete: () => {
           if (action === "show") {
