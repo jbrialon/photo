@@ -95,6 +95,7 @@
       <Album
         v-if="activeDestination"
         :destination="activeDestination"
+        :toggle-action="toggleAction"
         :map="map"
         :marker="activeMarker"
         :back="toggle"
@@ -189,6 +190,7 @@ export default {
       map: null,
       markers: {},
       activeDestination: null,
+      toggleAction: null,
       loaded: false,
       mapOptions: {
         token:
@@ -235,12 +237,14 @@ export default {
         this.activeDestination.gps.lon,
         this.activeDestination.gps.lat
       );
+
       // hide all markers but the one from the selected destination
       Object.keys(this.markers).forEach((key) => {
         if (key !== propertyName) {
           this.markers[key].getElement().style.visibility = "hidden";
         }
       });
+
       this.map.easeTo({
         center: destinationGPS,
         zoom: this.mapOptions.zoom + 3,
@@ -249,6 +253,7 @@ export default {
       });
     },
     toggle(action) {
+      this.toggleAction = action;
       if (action === "show") {
         this.map.easeTo({
           center: this.mapOptions.center,
@@ -261,6 +266,7 @@ export default {
         });
         this.resetMarkerPosition();
       }
+
       let delay = 0.2;
       // country items animation
       this.$refs.item.forEach((item) => {
@@ -271,6 +277,7 @@ export default {
           y: action === "hide" ? -1 * winsize.height - 30 : 0,
         });
       });
+
       // button more/back animation
       let speedMore = this.randomNumber(1, 1.1);
       let moreButton = this.$refs.more;
@@ -281,12 +288,14 @@ export default {
         y:
           action === "hide" ? -1 * winsize.height + moreButton.offsetHeight : 0,
       });
+
       gsap.to(moreButton, {
         duration: speedMore / 2,
         delay: delay,
         ease: "power4.in",
         scaleY: 2,
       });
+
       gsap.to(moreButton, {
         duration: speedMore / 2,
         delay: delay + speedMore / 2,
@@ -361,10 +370,14 @@ export default {
       winsize = { width: window.innerWidth, height: window.innerHeight };
       this.portrait = window.matchMedia("(orientation: portrait)").matches;
     });
+
+    // Loader text
     this.index = Math.round(this.randomNumber(0, 7));
     const Interval = setInterval(() => {
       this.index = Math.round(this.randomNumber(0, 7));
     }, 1700);
+
+    // map setup
     mapboxgl.accessToken = this.mapOptions.token;
     this.map = new mapboxgl.Map({
       container: "map", // container id
@@ -373,6 +386,8 @@ export default {
       zoom: this.mapOptions.zoom, // starting zoom
     });
     this.map.on("load", this.mapload);
+
+    // when first images have loaded we hide the loader
     preloadFirstImages().then(() => {
       this.loaded = true;
       clearInterval(Interval);
@@ -397,10 +412,12 @@ export default {
       min-height: -webkit-fill-available;
     }
   }
+
   .title-wrap {
     padding: 0;
     grid-area: 2 / 2 / 2 / 6;
     text-align: left;
+
     .title {
       font-size: 2.75vw;
       margin: 0;
@@ -409,21 +426,26 @@ export default {
       line-height: 1.2;
       margin-bottom: 10px;
     }
+
     .subtitle {
       font-size: 1.25rem;
       margin: 0;
       margin-bottom: 10px;
     }
+
     .year {
       font-size: 1.25rem;
       display: block;
+
       &:before {
         content: "―";
         margin-right: 0.5rem;
       }
     }
+
     .lang {
       pointer-events: all;
+
       button {
         background: none;
         padding: 0;
@@ -433,6 +455,7 @@ export default {
       }
     }
   }
+
   .subtitle-wrap {
     position: relative;
     z-index: 30;
@@ -441,9 +464,11 @@ export default {
     writing-mode: vertical-rl;
     text-align: left;
     opacity: 0;
+
     @include ipad {
       margin-right: 5px;
     }
+
     .title {
       font-size: 2rem;
       line-height: 1.2;
@@ -451,10 +476,12 @@ export default {
       font-weight: 600;
       padding: 0;
       margin: 0;
+
       @include ipad {
         font-size: 1.3rem;
       }
     }
+
     .subtitle {
       font-weight: 400;
       display: block;
@@ -464,6 +491,7 @@ export default {
       }
     }
   }
+
   &__orientation {
     position: absolute;
     display: flex;
@@ -476,46 +504,56 @@ export default {
     left: 0;
     right: 0;
     bottom: 0;
+
     svg {
       width: 30vw;
       margin-bottom: 30px;
     }
   }
+
   &__badges {
     position: absolute;
     z-index: 19;
     right: 0;
     top: 10vh;
     cursor: pointer;
+
     &:hover {
       li {
         transform: translateX(0) rotate(0deg);
       }
     }
+
     ul {
       list-style: none;
       margin: 0;
     }
+
     li {
       width: 77px;
       margin: 10px;
       transition: transform 250ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
       transform: translateX(56px) rotate(-90deg);
       will-change: transform;
+
       &:nth-child(1) {
         transition-delay: 0;
       }
+
       &:nth-child(2) {
         transition-delay: 80ms;
       }
+
       &:nth-child(3) {
         transition-delay: 180ms;
       }
     }
+
     img {
       width: 100%;
     }
   }
+
   &__loader {
     position: absolute;
     display: flex;
@@ -528,6 +566,7 @@ export default {
     left: 0;
     right: 0;
     bottom: 0;
+
     p {
       color: #949494;
       font-weight: 500;
@@ -536,6 +575,7 @@ export default {
       text-transform: uppercase;
     }
   }
+
   &__content {
     position: absolute;
     top: 100vh;
@@ -547,6 +587,7 @@ export default {
     background-color: #e5e5e5;
     overflow: auto;
   }
+
   &__map {
     position: absolute;
     top: 0;
@@ -561,6 +602,7 @@ export default {
       display: none !important;
     }
   }
+
   &__grid {
     display: grid;
     position: absolute;
@@ -574,6 +616,7 @@ export default {
     grid-column-gap: 5vw;
     overflow: hidden;
     pointer-events: none;
+
     &--outer {
       position: relative;
       padding: 0;
@@ -581,11 +624,13 @@ export default {
       align-items: start;
     }
   }
+
   &__item {
     align-self: end;
     transform: translate3d(0, 30px, 0);
     cursor: pointer;
     pointer-events: all;
+
     &:before,
     &:after {
       content: "";
@@ -596,23 +641,29 @@ export default {
       width: 1px;
       background-color: #f3f3f3;
     }
+
     &:before {
       left: 0;
     }
+
     &:after {
       right: 0;
     }
+
     &:hover {
       .octnov__item-title {
         transform: translate3d(3px, 3px, 0);
       }
+
       .octnov__item-number {
         transform: translate3d(0px, -4px, 0);
       }
     }
+
     &:last-child:after {
       display: none;
     }
+
     &-title {
       position: absolute;
       top: -2rem;
@@ -623,10 +674,12 @@ export default {
       writing-mode: vertical-rl;
       letter-spacing: 1.1px;
       transition: transform 1.2s linear;
+
       @include ipad {
         font-size: 1.4rem;
       }
     }
+
     &-number {
       top: -2rem;
       right: 0;
@@ -636,10 +689,12 @@ export default {
       z-index: 100;
       writing-mode: vertical-rl;
       transition: transform 1.2s linear;
+
       @include ipad {
         font-size: 1.2rem;
       }
     }
+
     &--more {
       display: flex;
       position: relative;
@@ -651,6 +706,7 @@ export default {
       width: 100%;
       transform: none;
       cursor: default;
+
       button,
       a {
         cursor: pointer;
@@ -660,6 +716,7 @@ export default {
         font-weight: 600;
         text-decoration: none;
       }
+
       button {
         opacity: 0;
         background: none;
@@ -668,10 +725,12 @@ export default {
       }
     }
   }
+
   &__item-imgwrap {
     position: relative;
     overflow: hidden;
   }
+
   &__item-img {
     display: block;
     width: 100%;
