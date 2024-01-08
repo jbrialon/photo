@@ -7,9 +7,9 @@
       :class="getClass(photo)"
     >
       <div class="album__inner" :style="photoStyle(photo)">
-        <intersect @enter="enter(photo)">
+        <Intersect @enter="enter(photo)">
           <img v-lazy="photo" :style="photoStyle(photo)" />
-        </intersect>
+        </Intersect>
         <Loader class="album__loader"></Loader>
       </div>
       <div class="album__overlay" v-if="!hasPhoto">SOON</div>
@@ -107,7 +107,6 @@ export default {
       return gps ? gps.lng : "";
     },
     enter(photo) {
-      console.log(this.toggleAction);
       if (photo.GPS && this.toggleAction === "hide") {
         const destinationGPS = new mapboxgl.LngLat(
           photo.GPS.lng,
