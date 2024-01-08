@@ -22,6 +22,7 @@ export default {
     };
   },
   mounted() {
+    console.log("test");
     document.dispatchEvent(new Event("custom-render-trigger"));
   },
 };
