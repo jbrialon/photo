@@ -157,6 +157,10 @@ export default {
     }
 
     .img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       position: absolute;
       top: 0;
       left: 0;
@@ -166,7 +170,6 @@ export default {
       opacity: 0;
       transition: opacity 1800ms $easing 200ms;
       will-change: opacity;
-      width: 100%;
     }
 
     .img[lazy="loaded"] {

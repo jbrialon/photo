@@ -118,8 +118,10 @@ export default {
     overflow: hidden;
 
     img {
-      opacity: 0;
+      display: block;
       width: 100%;
+      object-fit: cover;
+      opacity: 0;
       transition: opacity 400ms $easing;
 
       &[lazy="loaded"] {
