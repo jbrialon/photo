@@ -10,7 +10,7 @@
         <intersect @enter="enter(photo)">
           <img v-lazy="photo" :style="photoStyle(photo)" />
         </intersect>
-        <loader class="album__loader"></loader>
+        <Loader class="album__loader"></Loader>
       </div>
       <div class="album__overlay" v-if="!hasPhoto">SOON</div>
       <div
@@ -42,14 +42,18 @@
 import photos from "../data/photos.json";
 
 import { getMarkerOffset } from "../utils/Utils.js";
-import loader from "../components/Loader.vue";
-import Intersect from "vue-intersect";
+import Loader from "../components/Loader.vue";
+import Intersect from "../components/Intersect.vue";
 
 export default {
   name: "album",
   props: {
     destination: {
       type: Object,
+      required: true,
+    },
+    toggleAction: {
+      type: String,
       required: true,
     },
     map: {
@@ -71,7 +75,7 @@ export default {
     };
   },
   components: {
-    loader,
+    Loader,
     Intersect,
   },
   computed: {
@@ -103,10 +107,11 @@ export default {
       return gps ? gps.lng : "";
     },
     enter(photo) {
-      if (photo.exif.GPS) {
+      console.log(this.toggleAction);
+      if (photo.GPS && this.toggleAction === "hide") {
         const destinationGPS = new mapboxgl.LngLat(
-          photo.exif.GPS.lng,
-          photo.exif.GPS.lat
+          photo.GPS.lng,
+          photo.GPS.lat
         );
         this.marker.setLngLat(destinationGPS);
         this.map.easeTo({
@@ -130,50 +135,61 @@ export default {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
+
   &__photo {
     position: relative;
     margin-bottom: 7vw;
+
     &:nth-child(even) {
       &.landscape {
         margin-left: 15vw;
+
         .album__description {
           text-align: right;
         }
       }
+
       &.portrait {
         margin-top: 15vh;
+
         .album__description {
           // text-align: right;
         }
       }
     }
+
     &:nth-child(odd) {
       &.landscape {
         .album__description {
           text-align: left;
         }
       }
+
       &.portrait {
         .album__description {
           // text-align: left;
         }
       }
     }
+
     &.portrait {
       .album__description {
         text-align: left;
       }
     }
+
     &.landscape + .portrait {
       .album__description {
         text-align: left;
       }
     }
+
     &.portrait + .portrait {
       .album__description {
         text-align: right;
       }
     }
+
     img {
       display: block;
       width: 100%;
@@ -181,15 +197,19 @@ export default {
       opacity: 0;
       transition: opacity 1000ms $easing;
     }
+
     img[lazy="loaded"] {
       opacity: 1;
     }
+
     img[lazy="loaded"] + .loader {
       opacity: 0;
     }
   }
+
   &__inner {
     position: relative;
+
     &:before {
       position: absolute;
       content: "";
@@ -199,6 +219,7 @@ export default {
       right: -15px;
       background: white;
       z-index: -1;
+
       @include ipad {
         top: -10px;
         left: -10px;
@@ -207,6 +228,7 @@ export default {
       }
     }
   }
+
   &__overlay {
     position: absolute;
     top: 0;
@@ -223,12 +245,15 @@ export default {
     font-size: 3rem;
     letter-spacing: 1.3rem;
   }
+
   &__description {
     height: auto !important;
     padding-top: 25px;
+
     @include ipad {
       padding-top: 15px;
     }
+
     p {
       display: inline;
       font-family: "Libre Baskerville";
@@ -242,6 +267,7 @@ export default {
       // https://www.w3.org/TR/css-backgrounds-3/#the-box-decoration-break
       box-decoration-break: clone;
       -webkit-box-decoration-break: clone;
+
       @include ipad {
         font-size: 0.8rem;
         line-height: 2rem;
@@ -249,8 +275,10 @@ export default {
       }
     }
   }
+
   &__link {
     width: 100%;
+
     button,
     a {
       display: inline-block;
@@ -271,15 +299,18 @@ export default {
       letter-spacing: 1.5px;
       transition: all 300ms ease-in-out;
       cursor: pointer;
+
       &:last-child {
         margin-left: 25px;
       }
+
       &:hover {
         color: black;
         border-color: black;
       }
     }
   }
+
   &__loader {
     position: absolute;
     z-index: 5;

@@ -166,6 +166,7 @@ export default {
   justify-content: space-around;
   align-items: center;
   max-width: 1440px;
+
   &.map {
     flex-direction: column;
     max-width: 40vw;
@@ -180,12 +181,14 @@ export default {
     height: 60vh;
     margin: auto;
     min-width: 100vw;
+
     @include small-only {
       width: 90%;
       height: auto;
       padding: 5vw 0 15vw 0;
     }
   }
+
   &__title {
     display: block;
     position: relative;
@@ -205,14 +208,17 @@ export default {
       color: black;
       opacity: 0;
     }
+
     &.loaded {
       @include small-only {
         opacity: 1;
       }
+
       &:before {
         width: calc(100% + 25px);
       }
     }
+
     &:before {
       position: absolute;
       display: block;
@@ -224,11 +230,13 @@ export default {
       width: 0;
       transition: width 900ms ease-in-out;
       background: black;
+
       @include small-only {
         display: none;
       }
     }
   }
+
   &__description {
     margin: auto;
     max-width: 620px;
@@ -246,20 +254,24 @@ export default {
     span:last-child {
       opacity: 0;
       transition: opacity 600ms ease-in-out;
+
       &.loaded {
         opacity: 1;
       }
     }
   }
+
   &__container {
     margin-bottom: 10vh;
     @include small-only {
       margin-bottom: 5vh;
     }
+
     &:nth-child(even) {
       .landscape {
         // margin-left: 25vw;
       }
+
       .travel__photo.portrait {
         margin-top: 20vh;
         @include ipad {
@@ -274,6 +286,7 @@ export default {
       .landscape {
         // margin-left: 20vw;
       }
+
       .portrait {
       }
     }
@@ -286,6 +299,7 @@ export default {
     @include small-only {
       margin: 0 auto 0 auto;
     }
+
     &:before {
       position: absolute;
       content: "";
@@ -329,6 +343,7 @@ export default {
       box-shadow: -5px 0 0 0 #000, 5px 0 0 0 #000;
     }
   }
+
   &__loader {
     position: absolute;
     z-index: 5;
@@ -337,6 +352,7 @@ export default {
     transform: translate(-50%, -50%);
     transition: opacity 600ms $easing;
   }
+
   img {
     position: relative;
     z-index: 10;
