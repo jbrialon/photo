@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   async onPreBuild({ utils }) {
     await utils.cache.restore("/opt/buildhome/.cache/puppeteer/");
   },
