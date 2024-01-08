@@ -55,6 +55,7 @@ export default {
     width: 50%;
     height: 55vh;
     padding: 0 35px;
+
     @include small-only {
       width: 100%;
       height: 250px;
@@ -65,6 +66,7 @@ export default {
       flex-direction: column;
       align-items: center;
       justify-content: center;
+
       h1,
       ul {
         margin: auto;

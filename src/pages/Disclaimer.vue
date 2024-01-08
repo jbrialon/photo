@@ -46,9 +46,11 @@ export default {
 .disclaimer {
   width: 100%;
   min-height: -webkit-fill-available;
+
   header.header {
     margin: 0;
   }
+
   &__content {
     display: flex;
     align-items: center;
@@ -58,8 +60,10 @@ export default {
     margin: auto;
     min-height: -webkit-fill-available;
   }
+
   &__text {
     width: 75%;
+
     p,
     a,
     span a {
@@ -70,6 +74,7 @@ export default {
       color: #fff;
       background: #000;
     }
+
     p {
       padding: 5px;
       width: 75%;

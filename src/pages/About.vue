@@ -67,14 +67,17 @@ export default {
   flex-wrap: wrap;
   justify-content: center;
   min-height: 100vh;
+
   header.header {
     width: calc(100vw - 15px);
     // height: 10vh;
     padding: 15px;
   }
+
   @include small-only {
     padding-top: 5vw;
   }
+
   &__article {
     position: relative;
     width: calc(100vw - 45px);
@@ -86,6 +89,7 @@ export default {
       padding: 5vw 0 25vw 0;
     }
   }
+
   &__bottom {
     display: flex;
     position: absolute;
@@ -97,10 +101,12 @@ export default {
     height: 38vh;
     bottom: 0;
   }
+
   &__content {
     position: relative;
     z-index: 1;
   }
+
   &__background {
     position: absolute;
     top: 0;
@@ -115,11 +121,13 @@ export default {
       opacity: 0;
       width: 100%;
       transition: opacity 400ms $easing;
+
       &[lazy="loaded"] {
         opacity: 1;
       }
     }
   }
+
   &__title {
     display: inline;
     text-transform: uppercase;
@@ -130,10 +138,12 @@ export default {
     color: white;
     background: black;
     box-shadow: -25px 0 0 0 #000, 10px 0 0 0 #000;
+
     @include small-only {
       font-size: 20px;
     }
   }
+
   &__text {
     margin: auto;
     max-width: 620px;
@@ -147,10 +157,12 @@ export default {
     background: black;
     padding: 5px 5px 5px 5px;
     box-shadow: -10px 0 0 0 #000, 10px 0 0 0 #000;
+
     @include small-only {
       font-size: 15px;
     }
   }
+
   &__links {
     display: flex;
     flex-direction: column;
@@ -160,6 +172,7 @@ export default {
     margin: 0;
     padding: 50px;
   }
+
   &__links a {
     position: relative;
     text-decoration: none;
@@ -171,6 +184,7 @@ export default {
     line-height: 2.2em;
     letter-spacing: 0.08em;
     font-weight: 400;
+
     &:after {
       display: block;
       position: absolute;
@@ -181,6 +195,7 @@ export default {
       height: 1px;
       transition: width 350ms ease-in-out;
     }
+
     &:hover:after {
       width: 99%;
     }

@@ -11,8 +11,6 @@
 <script>
 import content from "./data/content.js";
 
-import { useHead } from "@unhead/vue";
-
 export default {
   name: "app",
   head() {

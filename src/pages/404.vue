@@ -38,11 +38,13 @@ export default {
   flex-wrap: wrap;
   justify-content: center;
   min-height: 100vh;
+
   header.header {
     width: calc(100vw - 15px);
     // height: 10vh;
     padding: 15px;
   }
+
   &__article {
     position: relative;
     width: calc(100vw - 45px);
@@ -50,11 +52,13 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+
     @include small-only {
       width: 90%;
       height: auto;
       padding: 5vw 0 25vw 0;
     }
+
     h1 {
       position: relative;
       font-size: 25vw;
