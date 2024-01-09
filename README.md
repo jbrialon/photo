@@ -18,4 +18,4 @@ npm run dev
 npm run build
 ```
 
-node version: v18.18.0
+node version: v20.10.0
