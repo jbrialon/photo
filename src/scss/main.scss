@@ -18,6 +18,7 @@ a.link {
   display: inline-flex;
   align-items: center;
   z-index: 1;
+
   &:after {
     display: block;
     position: absolute;
@@ -28,6 +29,7 @@ a.link {
     height: 2px;
     transition: width 500ms ease-in-out;
   }
+
   &:hover:after {
     width: 100%;
   }
