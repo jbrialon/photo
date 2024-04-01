@@ -235,6 +235,10 @@ export default {
       link: "https://github.com/jbrialon",
     },
     {
+      title: "pixelfed",
+      link: "https://pixelfed.social/Jerem",
+    },
+    {
       title: "Mastodon",
       link: "https://mastodon.art/@jerem",
     },
