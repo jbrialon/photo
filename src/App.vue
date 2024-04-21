@@ -14,9 +14,18 @@ import content from "./data/content.js";
 export default {
   name: "app",
   head() {
+    const script = [];
+    if (process.env.NODE_ENV === "production") {
+      script.push({
+        defer: true,
+        src: "https://eu.umami.is/script.js",
+        "data-website-id": "798c1bad-cde7-40be-a68f-b7deb279119d",
+      });
+    }
     return {
       title: content.meta.title,
       titleTemplate: `%s // — ${content.meta.title}`,
+      script,
     };
   },
   mounted() {
