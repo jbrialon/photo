@@ -39,11 +39,13 @@
 </template>
 
 <script>
-import photos from "../data/photos.json";
+import mapboxgl from "mapbox-gl";
 
 import { getMarkerOffset } from "../utils/Utils.js";
 import Loader from "../components/Loader.vue";
 import Intersect from "../components/Intersect.vue";
+
+import photos from "../data/photos.json";
 
 export default {
   name: "album",

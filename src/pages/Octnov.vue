@@ -166,7 +166,6 @@
 <script>
 import { gsap } from "gsap";
 import mapboxgl from "mapbox-gl";
-import "mapbox-gl/dist/mapbox-gl.css";
 import { getMarkerOffset, preloadFirstImages } from "../utils/Utils.js";
 import MobileDetect from "mobile-detect";
 

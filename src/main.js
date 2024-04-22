@@ -9,6 +9,7 @@ import messages from "./data/i18n";
 import { getNavigatorLanguage } from "./utils/Utils.js";
 
 import "normalize.css";
+import "mapbox-gl/dist/mapbox-gl.css";
 
 const head = createHead();
 const i18n = new createI18n({
