@@ -484,6 +484,16 @@
       }
     }
   ],
+  "bizikleta": [
+    {
+      "src": "/photos/bizikleta/bizikleta-01.jpg",
+      "size": {
+        "width": 2400,
+        "height": 1600
+      },
+      "GPS": null
+    }
+  ],
   "indonesia": [
     {
       "src": "/photos/indonesia/indonesia-01.jpg",
