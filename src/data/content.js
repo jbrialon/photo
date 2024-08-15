@@ -77,18 +77,18 @@ export default {
   albums: {
     bizikleta: {
       name: "bizikleta",
-      cover: "/photos/bizikleta/bizikleta-01.jpg",
+      cover: "/photos/bizikleta/bizikleta-30.jpg",
       shuffle: false,
       hidden: false,
       meta: [
         { name: "og:url", content: `${url}/album/bizikleta` },
         {
           name: "og:image",
-          content: `${url}${"/img/meta_share_indonesia.gif"}`,
+          content: `${url}${"/img/meta_share_bizikleta.gif"}`,
         },
         {
           name: "twitter:image",
-          content: `${url}${"/img/meta_share_indonesia.gif"}`,
+          content: `${url}${"/img/meta_share_bizikleta.gif"}`,
         },
       ],
     },
