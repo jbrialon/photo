@@ -10,6 +10,7 @@ export default defineConfig({
     prerender({
       routes: [
         "/",
+        "/album/bizikleta",
         "/album/indonesia",
         "/album/annapurna",
         "/album/japan",
