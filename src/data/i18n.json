@@ -13,6 +13,10 @@
       "more": "More +"
     },
     "albums": {
+      "bizikleta": {
+        "displayName": "Bizikleta",
+        "text": "From Bordeaux to San Sebastian on the <strong>Atlantic West Route</strong> to visit the Basque country"
+      },
       "indonesia": {
         "displayName": "Indonesia",
         "text": "3 weeks in Indonesia, between Java & Bali"
@@ -151,6 +155,10 @@
       "more": "Plus +"
     },
     "albums": {
+      "bizikleta": {
+        "displayName": "Bizikleta",
+        "text": "De Bordeaux à San Sebastian sur là <strong>Velodyssée</strong> pour aller visiter le Pays Basque"
+      },
       "indonesia": {
         "displayName": "Indonesie",
         "text": "3 semaines en Indonésie, entre Java & Bali"
