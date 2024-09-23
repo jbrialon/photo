@@ -13,6 +13,10 @@
       "more": "More +"
     },
     "albums": {
+      "cevennes": {
+        "displayName": "Jeûne - Mas de l'Issart",
+        "text": ""
+      },
       "bizikleta": {
         "displayName": "Bizikleta",
         "text": "From Bordeaux to San Sebastian on the <strong>Atlantic Coast Route</strong> to visit the Basque country"
@@ -155,6 +159,10 @@
       "more": "Plus +"
     },
     "albums": {
+      "cevennes": {
+        "displayName": "Jeûne - Mas de l'Issart",
+        "text": ""
+      },
       "bizikleta": {
         "displayName": "Bizikleta",
         "text": "De Bordeaux à San Sebastian sur la <strong>Velodyssée</strong> pour aller visiter le Pays Basque"
