@@ -770,7 +770,7 @@
     {
       "src": "/photos/cevennes/cevennes-02.jpg",
       "size": {
-        "width": 1067,
+        "width": 2400,
         "height": 1600
       },
       "GPS": null
@@ -778,7 +778,7 @@
     {
       "src": "/photos/cevennes/cevennes-03.jpg",
       "size": {
-        "width": 2400,
+        "width": 1067,
         "height": 1600
       },
       "GPS": null
@@ -794,7 +794,7 @@
     {
       "src": "/photos/cevennes/cevennes-05.jpg",
       "size": {
-        "width": 1067,
+        "width": 2400,
         "height": 1600
       },
       "GPS": null
@@ -810,7 +810,7 @@
     {
       "src": "/photos/cevennes/cevennes-07.jpg",
       "size": {
-        "width": 2400,
+        "width": 1067,
         "height": 1600
       },
       "GPS": null
@@ -826,7 +826,7 @@
     {
       "src": "/photos/cevennes/cevennes-09.jpg",
       "size": {
-        "width": 1067,
+        "width": 2400,
         "height": 1600
       },
       "GPS": null
@@ -842,7 +842,7 @@
     {
       "src": "/photos/cevennes/cevennes-11.jpg",
       "size": {
-        "width": 2400,
+        "width": 1067,
         "height": 1600
       },
       "GPS": null
@@ -858,7 +858,7 @@
     {
       "src": "/photos/cevennes/cevennes-13.jpg",
       "size": {
-        "width": 1067,
+        "width": 2400,
         "height": 1600
       },
       "GPS": null
@@ -890,7 +890,7 @@
     {
       "src": "/photos/cevennes/cevennes-17.jpg",
       "size": {
-        "width": 2400,
+        "width": 1067,
         "height": 1600
       },
       "GPS": null
@@ -906,21 +906,13 @@
     {
       "src": "/photos/cevennes/cevennes-19.jpg",
       "size": {
-        "width": 1067,
-        "height": 1600
-      },
-      "GPS": null
-    },
-    {
-      "src": "/photos/cevennes/cevennes-20.jpg",
-      "size": {
         "width": 2400,
         "height": 1600
       },
       "GPS": null
     },
     {
-      "src": "/photos/cevennes/cevennes-21.jpg",
+      "src": "/photos/cevennes/cevennes-20.jpg",
       "size": {
         "width": 1067,
         "height": 1600
