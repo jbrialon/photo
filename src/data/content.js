@@ -79,7 +79,7 @@ export default {
       name: "cevennes",
       cover: "/photos/cevennes/cevennes-15.jpg",
       shuffle: false,
-      hidden: false,
+      hidden: true,
       meta: [
         { name: "og:url", content: `${url}/album/cevennes` },
         {
