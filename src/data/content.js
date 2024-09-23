@@ -75,6 +75,23 @@ export default {
     },
   },
   albums: {
+    cevennes: {
+      name: "cevennes",
+      cover: "/photos/cevennes/cevennes-15.jpg",
+      shuffle: false,
+      hidden: false,
+      meta: [
+        { name: "og:url", content: `${url}/album/cevennes` },
+        {
+          name: "og:image",
+          content: "",
+        },
+        {
+          name: "twitter:image",
+          content: "",
+        },
+      ],
+    },
     bizikleta: {
       name: "bizikleta",
       cover: "/photos/bizikleta/bizikleta-30.jpg",
