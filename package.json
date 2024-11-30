@@ -13,24 +13,24 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@unhead/vue": "^1.8.9",
-    "gsap": "^3.12.4",
+    "@unhead/vue": "^1.11.13",
+    "gsap": "^3.12.5",
     "lodash": "^4.17.21",
-    "mapbox-gl": "^3.3.0",
+    "mapbox-gl": "^3.8.0",
     "mobile-detect": "^1.4.5",
     "normalize.css": "^8.0.1",
-    "vue": "^3.4.23",
-    "vue-i18n": "^9.9.0",
-    "vue-router": "^4.2.5",
+    "vue": "^3.5.13",
+    "vue-i18n": "^10.0.5",
+    "vue-router": "^4.5.0",
     "vue3-lazyload": "^0.3.8"
   },
   "devDependencies": {
     "@prerenderer/renderer-puppeteer": "^1.2.2",
-    "@prerenderer/rollup-plugin": "^0.3.7",
-    "@vitejs/plugin-vue": "^4.5.2",
+    "@prerenderer/rollup-plugin": "^0.3.12",
+    "@vitejs/plugin-vue": "^5.2.1",
     "exif-parser": "^0.1.12",
-    "sass": "^1.69.7",
-    "sharp": "^0.33.1",
-    "vite": "^5.4.11"
+    "sass": "^1.81.0",
+    "sharp": "^0.33.5",
+    "vite": "^6.0.1"
   }
 }
