@@ -1,3 +1,5 @@
+@use "vars" as *;
+
 @mixin media-query($media-query) {
   @if $media-query == small {
     @media only screen and (max-width: $medium) {
@@ -6,7 +8,7 @@
   }
 
   @if $media-query == ipad {
-    @media all and (min-width: $medium + 1) and (max-width: 1366px) {
+    @media all and (min-width: #{$medium + 1}) and (max-width: 1366px) {
       @content;
     }
   }

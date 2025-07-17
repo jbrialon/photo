@@ -398,8 +398,8 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../scss/vars";
-@import "../scss/mixins";
+@use "../scss/vars" as *;
+@use "../scss/mixins" as *;
 
 .octnov {
   position: relative;

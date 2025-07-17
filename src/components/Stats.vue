@@ -37,8 +37,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../scss/vars";
-@import "../scss/mixins";
+@use "../scss/vars" as *;
+@use "../scss/mixins" as *;
 
 .stats {
   position: absolute;
