@@ -1,6 +1,6 @@
-@import "vars";
-@import "mixins";
-@import "transitions";
+@use "vars" as *;
+@use "mixins" as *;
+@use "transitions";
 
 html {
   box-sizing: border-box;

@@ -35,7 +35,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "scss/main";
+@use "scss/main";
 
 #app {
   overflow: hidden;
