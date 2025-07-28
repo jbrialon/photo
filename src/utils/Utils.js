@@ -1,6 +1,6 @@
 import Preloader from "../utils/Preloader.js";
 import content from "../data/content";
-import photosData from "../data/photos";
+import { getAlbumPhotos } from "../data/photos.js";
 
 export function getMarkerOffset() {
   const x =
@@ -10,13 +10,25 @@ export function getMarkerOffset() {
   return [x, y];
 }
 
-export function preloadFirstImages() {
+export async function preloadFirstImages() {
   let photosArray = [];
+
+  // Add cover images
   Object.keys(content.octnov).forEach((entry) => {
     photosArray.push(content.octnov[entry].cover);
-    const photos = photosData[entry].slice(0, 4);
-    photosArray.push(...photos.map((photo) => photo.src));
   });
+
+  // Add first 4 photos from each album
+  for (const entry of Object.keys(content.octnov)) {
+    try {
+      const photos = await getAlbumPhotos(entry);
+      const firstPhotos = photos.slice(0, 4);
+      photosArray.push(...firstPhotos.map((photo) => photo.src));
+    } catch (error) {
+      console.error(`Failed to load photos for ${entry}:`, error);
+    }
+  }
+
   return Preloader.load(photosArray);
 }
 

@@ -39,13 +39,10 @@
 </template>
 
 <script>
-import mapboxgl from "mapbox-gl";
-
 import { getMarkerOffset } from "../utils/Utils.js";
+import { getAlbumPhotos } from "../data/photos.js";
 import Loader from "../components/Loader.vue";
 import Intersect from "../components/Intersect.vue";
-
-import photos from "../data/photos.json";
 
 export default {
   name: "album",
@@ -73,12 +70,23 @@ export default {
   },
   data() {
     return {
-      photos: photos[this.destination.name],
+      photos: [], // Will be loaded dynamically
+      mapboxgl: null,
     };
   },
   components: {
     Loader,
     Intersect,
+  },
+  async mounted() {
+    // Load photos and mapbox dynamically
+    const [photos, mapboxModule] = await Promise.all([
+      getAlbumPhotos(this.destination.name),
+      import("mapbox-gl"),
+    ]);
+
+    this.photos = photos;
+    this.mapboxgl = mapboxModule.default;
   },
   computed: {
     hasPhoto() {
@@ -109,8 +117,8 @@ export default {
       return gps ? gps.lng : "";
     },
     enter(photo) {
-      if (photo.GPS && this.toggleAction === "hide") {
-        const destinationGPS = new mapboxgl.LngLat(
+      if (photo.GPS && this.toggleAction === "hide" && this.mapboxgl) {
+        const destinationGPS = new this.mapboxgl.LngLat(
           photo.GPS.lng,
           photo.GPS.lat
         );

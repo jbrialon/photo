@@ -1,14 +1,11 @@
 import fs from "fs";
 import sharp from "sharp";
 import ExifParser from "exif-parser";
+import path from "path";
 
-// Provide the root path to the folder containing albums
 const rootFolderPath = "public/photos";
-
-// Provide the destination folder for the JSON file
 const destinationFolder = "src/data";
 
-// Function to get image size and GPS data
 async function getImageInfo(filePath) {
   if (filePath.endsWith(".DS_Store")) {
     return null; // Ignore .DS_Store files
@@ -35,7 +32,6 @@ async function getImageInfo(filePath) {
   };
 }
 
-// Function to read files in a directory
 function readFilesInDirectory(directoryPath) {
   return new Promise((resolve, reject) => {
     fs.readdir(directoryPath, (err, files) => {
@@ -48,7 +44,62 @@ function readFilesInDirectory(directoryPath) {
   });
 }
 
-// Function to process images and create JSON
+// Split photos data into individual album files
+function splitPhotosData(photosData) {
+  const photosDir = path.join(destinationFolder, "photos");
+  if (!fs.existsSync(photosDir)) {
+    fs.mkdirSync(photosDir, { recursive: true });
+  }
+
+  // Split each album into its own file for optimization purpose
+  Object.keys(photosData).forEach((albumName) => {
+    const albumData = photosData[albumName];
+    const fileName = `${albumName}.js`;
+    const filePath = path.join(photosDir, fileName);
+
+    const moduleContent = `export default ${JSON.stringify(
+      albumData,
+      null,
+      2
+    )};`;
+
+    fs.writeFileSync(filePath, moduleContent);
+    console.log(`Created ${fileName}`);
+  });
+
+  const photosIndexContent = `
+export const availableAlbums = ${JSON.stringify(Object.keys(photosData))};
+`;
+
+  fs.writeFileSync(path.join(photosDir, "index.js"), photosIndexContent);
+  console.log("Created photos/index.js");
+
+  const indexContent = `// Dynamic photo album loader
+import { availableAlbums } from './photos/index.js';
+
+export async function getAlbumPhotos(albumName) {
+  try {
+    const module = await import(\`./photos/\${albumName}.js\`);
+    return module.default;
+  } catch (error) {
+    console.error(\`Failed to load photos for album: \${albumName}\`, error);
+    return [];
+  }
+}
+
+// Export available albums dynamically
+export { availableAlbums };
+
+// Convenience function to get available albums
+export async function getAvailableAlbums() {
+  return availableAlbums;
+}
+`;
+
+  fs.writeFileSync(path.join(destinationFolder, "photos.js"), indexContent);
+  console.log("Created photos.js index file");
+}
+
 async function processImages(rootFolderPath) {
   try {
     const albums = {};
@@ -59,7 +110,7 @@ async function processImages(rootFolderPath) {
       const isDirectory = fs.statSync(albumPath).isDirectory();
 
       if (!isDirectory) {
-        continue; // Skip processing if it's not a directory
+        continue;
       }
 
       const files = await readFilesInDirectory(albumPath);
@@ -83,10 +134,13 @@ async function processImages(rootFolderPath) {
     fs.writeFileSync(destinationPath, jsonOutput);
 
     console.log(`JSON file created: ${destinationPath}`);
+
+    console.log("Splitting photos into individual album files...");
+    splitPhotosData(albums);
+    console.log("Photo splitting completed!");
   } catch (error) {
     console.error("Error:", error.message);
   }
 }
 
-// Call the function to process images
 processImages(rootFolderPath);
