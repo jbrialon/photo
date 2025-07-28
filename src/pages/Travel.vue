@@ -50,7 +50,7 @@ import MobileDetect from "mobile-detect";
 const md = new MobileDetect(window.navigator.userAgent);
 
 import content from "../data/content.js";
-import photos from "../data/photos.json";
+import { getAlbumPhotos } from "../data/photos.js";
 import loader from "../components/Loader.vue";
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
@@ -76,7 +76,7 @@ export default {
         content.meta.author
       }`,
       grid: content.albums[this.name].grid,
-      photos: album.shuffle ? shuffle(photos[this.name]) : photos[this.name],
+      photos: [],
     };
   },
   methods: {
@@ -144,7 +144,10 @@ export default {
     "c-header": Header,
     "c-footer": Footer,
   },
-  mounted() {
+  async mounted() {
+    // Load photos dynamically
+    const photos = await getAlbumPhotos(this.name);
+    this.photos = this.album.shuffle ? shuffle(photos) : photos;
     this.showDescription = false;
     setTimeout(() => {
       this.showDescription = true;

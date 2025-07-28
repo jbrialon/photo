@@ -29,4 +29,18 @@ export default defineConfig({
       },
     }),
   ],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // Split heavy libraries into separate chunks
+          gsap: ["gsap"],
+          mapbox: ["mapbox-gl"],
+          lodash: ["lodash"],
+          vue: ["vue", "vue-router", "vue-i18n"],
+        },
+      },
+    },
+    chunkSizeWarningLimit: 1000,
+  },
 });

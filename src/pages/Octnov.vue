@@ -164,8 +164,6 @@
 </template>
 
 <script>
-import { gsap } from "gsap";
-import mapboxgl from "mapbox-gl";
 import { getMarkerOffset, preloadFirstImages } from "../utils/Utils.js";
 import MobileDetect from "mobile-detect";
 
@@ -203,19 +201,58 @@ export default {
       isTablet: md.tablet() !== null || winsize.width === 1194,
       index: 0,
       portrait: window.matchMedia("(orientation: portrait)").matches,
+      gsap: null,
+      mapboxgl: null,
     };
   },
   components: {
     Album,
     loader,
   },
+  async mounted() {
+    // Load heavy libraries dynamically
+    const [gsapModule, mapboxModule] = await Promise.all([
+      import("gsap"),
+      import("mapbox-gl"),
+    ]);
+
+    this.gsap = gsapModule.gsap;
+    this.mapboxgl = mapboxModule.default;
+
+    window.addEventListener("resize", () => {
+      winsize = { width: window.innerWidth, height: window.innerHeight };
+      this.portrait = window.matchMedia("(orientation: portrait)").matches;
+    });
+
+    // Loader text
+    this.index = Math.round(this.randomNumber(0, 7));
+    const Interval = setInterval(() => {
+      this.index = Math.round(this.randomNumber(0, 7));
+    }, 1700);
+
+    // map setup
+    this.mapboxgl.accessToken = this.mapOptions.token;
+    this.map = new this.mapboxgl.Map({
+      container: "map", // container id
+      style: this.mapOptions.style, // stylesheet location
+      center: this.mapOptions.center, // starting position [lng, lat]
+      zoom: this.mapOptions.zoom, // starting zoom
+    });
+    this.map.on("load", this.mapload);
+
+    // when first images have loaded we hide the loader
+    preloadFirstImages().then(() => {
+      this.loaded = true;
+      clearInterval(Interval);
+    });
+  },
   methods: {
     mapload() {
       this.map.scrollZoom.disable();
       Object.keys(this.menu).forEach((key) => {
         let gps = this.menu[key].gps;
-        let marker = new mapboxgl.Marker();
-        let coord = new mapboxgl.LngLat(gps.lon, gps.lat);
+        let marker = new this.mapboxgl.Marker();
+        let coord = new this.mapboxgl.LngLat(gps.lon, gps.lat);
         marker.setLngLat(coord);
         marker.addTo(this.map);
         marker
@@ -227,14 +264,14 @@ export default {
     resetMarkerPosition() {
       Object.keys(this.menu).forEach((key) => {
         let gps = this.menu[key].gps;
-        let coord = new mapboxgl.LngLat(gps.lon, gps.lat);
+        let coord = new this.mapboxgl.LngLat(gps.lon, gps.lat);
         this.markers[key].setLngLat(coord);
       });
     },
     setDestination(propertyName) {
       this.toggle("hide");
       this.activeDestination = content.octnov[propertyName];
-      let destinationGPS = new mapboxgl.LngLat(
+      let destinationGPS = new this.mapboxgl.LngLat(
         this.activeDestination.gps.lon,
         this.activeDestination.gps.lat
       );
@@ -272,7 +309,7 @@ export default {
       // country items animation
       this.$refs.item.forEach((item) => {
         let speed = this.randomNumber(1, 1.5);
-        gsap.to(item, {
+        this.gsap.to(item, {
           duration: speed,
           ease: "power4.inOut",
           y: action === "hide" ? -1 * winsize.height - 30 : 0,
@@ -282,7 +319,7 @@ export default {
       // button more/back animation
       let speedMore = this.randomNumber(1, 1.1);
       let moreButton = this.$refs.more;
-      gsap.to(moreButton, {
+      this.gsap.to(moreButton, {
         duration: speedMore,
         delay: delay,
         ease: "power4.inOut",
@@ -290,20 +327,20 @@ export default {
           action === "hide" ? -1 * winsize.height + moreButton.offsetHeight : 0,
       });
 
-      gsap.to(moreButton, {
+      this.gsap.to(moreButton, {
         duration: speedMore / 2,
         delay: delay,
         ease: "power4.in",
         scaleY: 2,
       });
 
-      gsap.to(moreButton, {
+      this.gsap.to(moreButton, {
         duration: speedMore / 2,
         delay: delay + speedMore / 2,
         ease: "power4.out",
         scaleY: 1,
       });
-      gsap.to(this.$refs.more.querySelector("a"), {
+      this.gsap.to(this.$refs.more.querySelector("a"), {
         duration: action === "hide" ? 0.2 : 0.4,
         delay: action === "hide" ? 0.2 : 1,
         ease: action === "hide" ? "power4.in" : "power4.out",
@@ -311,7 +348,7 @@ export default {
         y: action === "hide" ? "-150%" : "0%",
         opacity: action === "hide" ? 0 : 1,
       });
-      gsap.to(this.$refs.more.querySelector("button"), {
+      this.gsap.to(this.$refs.more.querySelector("button"), {
         duration: action === "hide" ? 0.4 : 0.2,
         delay: action === "hide" ? 1 : 0.2,
         ease: action === "hide" ? "power4.out" : "power4.in",
@@ -320,7 +357,7 @@ export default {
         opacity: action === "hide" ? 1 : 0,
       });
       // content
-      gsap.to(this.$refs.content, {
+      this.gsap.to(this.$refs.content, {
         duration: action === "show" ? 1.15 : 1,
         delay: delay,
         ease: action === "show" ? "power4.inOut" : "power4.out",
@@ -332,14 +369,14 @@ export default {
         },
       });
       // titles + subtitles
-      gsap.to(this.$refs.title, {
+      this.gsap.to(this.$refs.title, {
         duration: action === "show" ? 1.15 : 1,
         delay: delay,
         ease: "power4.inOut",
         y:
           action === "hide" ? -1 * winsize.height + moreButton.offsetHeight : 0,
       });
-      gsap.to(this.$refs.subtitle, {
+      this.gsap.to(this.$refs.subtitle, {
         duration: action === "show" ? 0.4 : 1,
         delay: delay,
         alpha: action === "show" ? 0 : 1,
@@ -365,34 +402,6 @@ export default {
     loadingText() {
       return this.$t(`loader.${this.index}`);
     },
-  },
-  mounted() {
-    window.addEventListener("resize", () => {
-      winsize = { width: window.innerWidth, height: window.innerHeight };
-      this.portrait = window.matchMedia("(orientation: portrait)").matches;
-    });
-
-    // Loader text
-    this.index = Math.round(this.randomNumber(0, 7));
-    const Interval = setInterval(() => {
-      this.index = Math.round(this.randomNumber(0, 7));
-    }, 1700);
-
-    // map setup
-    mapboxgl.accessToken = this.mapOptions.token;
-    this.map = new mapboxgl.Map({
-      container: "map", // container id
-      style: this.mapOptions.style, // stylesheet location
-      center: this.mapOptions.center, // starting position [lng, lat]
-      zoom: this.mapOptions.zoom, // starting zoom
-    });
-    this.map.on("load", this.mapload);
-
-    // when first images have loaded we hide the loader
-    preloadFirstImages().then(() => {
-      this.loaded = true;
-      clearInterval(Interval);
-    });
   },
 };
 </script>

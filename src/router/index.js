@@ -1,13 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import MobileDetect from "mobile-detect";
 
-import Disclaimer from "../pages/Disclaimer.vue";
-import Octnov from "../pages/Octnov.vue";
-import Travels from "../pages/Travels.vue";
-import Travel from "../pages/Travel.vue";
-import About from "../pages/About.vue";
-import NotFound from "../pages/404.vue";
-
 const md = new MobileDetect(window.navigator.userAgent);
 const isMobile = md.phone() !== null;
 
@@ -15,35 +8,37 @@ const routes = [
   {
     path: "/",
     name: "Travels",
-    component: Travels,
+    component: () => import("../pages/Travels.vue"),
     props: true,
   },
   {
     path: "/octnov/",
     name: "Octnov",
-    component: isMobile ? Disclaimer : Octnov,
+    component: isMobile
+      ? () => import("../pages/Disclaimer.vue")
+      : () => import("../pages/Octnov.vue"),
     props: true,
   },
   {
     path: "/album/:name",
     name: "Travel",
-    component: Travel,
+    component: () => import("../pages/Travel.vue"),
     props: true,
   },
   {
     path: "/about",
     name: "About",
-    component: About,
+    component: () => import("../pages/About.vue"),
     props: true,
   },
   {
     path: "/404",
     name: "NotFound",
-    component: NotFound,
+    component: () => import("../pages/404.vue"),
   },
   {
     path: "/:pathMatch(.*)*",
-    component: NotFound,
+    component: () => import("../pages/404.vue"),
   },
 ];
 
