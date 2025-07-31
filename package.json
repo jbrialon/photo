@@ -19,18 +19,18 @@
     "mapbox-gl": "^3.8.0",
     "mobile-detect": "^1.4.5",
     "normalize.css": "^8.0.1",
-    "vue": "^3.5.13",
+    "vue": "^3.5.18",
     "vue-i18n": "^10.0.8",
-    "vue-router": "^4.5.0",
+    "vue-router": "^4.5.1",
     "vue3-lazyload": "^0.3.8"
   },
   "devDependencies": {
     "@prerenderer/renderer-puppeteer": "^1.2.2",
     "@prerenderer/rollup-plugin": "^0.3.12",
-    "@vitejs/plugin-vue": "^5.2.1",
+    "@vitejs/plugin-vue": "^6.0.1",
     "exif-parser": "^0.1.12",
-    "sass": "^1.81.0",
-    "sharp": "^0.33.5",
-    "vite": "^6.3.4"
+    "sass": "^1.89.2",
+    "sharp": "^0.34.3",
+    "vite": "^7.0.6"
   }
 }
