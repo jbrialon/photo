@@ -15,7 +15,7 @@
   "dependencies": {
     "@unhead/vue": "^1.11.13",
     "gsap": "^3.12.5",
-    "lodash": "^4.17.21",
+    "lodash": "^4.17.23",
     "mapbox-gl": "^3.8.0",
     "mobile-detect": "^1.4.5",
     "normalize.css": "^8.0.1",
