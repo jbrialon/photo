@@ -1,5 +1,5 @@
 // Dynamic photo album loader
-import { availableAlbums } from './photos/index.js';
+import { availableAlbums } from "./photos/index.js";
 
 export async function getAlbumPhotos(albumName) {
   try {

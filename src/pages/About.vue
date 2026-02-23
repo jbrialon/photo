@@ -139,7 +139,9 @@ export default {
     padding: 5px;
     color: white;
     background: black;
-    box-shadow: -25px 0 0 0 #000, 10px 0 0 0 #000;
+    box-shadow:
+      -25px 0 0 0 #000,
+      10px 0 0 0 #000;
 
     @include small-only {
       font-size: 20px;
@@ -158,7 +160,9 @@ export default {
     color: white;
     background: black;
     padding: 5px 5px 5px 5px;
-    box-shadow: -10px 0 0 0 #000, 10px 0 0 0 #000;
+    box-shadow:
+      -10px 0 0 0 #000,
+      10px 0 0 0 #000;
 
     @include small-only {
       font-size: 15px;

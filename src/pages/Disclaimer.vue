@@ -78,7 +78,9 @@ export default {
     p {
       padding: 5px;
       width: 75%;
-      box-shadow: -15px 0 0 0 #000, 15px 0 0 0 #000;
+      box-shadow:
+        -15px 0 0 0 #000,
+        15px 0 0 0 #000;
     }
   }
 }

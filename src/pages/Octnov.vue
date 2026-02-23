@@ -273,7 +273,7 @@ export default {
       this.activeDestination = content.octnov[propertyName];
       let destinationGPS = new this.mapboxgl.LngLat(
         this.activeDestination.gps.lon,
-        this.activeDestination.gps.lat
+        this.activeDestination.gps.lat,
       );
 
       // hide all markers but the one from the selected destination

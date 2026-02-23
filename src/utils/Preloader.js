@@ -6,7 +6,7 @@ export default {
   load(assets) {
     if (!Array.isArray(assets)) {
       return Promise.reject(
-        "Preloader.load(assets) - assets should be an array"
+        "Preloader.load(assets) - assets should be an array",
       );
     }
     return Promise.all(
@@ -16,7 +16,7 @@ export default {
         }
         // console.log('preloading', src)
         return this.loadImage(src);
-      })
+      }),
     );
   },
   loadImage(src) {

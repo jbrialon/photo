@@ -120,7 +120,7 @@ export default {
       if (photo.GPS && this.toggleAction === "hide" && this.mapboxgl) {
         const destinationGPS = new this.mapboxgl.LngLat(
           photo.GPS.lng,
-          photo.GPS.lat
+          photo.GPS.lat,
         );
         this.marker.setLngLat(destinationGPS);
         this.map.easeTo({
@@ -272,7 +272,9 @@ export default {
       font-style: normal;
       color: #000;
       background: #fff;
-      box-shadow: -15px 0 0 0 #fff, 15px 0 0 0 #fff;
+      box-shadow:
+        -15px 0 0 0 #fff,
+        15px 0 0 0 #fff;
       // https://www.w3.org/TR/css-backgrounds-3/#the-box-decoration-break
       box-decoration-break: clone;
       -webkit-box-decoration-break: clone;
@@ -280,7 +282,9 @@ export default {
       @include ipad {
         font-size: 0.8rem;
         line-height: 2rem;
-        box-shadow: -10px 0 0 0 #fff, 10px 0 0 0 #fff;
+        box-shadow:
+          -10px 0 0 0 #fff,
+          10px 0 0 0 #fff;
       }
     }
   }

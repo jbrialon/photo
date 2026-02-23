@@ -60,7 +60,7 @@ function splitPhotosData(photosData) {
     const moduleContent = `export default ${JSON.stringify(
       albumData,
       null,
-      2
+      2,
     )};`;
 
     fs.writeFileSync(filePath, moduleContent);
