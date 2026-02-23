@@ -183,7 +183,7 @@ export default {
     text-transform: uppercase;
     height: 60vh;
     margin: auto;
-    min-width: 100vw;
+    width: 100%;
 
     @include small-only {
       width: 90%;
@@ -343,7 +343,9 @@ export default {
       font-style: normal;
       color: #fff;
       background: #000;
-      box-shadow: -5px 0 0 0 #000, 5px 0 0 0 #000;
+      box-shadow:
+        -5px 0 0 0 #000,
+        5px 0 0 0 #000;
     }
   }
 

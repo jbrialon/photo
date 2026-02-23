@@ -36,7 +36,7 @@ export default {
       {
         threshold: this.threshold,
         rootMargin: this.rootMargin,
-      }
+      },
     );
 
     // TODO: should use this.$slots.default() element but it's null ...
