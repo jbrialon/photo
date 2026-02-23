@@ -18,6 +18,8 @@ jobs:
         run: npm install
 
       - name: Build project
+        env:
+          VITE_MAPBOX_TOKEN: ${{ secrets.VITE_MAPBOX_TOKEN }}
         run: npm run build
 
       - name: Deploy using Rsync

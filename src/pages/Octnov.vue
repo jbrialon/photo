@@ -192,8 +192,7 @@ export default {
       toggleAction: null,
       loaded: false,
       mapOptions: {
-        token:
-          "pk.eyJ1IjoiamJyaWFsb24iLCJhIjoiZjJkNjkyNDNiMzU0YjAxY2FjNGZlMjU3MGFiYjYyZmQifQ.lwFTmFgGxSuvfoJdTcx7Jg",
+        token: import.meta.env.VITE_MAPBOX_TOKEN,
         style: "mapbox://styles/jbrialon/ck3yg7nb807lc1co990hb80mi/draft",
         center: [100.9925, 15.87],
         zoom: 3,
