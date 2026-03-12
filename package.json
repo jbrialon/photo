@@ -13,7 +13,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@unhead/vue": "^1.11.20",
+    "@unhead/vue": "^2.1.12",
     "gsap": "^3.14.2",
     "lodash": "^4.17.23",
     "mapbox-gl": "^3.18.1",
