@@ -1,5 +1,6 @@
 import { createApp, h } from "vue";
-import { VueHeadMixin, createHead } from "@unhead/vue";
+import { VueHeadMixin } from "@unhead/vue";
+import { createHead } from "@unhead/vue/client";
 import VueLazyLoad from "vue3-lazyload";
 import { createI18n } from "vue-i18n";
 
