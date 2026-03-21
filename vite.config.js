@@ -32,12 +32,16 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {
-          // Split heavy libraries into separate chunks
-          gsap: ["gsap"],
-          mapbox: ["mapbox-gl"],
-          lodash: ["lodash"],
-          vue: ["vue", "vue-router", "vue-i18n"],
+        manualChunks(id) {
+          if (id.includes("node_modules/gsap")) return "gsap";
+          if (id.includes("node_modules/mapbox-gl")) return "mapbox";
+          if (id.includes("node_modules/lodash")) return "lodash";
+          if (
+            id.includes("node_modules/vue/") ||
+            id.includes("node_modules/vue-router") ||
+            id.includes("node_modules/vue-i18n")
+          )
+            return "vue";
         },
       },
     },
