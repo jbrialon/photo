@@ -1,7 +1,38 @@
 import { defineConfig } from "vite";
+import { writeFileSync } from "fs";
+import path from "path";
 
 import vue from "@vitejs/plugin-vue";
 import prerender from "@prerenderer/rollup-plugin";
+
+const rendererOptions = {
+  skipThirdPartyRequests: true,
+  renderAfterDocumentEvent: "custom-render-trigger",
+};
+
+// specific fix for vite8 and path /
+function prerenderRootPlugin() {
+  return {
+    name: "prerender-root",
+    apply: "build",
+    async closeBundle() {
+      const { default: Prerenderer } = await import("@prerenderer/prerenderer");
+      const staticDir = path.resolve(process.cwd(), "dist");
+      const instance = new Prerenderer({
+        staticDir,
+        renderer: "@prerenderer/renderer-puppeteer",
+        rendererOptions,
+      });
+      try {
+        await instance.initialize();
+        const [route] = await instance.renderRoutes(["/"]);
+        writeFileSync(path.join(staticDir, "index.html"), route.html.trim());
+      } finally {
+        await instance.destroy();
+      }
+    },
+  };
+}
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -9,7 +40,6 @@ export default defineConfig({
     vue(),
     prerender({
       routes: [
-        "/",
         "/album/cevennes",
         "/album/bizikleta",
         "/album/indonesia",
@@ -23,11 +53,9 @@ export default defineConfig({
         "/404",
       ],
       renderer: "@prerenderer/renderer-puppeteer",
-      rendererOptions: {
-        skipThirdPartyRequests: true,
-        renderAfterDocumentEvent: "custom-render-trigger",
-      },
+      rendererOptions,
     }),
+    prerenderRootPlugin(),
   ],
   build: {
     rollupOptions: {
