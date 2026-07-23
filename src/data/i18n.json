@@ -13,6 +13,10 @@
       "more": "More +"
     },
     "albums": {
+      "india": {
+        "displayName": "North-East India",
+        "text": "Lot of kilometers and lot of Tea to visit South East India (temp title)"
+      },
       "cevennes": {
         "displayName": "Jeûne - Mas de l'Issart",
         "text": ""
@@ -159,6 +163,10 @@
       "more": "Plus +"
     },
     "albums": {
+      "india": {
+        "displayName": "Inde du Nord-Est",
+        "text": "Lot of kilometers and lot of Tea to visit South East India (temp title)"
+      },
       "cevennes": {
         "displayName": "Jeûne - Mas de l'Issart",
         "text": ""
