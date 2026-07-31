@@ -75,6 +75,23 @@ export default {
     },
   },
   albums: {
+    india: {
+      name: "india",
+      cover: "/photos/india/india-52.jpg",
+      shuffle: false,
+      hidden: false,
+      meta: [
+        { name: "og:url", content: `${url}/album/india` },
+        {
+          name: "og:image",
+          content: `${url}${"/img/meta_share_india.gif"}`,
+        },
+        {
+          name: "twitter:image",
+          content: `${url}${"/img/meta_share_india.gif"}`,
+        },
+      ],
+    },
     cevennes: {
       name: "cevennes",
       cover: "/photos/cevennes/cevennes-15.jpg",

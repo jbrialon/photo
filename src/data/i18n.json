@@ -13,6 +13,10 @@
       "more": "More +"
     },
     "albums": {
+      "india": {
+        "displayName": "North-East India",
+        "text": "A lot of kilometers and just as much chai across South-East India"
+      },
       "cevennes": {
         "displayName": "Jeûne - Mas de l'Issart",
         "text": ""
@@ -159,6 +163,10 @@
       "more": "Plus +"
     },
     "albums": {
+      "india": {
+        "displayName": "Inde du Nord-Est",
+        "text": "Beaucoup de kilomètres et autant de chai à travers l'Inde du Nord-Est"
+      },
       "cevennes": {
         "displayName": "Jeûne - Mas de l'Issart",
         "text": ""

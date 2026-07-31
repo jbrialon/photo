@@ -40,6 +40,7 @@ export default defineConfig({
     vue(),
     prerender({
       routes: [
+        "/album/india",
         "/album/cevennes",
         "/album/bizikleta",
         "/album/indonesia",
