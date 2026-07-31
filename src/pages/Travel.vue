@@ -271,10 +271,6 @@ export default {
     }
 
     &:nth-child(even) {
-      .landscape {
-        // margin-left: 25vw;
-      }
-
       .travel__photo.portrait {
         margin-top: 20vh;
         @include ipad {
@@ -283,14 +279,6 @@ export default {
         @include small-only {
           margin-top: 0;
         }
-      }
-    }
-    &:nth-child(odd) {
-      .landscape {
-        // margin-left: 20vw;
-      }
-
-      .portrait {
       }
     }
   }
