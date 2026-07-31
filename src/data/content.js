@@ -77,18 +77,18 @@ export default {
   albums: {
     india: {
       name: "india",
-      cover: "/photos/india/india-25.jpg",
+      cover: "/photos/india/india-52.jpg",
       shuffle: false,
       hidden: false,
       meta: [
         { name: "og:url", content: `${url}/album/india` },
         {
           name: "og:image",
-          content: `${url}${"/img/meta_share_bizikleta.gif"}`,
+          content: `${url}${"/img/meta_share_india.gif"}`,
         },
         {
           name: "twitter:image",
-          content: `${url}${"/img/meta_share_bizikleta.gif"}`,
+          content: `${url}${"/img/meta_share_india.gif"}`,
         },
       ],
     },

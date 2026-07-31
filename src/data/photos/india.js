@@ -146,7 +146,7 @@ export default [
   {
     "src": "/photos/india/india-19.jpg",
     "size": {
-      "width": 1067,
+      "width": 2400,
       "height": 1600
     },
     "GPS": null
@@ -154,7 +154,7 @@ export default [
   {
     "src": "/photos/india/india-20.jpg",
     "size": {
-      "width": 2400,
+      "width": 1067,
       "height": 1600
     },
     "GPS": null
@@ -186,16 +186,16 @@ export default [
   {
     "src": "/photos/india/india-24.jpg",
     "size": {
-      "width": 1067,
-      "height": 1600
+      "width": 2400,
+      "height": 1597
     },
     "GPS": null
   },
   {
     "src": "/photos/india/india-25.jpg",
     "size": {
-      "width": 2400,
-      "height": 1597
+      "width": 1067,
+      "height": 1600
     },
     "GPS": null
   },
@@ -226,7 +226,7 @@ export default [
   {
     "src": "/photos/india/india-29.jpg",
     "size": {
-      "width": 1067,
+      "width": 2400,
       "height": 1600
     },
     "GPS": null
@@ -258,7 +258,7 @@ export default [
   {
     "src": "/photos/india/india-33.jpg",
     "size": {
-      "width": 2400,
+      "width": 1067,
       "height": 1600
     },
     "GPS": null
@@ -274,7 +274,7 @@ export default [
   {
     "src": "/photos/india/india-35.jpg",
     "size": {
-      "width": 1067,
+      "width": 2400,
       "height": 1600
     },
     "GPS": null
@@ -282,7 +282,7 @@ export default [
   {
     "src": "/photos/india/india-36.jpg",
     "size": {
-      "width": 2400,
+      "width": 1067,
       "height": 1600
     },
     "GPS": null
@@ -330,7 +330,7 @@ export default [
   {
     "src": "/photos/india/india-42.jpg",
     "size": {
-      "width": 1067,
+      "width": 2400,
       "height": 1600
     },
     "GPS": null
@@ -338,7 +338,7 @@ export default [
   {
     "src": "/photos/india/india-43.jpg",
     "size": {
-      "width": 2400,
+      "width": 1067,
       "height": 1600
     },
     "GPS": null
@@ -362,7 +362,7 @@ export default [
   {
     "src": "/photos/india/india-46.jpg",
     "size": {
-      "width": 1067,
+      "width": 1066,
       "height": 1600
     },
     "GPS": null
@@ -370,7 +370,7 @@ export default [
   {
     "src": "/photos/india/india-47.jpg",
     "size": {
-      "width": 1066,
+      "width": 2400,
       "height": 1600
     },
     "GPS": null
@@ -378,7 +378,7 @@ export default [
   {
     "src": "/photos/india/india-48.jpg",
     "size": {
-      "width": 2400,
+      "width": 1067,
       "height": 1600
     },
     "GPS": null
@@ -386,7 +386,7 @@ export default [
   {
     "src": "/photos/india/india-49.jpg",
     "size": {
-      "width": 2400,
+      "width": 1067,
       "height": 1600
     },
     "GPS": null
@@ -418,7 +418,7 @@ export default [
   {
     "src": "/photos/india/india-53.jpg",
     "size": {
-      "width": 2400,
+      "width": 1067,
       "height": 1600
     },
     "GPS": null
@@ -426,7 +426,7 @@ export default [
   {
     "src": "/photos/india/india-54.jpg",
     "size": {
-      "width": 2400,
+      "width": 1067,
       "height": 1600
     },
     "GPS": null
@@ -466,37 +466,13 @@ export default [
   {
     "src": "/photos/india/india-59.jpg",
     "size": {
-      "width": 2400,
-      "height": 1600
-    },
-    "GPS": null
-  },
-  {
-    "src": "/photos/india/india-60.jpg",
-    "size": {
-      "width": 2400,
-      "height": 1600
-    },
-    "GPS": null
-  },
-  {
-    "src": "/photos/india/india-61.jpg",
-    "size": {
-      "width": 2400,
-      "height": 1600
-    },
-    "GPS": null
-  },
-  {
-    "src": "/photos/india/india-62.jpg",
-    "size": {
       "width": 1067,
       "height": 1600
     },
     "GPS": null
   },
   {
-    "src": "/photos/india/india-63.jpg",
+    "src": "/photos/india/india-60.jpg",
     "size": {
       "width": 1067,
       "height": 1600
