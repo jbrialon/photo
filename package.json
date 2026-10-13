@@ -19,7 +19,7 @@
     "mapbox-gl": "^3.20.0",
     "mobile-detect": "^1.4.5",
     "normalize.css": "^8.0.1",
-    "vue": "^3.5.30",
+    "vue": "^3.5.44",
     "vue-i18n": "^11.3.0",
     "vue-router": "^5.0.4",
     "vue3-lazyload": "^0.3.8"
